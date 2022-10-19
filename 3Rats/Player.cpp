@@ -76,7 +76,7 @@ Player::~Player()
 	SDL_DestroyTexture(texture);
 }
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan)
 {
 	isActive = true;
 
@@ -172,6 +172,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 					i.SetExistence(false);
 					bananPicked = true;
 					found = true;
+					banan++;
 				}
 			}
 			break;

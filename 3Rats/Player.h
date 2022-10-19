@@ -37,7 +37,7 @@ public:
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal();
