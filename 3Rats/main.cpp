@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
 	Player mango(renderTarget, "mango.png", 200, 200, 3, 4);
 	Player fridolin(renderTarget, "fridolin.png", 200, 160, 3, 4);
-	Player remy(renderTarget, "remy.png", 200, 120, 3, 4);
+	Player remy(renderTarget, "Gregor.png", 200, 120, 3, 4);
 
 	Frame clockFrame(renderTarget, "frame.png", 0, 320, 1, 1);
 
