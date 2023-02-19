@@ -2,6 +2,8 @@
 
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
+	block_down, block_left, block_right, block_up = false;
+
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
 		std::cout << "Error" << std::endl;
@@ -76,8 +78,9 @@ Player::~Player()
 	SDL_DestroyTexture(texture);
 }
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Body arg[], int length)
 {
+	//std::cout << "x: " << positionRect.x << "|y: " << positionRect.y << std::endl;
 	isActive = true;
 
 	int ratX = this->GetOriginX();
@@ -106,27 +109,72 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	float dist1 = sqrt(pow(abs(p.GetOriginX() - ratX), 2) + pow(abs(p.GetOriginY() - ratY), 2));
 	float dist2 = sqrt(pow(abs(p.GetOriginX() - ratX), 2) + pow(abs(p.GetOriginY() - ratY), 2));
 
+	//collision detection and movement options
+
+	for (int i = 0; i < length; i++)
+	{
+		if (intersectsWithBody(arg[i])) 
+		{
+			//std::cout << "intersects with:"<< i << std::endl;
+			int delta_x = arg[i].GetOriginX() - positionRect.x;
+			int delta_y= arg[i].GetOriginY() - positionRect.y;
+
+			if (delta_x > 0)
+			{
+				// blockiere rechts
+				block_right = true;
+			}
+			else if (delta_x < 0)
+			{
+				block_left = true;
+			}
+
+			if (delta_y > 0)
+			{
+				// blockiere rechts
+				block_down = true;
+			}
+			else if (delta_y < 0)
+			{
+				block_up = true;
+			}
+
+		}
+		else 
+		{
+			block_down = false;
+			block_up = false;
+			block_left = false;
+			block_right = false;
+
+
+		}
+	}
+
+	//std::cout << "blocked right: " << block_right << std::endl;
+	
+
 	if (playerNumber == 1)//--------------------Player control
 	{
-		if (keyState[keys[0]])
+		if (keyState[keys[0]] && !block_up)	//up
 		{
 			positionRect.y -= moveSpeed * delta;
 			cropRect.y = frameHeight * 3;
 			direction = 0;
 		}
-		else if (keyState[keys[1]])
+		else if (keyState[keys[1]] && !block_down)			//down
 		{
 			positionRect.y += moveSpeed * delta;
 			cropRect.y = 0;
 			direction = 1;
 		}
-		else if (keyState[keys[2]])
+		else if (keyState[keys[2]] && !block_left)			//left
 		{
 			positionRect.x -= moveSpeed * delta;
 			cropRect.y = frameHeight;
 			direction = 2;
 		}
-		else if (keyState[keys[3]])
+		else if (keyState[keys[3]] && !block_right)			//right
 		{
 			positionRect.x += moveSpeed * delta;
 			cropRect.y = frameHeight * 2;
@@ -314,3 +362,12 @@ int Player::GetOriginX() { return positionRect.x + originX; }
 int Player::GetOriginY() { return positionRect.y + originY; }
 int Player::GetRadius() { return radius; }
 int Player::GetDirection() { return direction; }
+
+bool Player::intersectsWithBody(Body& b)
+{
+	if (sqrt(pow(GetOriginX() - b.GetOriginX(), 2) + pow(GetOriginY() - b.GetOriginY(), 2)) >= radius + b.GetRadius())
+	{
+		return false;
+	}
+	return true;
+}

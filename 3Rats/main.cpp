@@ -7,6 +7,7 @@
 #include "player.h"
 #include "Item.h"
 #include "Body.h"
+#include "Map.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -48,7 +49,9 @@ int main(int argc, char* argv[])
 	const int screen_width = 600;
 	const int screen_hight = 420;
 
-	const int body_amount = 25;
+	const int body_amount = 100;
+
+	
 
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -62,27 +65,14 @@ int main(int argc, char* argv[])
 	
 	Body body;
 	body.set_surface(renderTarget);
-	body.set_cords(100, 100);
-
-	// maze generator
-
-	int x_cord = 0;
-	int y_cord = 0;
+	body.set_cords(-100, -100);
 
 	for (int i = 0; i < body_amount; i++)
 	{
 		body_array[i] = body;
-		body_array[i].set_cords(x_cord, y_cord);
-
-		x_cord += 64;
-
-		if (x_cord >= 576)
-		{
-			y_cord += 64;
-			x_cord = 0;
-		}
 	}
-		
+
+	Map map(body_array, body_amount, 9, 6);
 
 	Player mango(renderTarget, "Gregor.png", 200, 200, 3, 4);
 	Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
@@ -116,7 +106,7 @@ int main(int argc, char* argv[])
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
 				case SDLK_f:
-
+					map.make_maze();
 					break;
 
 				case SDLK_e:
@@ -137,9 +127,9 @@ int main(int argc, char* argv[])
 		//	bodys.at(i).Update(delta);	//static object does not need update?
 		//}
 
-		mango.Update(delta, keyState, mode, mango , banan, bananAmount);
-		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount);
-		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount);
+		mango.Update(delta, keyState, mode, mango , banan, bananAmount, body_array, body_amount);
+		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount);
+		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount);
 
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -153,12 +143,8 @@ int main(int argc, char* argv[])
 		// ------------- draw bodys
 
 		banan.Draw(renderTarget);
-		body.Draw(renderTarget);
+		map.Draw(renderTarget);
 
-		for (int i = 0; i < body_amount; i++)
-		{
-			body_array[i].Draw(renderTarget);
-		}
 		mango.Draw(renderTarget);
 		fridolin.Draw(renderTarget);
 		remy.Draw(renderTarget);

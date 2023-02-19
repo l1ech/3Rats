@@ -44,4 +44,6 @@ public:
 
 	void set_surface(SDL_Renderer* renderTarget);
 	void set_cords(int x, int y);
+	void set_texture(std::string name);
+
 };

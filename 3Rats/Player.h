@@ -7,6 +7,7 @@
 #include <string>
 
 #include "Item.h"
+#include "Body.h"
 
 
 class Player
@@ -35,11 +36,13 @@ private:
 
 	int height;
 
+	bool block_up, block_down, block_left, block_right;
+
 public:
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount, Body arg[], int length);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal();
@@ -50,5 +53,7 @@ public:
 	int GetOriginY();
 	int GetRadius();
 	int GetDirection();
+
+	bool intersectsWithBody(Body& b);
 };
 
