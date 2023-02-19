@@ -33,6 +33,8 @@ private:
 	bool bananPicked;
 	bool wait;
 
+	int height;
+
 public:
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();

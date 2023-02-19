@@ -4,12 +4,12 @@ Item::Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int f
 {
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
-		std::cout << "Error" << std::endl;
+		std::cout << "Error Item Surface" << std::endl;
 	else
 	{
 		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
 		if (texture == NULL)
-			std::cout << "Error" << std::endl;
+			std::cout << "Error Item Texture" << std::endl;
 	}
 
 	SDL_FreeSurface(surface);
