@@ -3,20 +3,21 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include <stdio.h>      /* printf, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Body.h"
 
 class Map
 {
 private:
-	int x_size;
-	int y_size;
-
 	int width;
 	int height;
 
-	
 public:
 	Map();
 	Map(Body arg[], int size, int w, int h);
@@ -25,7 +26,6 @@ public:
 
 	Body* body_array;
 
- 
 
 	void make_maze(int i, int j);
 	void make_maze();
@@ -33,6 +33,14 @@ public:
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 	int get_tile(int x, int y);
+
+	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
+	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg);
+	void trim_vector(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
+	void set_new_srand();
+
+
+
 
 
 

@@ -51,9 +51,6 @@ int main(int argc, char* argv[])
 
 	const int body_amount = 100;
 
-	
-
-
 	SDL_Init(SDL_INIT_VIDEO);
 
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
@@ -74,9 +71,9 @@ int main(int argc, char* argv[])
 
 	Map map(body_array, body_amount, 9, 6);
 
-	Player mango(renderTarget, "Gregor.png", 200, 200, 3, 4);
+	Player mango(renderTarget, "Gregor.png", 32, 32, 3, 4);
 	Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
-	Player remy(renderTarget, "Gregor.png", 200, 120, 3, 4);
+	Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -109,7 +106,8 @@ int main(int argc, char* argv[])
 					map.make_maze();
 					break;
 
-				case SDLK_e:
+				case SDLK_r:
+					map.set_new_srand();
 					break;
 				}
 			}
@@ -142,8 +140,9 @@ int main(int argc, char* argv[])
 
 		// ------------- draw bodys
 
-		banan.Draw(renderTarget);
 		map.Draw(renderTarget);
+		banan.Draw(renderTarget);
+
 
 		mango.Draw(renderTarget);
 		fridolin.Draw(renderTarget);
