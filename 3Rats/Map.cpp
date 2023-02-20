@@ -62,6 +62,8 @@ void Map::make_maze()
 			maze_data[j][i] = 0;
 		}
 	}
+
+
 	
 	for (int i = 0; i < height; i++)
 	{
