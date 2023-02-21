@@ -2,6 +2,15 @@
 #include <fstream>
 #include <vector>
 
+bool Map::flip_coin()
+{
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist1(0, 1);
+
+    return dist1(rng);
+}
+
 
 Map::Map(const Map& b)
 {
@@ -98,14 +107,14 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg)
 
 
     //================= set new location
-    if (rand() % 2 - 1)
+    if (flip_coin())
     {//horizontal
-        if (rand() % 2 - 1) x++; //right
+        if (flip_coin()) x++; //right
         else x--; //left
     }
     else
     {//vertical
-        if (rand() % 2 - 1) y++; //up
+        if (flip_coin()) y++; //up
         else y--; //down
     }
     //================= try new location

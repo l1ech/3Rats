@@ -7,9 +7,13 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
+#include <random>
+
 #include <iostream>
 #include <string>
 #include <vector>
+
+
 #include "Body.h"
 
 class Map
@@ -38,6 +42,8 @@ public:
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg);
 	void trim_vector(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	void set_new_srand();
+
+	bool flip_coin();
 
 
 
