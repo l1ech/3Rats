@@ -104,10 +104,11 @@ int main(int argc, char* argv[])
 					break;
 				case SDLK_f:
 					map.make_maze();
+					map.show_it();
 					break;
 
 				case SDLK_r:
-					map.set_new_srand();
+					map.make_garden();
 					break;
 				}
 			}
