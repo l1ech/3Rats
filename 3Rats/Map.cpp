@@ -129,7 +129,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int prev_dir
 
     int point_value = arg[y][x];
 
-    if (point_value =! 1 )                         // finish or path
+    if (point_value == 2)                         // finish or path
     {
         return point_value;
     }
@@ -145,8 +145,10 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int prev_dir
         else if (vall == 0) return 0;
         else return 7;
     }
-    else return 9;
-    return 8;
+    else
+    {
+        return 9;
+    }
 }
 
 int Map::get_direction(int prev_direction, int direction)
@@ -166,23 +168,6 @@ void Map::set_textures(std::vector<std::vector <int>>& map_data)
     {
         for (int w = 0; w < map_data[0].size(); w++)
         {
-            /*
-                
-                switch (map_data[h][w])
-            {
-            case 1:
-                body_array[get_tile(w, h)].set_texture("walk_way_shadow.png");
-                break;
-            case 0:
-                body_array[get_tile(w, h)].set_texture("maze_wall.png");
-                break;
-            case 2:
-                body_array[get_tile(w, h)].set_texture("maze_door.png");
-            }
-            
-
-            */
-
             switch (map_data[h][w])
             {
             case 0: //end_door
