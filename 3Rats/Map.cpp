@@ -65,21 +65,15 @@ void Map::print_vector(std::vector<std::vector <int>>& arg, int size_x, int size
 {
     std::cout << "vector: " << std::endl;
 
-    std::ofstream myfile;
-    myfile.open("maze_gen.txt");
-
     for (int h = 0; h < size_y; h++)
     {
         for (int w = 0; w < size_x; w++)
         {
-            myfile << arg[h][w];
             std::cout << arg[h][w];
 
         }
-        myfile << "\n";
         std::cout << std::endl;
     }
-    myfile.close();
 }
 
 void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data)   //trim boarder
@@ -301,9 +295,6 @@ void Map::build_frame(std::vector<std::vector <int>>& data, int start_x, int sta
 
         }
     }
-
-    data[start_x][start_y] = 2;
-    data[end_x][end_y] = 0;
 }
 
 void Map::make_maze()
@@ -314,10 +305,16 @@ void Map::make_maze()
     int start_x = 1;
     int start_y = 1;
 
+    int end_x = width;
+    int end_y = height;
+
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
 
     build_frame(data, start_x, start_y, height, width);
+
+    data[start_y][start_x] = 2;
+    data[end_y][end_x] = 0;
 
     print_vector(data, width + 2, height + 2);
 
@@ -372,7 +369,22 @@ void Map::make_maze()
 
 void Map::make_garden()
 {
+    width = 9;
+    height = 6;
 
+    int start_x = 1;
+    int start_y = 1;
+
+    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
+    std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
+
+    build_frame(data, start_x, start_y, height, width);
+
+    print_vector(data, width + 2, height + 2);
+
+    trim_boarder(data, map_data);
+
+    set_textures(map_data);
 }
 
 void Map::Update(float delta)

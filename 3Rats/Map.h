@@ -25,6 +25,8 @@ private:
 	int body_amount;
 
 	std::vector<int> directions;
+	std::vector<std::vector <std::vector<std::vector<int>>>>hyper_map;
+
 
 public:
 	Map();
