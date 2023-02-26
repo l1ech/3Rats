@@ -93,10 +93,12 @@ void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::ve
     }
 }
 
-int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int prev_direction)
+int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
 {
     rec_iter++;
     int direction;
+
+    //print_vector(arg, width + 2, height + 2);
 
     //================= set new location
     if (flip_coin())
@@ -108,7 +110,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int prev_dir
         }//right
         else
         {
-            direction = 3;
+            direction = 4;
             x--;
         }//left
     }
@@ -116,12 +118,12 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int prev_dir
     {//vertical
         if (flip_coin())
         {
-            direction = 4;
+            direction = 5;
             y++;
         }//up
         else
         {
-            direction = 4;
+            direction = 6;
             y--;
         }//down
     }
@@ -129,37 +131,103 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int prev_dir
 
     int point_value = arg[y][x];
 
-    if (point_value == 2)                         // finish or path
+    if (point_value == 0)                         // finish or path
     {
         return point_value;
     }
     else if (point_value == 1)                    // empty field == wall
     {
-        arg[y][x] = get_direction(prev_direction, direction);
+        arg[y][x] = direction;
+
         int vall = rec_pos(x, y, arg, direction);
-        if (arg[y][x] == 3 || arg[y][x] == 4)
+        
+        if (vall == 0)
         {
+            directions.push_back(direction);
+            return vall;
+        } 
+        else if (vall == 1)
+        {
+
             arg[y][x] = direction;
-            return 2;
         }
-        else if (vall == 0) return 0;
-        else return 7;
+        else
+        {
+            arg[y][x] = 1;
+            return vall;
+        }
     }
     else
     {
-        return 9;
+        return point_value;
     }
-}
-
-int Map::get_direction(int prev_direction, int direction)
-{
-    return direction;
 }
 
 void Map::show_it()
 {
     std::cout << "iteration: " << rec_iter << std::endl;
     rec_iter = 0;
+}
+
+void Map::set_corners(std::vector<std::vector<int>>& map_data)
+{
+    int direction, prev_direction;
+
+    for (int i = directions.size() - 1; i > 0; i--)
+    {
+        prev_direction = directions[i];
+        direction = directions[i - 1];
+
+        if (prev_direction == direction) { }
+        else if (prev_direction == 3)
+        {
+            if (direction == 5)
+            { 
+                directions[i] = 9;
+            }
+            else if (direction == 6)
+            {
+                directions[i] = 8;
+            }
+        }
+        else if (prev_direction == 4)
+        {
+            if (direction == 5)
+            {
+                directions[i] = 7;
+            }
+            else if (direction == 6)
+            {
+                directions[i] = 9;
+            }
+        }
+        else if (prev_direction == 5)
+        {
+            if (direction == 3)
+            {
+                directions[i] = 10;
+            }
+            else if (direction == 4)
+            {
+                directions[i] = 11;
+            }
+        }
+        else if (prev_direction == 6)
+        {
+            if (direction == 3)
+            {
+                directions[i] = 12;
+            }
+            else if (direction == 4)
+            {
+                directions[i] = 13;
+            }
+        }
+        else
+        {
+            std::cout << "ERROR DIRECTION" << std::endl;
+        }
+    }
 }
 
 void Map::set_textures(std::vector<std::vector <int>>& map_data)
@@ -182,27 +250,37 @@ void Map::set_textures(std::vector<std::vector <int>>& map_data)
                 body_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
                 break;
 
-            case 3: //horizontal
+            case 3: //right (horizontal)
+            case 4: //left (horizontal)
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
                 break;
 
-            case 4: //vertical
+            case 5: //up (vertical)
+            case 6: //down (vertical)
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
                 break;
 
-            case 5: //left-up
+            case 7: //left-up
+                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
                 break;
 
-            case 6: //left-down
+            case 8: //right-up 
+                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
-            case 7: //right-up
+            case 9: //left-down
+                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
                 break;
 
-            case 8: //right-down
+            case 10: //right-down
+                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
-            case 9: //hard-wall
+            case 11: //hard-wall 
+                body_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                break;
+
+            case 12:
                 break;
 
             default:
@@ -249,11 +327,12 @@ void Map::make_maze()
     {
         val = rec_pos(start_x, start_y, data, data[start_x][start_y]);
 
-        if (val != 2)   // rec_pos hit path!
+        if (val != 0)   // rec_pos hit path!
         {
         }
-        else if (val == 2)  // found exit!
+        else if (val == 0)  // found exit!
         {
+            std::cout << "found exit!" << std::endl;
             break;
         }
         else 
@@ -268,6 +347,24 @@ void Map::make_maze()
     trim_boarder(data, map_data);
 
     print_vector(map_data, map_data[0].size(), map_data.size());
+
+    std::cout << "directions vector:" << std::endl;
+
+    for (int i = directions.size() - 1; i >= 0; i--)
+    {
+        std::cout << directions[i];
+    }
+    std::cout << std::endl;
+
+    set_corners(map_data);
+
+    std::cout << "directions vector + corners:" << std::endl;
+
+    for (int i = directions.size() - 1; i >= 0; i--)
+    {
+        std::cout << directions[i];
+    }
+    std::cout << std::endl;
 
     set_textures(map_data);
     
