@@ -78,7 +78,7 @@ Player::~Player()
 	SDL_DestroyTexture(texture);
 }
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Body arg[], int length)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Body arg[], int length, Map* map_array, int& map_number)
 {
 	//std::cout << "x: " << positionRect.x << "|y: " << positionRect.y << std::endl;
 	isActive = true;
@@ -111,13 +111,68 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 
 	//collision detection and movement options
 
+	std::vector<int> blocked_i(length);
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(arg[i])) 
+		if (intersectsWithBody(arg[i]))
 		{
-			//std::cout << "intersects with:"<< i << std::endl;
+			if (arg[i].is_exit)
+			{
+				positionRect.x = 100;
+				positionRect.y = 100;
+
+				map_number++;
+				map_array[map_number].set_textures();
+			}
+			if (arg[i].is_entrance && map_number != 0)
+			{
+				positionRect.x = 100;
+				positionRect.y = 100;
+
+				map_number--;
+				map_array[map_number].set_textures();
+			}
+			else
+			{
+
+			}
+		}
+	}
+
+	/*
+	
+	for (int i = 0; i < length; i++)
+	{
+		if (intersectsWithBody(arg[i]))
+		{
+			if (arg[i].get_hight() == 1)
+			{
+				std::cout << "to high" << std::endl;
+
+				//std::cout << "hight: " << arg[i].get_hight()<< std::endl;
+				//std::cout << "intersects with:"<< i << std::endl;
+
+				blocked_i[i] = true;
+			}
+			else if (arg[i].get_hight() == 0)
+			{
+				blocked_i[i] = false;
+			}
+		}
+	}
+
+	for (int i = 0; i < length; i++)
+	{
+		if (blocked_i[i] == true)
+		{
+			if (intersectsWithBody(arg[i]))
+			{
+
+			}
+			std::cout << "intersects with:"<< i << std::endl;
+
 			int delta_x = arg[i].GetOriginX() - positionRect.x;
-			int delta_y= arg[i].GetOriginY() - positionRect.y;
+			int delta_y = arg[i].GetOriginY() - positionRect.y;
 
 			if (delta_x > 0)
 			{
@@ -138,21 +193,12 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 			{
 				block_up = true;
 			}
-
-		}
-		else 
-		{
-			block_down = false;
-			block_up = false;
-			block_left = false;
-			block_right = false;
-
-
 		}
 	}
-
 	//std::cout << "blocked right: " << block_right << std::endl;
-	
+
+
+	*/
 
 	if (playerNumber == 1)//--------------------Player control
 	{
@@ -182,7 +228,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		}
 		else
 			isActive = false;
-	} 
+	}
 	else
 	{
 		switch (mode)
@@ -290,7 +336,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 			i.SetX(GetOriginX() - 24 + 14);
 			i.SetY(GetOriginY() - 32);
 		}
-		
+
 	}
 
 	if (isActive)
@@ -331,13 +377,14 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	{
 		SetNewGoal(i.GetOriginX(), i.GetOriginY());
 	}
-	else if(found)
+	else if (found)
 	{
 		found = false;
 		SetNewGoal();
 	}
 	else
-	{ }
+	{
+	}
 
 }
 

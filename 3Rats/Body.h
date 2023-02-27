@@ -25,7 +25,11 @@ private:
 	int radius;
 	std::string filePath;
 
+	int hight;
+
 public:
+
+	bool is_exit, is_entrance;
 	Body();
 	Body(int x, int y);
 	Body(SDL_Renderer* renderTarget, int x, int y);
@@ -38,6 +42,8 @@ public:
 	int GetOriginX();
 	int GetOriginY();
 	int GetRadius();
+	void set_hight(int value);
+	int get_hight();
 
 	void SetX(int x);
 	void SetY(int y);

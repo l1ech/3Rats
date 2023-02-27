@@ -97,6 +97,9 @@ Body::Body(const Body& b)
 
 Body::Body()
 {
+	is_entrance = false;
+	is_exit = false;
+
 	//std::cout << "leerer constructor aufruf" << std::endl;
 
 	filePath = "place_holder.png";
@@ -167,6 +170,18 @@ void Body::Draw(SDL_Renderer* renderTarget)
 int Body::GetOriginX() { return positionRect.x + originX; }
 int Body::GetOriginY() { return positionRect.y + originY; }
 int Body::GetRadius() { return radius; }
+
+void Body::set_hight(int value)
+{
+	this->hight = value;
+}
+
+int Body::get_hight()
+{
+	return this->hight;
+}
+
+
 
 void Body::SetX(int x) { positionRect.x = x; }
 void Body::SetY(int y) { positionRect.y = y; }

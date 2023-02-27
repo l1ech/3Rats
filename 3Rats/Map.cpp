@@ -19,11 +19,15 @@ Map::Map(const Map& b)
 
 Map::Map()
 {
+    rec_iter = 0;
+    width = 9;
+    height = 6;
 
+    body_amount = 9 * 6;
 }
 
 
-Map::Map(Body arg[], int size, int w, int h)
+Map::Map(Body arg[], int size, int w, int h, int type)
 {
     rec_iter = 0;
 	width = w;
@@ -48,8 +52,20 @@ Map::Map(Body arg[], int size, int w, int h)
 		}
 	}
 
-    srand(time(NULL));
+    switch (type)
+    {
 
+    case 0:
+        make_maze();
+        break;
+
+    case 1:
+        make_garden();
+        break;
+
+    default:
+        break;
+    }
 }
 
 Map::~Map()
@@ -59,6 +75,44 @@ Map::~Map()
 int Map::get_tile(int x, int y)
 {
 	return y * width + x;
+}
+
+void Map::set_body_array(Body* b)
+{
+    body_array = b;
+
+    int x_cord = 0;
+    int y_cord = 0;
+
+    for (int i = 0; i < body_amount; i++)
+    {
+        body_array[i].set_cords(x_cord, y_cord);
+        x_cord += 64;
+
+        if (x_cord >= 576)
+        {
+            y_cord += 64;
+            x_cord = 0;
+        }
+    }
+}
+
+void Map::set_type(int type)
+{
+    switch (type)
+    {
+
+    case 0:
+        make_maze();
+        break;
+
+    case 1:
+        make_garden();
+        break;
+
+    default:
+        break;
+    }
 }
 
 void Map::print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y)
@@ -224,29 +278,46 @@ void Map::set_corners(std::vector<std::vector<int>>& map_data)
     }
 }
 
-void Map::set_textures(std::vector<std::vector <int>>& map_data)
+void Map::save_data(std::vector<std::vector<int>>& map_data)
 {
-    for (int h = 0; h < map_data.size(); h++)
+    for (int i = 0; i < height; i++)
     {
-        for (int w = 0; w < map_data[0].size(); w++)
+        for (int j = 0; j < width; j++)
         {
-            switch (map_data[h][w])
+            data[i][j] = map_data[i][j];
+        }
+    }
+}
+
+void Map::set_textures()
+{
+    for (int h = 0; h < height; h++)
+    {
+        for (int w = 0; w < width; w++)
+        {
+            switch (data[h][w])
             {
             case 0: //end_door
                 body_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
+                body_array[get_tile(w, h)].is_exit = true;
+                body_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 1: //wall
                 body_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                body_array[get_tile(w, h)].set_hight(1);
                 break;
 
             case 2: //start_door
                 body_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
+                body_array[get_tile(w, h)].is_entrance = true;
+                body_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 3: //right (horizontal)
             case 4: //left (horizontal)
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
+                body_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 5: //up (vertical)
@@ -256,21 +327,26 @@ void Map::set_textures(std::vector<std::vector <int>>& map_data)
 
             case 7: //left-up
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
+                body_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 8: //right-up 
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                body_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 9: //left-down
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
+                body_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 10: //right-down
+                body_array[get_tile(w, h)].set_hight(0); 
                 body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
             case 11: //hard-wall 
+                body_array[get_tile(w, h)].set_hight(0);
                 body_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
                 break;
 
@@ -316,7 +392,7 @@ void Map::make_maze()
     data[start_y][start_x] = 2;
     data[end_y][end_x] = 0;
 
-    print_vector(data, width + 2, height + 2);
+    //print_vector(data, width + 2, height + 2);
 
     int val;
 
@@ -329,22 +405,23 @@ void Map::make_maze()
         }
         else if (val == 0)  // found exit!
         {
-            std::cout << "found exit!" << std::endl;
+            //std::cout << "found exit!" << std::endl;
             break;
         }
         else 
         {  
-            std::cout << "ERROR: value not allowed: " << val << std::endl;
+            //std::cout << "ERROR: value not allowed: " << val << std::endl;
             break;
         }
     }
 
-    print_vector(data, width + 2, height + 2);
+    //print_vector(data, width + 2, height + 2);
 
     trim_boarder(data, map_data);
 
-    print_vector(map_data, map_data[0].size(), map_data.size());
+    //print_vector(map_data, map_data[0].size(), map_data.size());
 
+    /*
     std::cout << "directions vector:" << std::endl;
 
     for (int i = directions.size() - 1; i >= 0; i--)
@@ -352,9 +429,11 @@ void Map::make_maze()
         std::cout << directions[i];
     }
     std::cout << std::endl;
-
+    */
+    
     set_corners(map_data);
 
+    /*
     std::cout << "directions vector + corners:" << std::endl;
 
     for (int i = directions.size() - 1; i >= 0; i--)
@@ -362,9 +441,10 @@ void Map::make_maze()
         std::cout << directions[i];
     }
     std::cout << std::endl;
+    */
 
-    set_textures(map_data);
-    
+    //set_textures(map_data);
+    save_data(map_data);
 }
 
 void Map::make_garden()
@@ -384,7 +464,7 @@ void Map::make_garden()
 
     trim_boarder(data, map_data);
 
-    set_textures(map_data);
+    save_data(map_data);
 }
 
 void Map::Update(float delta)

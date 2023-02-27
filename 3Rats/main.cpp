@@ -4,10 +4,10 @@
 #include <vector>
 #include <stdlib.h>     /* srand, rand */
 
-#include "player.h"
 #include "Item.h"
 #include "Body.h"
 #include "Map.h"
+#include "player.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -49,7 +49,10 @@ int main(int argc, char* argv[])
 	const int screen_width = 600;
 	const int screen_hight = 420;
 
-	const int body_amount = 100;
+	const int body_amount = 54;
+	const int map_amount = 1;
+
+	int map_number = 0;
 
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -68,12 +71,24 @@ int main(int argc, char* argv[])
 	{
 		body_array[i] = body;
 	}
+	
+	Map map_array[map_amount];
 
-	Map map(body_array, body_amount, 9, 6);
+	Map map;
+	map.set_body_array(body_array);
+
+	for (int i = 0; i < map_amount; i++)
+	{
+		map_array[i] = map;
+		map_array[i].set_type(0);
+		map_array[i].show_it();
+	}
+
+	map_array[0].set_textures();
 
 	Player mango(renderTarget, "Gregor.png", 32, 32, 3, 4);
-	Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
-	Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
+	//Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
+	//Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -86,6 +101,7 @@ int main(int argc, char* argv[])
 		prevTime = currentTime;
 		currentTime = SDL_GetTicks();
 		delta = (currentTime - prevTime) / 1000.0f;
+
 		while (SDL_PollEvent(&ev) != 0)		// ------------- key-events
 		{
 			// Getting the quit and keyboard events
@@ -103,12 +119,13 @@ int main(int argc, char* argv[])
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
 				case SDLK_f:
-					map.make_maze();
-					map.show_it();
 					break;
 
 				case SDLK_r:
-					map.make_garden();
+					break;
+
+				case SDLK_g:
+					map.set_textures();
 					break;
 				}
 			}
@@ -126,9 +143,9 @@ int main(int argc, char* argv[])
 		//	bodys.at(i).Update(delta);	//static object does not need update?
 		//}
 
-		mango.Update(delta, keyState, mode, mango , banan, bananAmount, body_array, body_amount);
-		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount);
-		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount);
+		mango.Update(delta, keyState, mode, mango , banan, bananAmount, body_array, body_amount, map_array, map_number);
+		//fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount, map_array, map_number);
+		//remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount, map_array, map_number);
 
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -146,8 +163,8 @@ int main(int argc, char* argv[])
 
 
 		mango.Draw(renderTarget);
-		fridolin.Draw(renderTarget);
-		remy.Draw(renderTarget);
+		//fridolin.Draw(renderTarget);
+		//remy.Draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
 	}
