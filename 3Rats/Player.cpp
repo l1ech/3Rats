@@ -3,7 +3,10 @@
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
 	block_down, block_left, block_right, block_up = false;
-
+	b_right = 0;
+	b_left = 0;
+	b_down = 0;
+	b_up = 0;
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
 		std::cout << "Error" << std::endl;
@@ -111,7 +114,17 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 
 	//collision detection and movement options
 
-	std::vector<int> blocked_i(length);
+	std::vector<std::vector<bool>> blocked_i(length, std::vector<bool>(4));
+
+	for (int i = 0; i < length; i++)
+	{
+		for (int k = 0; k < 4; k++)
+		{
+			blocked_i[i][k] = false;
+		}
+	}
+
+
 	for (int i = 0; i < length; i++)
 	{
 		if (intersectsWithBody(arg[i]))
@@ -139,7 +152,6 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		}
 	}
 
-	/*
 	
 	for (int i = 0; i < length; i++)
 	{
@@ -147,58 +159,144 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		{
 			if (arg[i].get_hight() == 1)
 			{
-				std::cout << "to high" << std::endl;
+				//std::cout << "to high" << std::endl;
 
 				//std::cout << "hight: " << arg[i].get_hight()<< std::endl;
 				//std::cout << "intersects with:"<< i << std::endl;
 
-				blocked_i[i] = true;
+				int delta_x = arg[i].GetOriginX() - positionRect.x;
+				int delta_y = arg[i].GetOriginY() - positionRect.y;
+
+				if (delta_x > 0)
+				{
+					// blockiere rechts
+					block_right = true;
+				}
+				else if (delta_x < 0)
+				{
+					block_left = true;
+				}
+				if (delta_y > 0)
+				{
+					// blockiere rechts
+					block_down = true;
+				}
+				else if (delta_y < 0)
+				{
+					block_up = true;
+				}
+
+				blocked_i[i][0] = block_right;
+				blocked_i[i][1] = block_left;
+				blocked_i[i][2] = block_down;
+				blocked_i[i][3] = block_up;
 			}
 			else if (arg[i].get_hight() == 0)
 			{
-				blocked_i[i] = false;
+
 			}
 		}
 	}
 
 	for (int i = 0; i < length; i++)
 	{
-		if (blocked_i[i] == true)
+		for (int k = 0; k < 4; k++)
 		{
-			if (intersectsWithBody(arg[i]))
+			if (blocked_i[i][k])
 			{
+				switch (k)
+				{
+				case 0:
+					b_right++;
+					break;
 
-			}
-			std::cout << "intersects with:"<< i << std::endl;
+				case 1:
+					b_left++;
+					break;
 
-			int delta_x = arg[i].GetOriginX() - positionRect.x;
-			int delta_y = arg[i].GetOriginY() - positionRect.y;
+				case 2:
+					b_down++;
+					break;
 
-			if (delta_x > 0)
-			{
-				// blockiere rechts
-				block_right = true;
-			}
-			else if (delta_x < 0)
-			{
-				block_left = true;
-			}
+				case 3:
+					b_up++;
+					break;
 
-			if (delta_y > 0)
-			{
-				// blockiere rechts
-				block_down = true;
+				default:
+					break;
+				}
 			}
-			else if (delta_y < 0)
+			else
 			{
-				block_up = true;
+				switch (k)
+				{
+				case 0:
+					b_right--;
+					break;
+
+				case 1:
+					b_left--;
+					break;
+
+				case 2:
+					b_down--;
+					break;
+
+				case 3:
+					b_up--;
+					break;
+
+				default:
+					break;
+				}
 			}
 		}
 	}
-	//std::cout << "blocked right: " << block_right << std::endl;
 
+	std::cout << "right: " << b_right + length << std::endl;
 
-	*/
+	std::cout << "left: " << b_left + length << std::endl;
+
+	if (b_right + length == 0)
+	{
+		block_right = false;
+	}
+	else
+	{
+		block_right = true;
+	}
+
+	if (b_left + length == 0)
+	{
+		block_left = false;
+	}
+	else
+	{
+		block_left = true;
+	}
+
+	if(b_down + length == 0)
+	{
+		block_down = false;
+	}
+	else
+	{
+		block_down = true;
+	}
+
+	if (b_up + length == 0)
+	{
+		block_up = false;
+	}
+	else
+	{
+		block_up = true;
+	}
+
+	b_right = 0;
+	b_left = 0;
+	b_down = 0;
+	b_up = 0;
 
 	if (playerNumber == 1)//--------------------Player control
 	{

@@ -38,6 +38,7 @@ private:
 	int height;
 
 	bool block_up, block_down, block_left, block_right;
+	int b_up, b_down, b_left, b_right;
 
 public:
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);

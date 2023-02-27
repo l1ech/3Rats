@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int body_amount = 54;
-	const int map_amount = 1;
+	const int map_amount = 2;
 
 	int map_number = 0;
 
@@ -87,8 +87,8 @@ int main(int argc, char* argv[])
 	map_array[0].set_textures();
 
 	Player mango(renderTarget, "Gregor.png", 32, 32, 3, 4);
-	//Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
-	//Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
+	Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
+	Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -144,8 +144,8 @@ int main(int argc, char* argv[])
 		//}
 
 		mango.Update(delta, keyState, mode, mango , banan, bananAmount, body_array, body_amount, map_array, map_number);
-		//fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount, map_array, map_number);
-		//remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount, map_array, map_number);
+		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount, map_array, map_number);
+		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount, map_array, map_number);
 
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -163,8 +163,8 @@ int main(int argc, char* argv[])
 
 
 		mango.Draw(renderTarget);
-		//fridolin.Draw(renderTarget);
-		//remy.Draw(renderTarget);
+		fridolin.Draw(renderTarget);
+		remy.Draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
 	}
