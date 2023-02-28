@@ -253,9 +253,9 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		}
 	}
 
-	std::cout << "right: " << b_right + length << std::endl;
+	//std::cout << "right: " << b_right + length << std::endl;
 
-	std::cout << "left: " << b_left + length << std::endl;
+	//std::cout << "left: " << b_left + length << std::endl;
 
 	if (b_right + length == 0)
 	{

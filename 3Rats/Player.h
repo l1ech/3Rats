@@ -18,7 +18,6 @@ private:
 	SDL_Texture* texture;
 	SDL_Rect positionRect;
 
-
 	float moveSpeed;
 	float frameCounter, searchCounter, waitCounter;
 	float frameWidth, frameHeight;

@@ -15,11 +15,9 @@ private:
 
 	SDL_Renderer* ptr_renderer;
 
-	float moveSpeed;
 	float frameCounter, searchCounter;
 	float frameWidth, frameHeight;
 	int textureWidth;
-	bool isActive;
 	SDL_Scancode keys[4];
 	int originX, originY;
 	int radius;
@@ -43,6 +41,7 @@ public:
 	int GetOriginX();
 	int GetOriginY();
 	int GetRadius();
+
 	void set_hight(int value);
 	int get_hight();
 
