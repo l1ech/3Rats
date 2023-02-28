@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
 	Map map_array[map_amount];
 
 	Map map;
-	map.set_body_array(body_array);
+	map.set_body_array(body_array, body_amount);
 	map.set_item_array(item_array, item_amount);
 
 	for (int i = 0; i < map_amount; i++)
