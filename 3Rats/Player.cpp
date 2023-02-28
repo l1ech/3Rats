@@ -131,16 +131,16 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		{
 			if (arg[i].is_exit)
 			{
-				positionRect.x = 100;
-				positionRect.y = 100;
+				positionRect.x = 0;
+				positionRect.y = 0;
 
 				map_number++;
 				map_array[map_number].set_textures();
 			}
-			if (arg[i].is_entrance && map_number != 0)
+			if (arg[i].is_entrance && map_number != 0 && !1)	// disabled for testing
 			{
-				positionRect.x = 100;
-				positionRect.y = 100;
+				positionRect.x = 0;
+				positionRect.y = 0;
 
 				map_number--;
 				map_array[map_number].set_textures();

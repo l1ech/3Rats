@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int body_amount = 54;
-	const int map_amount = 2;
+	const int map_amount = 4;
 
 	int map_number = 0;
 
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-	Item banan(renderTarget, "banan.png", 200, 120, 3, 4);
+	Item banan(renderTarget, "banan.png", -100, -100, 3, 4);
 	
 	Body body_array[body_amount];
 	
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
-		map_array[i].set_type(0);
+		map_array[i].set_type(rand() % 2 - 1);
 		map_array[i].show_it();
 	}
 

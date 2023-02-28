@@ -458,9 +458,17 @@ void Map::make_garden()
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
 
-    build_frame(data, start_x, start_y, height, width);
+    for (int h = 0; h < height + 2; h++)
+    {
+        for (int w = 0; w < width + 2; w++)
+        {
+            if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = 1;
+            else data[h][w] = 3;
 
-    print_vector(data, width + 2, height + 2);
+        }
+    }
+
+    //print_vector(data, width + 2, height + 2);
 
     trim_boarder(data, map_data);
 
