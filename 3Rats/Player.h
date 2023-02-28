@@ -12,21 +12,13 @@
 #include "Tile.h"
 
 
-class Player
+class Player : public Body
 {
 private:
-	SDL_Rect cropRect;
-	SDL_Texture* texture;
-	SDL_Rect positionRect;
 
 	float moveSpeed;
-	float frameCounter, searchCounter, waitCounter;
-	float frameWidth, frameHeight;
-	int textureWidth;
+	float waitCounter;
 	bool isActive;
-	SDL_Scancode keys[4];
-	int originX, originY;
-	int radius;
 
 	int playerNumber;
 	int direction;
@@ -34,8 +26,6 @@ private:
 	bool search, found;
 	bool bananPicked;
 	bool wait;
-
-	int height;
 
 	bool block_up, block_down, block_left, block_right;
 	int b_up, b_down, b_left, b_right;
@@ -50,10 +40,6 @@ public:
 	void SetNewGoal();
 	void SetNewGoal(int x, int y);
 
-
-	int GetOriginX();
-	int GetOriginY();
-	int GetRadius();
 	int GetDirection();
 
 	bool intersectsWithBody(Body& b);

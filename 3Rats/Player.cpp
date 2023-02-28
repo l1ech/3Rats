@@ -503,9 +503,6 @@ void Player::SetNewGoal(int x, int y)
 	goalY = y;
 }
 
-int Player::GetOriginX() { return positionRect.x + originX; }
-int Player::GetOriginY() { return positionRect.y + originY; }
-int Player::GetRadius() { return radius; }
 int Player::GetDirection() { return direction; }
 
 bool Player::intersectsWithBody(Body& b)
