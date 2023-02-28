@@ -5,7 +5,6 @@ Map::Map()
     rec_iter = 0;
     width = 9;
     height = 6;
-    body_amount = width * height;
 }
 
 Map::Map(const Map& b)
@@ -63,7 +62,8 @@ Map::~Map()
 
 void Map::Update(float delta)
 {
-    //std::cout << "update" << std::endl;
+    time += delta;
+    std::cout << time << std::endl;
 }
 
 void Map::Draw(SDL_Renderer* renderTarget)
@@ -189,9 +189,9 @@ void Map::make_garden()
 }
 
 
-void Map::set_item_array(Item* item, int a)
+void Map::set_item_array(Item* item, int size)
 {
-    item_amount = a;
+    item_amount = size;
     item_array = item;
 
     int x_cord = 0;
@@ -212,6 +212,7 @@ void Map::set_item_array(Item* item, int a)
 
 void Map::set_body_array(Body* body, int size)
 {
+    body_amount = size;
     body_array = body;
 
     int x_cord = 0;

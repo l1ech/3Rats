@@ -20,6 +20,8 @@
 class Map
 {
 private:
+	double time;
+
 	int width;
 	int height;
 	

@@ -159,6 +159,8 @@ int main(int argc, char* argv[])
 		//	bodys.at(i).Update(delta);	//static object does not need update?
 		//}
 
+		map.Update(delta);
+
 		mango.Update(delta, keyState, mode, mango , banan, bananAmount, body_array, body_amount, map_array, map_number);
 		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount, map_array, map_number);
 		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount, map_array, map_number);
