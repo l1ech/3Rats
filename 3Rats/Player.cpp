@@ -389,25 +389,25 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		case 1://--------------------Ai control
 			if (!wait)
 			{
-				if (ratY > goalY)
+				if (ratY > goalY && !block_up)
 				{
 					positionRect.y -= moveSpeed * delta;
 					cropRect.y = frameHeight * 3;
 					direction = 0;
 				}
-				else if (ratY < goalY)
+				else if (ratY < goalY && !block_down)
 				{
 					positionRect.y += moveSpeed * delta;
 					cropRect.y = 0;
 					direction = 1;
 				}
-				else if (ratX > goalX)
+				else if (ratX > goalX && !block_left)
 				{
 					positionRect.x -= moveSpeed * delta;
 					cropRect.y = frameHeight;
 					direction = 2;
 				}
-				else if (ratX < goalX)
+				else if (ratX < goalX && !block_right)
 				{
 					positionRect.x += moveSpeed * delta;
 					cropRect.y = frameHeight * 2;
@@ -428,25 +428,25 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 
 			if (!wait)
 			{
-				if (ratY > frontRatY)
+				if (ratY > frontRatY && !block_up)
 				{
 					positionRect.y -= moveSpeed * delta;
 					cropRect.y = frameHeight * 3;
 					direction = 0;
 				}
-				else if (ratY < frontRatY)
+				else if (ratY < frontRatY && !block_down)
 				{
 					positionRect.y += moveSpeed * delta;
 					cropRect.y = 0;
 					direction = 1;
 				}
-				else if (ratX > frontRatX)
+				else if (ratX > frontRatX && !block_left)
 				{
 					positionRect.x -= moveSpeed * delta;
 					cropRect.y = frameHeight;
 					direction = 2;
 				}
-				else if (ratX < frontRatX)
+				else if (ratX < frontRatX && !block_right)
 				{
 					positionRect.x += moveSpeed * delta;
 					cropRect.y = frameHeight * 2;
