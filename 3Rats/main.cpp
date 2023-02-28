@@ -109,18 +109,14 @@ int main(int argc, char* argv[])
 		player_array[i] = player;
 	}
 
-	player_array[0].set_surface(renderTarget, "Gregor.png");
+	player_array[0].set_surface(renderTarget, "player_textures/mango.png");
 	player_array[0].set_cords(32, 32, 3, 4);
 
-	player_array[1].set_surface(renderTarget, "Gregor.png");
+	player_array[1].set_surface(renderTarget, "player_textures/fridolin.png");
 	player_array[1].set_cords(32, 32, 3, 4);
 
-	player_array[2].set_surface(renderTarget, "Gregor.png");
+	player_array[2].set_surface(renderTarget, "player_textures/remy.png");
 	player_array[2].set_cords(400, 300, 3, 4);
-
-	//Player mango(renderTarget, "Gregor.png", 32, 32, 3, 4);
-	//Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
-	//Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
