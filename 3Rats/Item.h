@@ -9,6 +9,10 @@
 class Item
 {
 private:
+
+	SDL_Renderer* ptr_renderer;
+	std::string filePath;
+
 	SDL_Rect cropRect;
 	SDL_Texture* texture;
 	SDL_Rect positionRect;
@@ -28,7 +32,10 @@ private:
 
 public:
 	Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
+	Item();
 	~Item();
+
+
 
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
@@ -41,4 +48,8 @@ public:
 
 	void SetX(int x);
 	void SetY(int y);
+
+	void set_surface(SDL_Renderer* renderTarget);
+	void set_cords(int x, int y);
+	void set_texture(std::string name);
 };

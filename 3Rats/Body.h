@@ -30,6 +30,7 @@ private:
 public:
 
 	bool is_exit, is_entrance;
+
 	Body();
 	Body(int x, int y);
 	Body(SDL_Renderer* renderTarget, int x, int y);
