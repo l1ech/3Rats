@@ -51,6 +51,7 @@ int main(int argc, char* argv[])
 
 	const int body_amount = 54;
 	const int map_amount = 4;
+	const int item_amount = 5;
 
 	int map_number = 0;
 
@@ -59,7 +60,16 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-	Item banan(renderTarget, "banan.png", -100, -100, 3, 4);
+	Item item_array[item_amount];
+
+	Item banan;//(renderTarget, "banan.png", 100, 100, 3, 4);
+	banan.set_surface(renderTarget);
+	banan.set_cords(100, 100);
+
+	for (int i = 0; i < item_amount; i++)
+	{
+		item_array[i] = banan;
+	}
 	
 	Body body_array[body_amount];
 	
@@ -76,8 +86,7 @@ int main(int argc, char* argv[])
 
 	Map map;
 	map.set_body_array(body_array);
-
-	//map.set_item_array(item_arry);
+	map.set_item_array(item_array, item_amount);
 
 	for (int i = 0; i < map_amount; i++)
 	{
@@ -137,7 +146,12 @@ int main(int argc, char* argv[])
 
 
 		// ------------- update bodys
-		banan.Update(delta);
+
+		for (int i = 0; i < item_amount; i++)
+		{
+			item_array[i].Update(delta);
+		}
+		//banan.Update(delta);
 
 		//body.Update(delta);
 		//for (int i = 0; i<body_amount; i++)

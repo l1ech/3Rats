@@ -97,6 +97,27 @@ void Map::set_body_array(Body* b)
     }
 }
 
+void Map::set_item_array(Item* item, int a)
+{
+    item_amount = a;
+    item_array = item;
+
+    int x_cord = 0;
+    int y_cord = 0;
+
+    for (int i = 0; i < body_amount; i++)
+    {
+        body_array[i].set_cords(x_cord, y_cord);
+        x_cord += 64;
+
+        if (x_cord >= 576)
+        {
+            y_cord += 64;
+            x_cord = 0;
+        }
+    }
+}
+
 void Map::set_type(int type)
 {
     switch (type)
@@ -492,6 +513,11 @@ void Map::Draw(SDL_Renderer* renderTarget)
 	{
 		body_array[i].Draw(renderTarget);
 	}
+
+    for (int i = 0; i < item_amount; i++)
+    {
+        item_array[i].Draw(renderTarget);
+    }
 }
 
 

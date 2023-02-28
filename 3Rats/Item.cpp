@@ -37,13 +37,7 @@ Item::Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int f
 
 	radius = frameWidth / 2;
 
-	isActive = false;
-
-	static int ItemNumber = 0;
-	ItemNumber++;
-
-	this->ItemNumber = ItemNumber;
-
+	//isActive = false;
 	isExisting = true;
 }
 
@@ -105,6 +99,7 @@ void Item::set_cords(int x, int y)
 	originY = frameHeight / 2;
 
 	radius = frameWidth / 2;
+	isExisting = true;
 }
 
 void Item::set_texture(std::string name)

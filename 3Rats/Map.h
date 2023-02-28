@@ -15,18 +15,26 @@
 
 
 #include "Body.h"
+#include "Item.h"
 
 class Map
 {
 private:
 	int width;
 	int height;
+	
 	int rec_iter;
+
 	int body_amount;
+	int item_amount;
 
 	std::vector<int> directions;
 	std::vector<std::vector <std::vector<std::vector<int>>>>hyper_map;
 
+	Item* item_array;
+	Body* body_array;
+
+	int data[6][9];
 
 public:
 	Map();
@@ -34,8 +42,6 @@ public:
 	Map(const Map& b);
 	~Map();
 
-	Body* body_array;
-	int data[6][9];
 
 	void make_maze();
 	void make_garden();
@@ -46,6 +52,7 @@ public:
 	int get_tile(int x, int y);
 
 	void set_body_array(Body* b);
+	void set_item_array(Item* item, int a);
 	void set_type(int type);
 
 	//functions for make_maze()

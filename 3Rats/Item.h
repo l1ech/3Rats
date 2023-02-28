@@ -30,6 +30,7 @@ private:
 	int ItemNumber;
 	bool isExisting;
 
+
 public:
 	Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	Item();
