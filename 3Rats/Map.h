@@ -36,7 +36,7 @@ private:
 
 	int data[6][9];
 
-	//functions for make_maze()
+	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
 	void build_frame(std::vector<std::vector <int>>& map_data, int start_x, int start_y, int end_x, int end_y);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
@@ -44,25 +44,30 @@ private:
 	void set_corners(std::vector<std::vector <int>>& map_data);
 	void save_data(std::vector<std::vector <int>>& map_data);
 
+	int get_tile(int x, int y);
+
+
 public:
 	Map();
-	Map(Body arg[], int size, int w, int h, int type);
 	Map(const Map& b);
-
+	Map(Body arg[], int size, int w, int h, int type);
 	~Map();
 
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
-	int get_tile(int x, int y);
 
+	//types of generation
 	void make_maze();
 	void make_garden();
-	void show_it();
-	void set_item_array(Item* item, int a);
-	void set_body_array(Body* b);
-	void set_type(int type);
 
+	//set up functions 
+	void set_item_array(Item* item, int size);
+	void set_body_array(Body* body, int size);	//make similar to item array
+	void set_type(int type);
 	void set_textures();
+
+	//dev info
+	void show_it();
 
 	bool flip_coin();
 };
