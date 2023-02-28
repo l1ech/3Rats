@@ -77,10 +77,12 @@ int main(int argc, char* argv[])
 	Map map;
 	map.set_body_array(body_array);
 
+	//map.set_item_array(item_arry);
+
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
-		map_array[i].set_type(rand() % 2 - 1);
+		map_array[i].set_type(map.flip_coin()); // rand() % 2 - 1	//this is kinda cheating
 		map_array[i].show_it();
 	}
 

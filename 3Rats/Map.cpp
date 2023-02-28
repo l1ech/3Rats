@@ -455,6 +455,9 @@ void Map::make_garden()
     int start_x = 1;
     int start_y = 1;
 
+    int end_x = width;
+    int end_y = height;
+
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
 
@@ -467,6 +470,9 @@ void Map::make_garden()
 
         }
     }
+
+    data[start_y][start_x] = 2;
+    data[end_y][end_x] = 0;
 
     //print_vector(data, width + 2, height + 2);
 
