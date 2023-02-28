@@ -3,20 +3,14 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <stdio.h>      /* printf, NULL */
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
-
-#include <random>
-
 #include <iostream>
 #include <string>
 #include <vector>
 
-
 #include "Body.h"
 #include "Item.h"
 #include "Tile.h"
+#include "Random.h"
 
 class Map
 {
@@ -72,5 +66,4 @@ public:
 	//dev info
 	void show_it();
 
-	bool flip_coin();
 };

@@ -9,6 +9,7 @@
 #include "Map.h"
 #include "player.h"
 #include "Tile.h"
+#include "Random.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -61,6 +62,9 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
+	//random object
+	Random rand;
+
 	// item array
 	Item item_array[item_amount];
 	Item item;//(renderTarget, "banan.png", 100, 100, 3, 4);
@@ -89,7 +93,7 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
-		map_array[i].set_type(map.flip_coin()); // rand() % 2 - 1	//this is kinda cheating
+		map_array[i].set_type(rand.flip_coin()); // rand() % 2 - 1	//this is kinda cheating
 		map_array[i].show_it();
 	}
 

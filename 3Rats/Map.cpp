@@ -327,27 +327,19 @@ void Map::show_it()
     rec_iter = 0;
 }
 
-bool Map::flip_coin()
-{
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist1(0, 1);
-
-    return dist1(rng);
-}
-
-
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
 {
+    Random rand;
+
     rec_iter++;
     int direction;
 
     //print_vector(arg, width + 2, height + 2);
 
     //================= set new location
-    if (flip_coin())
+    if (rand.flip_coin())
     {//horizontal
-        if (flip_coin())
+        if (rand.flip_coin())
         {
             direction = 3;
             x++;
@@ -360,7 +352,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
     }
     else
     {//vertical
-        if (flip_coin())
+        if (rand.flip_coin())
         {
             direction = 5;
             y++;
