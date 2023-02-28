@@ -15,13 +15,13 @@ Map::Map(const Map& b)
     body_amount = 9 * 6;
 }
 
-Map::Map(Body arg[], int size, int w, int h, int type)
+Map::Map(Tile arg[], int size, int w, int h, int type)
 {
     rec_iter = 0;
 	width = w;
 	height = h;
 
-	body_array = arg;
+	tile_array = arg;
 	body_amount = size;
 
 	int x_cord = 0;
@@ -29,8 +29,8 @@ Map::Map(Body arg[], int size, int w, int h, int type)
 
 	for (int i = 0; i < body_amount; i++)
 	{
-		body_array[i].set_cords(x_cord, y_cord);
-		//body_array[i].set_texture("maze_wall.png");
+		tile_array[i].set_cords(x_cord, y_cord);
+		//tile_array[i].set_texture("maze_wall.png");
 		x_cord += 64;
 
 		if (x_cord >= 576)
@@ -70,7 +70,7 @@ void Map::Draw(SDL_Renderer* renderTarget)
 {
     for (int i = 0; i < body_amount; i++)
     {
-        body_array[i].Draw(renderTarget);
+        tile_array[i].Draw(renderTarget);
     }
 
     for (int i = 0; i < item_amount; i++)
@@ -199,7 +199,7 @@ void Map::set_item_array(Item* item, int size)
 
     for (int i = 0; i < body_amount; i++)
     {
-        body_array[i].set_cords(x_cord, y_cord);
+        tile_array[i].set_cords(x_cord, y_cord);
         x_cord += 64;
 
         if (x_cord >= 576)
@@ -210,17 +210,17 @@ void Map::set_item_array(Item* item, int size)
     }
 }
 
-void Map::set_body_array(Body* body, int size)
+void Map::set_tile_array(Tile* body, int size)
 {
     body_amount = size;
-    body_array = body;
+    tile_array = body;
 
     int x_cord = 0;
     int y_cord = 0;
 
     for (int i = 0; i < body_amount; i++)
     {
-        body_array[i].set_cords(x_cord, y_cord);
+        tile_array[i].set_cords(x_cord, y_cord);
         x_cord += 64;
 
         if (x_cord >= 576)
@@ -258,56 +258,56 @@ void Map::set_textures()
             switch (data[h][w])
             {
             case 0: //end_door
-                body_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
-                body_array[get_tile(w, h)].is_exit = true;
-                body_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
+                tile_array[get_tile(w, h)].is_exit = true;
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 1: //wall
-                body_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
-                body_array[get_tile(w, h)].set_hight(1);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                tile_array[get_tile(w, h)].set_hight(1);
                 break;
 
             case 2: //start_door
-                body_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
-                body_array[get_tile(w, h)].is_entrance = true;
-                body_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
+                tile_array[get_tile(w, h)].is_entrance = true;
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 3: //right (horizontal)
             case 4: //left (horizontal)
-                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
-                body_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 5: //up (vertical)
             case 6: //down (vertical)
-                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
                 break;
 
             case 7: //left-up
-                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
-                body_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 8: //right-up 
-                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
-                body_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 9: //left-down
-                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
-                body_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 10: //right-down
-                body_array[get_tile(w, h)].set_hight(0);
-                body_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
             case 11: //hard-wall 
-                body_array[get_tile(w, h)].set_hight(0);
-                body_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
                 break;
 
             case 12:

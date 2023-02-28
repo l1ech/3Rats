@@ -81,7 +81,7 @@ Player::~Player()
 	SDL_DestroyTexture(texture);
 }
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Body arg[], int length, Map* map_array, int& map_number)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Tile arg[], int length, Map* map_array, int& map_number)
 {
 	//std::cout << "x: " << positionRect.x << "|y: " << positionRect.y << std::endl;
 	isActive = true;

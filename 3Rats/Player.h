@@ -9,6 +9,7 @@
 #include "Item.h"
 #include "Body.h"
 #include "Map.h"
+#include "Tile.h"
 
 
 class Player
@@ -43,7 +44,7 @@ public:
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount, Body arg[], int length, Map* map_array, int& map_number);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount, Tile arg[], int length, Map* map_array, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal();

@@ -46,80 +46,15 @@ Item::~Item()
 	SDL_DestroyTexture(texture);
 }
 
-void Item::Update(float delta)
-{	
-}
+//void Item::Update(float delta) { }
 
 void Item::Draw(SDL_Renderer* renderTarget)
 {
 	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
 }
 
-int Item::GetOriginX() { return positionRect.x + originX; }
-int Item::GetOriginY() { return positionRect.y + originY; }
-int Item::GetRadius() { return radius; }
 bool Item::GetExistence() { return isExisting; }
 
 void Item::SetExistence(bool value) { isExisting = value; }
-
-void Item::SetX(int x) { positionRect.x = x; }
-void Item::SetY(int y) { positionRect.y = y; }
-
-void Item::set_surface(SDL_Renderer* renderTarget)
-{
-	ptr_renderer = renderTarget;
-
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error Item Surface" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
-		if (texture == NULL)
-			std::cout << "Error Item Texture" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
-}
-
-void Item::set_cords(int x, int y)
-{
-	positionRect.x = x;
-	positionRect.y = y;
-
-	textureWidth = cropRect.w;
-
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
-
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
-
-	radius = frameWidth / 2;
-	isExisting = true;
-}
-
-void Item::set_texture(std::string name)
-{
-	filePath = name;
-
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error Item Surface" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
-		if (texture == NULL)
-			std::cout << "Error Item Texture" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
-}
 
 

@@ -30,6 +30,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -42,6 +45,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

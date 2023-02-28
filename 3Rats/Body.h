@@ -8,7 +8,7 @@
 
 class Body
 {
-private:
+protected:
 	SDL_Rect cropRect;
 	SDL_Texture* texture;
 	SDL_Rect positionRect;
@@ -26,8 +26,6 @@ private:
 	int hight;
 
 public:
-
-	bool is_exit, is_entrance;
 
 	Body();
 	Body(int x, int y);

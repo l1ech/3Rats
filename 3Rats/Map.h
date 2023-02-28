@@ -16,6 +16,7 @@
 
 #include "Body.h"
 #include "Item.h"
+#include "Tile.h"
 
 class Map
 {
@@ -34,7 +35,7 @@ private:
 	std::vector<std::vector <std::vector<std::vector<int>>>>hyper_map;
 
 	Item* item_array;
-	Body* body_array;
+	Tile* tile_array;
 
 	int data[6][9];
 
@@ -52,7 +53,7 @@ private:
 public:
 	Map();
 	Map(const Map& b);
-	Map(Body arg[], int size, int w, int h, int type);
+	Map(Tile arg[], int size, int w, int h, int type);
 	~Map();
 
 	void Update(float delta);
@@ -64,7 +65,7 @@ public:
 
 	//set up functions 
 	void set_item_array(Item* item, int size);
-	void set_body_array(Body* body, int size);	//make similar to item array
+	void set_tile_array(Tile* body, int size);	//make similar to item array
 	void set_type(int type);
 	void set_textures();
 

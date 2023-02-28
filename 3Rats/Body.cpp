@@ -97,8 +97,6 @@ Body::Body(const Body& b)
 
 Body::Body()
 {
-	is_entrance = false;
-	is_exit = false;
 
 	//std::cout << "leerer constructor aufruf" << std::endl;
 

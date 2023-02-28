@@ -8,6 +8,7 @@
 #include "Body.h"
 #include "Map.h"
 #include "player.h"
+#include "Tile.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -49,7 +50,7 @@ int main(int argc, char* argv[])
 	const int screen_width = 600;
 	const int screen_hight = 420;
 
-	const int body_amount = 54;
+	const int tile_amount = 54;
 	const int map_amount = 4;
 	const int item_amount = 5;
 
@@ -71,19 +72,19 @@ int main(int argc, char* argv[])
 	}
 	
 	// tile array
-	Body body_array[body_amount];
-	Body body;
-	body.set_surface(renderTarget);
-	body.set_cords(-100, -100);
-	for (int i = 0; i < body_amount; i++)
+	Tile tile_array[tile_amount];
+	Tile tile;
+	tile.set_surface(renderTarget);
+	tile.set_cords(-100, -100);
+	for (int i = 0; i < tile_amount; i++)
 	{
-		body_array[i] = body;
+		tile_array[i] = tile;
 	}
 	
 	// map array
 	Map map_array[map_amount];
 	Map map;
-	map.set_body_array(body_array, body_amount);
+	map.set_tile_array(tile_array, tile_amount);
 	map.set_item_array(item_array, item_amount);
 	for (int i = 0; i < map_amount; i++)
 	{
@@ -145,9 +146,9 @@ int main(int argc, char* argv[])
 		// update 
 		map.Update(delta);
 
-		mango.Update(delta, keyState, mode, mango , item_array[0], bananAmount, body_array, body_amount, map_array, map_number);
-		fridolin.Update(delta, keyState, mode, mango, item_array[0], bananAmount, body_array, body_amount, map_array, map_number);
-		remy.Update(delta, keyState, mode, fridolin, item_array[0], bananAmount, body_array, body_amount, map_array, map_number);
+		mango.Update(delta, keyState, mode, mango , item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+		fridolin.Update(delta, keyState, mode, mango, item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+		remy.Update(delta, keyState, mode, fridolin, item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
