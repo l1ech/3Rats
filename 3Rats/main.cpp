@@ -165,9 +165,10 @@ int main(int argc, char* argv[])
 		// update 
 		map.Update(delta);
 
-		for (int i = 0; i < player_amount; i++)
+		player_array[0].Update(delta, keyState, mode, player_array[0], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+		for (int i = 1; i < player_amount; i++)
 		{
-			player_array[i].Update(delta, keyState, mode, player_array[0], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
 		}
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
