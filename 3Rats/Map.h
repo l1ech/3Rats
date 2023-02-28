@@ -53,15 +53,15 @@ public:
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
-	//types of generation
-	void make_maze();
-	void make_garden();
-
 	//set up functions 
 	void set_item_array(Item* item, int size);
 	void set_tile_array(Tile* body, int size);	//make similar to item array
 	void set_type(int type);
 	void set_textures();
+
+	//types of generation
+	void make_maze();
+	void make_garden();
 
 	//dev info
 	void show_it();

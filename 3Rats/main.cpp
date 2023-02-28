@@ -54,6 +54,7 @@ int main(int argc, char* argv[])
 	const int tile_amount = 54;
 	const int map_amount = 4;
 	const int item_amount = 5;
+	const int player_amount = 3;
 
 	int map_number = 0;
 
@@ -99,9 +100,27 @@ int main(int argc, char* argv[])
 
 	map_array[0].set_textures();
 
-	Player mango(renderTarget, "Gregor.png", 32, 32, 3, 4);
-	Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
-	Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
+	Player player_array[player_amount];
+	
+	for (int i = 0; i < player_amount; i++)
+	{
+		Player player;
+		player.set_player_number(i);
+		player_array[i] = player;
+	}
+
+	player_array[0].set_surface(renderTarget, "Gregor.png");
+	player_array[0].set_cords(32, 32, 3, 4);
+
+	player_array[1].set_surface(renderTarget, "Gregor.png");
+	player_array[1].set_cords(32, 32, 3, 4);
+
+	player_array[2].set_surface(renderTarget, "Gregor.png");
+	player_array[2].set_cords(400, 300, 3, 4);
+
+	//Player mango(renderTarget, "Gregor.png", 32, 32, 3, 4);
+	//Player fridolin(renderTarget, "Gregor.png", 200, 160, 3, 4);
+	//Player remy(renderTarget, "Gregor.png", 400, 300, 3, 4);
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -150,9 +169,10 @@ int main(int argc, char* argv[])
 		// update 
 		map.Update(delta);
 
-		mango.Update(delta, keyState, mode, mango , item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
-		fridolin.Update(delta, keyState, mode, mango, item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
-		remy.Update(delta, keyState, mode, fridolin, item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+		for (int i = 0; i < player_amount; i++)
+		{
+			player_array[i].Update(delta, keyState, mode, player_array[0], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+		}
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
@@ -162,9 +182,11 @@ int main(int argc, char* argv[])
 
 		// draw 
 		map.Draw(renderTarget);
-		mango.Draw(renderTarget);
-		fridolin.Draw(renderTarget);
-		remy.Draw(renderTarget);
+
+		for (int i = 0; i < player_amount; i++)
+		{
+			player_array[i].Draw(renderTarget);
+		}
 
 		SDL_RenderPresent(renderTarget);
 	}

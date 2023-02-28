@@ -33,12 +33,12 @@ public:
 	Body(SDL_Renderer* renderTarget, int x, int y);
 	~Body();
 
-	void Update(float delta);
-	void Draw(SDL_Renderer* renderTarget);
-
 	void set_surface(SDL_Renderer* renderTarget);
 	void set_cords(int x, int y);
 	void set_texture(std::string name);
+
+	void Update(float delta);
+	void Draw(SDL_Renderer* renderTarget);
 
 	int GetOriginX();
 	int GetOriginY();

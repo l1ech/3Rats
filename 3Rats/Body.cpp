@@ -3,9 +3,6 @@
 
 Body::Body()
 {
-
-	//std::cout << "leerer constructor aufruf" << std::endl;
-
 	filePath = "place_holder.png";
 }
 
@@ -99,15 +96,6 @@ Body::~Body()
 	SDL_DestroyTexture(texture);
 }
 
-void Body::Update(float delta)
-{
-	//std::cout << "update" << std::endl;
-}
-
-void Body::Draw(SDL_Renderer* renderTarget)
-{
-	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
-}
 
 void Body::set_surface(SDL_Renderer* renderTarget)
 {
@@ -165,15 +153,29 @@ void Body::set_texture(std::string name)
 
 }
 
+
+void Body::Update(float delta)
+{
+	//std::cout << "update" << std::endl;
+}
+
+void Body::Draw(SDL_Renderer* renderTarget)
+{
+	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
+}
+
+
 int Body::GetOriginX() { return positionRect.x + originX; }
 
 int Body::GetOriginY() { return positionRect.y + originY; }
 
 int Body::GetRadius() { return radius; }
 
+
 void Body::set_hight(int value) { this->hight = value; }
 
 int Body::get_hight() { return this->hight; }
+
 
 void Body::SetX(int x) { positionRect.x = x; }
 

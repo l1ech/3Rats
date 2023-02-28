@@ -1,12 +1,43 @@
 #include "Player.h"
 
-Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
+Player::Player()
 {
+	filePath = "place_holder.png";
+
 	block_down, block_left, block_right, block_up = false;
+
 	b_right = 0;
 	b_left = 0;
 	b_down = 0;
 	b_up = 0;
+
+	isActive = false;
+
+	keys[0] = SDL_SCANCODE_W;
+	keys[1] = SDL_SCANCODE_S;
+	keys[2] = SDL_SCANCODE_A;
+	keys[3] = SDL_SCANCODE_D;
+
+	moveSpeed = 200.0f;
+
+	search = false;
+	bananPicked = false;
+	found = false;
+	wait = false;
+
+	searchCounter = rand() % 100;
+	searchCounter /= 100.0f;
+}
+
+Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
+{
+	block_down, block_left, block_right, block_up = false;
+
+	b_right = 0;
+	b_left = 0;
+	b_down = 0;
+	b_up = 0;
+
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
 		std::cout << "Error" << std::endl;
@@ -39,32 +70,11 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 
 	isActive = false;
 
-	static int playerNumber = 0;
-	playerNumber++;
-
-	this->playerNumber = playerNumber;
-
-	if (playerNumber == 1)
-	{
-		keys[0] = SDL_SCANCODE_W;
-		keys[1] = SDL_SCANCODE_S;
-		keys[2] = SDL_SCANCODE_A;
-		keys[3] = SDL_SCANCODE_D;
-	}
-	else if (playerNumber == 2)
-	{
-		keys[0] = SDL_SCANCODE_UP;
-		keys[1] = SDL_SCANCODE_DOWN;
-		keys[2] = SDL_SCANCODE_LEFT;
-		keys[3] = SDL_SCANCODE_RIGHT;
-	}
-	else if (playerNumber == 3)
-	{
-		keys[0] = SDL_SCANCODE_UP;
-		keys[1] = SDL_SCANCODE_DOWN;
-		keys[2] = SDL_SCANCODE_LEFT;
-		keys[3] = SDL_SCANCODE_RIGHT;
-	}
+	keys[0] = SDL_SCANCODE_W;
+	keys[1] = SDL_SCANCODE_S;
+	keys[2] = SDL_SCANCODE_A;
+	keys[3] = SDL_SCANCODE_D;
+	
 	moveSpeed = 200.0f;
 
 	search = false;
@@ -80,6 +90,51 @@ Player::~Player()
 {
 	SDL_DestroyTexture(texture);
 }
+
+
+void Player::set_surface(SDL_Renderer* renderTarget, std::string name)
+{
+	filePath = name;
+
+	SDL_Surface* surface = IMG_Load(filePath.c_str());
+	if (surface == NULL)
+		std::cout << "Error" << std::endl;
+	else
+	{
+		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
+		if (texture == NULL)
+			std::cout << "Error" << std::endl;
+	}
+
+	SDL_FreeSurface(surface);
+
+	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
+}
+
+void Player::set_cords(int x, int y, int framesX, int framesY)
+{
+	positionRect.x = x;
+	positionRect.y = y;
+
+	textureWidth = cropRect.w;
+
+	cropRect.w /= framesX;
+	cropRect.h /= framesY;
+
+	frameWidth = positionRect.w = cropRect.w;
+	frameHeight = positionRect.h = cropRect.h;
+
+	originX = frameWidth / 2;
+	originY = frameHeight / 2;
+
+	radius = frameWidth / 2;
+}
+
+void Player::set_player_number(int number)
+{
+	player_number = number;
+}
+
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Tile arg[], int length, Map* map_array, int& map_number)
 {
@@ -298,7 +353,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	b_down = 0;
 	b_up = 0;
 
-	if (playerNumber == 1)//--------------------Player control
+	if (player_number == 0)//--------------------Player control
 	{
 		if (keyState[keys[0]] && !block_up)	//up
 		{
@@ -491,6 +546,7 @@ void Player::Draw(SDL_Renderer* renderTarget)
 	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
 }
 
+
 void Player::SetNewGoal()
 {
 	goalX = rand() % 600;
@@ -503,7 +559,9 @@ void Player::SetNewGoal(int x, int y)
 	goalY = y;
 }
 
+
 int Player::GetDirection() { return direction; }
+
 
 bool Player::intersectsWithBody(Body& b)
 {
