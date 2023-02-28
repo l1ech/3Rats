@@ -60,34 +60,31 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
+	// item array
 	Item item_array[item_amount];
-
-	Item banan;//(renderTarget, "banan.png", 100, 100, 3, 4);
-	banan.set_surface(renderTarget);
-	banan.set_cords(100, 100);
-
+	Item item;//(renderTarget, "banan.png", 100, 100, 3, 4);
+	item.set_surface(renderTarget);
+	item.set_cords(100, 100);
 	for (int i = 0; i < item_amount; i++)
 	{
-		item_array[i] = banan;
+		item_array[i] = item;
 	}
 	
+	// tile array
 	Body body_array[body_amount];
-	
 	Body body;
 	body.set_surface(renderTarget);
 	body.set_cords(-100, -100);
-
 	for (int i = 0; i < body_amount; i++)
 	{
 		body_array[i] = body;
 	}
 	
+	// map array
 	Map map_array[map_amount];
-
 	Map map;
 	map.set_body_array(body_array, body_amount);
 	map.set_item_array(item_array, item_amount);
-
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
@@ -145,26 +142,12 @@ int main(int argc, char* argv[])
 		keyState = SDL_GetKeyboardState(NULL);
 
 
-		// ------------- update bodys
-
-		for (int i = 0; i < item_amount; i++)
-		{
-			item_array[i].Update(delta);
-		}
-		//banan.Update(delta);
-
-		//body.Update(delta);
-		//for (int i = 0; i<body_amount; i++)
-		//{
-		//	bodys.at(i).Update(delta);	//static object does not need update?
-		//}
-
+		// update 
 		map.Update(delta);
 
-		mango.Update(delta, keyState, mode, mango , banan, bananAmount, body_array, body_amount, map_array, map_number);
-		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount, body_array, body_amount, map_array, map_number);
-		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount, body_array, body_amount, map_array, map_number);
-
+		mango.Update(delta, keyState, mode, mango , item_array[0], bananAmount, body_array, body_amount, map_array, map_number);
+		fridolin.Update(delta, keyState, mode, mango, item_array[0], bananAmount, body_array, body_amount, map_array, map_number);
+		remy.Update(delta, keyState, mode, fridolin, item_array[0], bananAmount, body_array, body_amount, map_array, map_number);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
@@ -172,14 +155,8 @@ int main(int argc, char* argv[])
 		SDL_RenderClear(renderTarget);
 		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
-		//SDL_RenderCopy(renderTarget, text, NULL, &textRect);
-
-		// ------------- draw bodys
-
+		// draw 
 		map.Draw(renderTarget);
-		banan.Draw(renderTarget);
-
-
 		mango.Draw(renderTarget);
 		fridolin.Draw(renderTarget);
 		remy.Draw(renderTarget);
