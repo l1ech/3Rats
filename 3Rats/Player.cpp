@@ -1,5 +1,54 @@
 #include "Player.h"
 
+void Player::setup_blocked(std::vector<std::vector<bool>>& vect, int h, int w)
+{
+	for (int i = 0; i < h; i++)
+	{
+		for (int k = 0; k < w; k++)
+		{
+			vect[i][k] = false;
+		}
+	}
+}
+
+bool Player::get_end_door_collision(Tile tiles[], std::vector<std::vector<bool>>& vect, int h, int w)
+{
+	for (int i = 0; i < h; i++)
+	{
+		if (intersectsWithBody(tiles[i]))
+		{
+			if (tiles[i].is_exit)
+			{
+				std::cout <<"exit: " << tiles[i].is_exit << std::endl;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+}
+
+bool Player::get_entry_door_collision(Tile tiles[], std::vector<std::vector<bool>>& vect, int h, int w)
+{
+	for (int i = 0; i < h; i++)
+	{
+		if (intersectsWithBody(tiles[i]))
+		{
+			if (tiles[i].is_entrance)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+	
+}
+
 Player::Player()
 {
 	filePath = "place_holder.png";
@@ -94,6 +143,7 @@ Player::~Player()
 
 void Player::set_surface(SDL_Renderer* renderTarget, std::string name)
 {
+	ptr_renderer = renderTarget;
 	filePath = name;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
@@ -136,9 +186,8 @@ void Player::set_player_number(int number)
 }
 
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Tile arg[], int length, Map* map_array, int& map_number)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Tile tiles[], int length, Map* map_array, int& map_number)
 {
-	//std::cout << "x: " << positionRect.x << "|y: " << positionRect.y << std::endl;
 	isActive = true;
 
 	int ratX = this->GetOriginX();
@@ -167,24 +216,43 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	float dist1 = sqrt(pow(abs(p.GetOriginX() - ratX), 2) + pow(abs(p.GetOriginY() - ratY), 2));
 	float dist2 = sqrt(pow(abs(p.GetOriginX() - ratX), 2) + pow(abs(p.GetOriginY() - ratY), 2));
 
-	//collision detection and movement options
+	// _ collision detection and movement options
+	
+	// make collision array and set it up
+	int height = length;
+	int width = 4;
 
-	std::vector<std::vector<bool>> blocked_i(length, std::vector<bool>(4));
+	std::vector<std::vector<bool>> blocked_i;
+	blocked_i.resize(height, std::vector<bool>(width));
 
-	for (int i = 0; i < length; i++)
+	setup_blocked(blocked_i, height, width);
+
+	// check if collision with one of the doors
+	if (get_end_door_collision(tiles, blocked_i, height, width) && map_number != length)
 	{
-		for (int k = 0; k < 4; k++)
-		{
-			blocked_i[i][k] = false;
-		}
+		positionRect.x = 0;
+		positionRect.y = 0;
+
+		map_number++;
+		map_array[map_number].set_textures();
 	}
 
+	/*
+	if (get_entry_door_collision(tiles, blocked_i, height, width) && map_number != 0 )	// disabled for testing
+	{
+		positionRect.x = 0;
+		positionRect.y = 0;
+
+		map_number--;
+		map_array[map_number].set_textures();
+	}
+	*/
 
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(arg[i]))
+		if (intersectsWithBody(tiles[i]))
 		{
-			if (arg[i].is_exit)
+			if (tiles[i].is_exit)
 			{
 				positionRect.x = 0;
 				positionRect.y = 0;
@@ -192,7 +260,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 				map_number++;
 				map_array[map_number].set_textures();
 			}
-			if (arg[i].is_entrance && map_number != 0 && !1)	// disabled for testing
+			if (tiles[i].is_entrance && map_number != 0 && !1)	// disabled for testing
 			{
 				positionRect.x = 0;
 				positionRect.y = 0;
@@ -210,17 +278,17 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(arg[i]))
+		if (intersectsWithBody(tiles[i]))
 		{
-			if (arg[i].get_hight() == 1)
+			if (tiles[i].get_hight() == 1)
 			{
 				//std::cout << "to high" << std::endl;
 
-				//std::cout << "hight: " << arg[i].get_hight()<< std::endl;
+				//std::cout << "hight: " << tiles[i].get_hight()<< std::endl;
 				//std::cout << "intersects with:"<< i << std::endl;
 
-				int delta_x = arg[i].GetOriginX() - positionRect.x;
-				int delta_y = arg[i].GetOriginY() - positionRect.y;
+				int delta_x = tiles[i].GetOriginX() - positionRect.x;
+				int delta_y = tiles[i].GetOriginY() - positionRect.y;
 
 				if (delta_x > 0)
 				{
@@ -246,7 +314,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 				blocked_i[i][2] = block_down;
 				blocked_i[i][3] = block_up;
 			}
-			else if (arg[i].get_hight() == 0)
+			else if (tiles[i].get_hight() == 0)
 			{
 
 			}

@@ -31,6 +31,10 @@ private:
 	bool block_up, block_down, block_left, block_right;
 	int b_up, b_down, b_left, b_right;
 
+	void setup_blocked(std::vector<std::vector<bool>>& vect, int h, int w);
+	bool get_end_door_collision(Tile tiles[], std::vector<std::vector<bool>>& vect, int h, int w);
+	bool get_entry_door_collision(Tile tiles[], std::vector<std::vector<bool>>& vect, int h, int w);
+
 public:
 	Player();
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);

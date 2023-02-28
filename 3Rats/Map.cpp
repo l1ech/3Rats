@@ -63,7 +63,7 @@ Map::~Map()
 void Map::Update(float delta)
 {
     time += delta;
-    std::cout << (int)time << std::endl;
+    //std::cout << (int)time << std::endl;
 }
 
 void Map::Draw(SDL_Renderer* renderTarget)
