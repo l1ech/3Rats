@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <utility>
 
 #include "Body.h"
 #include "Item.h"
@@ -31,7 +32,7 @@ private:
 	Item* item_array;
 	Tile* tile_array;
 
-	int data[6][9];
+	std::pair<int, int> data[6][9];
 
 	//types of generation
 	void make_maze(bool item_generation);
@@ -43,8 +44,9 @@ private:
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	void set_corners(std::vector<std::vector <int>>& map_data);
-	void save_data(std::vector<std::vector <int>>& map_data);
-	void set_items_to_map(std::vector<std::vector <int>>& map_data, int height, int width);
+
+	void save_data(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data);
+	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width);
 
 	int get_tile(int x, int y);
 

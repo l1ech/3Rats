@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 
 	const int tile_amount = 54;
 	const int map_amount = 4;
-	const int item_amount = 5;
+	const int item_amount = 100;
 	const int player_amount = 3;
 
 	int map_number = 0;
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 	Item item_array[item_amount];
 	Item item;//(renderTarget, "banan.png", 100, 100, 3, 4);
 	item.set_surface(renderTarget);
-	item.set_cords(100, 100);
+	item.set_cords(-100, -100);
 	for (int i = 0; i < item_amount; i++)
 	{
 		item_array[i] = item;

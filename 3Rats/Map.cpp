@@ -92,6 +92,8 @@ void Map::make_maze(bool item_generation)
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+
 
     build_frame(data, start_x, start_y, height, width);
 
@@ -125,7 +127,8 @@ void Map::make_maze(bool item_generation)
 
     trim_boarder(data, map_data);
 
-    //print_vector(map_data, map_data[0].size(), map_data.size());
+    std::cout << "map_data" << std::endl;
+    print_vector(map_data, map_data[0].size(), map_data.size());
 
     /*
     std::cout << "directions vector:" << std::endl;
@@ -139,7 +142,10 @@ void Map::make_maze(bool item_generation)
 
     //set_corners(map_data);
 
-    if (item_generation) set_items_to_map(map_data, height, width);
+    if (item_generation) set_items_to_map(map_data, item_data, height, width);
+
+    std::cout << "item_data" << std::endl;
+    print_vector(item_data, item_data[0].size(), item_data.size());
 
     /*
     std::cout << "directions vector + corners:" << std::endl;
@@ -152,7 +158,7 @@ void Map::make_maze(bool item_generation)
     */
 
     //set_textures(map_data);
-    save_data(map_data);
+    save_data(map_data, item_data);
 }
 
 void Map::make_garden()
@@ -168,6 +174,8 @@ void Map::make_garden()
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+
 
     for (int h = 0; h < height + 2; h++)
     {
@@ -186,7 +194,7 @@ void Map::make_garden()
 
     trim_boarder(data, map_data);
 
-    save_data(map_data);
+    save_data(map_data, item_data);
 }
 
 
@@ -256,7 +264,7 @@ void Map::set_textures()
     {
         for (int w = 0; w < width; w++)
         {
-            switch (data[h][w])
+            switch (data[h][w].first)
             {
             case 0: //end_door
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
@@ -316,6 +324,19 @@ void Map::set_textures()
 
             default:
                 break;
+            }
+
+            int x_cord = w * 64;
+            int y_cord = h * 64;
+
+            if (data[h][w].second == 1)
+            {
+                item_array[get_tile(w, h)].set_cords(x_cord, y_cord);
+                item_array[get_tile(w, h)].set_texture("banan.png");
+            }
+            else if (data[h][w].second == 0)
+            {
+
             }
         }
     }
@@ -500,19 +521,21 @@ void Map::set_corners(std::vector<std::vector<int>>& map_data)
     }
 }
 
-void Map::save_data(std::vector<std::vector<int>>& map_data)
+void Map::save_data(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data)
 {
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            data[i][j] = map_data[i][j];
+            data[i][j].first = map_data[i][j];
+            data[i][j].second = item_data[i][j];
         }
     }
 }
 
-void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, int height, int width)
+void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width)
 {
+    Random rand;
     int k = 0;
 
     for (int i = 0; i < height; i++)
@@ -524,18 +547,14 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, int height, 
                 break;
             }
 
-            /*
-            if (map_data[height][width] != 0 || map_data[height][width] != 1 || map_data[height][width] != 2)
+            if (map_data[i][j] != 0 && map_data[i][j] != 1 && map_data[i][j] != 2 && rand.flip_coin())
             {
-                int x_cord = i * 64;
-                int y_cord = j * 64;
-
-                item_array[k].set_cords(x_cord, y_cord);
-                k++;
+                item_data[i][j] = 1;
             }
-            */
-
-            
+            else 
+            {
+                item_data[i][j] = 0;
+            }
         }
     }
 
