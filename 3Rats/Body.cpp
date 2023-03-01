@@ -117,6 +117,27 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 
 }
 
+void Body::set_surface(SDL_Renderer* renderTarget, std::string name)
+{
+	filePath = name;
+	ptr_renderer = renderTarget;
+
+	SDL_Surface* surface = IMG_Load(filePath.c_str());
+	if (surface == NULL)
+		std::cout << "Error Body Surface" << std::endl;
+	else
+	{
+		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
+		if (texture == NULL)
+			std::cout << "Error Body Texture" << std::endl;
+	}
+
+	SDL_FreeSurface(surface);
+
+	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
+
+}
+
 void Body::set_cords(int x, int y)
 {
 	positionRect.x = x;

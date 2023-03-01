@@ -150,6 +150,8 @@ int main(int argc, char* argv[])
 					break;
 
 				case SDLK_r:
+					player_array[0].SetX(0);
+					player_array[0].SetY(0);
 					break;
 
 				case SDLK_g:

@@ -36,7 +36,7 @@ public:
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
-	void set_surface(SDL_Renderer* renderTarget, std::string name);
+	//void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 

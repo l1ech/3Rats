@@ -92,24 +92,6 @@ Player::~Player()
 }
 
 
-void Player::set_surface(SDL_Renderer* renderTarget, std::string name)
-{
-	filePath = name;
-
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
-		if (texture == NULL)
-			std::cout << "Error" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-}
 
 void Player::set_cords(int x, int y, int framesX, int framesY)
 {

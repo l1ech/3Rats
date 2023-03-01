@@ -12,7 +12,6 @@ Map::Map(const Map& b)
     rec_iter = 0;
     width = 9;
     height = 6;
-    body_amount = 9 * 6;
 }
 
 Map::Map(Tile arg[], int size, int w, int h, int type)
@@ -44,7 +43,7 @@ Map::Map(Tile arg[], int size, int w, int h, int type)
     {
 
     case 0:
-        make_maze();
+        make_maze(true);
         break;
 
     case 1:
@@ -63,7 +62,7 @@ Map::~Map()
 void Map::Update(float delta)
 {
     time += delta;
-    std::cout << (int)time << std::endl;
+    //std::cout << (int)time << std::endl;
 }
 
 void Map::Draw(SDL_Renderer* renderTarget)
@@ -80,7 +79,7 @@ void Map::Draw(SDL_Renderer* renderTarget)
 }
 
 
-void Map::make_maze()
+void Map::make_maze(bool item_generation)
 {
     width = 9;
     height = 6;
@@ -138,7 +137,9 @@ void Map::make_maze()
     std::cout << std::endl;
     */
 
-    set_corners(map_data);
+    //set_corners(map_data);
+
+    if (item_generation) set_items_to_map(map_data, height, width);
 
     /*
     std::cout << "directions vector + corners:" << std::endl;
@@ -237,7 +238,7 @@ void Map::set_type(int type)
     {
 
     case 0:
-        make_maze();
+        make_maze(true);
         break;
 
     case 1:
@@ -508,6 +509,36 @@ void Map::save_data(std::vector<std::vector<int>>& map_data)
             data[i][j] = map_data[i][j];
         }
     }
+}
+
+void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, int height, int width)
+{
+    int k = 0;
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            if (k == item_amount - 1)
+            {
+                break;
+            }
+
+            /*
+            if (map_data[height][width] != 0 || map_data[height][width] != 1 || map_data[height][width] != 2)
+            {
+                int x_cord = i * 64;
+                int y_cord = j * 64;
+
+                item_array[k].set_cords(x_cord, y_cord);
+                k++;
+            }
+            */
+
+            
+        }
+    }
+
 }
 
 

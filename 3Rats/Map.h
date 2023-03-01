@@ -33,6 +33,10 @@ private:
 
 	int data[6][9];
 
+	//types of generation
+	void make_maze(bool item_generation);
+	void make_garden();
+
 	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
 	void build_frame(std::vector<std::vector <int>>& map_data, int start_x, int start_y, int end_x, int end_y);
@@ -40,6 +44,7 @@ private:
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	void set_corners(std::vector<std::vector <int>>& map_data);
 	void save_data(std::vector<std::vector <int>>& map_data);
+	void set_items_to_map(std::vector<std::vector <int>>& map_data, int height, int width);
 
 	int get_tile(int x, int y);
 
@@ -58,10 +63,6 @@ public:
 	void set_tile_array(Tile* body, int size);	//make similar to item array
 	void set_type(int type);
 	void set_textures();
-
-	//types of generation
-	void make_maze();
-	void make_garden();
 
 	//dev info
 	void show_it();
