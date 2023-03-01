@@ -36,7 +36,7 @@ private:
 
 	//types of generation
 	void make_maze(bool item_generation);
-	void make_garden();
+	void make_garden(bool item_generations);
 
 	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);

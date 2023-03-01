@@ -47,7 +47,7 @@ Map::Map(Tile arg[], int size, int w, int h, int type)
         break;
 
     case 1:
-        make_garden();
+        make_garden(true);
         break;
 
     default:
@@ -161,7 +161,7 @@ void Map::make_maze(bool item_generation)
     save_data(map_data, item_data);
 }
 
-void Map::make_garden()
+void Map::make_garden(bool item_generation)
 {
     width = 9;
     height = 6;
@@ -182,7 +182,7 @@ void Map::make_garden()
         for (int w = 0; w < width + 2; w++)
         {
             if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = 1;
-            else data[h][w] = 3;
+            else data[h][w] = 12;
 
         }
     }
@@ -193,6 +193,8 @@ void Map::make_garden()
     //print_vector(data, width + 2, height + 2);
 
     trim_boarder(data, map_data);
+
+    if (item_generation) set_items_to_map(map_data, item_data, height, width);
 
     save_data(map_data, item_data);
 }
@@ -250,7 +252,7 @@ void Map::set_type(int type)
         break;
 
     case 1:
-        make_garden();
+        make_garden(true);
         break;
 
     default:
@@ -286,43 +288,55 @@ void Map::set_textures()
             case 3: //right (horizontal)
             case 4: //left (horizontal)
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 5: //up (vertical)
             case 6: //down (vertical)
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
                 break;
 
             case 7: //left-up
-                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 8: //right-up 
-                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 9: //left-down
-                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 10: //right-down
                 tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
             case 11: //hard-wall 
                 tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                //tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
                 break;
 
             case 12:
+                tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                //tile_array[get_tile(w, h)].set_texture("place_holder.png");
                 break;
 
             default:
+                tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].set_texture("place_holder.png");
                 break;
             }
 
@@ -332,11 +346,12 @@ void Map::set_textures()
             if (data[h][w].second == 1)
             {
                 item_array[get_tile(w, h)].set_cords(x_cord, y_cord);
-                item_array[get_tile(w, h)].set_texture("banan.png");
+                item_array[get_tile(w, h)].set_texture("mushroom.png");
             }
             else if (data[h][w].second == 0)
             {
-
+                item_array[get_tile(w, h)].set_cords(-100, -100);
+                item_array[get_tile(w, h)].set_texture("place_holder.png");
             }
         }
     }
@@ -547,7 +562,7 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
                 break;
             }
 
-            if (map_data[i][j] != 0 && map_data[i][j] != 1 && map_data[i][j] != 2 && rand.flip_coin())
+            if (map_data[i][j] != 0 && map_data[i][j] != 1 && map_data[i][j] != 2 && rand.roll_custom_dice(20) == 1)
             {
                 item_data[i][j] = 1;
             }

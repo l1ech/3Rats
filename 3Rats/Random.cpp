@@ -12,3 +12,21 @@ bool Random::flip_coin()
 
     return dist1(rng);
 }
+
+int Random::roll_dice()
+{
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist1(1, 6);
+
+    return dist1(rng);
+}
+
+int Random::roll_custom_dice(int num)
+{
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist1(1, num);
+
+    return dist1(rng);
+}
