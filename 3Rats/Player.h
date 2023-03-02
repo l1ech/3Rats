@@ -27,25 +27,37 @@ private:
 	bool bananPicked;
 	bool wait;
 
-	struct break_direction_counter {
+	struct block_direction_counter {
 		int right;
 		int left;
 		int up;
 		int down;
 	};
 
-	struct break_direction {
+	struct block_direction {
 		bool right;
 		bool left;
 		bool up;
 		bool down;
 	};
 
+	struct player_move
+	{
+		bool up;
+		bool down;
+		bool left;
+		bool right;
+	};
+
 	// for update fuction:
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
-	void calculate_blocked_side(break_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
-	void get_direction_blocked(break_direction_counter& counter, break_direction& direction, int length);
+	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
+	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
 	void check_door(int& map_number,Map* map_array, Tile* tile_array, int length);
+
+	void make_player_move(player_move move, block_direction direction, float delta);
+	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat);
+	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item, int& banan);
 public:
 
 
@@ -57,7 +69,7 @@ public:
 	void set_cords(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount, Tile arg[], int length, Map* map_array, int& map_number);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& item, int& bananAmount, Tile arg[], int length, Map* map_array, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal();
