@@ -127,8 +127,8 @@ void Map::make_maze(bool item_generation)
 
     trim_boarder(data, map_data);
 
-    std::cout << "map_data" << std::endl;
-    print_vector(map_data, map_data[0].size(), map_data.size());
+    //std::cout << "map_data" << std::endl;
+    //print_vector(map_data, map_data[0].size(), map_data.size());
 
     /*
     std::cout << "directions vector:" << std::endl;
@@ -144,8 +144,8 @@ void Map::make_maze(bool item_generation)
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width);
 
-    std::cout << "item_data" << std::endl;
-    print_vector(item_data, item_data[0].size(), item_data.size());
+    //std::cout << "item_data" << std::endl;
+    //print_vector(item_data, item_data[0].size(), item_data.size());
 
     /*
     std::cout << "directions vector + corners:" << std::endl;
@@ -296,6 +296,7 @@ void Map::set_textures()
             case 6: //down (vertical)
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
+                tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 7: //left-up

@@ -21,17 +21,36 @@ private:
 	float waitCounter;
 	bool isActive;
 
-	//int playerNumber;
-	int direction;
+	int direction_rat;
 	int goalX, goalY;
 	bool search, found;
 	bool bananPicked;
 	bool wait;
 
 	bool block_up, block_down, block_left, block_right;
-	int b_up, b_down, b_left, b_right;
+
+	struct break_direction_counter {
+		int right;
+		int left;
+		int up;
+		int down;
+	};
+
+	struct break_direction {
+		bool right;
+		bool left;
+		bool up;
+		bool down;
+	};
+
+	// for update fuction:
+	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
+	void calculate_blocked_side(break_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
+	void get_direction_blocked(break_direction_counter& counter, break_direction& direction, int length);
 
 public:
+
+
 	Player();
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();

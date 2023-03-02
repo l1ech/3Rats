@@ -1,15 +1,112 @@
 #include "Player.h"
 
+std::vector<std::vector<bool>> Player::get_blocked_array(Tile* arg, int length)
+{
+
+	// make vector for tile and what direction it blocks
+	std::vector<std::vector<bool>> blocked_i(length, std::vector<bool>(4));
+
+	for (int i = 0; i < length; i++)
+	{
+		for (int k = 0; k < 4; k++)
+		{
+			blocked_i[i][k] = false;
+		}
+	}
+
+	// struckt with the directions to be blocked
+
+	struct direction {
+		bool right;
+		bool left;
+		bool up;
+		bool down;
+	};
+
+	direction block = { false, false, false, false };
+
+	for (int i = 0; i < length; i++)
+	{
+		if (intersectsWithBody(arg[i]))
+		{
+			if (arg[i].get_hight() == 1)
+			{
+
+				int delta_x = arg[i].GetOriginX() - positionRect.x;
+				int delta_y = arg[i].GetOriginY() - positionRect.y;
+
+				if (delta_x > 0) block.right = true;
+				else if (delta_x < 0) block.left = true;
+
+				if (delta_y > 0) block.down = true;
+				else if (delta_y < 0) block.up = true;
+
+				blocked_i[i][0] = block.right;
+				blocked_i[i][1] = block.left;
+				blocked_i[i][2] = block.down;
+				blocked_i[i][3] = block.up;
+			}
+			else if (arg[i].get_hight() == 0)
+			{
+				block.right = false;
+				block.left = false;
+				block.down = false;
+				block.up = false;
+			}
+		}
+	}
+	return blocked_i;
+}
+
+void Player::calculate_blocked_side(break_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		for (int k = 0; k < 4; k++)
+		{
+			if (blocked_i[i][k])
+			{
+				if		(k == 0) counter.right++;
+				else if (k == 1) counter.left++;
+				else if (k == 2) counter.down++;
+				else if (k == 3) counter.up++;
+				else {}
+			}
+			else
+			{
+				if		(k == 0) counter.right--;
+				else if (k == 1) counter.left--;
+				else if (k == 2) counter.down--;
+				else if (k == 3) counter.up--;
+				else {}
+			}
+		}
+	}
+}
+
+void Player::get_direction_blocked(break_direction_counter& counter, break_direction& direction, int length)
+{
+	if (counter.right + length == 0) direction.right = false;
+	else direction.right = true;
+
+	if (counter.left + length == 0) direction.left = false;
+	else direction.left = true;
+
+	if (counter.down + length == 0) direction.down = false;
+	else direction.down = true;
+
+	if (counter.up + length == 0) direction.up = false;
+	else direction.up = true;
+}
+
 Player::Player()
 {
 	filePath = "place_holder.png";
 
-	block_down, block_left, block_right, block_up = false;
-
-	b_right = 0;
-	b_left = 0;
-	b_down = 0;
-	b_up = 0;
+	block_up = false;
+	block_right = false;
+	block_down = false;
+	block_left = false;
 
 	isActive = false;
 
@@ -31,12 +128,10 @@ Player::Player()
 
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
-	block_down, block_left, block_right, block_up = false;
-
-	b_right = 0;
-	b_left = 0;
-	b_down = 0;
-	b_up = 0;
+	block_up = false;
+	block_right = false;
+	block_down = false;
+	block_left = false;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
@@ -90,7 +185,6 @@ Player::~Player()
 {
 	SDL_DestroyTexture(texture);
 }
-
 
 
 void Player::set_cords(int x, int y, int framesX, int framesY)
@@ -161,6 +255,8 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		}
 	}
 
+	// colision with door check
+	// check_door(map_nummber, map_array, arg, length);
 
 	for (int i = 0; i < length; i++)
 	{
@@ -189,182 +285,53 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		}
 	}
 
+	// collision with wall detection => blocked_i
+
+	blocked_i = get_blocked_array(arg, length);
+
+	// calculate what side is blocked
 	
-	for (int i = 0; i < length; i++)
-	{
-		if (intersectsWithBody(arg[i]))
-		{
-			if (arg[i].get_hight() == 1)
-			{
-				//std::cout << "to high" << std::endl;
+	break_direction_counter counter = { 0, 0, 0, 0 };
 
-				//std::cout << "hight: " << arg[i].get_hight()<< std::endl;
-				//std::cout << "intersects with:"<< i << std::endl;
+	calculate_blocked_side(counter, blocked_i, length);
 
-				int delta_x = arg[i].GetOriginX() - positionRect.x;
-				int delta_y = arg[i].GetOriginY() - positionRect.y;
+	break_direction direction = { 0, 0, 0, 0 };
 
-				if (delta_x > 0)
-				{
-					// blockiere rechts
-					block_right = true;
-				}
-				else if (delta_x < 0)
-				{
-					block_left = true;
-				}
-				if (delta_y > 0)
-				{
-					// blockiere rechts
-					block_down = true;
-				}
-				else if (delta_y < 0)
-				{
-					block_up = true;
-				}
+	get_direction_blocked(counter, direction, length);
 
-				blocked_i[i][0] = block_right;
-				blocked_i[i][1] = block_left;
-				blocked_i[i][2] = block_down;
-				blocked_i[i][3] = block_up;
-			}
-			else if (arg[i].get_hight() == 0)
-			{
-
-			}
-		}
-	}
-
-	for (int i = 0; i < length; i++)
-	{
-		for (int k = 0; k < 4; k++)
-		{
-			if (blocked_i[i][k])
-			{
-				switch (k)
-				{
-				case 0:
-					b_right++;
-					break;
-
-				case 1:
-					b_left++;
-					break;
-
-				case 2:
-					b_down++;
-					break;
-
-				case 3:
-					b_up++;
-					break;
-
-				default:
-					break;
-				}
-			}
-			else
-			{
-				switch (k)
-				{
-				case 0:
-					b_right--;
-					break;
-
-				case 1:
-					b_left--;
-					break;
-
-				case 2:
-					b_down--;
-					break;
-
-				case 3:
-					b_up--;
-					break;
-
-				default:
-					break;
-				}
-			}
-		}
-	}
-
-	//std::cout << "right: " << b_right + length << std::endl;
-
-	//std::cout << "left: " << b_left + length << std::endl;
-
-	if (b_right + length == 0)
-	{
-		block_right = false;
-	}
-	else
-	{
-		block_right = true;
-	}
-
-	if (b_left + length == 0)
-	{
-		block_left = false;
-	}
-	else
-	{
-		block_left = true;
-	}
-
-	if(b_down + length == 0)
-	{
-		block_down = false;
-	}
-	else
-	{
-		block_down = true;
-	}
-
-	if (b_up + length == 0)
-	{
-		block_up = false;
-	}
-	else
-	{
-		block_up = true;
-	}
-
-	b_right = 0;
-	b_left = 0;
-	b_down = 0;
-	b_up = 0;
-
+	// make players move
+	// player 1
 	if (player_number == 0)//--------------------Player control
 	{
 		if (keyState[keys[0]] && !block_up)	//up
 		{
 			positionRect.y -= moveSpeed * delta;
 			cropRect.y = frameHeight * 3;
-			direction = 0;
+			direction_rat = 0;
 		}
 		else if (keyState[keys[1]] && !block_down)			//down
 		{
 			positionRect.y += moveSpeed * delta;
 			cropRect.y = 0;
-			direction = 1;
+			direction_rat = 1;
 		}
 		else if (keyState[keys[2]] && !block_left)			//left
 		{
 			positionRect.x -= moveSpeed * delta;
 			cropRect.y = frameHeight;
-			direction = 2;
+			direction_rat = 2;
 		}
 		else if (keyState[keys[3]] && !block_right)			//right
 		{
 			positionRect.x += moveSpeed * delta;
 			cropRect.y = frameHeight * 2;
-			direction = 3;
+			direction_rat = 3;
 		}
 		else
 			isActive = false;
 	}
-	else
+	// player 2 & 3
+	else  
 	{
 		switch (mode)
 		{
@@ -375,25 +342,25 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 				{
 					positionRect.y -= moveSpeed * delta;
 					cropRect.y = frameHeight * 3;
-					direction = 0;
+					direction_rat = 0;
 				}
 				else if (ratY < goalY && !block_down)
 				{
 					positionRect.y += moveSpeed * delta;
 					cropRect.y = 0;
-					direction = 1;
+					direction_rat = 1;
 				}
 				else if (ratX > goalX && !block_left)
 				{
 					positionRect.x -= moveSpeed * delta;
 					cropRect.y = frameHeight;
-					direction = 2;
+					direction_rat = 2;
 				}
 				else if (ratX < goalX && !block_right)
 				{
 					positionRect.x += moveSpeed * delta;
 					cropRect.y = frameHeight * 2;
-					direction = 3;
+					direction_rat = 3;
 				}
 				else if (ratX == goalX && ratY == goalY)
 				{
@@ -414,59 +381,60 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 				{
 					positionRect.y -= moveSpeed * delta;
 					cropRect.y = frameHeight * 3;
-					direction = 0;
+					direction_rat = 0;
 				}
 				else if (ratY < frontRatY && !block_down)
 				{
 					positionRect.y += moveSpeed * delta;
 					cropRect.y = 0;
-					direction = 1;
+					direction_rat = 1;
 				}
 				else if (ratX > frontRatX && !block_left)
 				{
 					positionRect.x -= moveSpeed * delta;
 					cropRect.y = frameHeight;
-					direction = 2;
+					direction_rat = 2;
 				}
 				else if (ratX < frontRatX && !block_right)
 				{
 					positionRect.x += moveSpeed * delta;
 					cropRect.y = frameHeight * 2;
-					direction = 3;
+					direction_rat = 3;
 				}
 				else
 				{
-					direction = p.GetDirection();
+					direction_rat = p.GetDirection();
 				}
 
-				if (direction == 0) cropRect.y = frameHeight * 3;
-				if (direction == 1) cropRect.y = 0;
-				if (direction == 2) cropRect.y = frameHeight;
-				if (direction == 3) cropRect.y = frameHeight * 2;
+				if (direction_rat == 0) cropRect.y = frameHeight * 3;
+				if (direction_rat == 1) cropRect.y = 0;
+				if (direction_rat == 2) cropRect.y = frameHeight;
+				if (direction_rat == 3) cropRect.y = frameHeight * 2;
 			}
 			break;
 		}
 	}
 
+	// make item visible on a player
 	if (bananPicked)
 	{
 
-		if (direction == 0)
+		if (direction_rat == 0)
 		{
 			i.SetX(GetOriginX() - 24);
 			i.SetY(GetOriginY() - 32 - 14);
 		}
-		else if (direction == 1)
+		else if (direction_rat == 1)
 		{
 			i.SetX(GetOriginX() - 24);
 			i.SetY(GetOriginY() - 32 + 14);
 		}
-		else if (direction == 2)
+		else if (direction_rat == 2)
 		{
 			i.SetX(GetOriginX() - 24 - 14);
 			i.SetY(GetOriginY() - 32);
 		}
-		else if (direction == 3)
+		else if (direction_rat == 3)
 		{
 			i.SetX(GetOriginX() - 24 + 14);
 			i.SetY(GetOriginY() - 32);
@@ -474,6 +442,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 
 	}
 
+	// make movement in texture for player
 	if (isActive)
 	{
 		frameCounter += delta;
@@ -508,19 +477,18 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		cropRect.x = frameWidth;
 	}
 
+	// when there is a item make the goal be theyr x and y
 	if (i.GetExistence())
 	{
 		SetNewGoal(i.GetOriginX(), i.GetOriginY());
 	}
+	// when the item is found make a new goal 
+
 	else if (found)
 	{
 		found = false;
 		SetNewGoal();
 	}
-	else
-	{
-	}
-
 }
 
 void Player::Draw(SDL_Renderer* renderTarget)
@@ -542,7 +510,7 @@ void Player::SetNewGoal(int x, int y)
 }
 
 
-int Player::GetDirection() { return direction; }
+int Player::GetDirection() { return direction_rat; }
 
 
 bool Player::intersectsWithBody(Body& b)
