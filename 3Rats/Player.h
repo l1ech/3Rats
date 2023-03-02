@@ -27,8 +27,6 @@ private:
 	bool bananPicked;
 	bool wait;
 
-	bool block_up, block_down, block_left, block_right;
-
 	struct break_direction_counter {
 		int right;
 		int left;

@@ -103,11 +103,6 @@ Player::Player()
 {
 	filePath = "place_holder.png";
 
-	block_up = false;
-	block_right = false;
-	block_down = false;
-	block_left = false;
-
 	isActive = false;
 
 	keys[0] = SDL_SCANCODE_W;
@@ -128,10 +123,6 @@ Player::Player()
 
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
-	block_up = false;
-	block_right = false;
-	block_down = false;
-	block_left = false;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
@@ -303,25 +294,25 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	// player 1
 	if (player_number == 0)//--------------------Player control
 	{
-		if (keyState[keys[0]] && !block_up)	//up
+		if (keyState[keys[0]] && !direction.up)	//up
 		{
 			positionRect.y -= moveSpeed * delta;
 			cropRect.y = frameHeight * 3;
 			direction_rat = 0;
 		}
-		else if (keyState[keys[1]] && !block_down)			//down
+		else if (keyState[keys[1]] && !direction.down)			//down
 		{
 			positionRect.y += moveSpeed * delta;
 			cropRect.y = 0;
 			direction_rat = 1;
 		}
-		else if (keyState[keys[2]] && !block_left)			//left
+		else if (keyState[keys[2]] && !direction.left)			//left
 		{
 			positionRect.x -= moveSpeed * delta;
 			cropRect.y = frameHeight;
 			direction_rat = 2;
 		}
-		else if (keyState[keys[3]] && !block_right)			//right
+		else if (keyState[keys[3]] && !direction.right)			//right
 		{
 			positionRect.x += moveSpeed * delta;
 			cropRect.y = frameHeight * 2;
@@ -338,25 +329,25 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 		case 1://--------------------Ai control
 			if (!wait)
 			{
-				if (ratY > goalY && !block_up)
+				if (ratY > goalY && !direction.up)
 				{
 					positionRect.y -= moveSpeed * delta;
 					cropRect.y = frameHeight * 3;
 					direction_rat = 0;
 				}
-				else if (ratY < goalY && !block_down)
+				else if (ratY < goalY && !direction.down)
 				{
 					positionRect.y += moveSpeed * delta;
 					cropRect.y = 0;
 					direction_rat = 1;
 				}
-				else if (ratX > goalX && !block_left)
+				else if (ratX > goalX && !direction.left)
 				{
 					positionRect.x -= moveSpeed * delta;
 					cropRect.y = frameHeight;
 					direction_rat = 2;
 				}
-				else if (ratX < goalX && !block_right)
+				else if (ratX < goalX && !direction.right)
 				{
 					positionRect.x += moveSpeed * delta;
 					cropRect.y = frameHeight * 2;
@@ -377,25 +368,25 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 
 			if (!wait)
 			{
-				if (ratY > frontRatY && !block_up)
+				if (ratY > frontRatY && !direction.up)
 				{
 					positionRect.y -= moveSpeed * delta;
 					cropRect.y = frameHeight * 3;
 					direction_rat = 0;
 				}
-				else if (ratY < frontRatY && !block_down)
+				else if (ratY < frontRatY && !direction.down)
 				{
 					positionRect.y += moveSpeed * delta;
 					cropRect.y = 0;
 					direction_rat = 1;
 				}
-				else if (ratX > frontRatX && !block_left)
+				else if (ratX > frontRatX && !direction.left)
 				{
 					positionRect.x -= moveSpeed * delta;
 					cropRect.y = frameHeight;
 					direction_rat = 2;
 				}
-				else if (ratX < frontRatX && !block_right)
+				else if (ratX < frontRatX && !direction.right)
 				{
 					positionRect.x += moveSpeed * delta;
 					cropRect.y = frameHeight * 2;
