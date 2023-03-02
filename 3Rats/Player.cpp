@@ -1,6 +1,6 @@
 #include "Player.h"
 
-std::vector<std::vector<bool>> Player::get_blocked_array(Tile* arg, int length)
+std::vector<std::vector<bool>> Player::get_blocked_array(Tile* tile_array, int length)
 {
 
 	// make vector for tile and what direction it blocks
@@ -27,13 +27,13 @@ std::vector<std::vector<bool>> Player::get_blocked_array(Tile* arg, int length)
 
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(arg[i]))
+		if (intersectsWithBody(tile_array[i]))
 		{
-			if (arg[i].get_hight() == 1)
+			if (tile_array[i].get_hight() == 1)
 			{
 
-				int delta_x = arg[i].GetOriginX() - positionRect.x;
-				int delta_y = arg[i].GetOriginY() - positionRect.y;
+				int delta_x = tile_array[i].GetOriginX() - positionRect.x;
+				int delta_y = tile_array[i].GetOriginY() - positionRect.y;
 
 				if (delta_x > 0) block.right = true;
 				else if (delta_x < 0) block.left = true;
@@ -46,7 +46,7 @@ std::vector<std::vector<bool>> Player::get_blocked_array(Tile* arg, int length)
 				blocked_i[i][2] = block.down;
 				blocked_i[i][3] = block.up;
 			}
-			else if (arg[i].get_hight() == 0)
+			else if (tile_array[i].get_hight() == 0)
 			{
 				block.right = false;
 				block.left = false;
@@ -97,6 +97,36 @@ void Player::get_direction_blocked(break_direction_counter& counter, break_direc
 
 	if (counter.up + length == 0) direction.up = false;
 	else direction.up = true;
+}
+
+void Player::check_door(int& map_number, Map* map_array, Tile* tile_array, int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		if (intersectsWithBody(tile_array[i]))
+		{
+			if (tile_array[i].is_exit)
+			{
+				positionRect.x = 0;
+				positionRect.y = 0;
+
+				map_number++;
+				map_array[map_number].set_textures();
+			}
+			if (tile_array[i].is_entrance && map_number != 0 && !1)	// disabled for testing
+			{
+				positionRect.x = 0;
+				positionRect.y = 0;
+
+				map_number--;
+				map_array[map_number].set_textures();
+			}
+			else
+			{
+
+			}
+		}
+	}
 }
 
 Player::Player()
@@ -203,7 +233,7 @@ void Player::set_player_number(int number)
 }
 
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Tile arg[], int length, Map* map_array, int& map_number)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Item& i, int& banan, Tile tile_array[], int length, Map* map_array, int& map_number)
 {
 	//std::cout << "x: " << positionRect.x << "|y: " << positionRect.y << std::endl;
 	isActive = true;
@@ -247,40 +277,9 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& p, Ite
 	}
 
 	// colision with door check
-	// check_door(map_nummber, map_array, arg, length);
+	check_door(map_number, map_array, tile_array, length);
 
-	for (int i = 0; i < length; i++)
-	{
-		if (intersectsWithBody(arg[i]))
-		{
-			if (arg[i].is_exit)
-			{
-				positionRect.x = 0;
-				positionRect.y = 0;
-
-				map_number++;
-				map_array[map_number].set_textures();
-			}
-			if (arg[i].is_entrance && map_number != 0 && !1)	// disabled for testing
-			{
-				positionRect.x = 0;
-				positionRect.y = 0;
-
-				map_number--;
-				map_array[map_number].set_textures();
-			}
-			else
-			{
-
-			}
-		}
-	}
-
-	// collision with wall detection => blocked_i
-
-	blocked_i = get_blocked_array(arg, length);
-
-	// calculate what side is blocked
+	blocked_i = get_blocked_array(tile_array, length);
 	
 	break_direction_counter counter = { 0, 0, 0, 0 };
 

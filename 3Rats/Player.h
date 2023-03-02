@@ -45,7 +45,7 @@ private:
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
 	void calculate_blocked_side(break_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
 	void get_direction_blocked(break_direction_counter& counter, break_direction& direction, int length);
-
+	void check_door(int& map_number,Map* map_array, Tile* tile_array, int length);
 public:
 
 
