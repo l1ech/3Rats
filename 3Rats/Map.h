@@ -23,14 +23,14 @@ private:
 	
 	int rec_iter;
 
-	int body_amount;
-	int item_amount;
-
 	std::vector<int> directions;
 	std::vector<std::vector <std::vector<std::vector<int>>>>hyper_map;
 
 	Item* item_array;
+	int item_array_size;
+
 	Tile* tile_array;
+	int tile_array_size;
 
 	std::pair<int, int> data[6][9];
 
@@ -40,7 +40,7 @@ private:
 
 	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
-	void build_frame(std::vector<std::vector <int>>& map_data, int start_x, int start_y, int end_x, int end_y);
+	void build_frame(std::vector<std::vector <int>>& map_data, std::pair<int , int >entrance, std::pair<int, int >exit, int wall, int space);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	void set_corners(std::vector<std::vector <int>>& map_data);
@@ -68,5 +68,8 @@ public:
 
 	//dev info
 	void show_it();
+
+	Tile* get_tile_array();
+	int get_tile_array_size();
 
 };

@@ -21,12 +21,12 @@ Map::Map(Tile arg[], int size, int w, int h, int type)
 	height = h;
 
 	tile_array = arg;
-	body_amount = size;
+	tile_array_size = size;
 
 	int x_cord = 0;
 	int y_cord = 0;
 
-	for (int i = 0; i < body_amount; i++)
+	for (int i = 0; i < tile_array_size; i++)
 	{
 		tile_array[i].set_cords(x_cord, y_cord);
 		//tile_array[i].set_texture("maze_wall.png");
@@ -67,12 +67,12 @@ void Map::Update(float delta)
 
 void Map::Draw(SDL_Renderer* renderTarget)
 {
-    for (int i = 0; i < body_amount; i++)
+    for (int i = 0; i < tile_array_size; i++)
     {
         tile_array[i].Draw(renderTarget);
     }
 
-    for (int i = 0; i < item_amount; i++)
+    for (int i = 0; i < item_array_size; i++)
     {
         item_array[i].Draw(renderTarget);
     }
@@ -81,83 +81,31 @@ void Map::Draw(SDL_Renderer* renderTarget)
 
 void Map::make_maze(bool item_generation)
 {
-    width = 9;
-    height = 6;
-
     int start_x = 1;
     int start_y = 1;
 
     int end_x = width;
     int end_y = height;
 
-    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
+    Random rand;
+
+    std::pair <int, int> entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
+    std::pair <int, int> exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+
+    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
+    build_frame(data, entrence, exit, 9, 1);
 
-    build_frame(data, start_x, start_y, height, width);
-
-    data[start_y][start_x] = 2;
-    data[end_y][end_x] = 0;
-
-    //print_vector(data, width + 2, height + 2);
-
-    int val;
-
-    while (1)
-    {
-        val = rec_pos(start_x, start_y, data, data[start_x][start_y]);
-
-        if (val != 0)   // rec_pos hit path!
-        {
-        }
-        else if (val == 0)  // found exit!
-        {
-            //std::cout << "found exit!" << std::endl;
-            break;
-        }
-        else
-        {
-            //std::cout << "ERROR: value not allowed: " << val << std::endl;
-            break;
-        }
-    }
-
-    //print_vector(data, width + 2, height + 2);
+    while (rec_pos(start_x, start_y, data, data[start_x][start_y]) != 0) { }
 
     trim_boarder(data, map_data);
-
-    //std::cout << "map_data" << std::endl;
-    //print_vector(map_data, map_data[0].size(), map_data.size());
-
-    /*
-    std::cout << "directions vector:" << std::endl;
-
-    for (int i = directions.size() - 1; i >= 0; i--)
-    {
-        std::cout << directions[i];
-    }
-    std::cout << std::endl;
-    */
 
     //set_corners(map_data);
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width);
 
-    //std::cout << "item_data" << std::endl;
-    //print_vector(item_data, item_data[0].size(), item_data.size());
-
-    /*
-    std::cout << "directions vector + corners:" << std::endl;
-
-    for (int i = directions.size() - 1; i >= 0; i--)
-    {
-        std::cout << directions[i];
-    }
-    std::cout << std::endl;
-    */
-
-    //set_textures(map_data);
     save_data(map_data, item_data);
 }
 
@@ -172,25 +120,16 @@ void Map::make_garden(bool item_generation)
     int end_x = width;
     int end_y = height;
 
+    Random rand;
+
+    std::pair <int, int> entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
+    std::pair <int, int> exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
-
-    for (int h = 0; h < height + 2; h++)
-    {
-        for (int w = 0; w < width + 2; w++)
-        {
-            if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = 1;
-            else data[h][w] = 12;
-
-        }
-    }
-
-    data[start_y][start_x] = 2;
-    data[end_y][end_x] = 0;
-
-    //print_vector(data, width + 2, height + 2);
+    build_frame(data, entrence, exit, 1, 12);
 
     trim_boarder(data, map_data);
 
@@ -202,13 +141,13 @@ void Map::make_garden(bool item_generation)
 
 void Map::set_item_array(Item* item, int size)
 {
-    item_amount = size;
     item_array = item;
+    item_array_size = size;
 
     int x_cord = 0;
     int y_cord = 0;
 
-    for (int i = 0; i < body_amount; i++)
+    for (int i = 0; i < tile_array_size; i++)
     {
         tile_array[i].set_cords(x_cord, y_cord);
         x_cord += 64;
@@ -221,15 +160,15 @@ void Map::set_item_array(Item* item, int size)
     }
 }
 
-void Map::set_tile_array(Tile* body, int size)
-{
-    body_amount = size;
-    tile_array = body;
+void Map::set_tile_array(Tile* tile, int size)
+{   
+    tile_array = tile;
+    tile_array_size = size;
 
     int x_cord = 0;
     int y_cord = 0;
 
-    for (int i = 0; i < body_amount; i++)
+    for (int i = 0; i < tile_array_size; i++)
     {
         tile_array[i].set_cords(x_cord, y_cord);
         x_cord += 64;
@@ -276,6 +215,8 @@ void Map::set_textures()
 
             case 1: //wall
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(1);
                 break;
 
@@ -288,7 +229,8 @@ void Map::set_textures()
             case 3: //right (horizontal)
             case 4: //left (horizontal)
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
@@ -296,47 +238,63 @@ void Map::set_textures()
             case 6: //down (vertical)
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 7: //left-up
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 8: //right-up 
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 9: //left-down
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
             case 10: //right-down
                 tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
             case 11: //hard-wall 
                 tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
                 break;
 
             case 12:
                 tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 //tile_array[get_tile(w, h)].set_texture("place_holder.png");
                 break;
 
             default:
                 tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("place_holder.png");
                 break;
             }
@@ -363,6 +321,16 @@ void Map::show_it()
 {
     std::cout << "iteration: " << rec_iter << std::endl;
     rec_iter = 0;
+}
+
+Tile* Map::get_tile_array()
+{
+    return tile_array;
+}
+
+int Map::get_tile_array_size()
+{
+    return tile_array_size;
 }
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
@@ -437,17 +405,20 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
     }
 }
 
-void Map::build_frame(std::vector<std::vector <int>>& data, int start_x, int start_y, int end_x, int end_y)
+void Map::build_frame(std::vector<std::vector <int>>& data, std::pair<int, int >entrance, std::pair<int, int >exit, int wall, int space)
 {
     for (int h = 0; h < height + 2; h++)
     {
         for (int w = 0; w < width + 2; w++)
         {
-            if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = 9;
-            else data[h][w] = 1;
+            if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = wall;
+            else data[h][w] = space;
 
         }
     }
+
+    data[entrance.second][entrance.first] = 2;
+    data[exit.second][exit.first] = 0;
 }
 
 void Map::print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y)
@@ -558,7 +529,7 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
     {
         for (int j = 0; j < width; j++)
         {
-            if (k == item_amount - 1)
+            if (k == item_array_size - 1)
             {
                 break;
             }

@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int tile_amount = 54;
-	const int map_amount = 2;
+	const int map_amount = 15;
 	const int item_amount = 100;
 	const int player_amount = 3;
 
