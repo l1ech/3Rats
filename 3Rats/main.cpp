@@ -10,6 +10,7 @@
 #include "player.h"
 #include "Tile.h"
 #include "Random.h"
+#include "Hypermap.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -52,7 +53,7 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int tile_amount = 54;
-	const int map_amount = 15;
+	const int map_amount =5;
 	const int item_amount = 100;
 	const int player_amount = 3;
 
@@ -94,11 +95,18 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
-		map_array[i].set_type(rand.flip_coin()); // rand() % 2 - 1	//this is kinda cheating
-		map_array[i].show_it();
 	}
 
 	map_array[0].set_textures();
+
+	Hypermap hypermap;
+	hypermap.set_map_array(map_array, map_amount);
+
+	for (int i = 0; i < map_amount; i++)
+	{
+		map_array[i].set_type(rand.flip_coin()); 
+		map_array[i].show_it();
+	}
 
 	Player player_array[player_amount];
 	
@@ -165,7 +173,7 @@ int main(int argc, char* argv[])
 
 
 		// update 
-		map.Update(delta);
+		hypermap.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[0], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
 		for (int i = 1; i < player_amount; i++)
@@ -180,7 +188,7 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
 		// draw 
-		map.Draw(renderTarget);
+		hypermap.draw(renderTarget);
 
 		for (int i = 0; i < player_amount; i++)
 		{

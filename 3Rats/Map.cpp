@@ -523,24 +523,19 @@ void Map::save_data(std::vector<std::vector<int>>& map_data, std::vector<std::ve
 void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width)
 {
     Random rand;
-    int k = 0;
 
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            if (k == item_array_size - 1)
-            {
-                break;
-            }
 
-            if (map_data[i][j] != 0 && map_data[i][j] != 1 && map_data[i][j] != 2 && rand.roll_custom_dice(20) == 1)
-            {
-                item_data[i][j] = 1;
-            }
-            else 
+            if (map_data[i][j] == 0 && map_data[i][j] == 1 && map_data[i][j] == 2 )
             {
                 item_data[i][j] = 0;
+            }
+            else if(1 && rand.roll_custom_dice(20) == 1)
+            {
+                item_data[i][j] = 1;
             }
         }
     }
