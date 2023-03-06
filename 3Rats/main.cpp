@@ -90,8 +90,10 @@ int main(int argc, char* argv[])
 	// map array
 	Map map_array[map_amount];
 	Map map;
+
 	map.set_tile_array(tile_array, tile_amount);
 	map.set_item_array(item_array, item_amount);
+
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
@@ -99,12 +101,16 @@ int main(int argc, char* argv[])
 
 
 	Hypermap hypermap;
+
 	hypermap.set_map_array(map_array, map_amount);
+	hypermap.set_item_array(item_array, item_amount);
+	hypermap.set_tile_array(tile_array, item_amount);
+
 	hypermap.set_up();
 
 	for (int i = 0; i < map_amount; i++)
 	{
-		map_array[i].set_type(0);//rand.flip_coin()); 
+		map_array[i].set_type(1);//rand.flip_coin()); 
 		map_array[i].show_it();
 	}
 	map_array[0].set_textures();
@@ -115,6 +121,7 @@ int main(int argc, char* argv[])
 	{
 		Player player;
 		player.set_player_number(i);
+		player.set_up(hypermap);
 		player_array[i] = player;
 	}
 

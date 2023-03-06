@@ -224,7 +224,7 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		cropRect.y = frameHeight * 2;
 		direction_rat = 3;
 	}
-	else if (rat_x == goal_x && rat_y == goal_y)
+	else if (rat_x == goal_x && rat_y == goal_y&& !item.get_pick_up())
 	{
 		std::cout << "found!" << " p: " << player_number << "item number: " << item_search_id << std::endl;;
 
@@ -234,13 +234,32 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		item_search_id++;
 		for (int i = item_search_id; i < item_array_size; i++)
 		{
-			if (item_array[i].get_on_map())
+			if (item_array[i].get_on_map() && !item_array[i].get_pick_up())
 			{
 				SetNewGoal(item_array[i].GetOriginX(), item_array[i].GetOriginY());
+				std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
+
 				break;
 			}
 		}
 		
+	}
+	else if (rat_x == goal_x && rat_y == goal_y && !item.get_pick_up()) 
+	{
+		for (int i = item_search_id; i < item_array_size; i++)
+		{
+			if (item_array[i].get_on_map() && !item_array[i].get_pick_up())
+			{
+				SetNewGoal(item_array[i].GetOriginX(), item_array[i].GetOriginY());
+				std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
+
+				break;
+			}
+		}
+	}
+	else
+	{
+
 	}
 }
 
@@ -249,6 +268,13 @@ Player::Player()
 	filePath = "meta_textures/place_holder.png";
 	item_search_id = 0;
 
+	//std::cout << item_array[0].get_pick_up() << std::endl;
+
+
+	//SetNewGoal(item_array[0].GetOriginX(), item_array[0].GetOriginY());
+	//std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
+	goalX = 100;
+	goalY = 100;
 
 	isActive = false;
 
@@ -270,6 +296,7 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 	item_search_id = 0;
 
 	SetNewGoal(item_array[0].GetOriginX(), item_array[0].GetOriginY());
+	std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
@@ -346,14 +373,19 @@ void Player::set_player_number(int number)
 	player_number = number;
 }
 
+void Player::set_up(Hypermap& hypermap)
+{
+
+	tile_array = hypermap.get_tile_array();
+	tile_array_size = hypermap.get_tile_size();
+
+	item_array = hypermap.get_item_array();
+	item_array_size = hypermap.get_item_size();
+}
+
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Map* map_array, int map_amount, int& map_number)
 {
-	tile_array = map_array[map_number].get_tile_array();
-	tile_array_size = map_array[map_number].get_tile_array_size();
-
-	item_array = map_array[map_number].get_item_array();
-	item_array_size = map_array[map_number].get_item_array_size();
 
 	isActive = true;
 

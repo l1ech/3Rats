@@ -66,7 +66,6 @@ Map::~Map()
 
 void Map::Update(float delta)
 {
-    time += delta;
     //std::cout << (int)time << std::endl;
 }
 

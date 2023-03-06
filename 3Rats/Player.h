@@ -10,6 +10,7 @@
 #include "Item.h"
 #include "Map.h"
 #include "Tile.h"
+#include "Hypermap.h"
 
 
 class Player : public Body
@@ -76,6 +77,7 @@ public:
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
+	void set_up(Hypermap& hypermap);
 
 	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Map* map_array, int map_amount, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  

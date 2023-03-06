@@ -96,6 +96,11 @@ Body::~Body()
 	SDL_DestroyTexture(texture);
 }
 
+std::string Body::get_filepath()
+{
+	return filePath;
+}
+
 
 void Body::set_surface(SDL_Renderer* renderTarget)
 {

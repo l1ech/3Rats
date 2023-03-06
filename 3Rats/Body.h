@@ -33,6 +33,8 @@ public:
 	Body(SDL_Renderer* renderTarget, int x, int y);
 	~Body();
 
+	std::string get_filepath();
+
 	void set_surface(SDL_Renderer* renderTarget);
 	void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords(int x, int y);
