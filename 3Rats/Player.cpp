@@ -373,19 +373,20 @@ void Player::set_player_number(int number)
 	player_number = number;
 }
 
-void Player::set_up(Hypermap& hypermap)
+void Player::set_hypermap(Hypermap* h)
 {
-
-	tile_array = hypermap.get_tile_array();
-	tile_array_size = hypermap.get_tile_size();
-
-	item_array = hypermap.get_item_array();
-	item_array_size = hypermap.get_item_size();
+	hypermap = h;
 }
 
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Map* map_array, int map_amount, int& map_number)
 {
+
+	tile_array = hypermap->get_tile_array();
+	tile_array_size = hypermap->get_tile_size();
+
+	item_array = hypermap->get_item_array();
+	item_array_size = hypermap->get_item_size();
 
 	isActive = true;
 

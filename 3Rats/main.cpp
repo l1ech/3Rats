@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int tile_amount = 54;
-	const int map_amount = 5;
-	const int item_amount = 300;
+	const int map_amount = 1;
+	const int item_amount = 54;
 	const int player_amount = 3;
 
 	int map_number = 0;
@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
 	{
 		Player player;
 		player.set_player_number(i);
-		player.set_up(hypermap);
+		player.set_hypermap(&hypermap);
 		player_array[i] = player;
 	}
 

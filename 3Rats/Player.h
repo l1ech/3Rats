@@ -30,6 +30,8 @@ private:
 	int goalX, goalY;
 	bool wait;
 
+	Hypermap* hypermap;
+
 	Item* item_array;
 	int item_array_size;
 
@@ -77,7 +79,7 @@ public:
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
-	void set_up(Hypermap& hypermap);
+	void set_hypermap(Hypermap* hypermap);
 
 	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Map* map_array, int map_amount, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  
