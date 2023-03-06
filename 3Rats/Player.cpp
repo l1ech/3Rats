@@ -357,31 +357,13 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	item_array = hypermap->get_item_array();
 	item_array_size = hypermap->get_item_size();
 
-	Random rand;
-
-	int random_item_number = 0;
-
-	while (!has_goal)
+	if (is_available())
 	{
-		if (item_array[random_item_number].get_on_map() && rand.flip_coin())
-		{
-			has_goal = true;
-
-			SetNewGoal
-			(
-				item_array[random_item_number].GetOriginX(),
-				item_array[random_item_number].GetOriginY()
-			);
-
-			item_search_id = random_item_number;
-
-			std::cout <<"p: "<< player_number << "gx: " << goalX << " gy: " << goalY << std::endl;
-
-		}
-
-		random_item_number++;
-
-		if (random_item_number == item_array_size - 1) random_item_number = 0;
+		make_goal();
+	}
+	else
+	{
+		//std::cout << "not available" << std::endl;
 	}
 
 	isActive = true;
@@ -551,4 +533,49 @@ bool Player::intersectsWithBody(Body& b)
 		return false;
 	}
 	return true;
+}
+
+bool Player::is_available()
+{
+	bool available = false;
+
+	for (int i = 0; i < item_array_size; i++)
+	{
+		if (!item_array[i].get_pick_up())
+		{
+			if (item_array[i].get_on_map())
+			{
+				available = true;
+			}
+		}
+	}
+	return available;
+}
+
+void Player::make_goal()
+{
+	int random_item_number = 0;
+
+	while (!has_goal)
+	{
+		if (item_array[random_item_number].get_on_map() && random.flip_coin())
+		{
+			has_goal = true;
+
+			SetNewGoal
+			(
+				item_array[random_item_number].GetOriginX(),
+				item_array[random_item_number].GetOriginY()
+			);
+
+			item_search_id = random_item_number;
+
+			std::cout << "p: " << player_number << "gx: " << goalX << " gy: " << goalY << std::endl;
+
+		}
+
+		random_item_number++;
+
+		if (random_item_number == item_array_size - 1) random_item_number = 0;
+	}
 }

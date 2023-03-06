@@ -16,6 +16,9 @@
 class Player : public Body
 {
 private:
+
+	Random random;
+
 	int player_number;
 
 	int item_hold_id;
@@ -91,5 +94,8 @@ public:
 	int GetDirection();
 
 	bool intersectsWithBody(Body& b);
+
+	bool is_available();
+	void make_goal();
 };
 
