@@ -33,6 +33,6 @@ void Hypermap::draw(SDL_Renderer* renderTarget)
 {
 	for (int i = 0; i < map_array_size; i++)
 	{
-		map_array[i].Draw(renderTarget);
+		map_array[0].Draw(renderTarget);
 	}
 }

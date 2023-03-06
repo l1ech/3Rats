@@ -3,14 +3,14 @@
 
 Body::Body()
 {
-	filePath = "place_holder.png";
+	filePath = "meta_textures/place_holder.png";
 }
 
 Body::Body(int x, int y)
 {
 	//std::cout << "constructor mit x y aufruf" << std::endl;
 
-	filePath = "place_holder.png";
+	filePath = "meta_textures/place_holder.png";
 	positionRect.x = x;
 	positionRect.y = y;
 
@@ -61,7 +61,7 @@ Body::Body(SDL_Renderer* renderTarget, int x, int y)
 
 	//std::cout << "normaler constructor aufruf" << std::endl;
 
-	filePath = "place_holder.png";
+	filePath = "meta_textures/place_holder.png";
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)

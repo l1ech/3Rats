@@ -2,7 +2,7 @@
 
 Item::Item()
 {
-	filePath = "place_holder.png";
+	filePath = "meta_textures/place_holder.png";
 }
 
 Item::Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
@@ -38,7 +38,6 @@ Item::Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int f
 	radius = frameWidth / 2;
 
 	//isActive = false;
-	isExisting = true;
 }
 
 Item::~Item()
@@ -53,8 +52,18 @@ void Item::Draw(SDL_Renderer* renderTarget)
 	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
 }
 
-bool Item::GetExistence() { return isExisting; }
+bool Item::get_on_map() { return is_on_map; }
 
-void Item::SetExistence(bool value) { isExisting = value; }
+void Item::set_on_map(bool value) { is_on_map = value; }
+
+void Item::set_pick_up(bool value)
+{
+	is_picked_up = value;
+}
+
+bool Item::get_pick_up()
+{
+	return is_picked_up;
+}
 
 

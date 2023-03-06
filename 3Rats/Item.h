@@ -12,8 +12,9 @@ class Item : public Body
 {
 private:
 
-	int ItemNumber;
-	bool isExisting;
+	bool is_on_map;
+
+	bool is_picked_up;
 
 
 public:
@@ -24,6 +25,9 @@ public:
 	//void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
-	bool GetExistence();
-	void SetExistence(bool value);
+	bool get_on_map();
+	void set_on_map(bool value);
+
+	void set_pick_up(bool value);
+	bool get_pick_up();
 };

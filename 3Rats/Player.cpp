@@ -99,13 +99,13 @@ void Player::get_direction_blocked(block_direction_counter& counter, block_direc
 	else direction.up = true;
 }
 
-void Player::check_door(int& map_number, Map* map_array, Tile* tile_array, int length)
+void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* tile_array, int length)
 {
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(tile_array[i]))
+		if (intersectsWithBody(tile_array[i]) && player_number == 0)
 		{
-			if (tile_array[i].is_exit)
+			if (tile_array[i].is_exit && map_number != map_amount - 1)
 			{
 				positionRect.x = 0;
 				positionRect.y = 0;
@@ -123,7 +123,7 @@ void Player::check_door(int& map_number, Map* map_array, Tile* tile_array, int l
 			}
 			else
 			{
-
+				break;
 			}
 		}
 	}
@@ -198,45 +198,57 @@ void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 	if (direction_rat == 3) cropRect.y = frameHeight * 2;
 }
 
-void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item, int& banan)
+void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item)
 {
-	if (rat_y > goalY && !direction.up)
+	if (rat_y > goal_y && !direction.up)
 	{
 		positionRect.y -= moveSpeed * delta;
 		cropRect.y = frameHeight * 3;
 		direction_rat = 0;
 	}
-	else if (rat_y < goalY && !direction.down)
+	else if (rat_y < goal_y && !direction.down)
 	{
 		positionRect.y += moveSpeed * delta;
 		cropRect.y = 0;
 		direction_rat = 1;
 	}
-	else if (rat_x > goalX && !direction.left)
+	else if (rat_x > goal_x && !direction.left)
 	{
 		positionRect.x -= moveSpeed * delta;
 		cropRect.y = frameHeight;
 		direction_rat = 2;
 	}
-	else if (rat_x < goalX && !direction.right)
+	else if (rat_x < goal_x && !direction.right)
 	{
 		positionRect.x += moveSpeed * delta;
 		cropRect.y = frameHeight * 2;
 		direction_rat = 3;
 	}
-	else if (rat_x == goalX && rat_y == goalY)
+	else if (rat_x == goal_x && rat_y == goal_y)
 	{
-		std::cout << "found!";
-		item.SetExistence(false);
-		bananPicked = true;
-		found = true;
-		banan++;
+		std::cout << "found!" << " p: " << player_number << "item number: " << item_search_id << std::endl;;
+
+		item_hold_id = item_search_id;
+		holds_item = true;
+		item.set_pick_up(true);
+		item_search_id++;
+		for (int i = item_search_id; i < item_array_size; i++)
+		{
+			if (item_array[i].get_on_map())
+			{
+				SetNewGoal(item_array[i].GetOriginX(), item_array[i].GetOriginY());
+				break;
+			}
+		}
+		
 	}
 }
 
 Player::Player()
 {
-	filePath = "place_holder.png";
+	filePath = "meta_textures/place_holder.png";
+	item_search_id = 0;
+
 
 	isActive = false;
 
@@ -247,9 +259,6 @@ Player::Player()
 
 	moveSpeed = 200.0f;
 
-	search = false;
-	bananPicked = false;
-	found = false;
 	wait = false;
 
 	searchCounter = rand() % 100;
@@ -258,6 +267,9 @@ Player::Player()
 
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
+	item_search_id = 0;
+
+	SetNewGoal(item_array[0].GetOriginX(), item_array[0].GetOriginY());
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
@@ -298,9 +310,6 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 	
 	moveSpeed = 200.0f;
 
-	search = false;
-	bananPicked = false;
-	found = false;
 	wait = false;
 
 	searchCounter = rand() % 100;
@@ -338,8 +347,14 @@ void Player::set_player_number(int number)
 }
 
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Item& item, int& banan, Tile tile_array[], int length, Map* map_array, int& map_number)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Map* map_array, int map_amount, int& map_number)
 {
+	tile_array = map_array[map_number].get_tile_array();
+	tile_array_size = map_array[map_number].get_tile_array_size();
+
+	item_array = map_array[map_number].get_item_array();
+	item_array_size = map_array[map_number].get_item_array_size();
+
 	isActive = true;
 
 	int rat_x = this->GetOriginX();
@@ -368,20 +383,20 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	float dist1 = sqrt(pow(abs(front_rat.GetOriginX() - rat_x), 2) + pow(abs(front_rat.GetOriginY() - rat_y), 2));
 	float dist2 = sqrt(pow(abs(front_rat.GetOriginX() - rat_x), 2) + pow(abs(front_rat.GetOriginY() - rat_y), 2));
 
-	std::vector<std::vector<bool>> blocked_i(length, std::vector<bool>(4));
+	std::vector<std::vector<bool>> blocked_i(tile_array_size, std::vector<bool>(4));
 
 	block_direction_counter counter = { 0, 0, 0, 0 };
 
 	block_direction direction = { 0, 0, 0, 0 };
 
 	// colision with door check
-	check_door(map_number, map_array, tile_array, length);
+	check_door(map_number, map_array, map_amount, tile_array, tile_array_size);
 
-	blocked_i = get_blocked_array(tile_array, length);
+	blocked_i = get_blocked_array(tile_array, tile_array_size);
 
-	calculate_blocked_side(counter, blocked_i, length);
+	calculate_blocked_side(counter, blocked_i, tile_array_size);
 
-	get_direction_blocked(counter, direction, length);
+	get_direction_blocked(counter, direction, tile_array_size);
 
 	// make players move
 	
@@ -395,41 +410,49 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	// player 2 & 3
 	else  
 	{
-		//find item control
-		if (mode == 1 && !wait)	
+		if (!wait)
 		{
-			follow_goal(rat_x, rat_y, goalX, goalY, direction, delta, item, banan);
-		} 
-		// autopilot 
-		else if (mode == 0 && !wait)	
-		{
-			follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
+			//find item control
+			if (mode == 1 && !holds_item)
+			{
+				follow_goal(rat_x, rat_y, goalX, goalY, direction, delta, item_array[item_search_id]);
+			}
+			// autopilot 
+			else if (mode == 1 && holds_item)
+			{
+				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
+
+			}
+			else if (mode == 0 )
+			{
+				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
+			}
 		}
 	}
 
 	// make item visible on a player
-	if (bananPicked)
+	if (holds_item)
 	{
 
 		if (direction_rat == 0)
 		{
-			item.SetX(GetOriginX() - 24);
-			item.SetY(GetOriginY() - 32 - 14);
+			item_array[item_hold_id].SetX(GetOriginX() - 24);
+			item_array[item_hold_id].SetY(GetOriginY() - 32 - 14);
 		}
 		else if (direction_rat == 1)
 		{
-			item.SetX(GetOriginX() - 24);
-			item.SetY(GetOriginY() - 32 + 14);
+			item_array[item_hold_id].SetX(GetOriginX() - 24);
+			item_array[item_hold_id].SetY(GetOriginY() - 32 + 14);
 		}
 		else if (direction_rat == 2)
 		{
-			item.SetX(GetOriginX() - 24 - 14);
-			item.SetY(GetOriginY() - 32);
+			item_array[item_hold_id].SetX(GetOriginX() - 24 - 14);
+			item_array[item_hold_id].SetY(GetOriginY() - 32);
 		}
 		else if (direction_rat == 3)
 		{
-			item.SetX(GetOriginX() - 24 + 14);
-			item.SetY(GetOriginY() - 32);
+			item_array[item_hold_id].SetX(GetOriginX() - 24 + 14);
+			item_array[item_hold_id].SetY(GetOriginY() - 32);
 		}
 
 	}
@@ -467,19 +490,6 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	{
 		frameCounter = 0;
 		cropRect.x = frameWidth;
-	}
-
-	// when there is a item make the goal be theyr x and y
-	if (item.GetExistence())
-	{
-		SetNewGoal(item.GetOriginX(), item.GetOriginY());
-	}
-	// when the item is found make a new goal 
-
-	else if (found)
-	{
-		found = false;
-		SetNewGoal();
 	}
 }
 

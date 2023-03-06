@@ -16,6 +16,8 @@
 class Map
 {
 private:
+	int item_id;
+	int* item_on_map;
 	double time;
 
 	int width;
@@ -71,5 +73,10 @@ public:
 
 	Tile* get_tile_array();
 	int get_tile_array_size();
+
+	Item* get_item_array();
+	int get_item_array_size();
+
+	void set_ptr(int* ptr);
 
 };

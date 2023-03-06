@@ -7,5 +7,5 @@ Tile::Tile()
 	is_entrance = false;
 	is_exit = false;
 
-	filePath = "place_holder.png";
+	filePath = "meta_textures/place_holder.png";
 }

@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int tile_amount = 54;
-	const int map_amount =5;
-	const int item_amount = 100;
+	const int map_amount = 5;
+	const int item_amount = 300;
 	const int player_amount = 3;
 
 	int map_number = 0;
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 	// tile array
 	Tile tile_array[tile_amount];
 	Tile tile;
-	tile.set_surface(renderTarget);
+	tile.set_surface(renderTarget);		//here is the surface error 
 	tile.set_cords(-100, -100);
 	for (int i = 0; i < tile_amount; i++)
 	{
@@ -97,16 +97,17 @@ int main(int argc, char* argv[])
 		map_array[i] = map;
 	}
 
-	map_array[0].set_textures();
 
 	Hypermap hypermap;
 	hypermap.set_map_array(map_array, map_amount);
+	hypermap.set_up();
 
 	for (int i = 0; i < map_amount; i++)
 	{
-		map_array[i].set_type(rand.flip_coin()); 
+		map_array[i].set_type(0);//rand.flip_coin()); 
 		map_array[i].show_it();
 	}
+	map_array[0].set_textures();
 
 	Player player_array[player_amount];
 	
@@ -163,7 +164,6 @@ int main(int argc, char* argv[])
 					break;
 
 				case SDLK_g:
-					map.set_textures();
 					break;
 				}
 			}
@@ -175,10 +175,10 @@ int main(int argc, char* argv[])
 		// update 
 		hypermap.update(delta);
 
-		player_array[0].Update(delta, keyState, mode, player_array[0], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+		player_array[0].Update(delta, keyState, mode, player_array[0], map_array, map_amount, map_number);
 		for (int i = 1; i < player_amount; i++)
 		{
-			player_array[i].Update(delta, keyState, mode, player_array[i - 1], item_array[0], bananAmount, tile_array, tile_amount, map_array, map_number);
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1], map_array, map_amount, map_number);
 		}
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);

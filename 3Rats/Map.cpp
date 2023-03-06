@@ -5,6 +5,8 @@ Map::Map()
     rec_iter = 0;
     width = 9;
     height = 6;
+
+    item_id = 0;
 }
 
 Map::Map(const Map& b)
@@ -12,6 +14,7 @@ Map::Map(const Map& b)
     rec_iter = 0;
     width = 9;
     height = 6;
+    item_id = 0;
 }
 
 Map::Map(Tile arg[], int size, int w, int h, int type)
@@ -19,6 +22,8 @@ Map::Map(Tile arg[], int size, int w, int h, int type)
     rec_iter = 0;
 	width = w;
 	height = h;
+
+    item_id = 0;
 
 	tile_array = arg;
 	tile_array_size = size;
@@ -102,9 +107,13 @@ void Map::make_maze(bool item_generation)
 
     trim_boarder(data, map_data);
 
+    print_vector(map_data, map_data[0].size(), map_data.size());
+
     //set_corners(map_data);
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width);
+
+    print_vector(item_data, item_data[0].size(), item_data.size());
 
     save_data(map_data, item_data);
 }
@@ -147,9 +156,9 @@ void Map::set_item_array(Item* item, int size)
     int x_cord = 0;
     int y_cord = 0;
 
-    for (int i = 0; i < tile_array_size; i++)
+    for (int i = 0; i < item_array_size; i++)
     {
-        tile_array[i].set_cords(x_cord, y_cord);
+        item_array[i].set_cords(x_cord, y_cord);
         x_cord += 64;
 
         if (x_cord >= 576)
@@ -210,6 +219,7 @@ void Map::set_textures()
             case 0: //end_door
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
                 tile_array[get_tile(w, h)].is_exit = true;
+                tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
@@ -223,6 +233,7 @@ void Map::set_textures()
             case 2: //start_door
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
                 tile_array[get_tile(w, h)].is_entrance = true;
+                tile_array[get_tile(w, h)].is_exit = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
 
@@ -295,7 +306,7 @@ void Map::set_textures()
                 tile_array[get_tile(w, h)].set_hight(0);
                 tile_array[get_tile(w, h)].is_exit = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_texture("place_holder.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/place_holder.png");
                 break;
             }
 
@@ -304,13 +315,16 @@ void Map::set_textures()
 
             if (data[h][w].second == 1)
             {
-                item_array[get_tile(w, h)].set_cords(x_cord, y_cord);
-                item_array[get_tile(w, h)].set_texture("mushroom.png");
+                item_array[get_tile(w, h)].set_on_map(true);
+                item_array[item_id].set_cords(x_cord, y_cord);
+                item_array[item_id].set_texture("item_textures/mushroom.png");
+                item_id++;
             }
             else if (data[h][w].second == 0)
             {
+                item_array[get_tile(w, h)].set_on_map(false);
                 item_array[get_tile(w, h)].set_cords(-100, -100);
-                item_array[get_tile(w, h)].set_texture("place_holder.png");
+                item_array[get_tile(w, h)].set_texture("item_textures/place_holder.png");
             }
         }
     }
@@ -331,6 +345,21 @@ Tile* Map::get_tile_array()
 int Map::get_tile_array_size()
 {
     return tile_array_size;
+}
+
+Item* Map::get_item_array()
+{
+    return item_array;
+}
+
+int Map::get_item_array_size()
+{
+    return item_array_size;
+}
+
+void Map::set_ptr(int* ptr)
+{
+    item_on_map = ptr;
 }
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
@@ -524,19 +553,25 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
 {
     Random rand;
 
+    std::cout << *item_on_map << std::endl;
+
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-
-            if (map_data[i][j] == 0 && map_data[i][j] == 1 && map_data[i][j] == 2 )
+            if (map_data[i][j] == 0 || map_data[i][j] == 1 || map_data[i][j] == 2)
             {
                 item_data[i][j] = 0;
+                break;
             }
-            else if(1 && rand.roll_custom_dice(20) == 1)
+
+            if (*item_on_map < item_array_size && rand.roll_custom_dice(20) == 1)
             {
                 item_data[i][j] = 1;
+                (*item_on_map)++;
+                break;
             }
+            
         }
     }
 

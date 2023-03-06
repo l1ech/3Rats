@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Map.h"
-
 class Hypermap
 {
 private:
