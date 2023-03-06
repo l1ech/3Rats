@@ -146,15 +146,16 @@ void Map::set_item_array(Item* item, int size)
     int x_cord = 0;
     int y_cord = 0;
 
-    for (int i = 0; i < item_array_size; i++)
-    {
-        item_array[i].set_cords(x_cord, y_cord);
-        x_cord += 64;
+    int i = 0;
 
-        if (x_cord >= 576)
+    for (int h = 0; h < height; h++)
+    {
+        for (int w = 0; w < height; w++)
         {
-            y_cord += 64;
-            x_cord = 0;
+            x_cord = w * 64;
+            y_cord = h * 64;
+            item_array[i].set_cords(x_cord, y_cord);
+            i++;
         }
     }
 }
@@ -167,15 +168,17 @@ void Map::set_tile_array(Tile* tile, int size)
     int x_cord = 0;
     int y_cord = 0;
 
-    for (int i = 0; i < tile_array_size; i++)
-    {
-        tile_array[i].set_cords(x_cord, y_cord);
-        x_cord += 64;
+    int i = 0;
 
-        if (x_cord >= 576)
+    for (int h = 0; h < height; h++)
+    {
+        for (int w = 0; w < height; w++)
         {
-            y_cord += 64;
-            x_cord = 0;
+            x_cord = w * 64;
+            y_cord = h * 64;
+
+            tile_array[i].set_cords(x_cord, y_cord);
+            i++;
         }
     }
 }

@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 	// item array
 	Item item_array[item_amount];
 	Item item;//(renderTarget, "banan.png", 100, 100, 3, 4);
-	item.set_surface(renderTarget, "item_textures/place_holder.png");
+	item.set_surface(renderTarget);
 	item.set_cords(-100, -100);
 	for (int i = 0; i < item_amount; i++)
 	{
