@@ -363,7 +363,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	}
 	else
 	{
-		//std::cout << "not available" << std::endl;
+		mode = 0;
 	}
 
 	isActive = true;
