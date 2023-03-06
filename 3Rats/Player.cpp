@@ -375,7 +375,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 			item_search_id = random_item_number;
 
-			std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
+			std::cout <<"p: "<< player_number << "gx: " << goalX << " gy: " << goalY << std::endl;
 
 		}
 
