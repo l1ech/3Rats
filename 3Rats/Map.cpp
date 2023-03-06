@@ -150,7 +150,7 @@ void Map::set_item_array(Item* item, int size)
 
     for (int h = 0; h < height; h++)
     {
-        for (int w = 0; w < height; w++)
+        for (int w = 0; w < width; w++)
         {
             x_cord = w * 64;
             y_cord = h * 64;
@@ -172,7 +172,7 @@ void Map::set_tile_array(Tile* tile, int size)
 
     for (int h = 0; h < height; h++)
     {
-        for (int w = 0; w < height; w++)
+        for (int w = 0; w < width; w++)
         {
             x_cord = w * 64;
             y_cord = h * 64;
