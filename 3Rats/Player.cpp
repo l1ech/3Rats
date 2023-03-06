@@ -265,16 +265,10 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 
 Player::Player()
 {
+
 	filePath = "meta_textures/place_holder.png";
 	item_search_id = 0;
-
-	//std::cout << item_array[0].get_pick_up() << std::endl;
-
-
-	//SetNewGoal(item_array[0].GetOriginX(), item_array[0].GetOriginY());
-	//std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
-	goalX = 100;
-	goalY = 100;
+	has_goal = false;
 
 	isActive = false;
 
@@ -293,6 +287,7 @@ Player::Player()
 
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
+	has_goal = false;
 	item_search_id = 0;
 
 	SetNewGoal(item_array[0].GetOriginX(), item_array[0].GetOriginY());
@@ -381,12 +376,36 @@ void Player::set_hypermap(Hypermap* h)
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Map* map_array, int map_amount, int& map_number)
 {
-
 	tile_array = hypermap->get_tile_array();
 	tile_array_size = hypermap->get_tile_size();
 
 	item_array = hypermap->get_item_array();
 	item_array_size = hypermap->get_item_size();
+
+	Random rand;
+
+	int random_item_number = 0;
+
+	while (!has_goal)
+	{
+		if (item_array[random_item_number].get_on_map() && rand.flip_coin())
+		{
+			has_goal = true;
+
+			SetNewGoal
+			(
+				item_array[random_item_number].GetOriginX(),
+				item_array[random_item_number].GetOriginY()
+			);
+
+			std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
+
+		}
+
+		random_item_number++;
+
+		if (random_item_number == item_array_size - 1) random_item_number = 0;
+	}
 
 	isActive = true;
 

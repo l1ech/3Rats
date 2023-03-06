@@ -69,9 +69,10 @@ int main(int argc, char* argv[])
 
 	// item array
 	Item item_array[item_amount];
-	Item item;//(renderTarget, "banan.png", 100, 100, 3, 4);
+	Item item;
 	item.set_surface(renderTarget);
 	item.set_cords(-100, -100);
+
 	for (int i = 0; i < item_amount; i++)
 	{
 		item_array[i] = item;
@@ -80,8 +81,9 @@ int main(int argc, char* argv[])
 	// tile array
 	Tile tile_array[tile_amount];
 	Tile tile;
-	tile.set_surface(renderTarget);		//here is the surface error 
+	tile.set_surface(renderTarget);
 	tile.set_cords(-100, -100);
+
 	for (int i = 0; i < tile_amount; i++)
 	{
 		tile_array[i] = tile;

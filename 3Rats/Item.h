@@ -23,7 +23,7 @@ public:
 	Item();
 	~Item();
 
-	Item& operator=(Item& other);
+	//Item& operator=(Item& other);
 
 	//void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);

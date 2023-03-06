@@ -21,6 +21,7 @@ private:
 	int item_hold_id;
 	int item_search_id;
 	bool holds_item;
+	bool has_goal;
 
 	float moveSpeed;
 	float waitCounter;

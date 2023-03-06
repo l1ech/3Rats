@@ -86,7 +86,7 @@ Item::~Item()
 {
 	SDL_DestroyTexture(texture);
 }
-
+/*
 Item& Item::operator=(Item& other)
 {
 	std::cout << "=" << std::endl;
@@ -126,6 +126,8 @@ Item& Item::operator=(Item& other)
 
 	return *this;
 }
+
+*/
 	
 //void Item::Update(float delta) { }
 
