@@ -73,7 +73,16 @@ void Hypermap::draw(SDL_Renderer* renderTarget)
 {
 	for (int i = 0; i < map_array_size; i++)
 	{
-		map_array[i].Draw(renderTarget);
+		//map_array[i].Draw(renderTarget);
+	}
+	for (int i = 0; i < tile_array_size; i++)
+	{
+		tile_array[i].Draw(renderTarget);
+	}
+
+	for (int i = 0; i < item_array_size; i++)
+	{
+		item_array[i].Draw(renderTarget);
 	}
 }
 

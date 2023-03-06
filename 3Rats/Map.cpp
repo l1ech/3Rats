@@ -66,20 +66,11 @@ Map::~Map()
 
 void Map::Update(float delta)
 {
-    //std::cout << (int)time << std::endl;
+    
 }
 
 void Map::Draw(SDL_Renderer* renderTarget)
 {
-    for (int i = 0; i < tile_array_size; i++)
-    {
-        tile_array[i].Draw(renderTarget);
-    }
-
-    for (int i = 0; i < item_array_size; i++)
-    {
-        item_array[i].Draw(renderTarget);
-    }
 }
 
 
@@ -315,8 +306,8 @@ void Map::set_textures()
             if (data[h][w].second == 1)
             {
                 item_array[get_tile(w, h)].set_on_map(true);
-                item_array[item_id].set_cords(x_cord, y_cord);
-                item_array[item_id].set_texture("item_textures/mushroom.png");
+                item_array[get_tile(w, h)].set_cords(x_cord, y_cord);
+                item_array[get_tile(w, h)].set_texture("item_textures/mushroom.png");
                 item_id++;
             }
             else if (data[h][w].second == 0)
@@ -334,26 +325,6 @@ void Map::show_it()
 {
     std::cout << "iteration: " << rec_iter << std::endl;
     rec_iter = 0;
-}
-
-Tile* Map::get_tile_array()
-{
-    return tile_array;
-}
-
-int Map::get_tile_array_size()
-{
-    return tile_array_size;
-}
-
-Item* Map::get_item_array()
-{
-    return item_array;
-}
-
-int Map::get_item_array_size()
-{
-    return item_array_size;
 }
 
 void Map::set_ptr(int* ptr)
@@ -561,14 +532,11 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
             if (map_data[i][j] == 0 || map_data[i][j] == 1 || map_data[i][j] == 2)
             {
                 item_data[i][j] = 0;
-                break;
             }
-
-            if (*item_on_map < item_array_size && rand.roll_custom_dice(20) == 1)
+            else if (*item_on_map < item_array_size && 1)// rand.roll_custom_dice(20) == 1)
             {
                 item_data[i][j] = 1;
                 (*item_on_map)++;
-                break;
             }
             
         }

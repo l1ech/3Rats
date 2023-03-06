@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 	const int screen_hight = 420;
 
 	const int tile_amount = 54;
-	const int map_amount = 1;
+	const int map_amount = 10;
 	const int item_amount = 54;
 	const int player_amount = 3;
 
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 	// item array
 	Item item_array[item_amount];
 	Item item;//(renderTarget, "banan.png", 100, 100, 3, 4);
-	item.set_surface(renderTarget);
+	item.set_surface(renderTarget, "item_textures/place_holder.png");
 	item.set_cords(-100, -100);
 	for (int i = 0; i < item_amount; i++)
 	{
@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
 
 	for (int i = 0; i < map_amount; i++)
 	{
-		map_array[i].set_type(1);//rand.flip_coin()); 
+		map_array[i].set_type(rand.flip_coin()); 
 		map_array[i].show_it();
 	}
 	map_array[0].set_textures();

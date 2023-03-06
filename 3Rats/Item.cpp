@@ -2,6 +2,7 @@
 
 Item::Item()
 {	filePath = "meta_textures/place_holder.png";
+#
 	is_on_map = false;
 	is_picked_up = false;
 
