@@ -31,6 +31,6 @@ public:
 	bool get_on_map();
 	void set_on_map(bool value);
 
-	void set_pick_up(bool value);
 	bool get_pick_up();
+	void set_pick_up(bool value);
 };
