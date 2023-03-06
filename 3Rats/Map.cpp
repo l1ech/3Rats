@@ -97,13 +97,13 @@ void Map::make_maze(bool item_generation)
 
     trim_boarder(data, map_data);
 
-    print_vector(map_data, map_data[0].size(), map_data.size());
+    //print_vector(map_data, map_data[0].size(), map_data.size());
 
     //set_corners(map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width);
+    if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80
 
-    print_vector(item_data, item_data[0].size(), item_data.size());
+    //print_vector(item_data, item_data[0].size(), item_data.size());
 
     save_data(map_data, item_data);
 }
@@ -132,7 +132,7 @@ void Map::make_garden(bool item_generation)
 
     trim_boarder(data, map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width);
+    if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
 
     save_data(map_data, item_data);
 }
@@ -522,7 +522,7 @@ void Map::save_data(std::vector<std::vector<int>>& map_data, std::vector<std::ve
     }
 }
 
-void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width)
+void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width, int probability)
 {
     Random rand;
 
@@ -536,7 +536,7 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
             {
                 item_data[i][j] = 0;
             }
-            else if (*item_on_map < item_array_size && 1)// rand.roll_custom_dice(20) == 1)
+            else if (*item_on_map < item_array_size && rand.roll_custom_dice(probability) == 1)
             {
                 item_data[i][j] = 1;
                 (*item_on_map)++;

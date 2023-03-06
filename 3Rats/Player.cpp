@@ -231,35 +231,13 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		item_hold_id = item_search_id;
 		holds_item = true;
 		item.set_pick_up(true);
-		item_search_id++;
-		for (int i = item_search_id; i < item_array_size; i++)
-		{
-			if (item_array[i].get_on_map() && !item_array[i].get_pick_up())
-			{
-				SetNewGoal(item_array[i].GetOriginX(), item_array[i].GetOriginY());
-				std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
-
-				break;
-			}
-		}
+		has_goal = false;
 		
 	}
-	else if (rat_x == goal_x && rat_y == goal_y && !item.get_pick_up()) 
+	else if (rat_x == goal_x && rat_y == goal_y && item.get_pick_up())
 	{
-		for (int i = item_search_id; i < item_array_size; i++)
-		{
-			if (item_array[i].get_on_map() && !item_array[i].get_pick_up())
-			{
-				SetNewGoal(item_array[i].GetOriginX(), item_array[i].GetOriginY());
-				std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
-
-				break;
-			}
-		}
-	}
-	else
-	{
-
+		std::cout << "did not found!" << " p: " << player_number << "item number: " << item_search_id << std::endl;;
+		has_goal = false;
 	}
 }
 
@@ -289,9 +267,6 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 {
 	has_goal = false;
 	item_search_id = 0;
-
-	SetNewGoal(item_array[0].GetOriginX(), item_array[0].GetOriginY());
-	std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
@@ -397,6 +372,8 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 				item_array[random_item_number].GetOriginX(),
 				item_array[random_item_number].GetOriginY()
 			);
+
+			item_search_id = random_item_number;
 
 			std::cout << "gx: " << goalX << " gy: " << goalY << std::endl;
 

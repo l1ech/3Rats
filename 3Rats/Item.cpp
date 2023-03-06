@@ -2,11 +2,11 @@
 
 Item::Item()
 {	filePath = "meta_textures/place_holder.png";
-#
+
 	is_on_map = false;
 	is_picked_up = false;
 
-	std::cout << "const" << std::endl;
+	//std::cout << "const" << std::endl;
 }
 
 Item::Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y)
@@ -46,7 +46,7 @@ Item::Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y)
 
 Item::Item(Item& other)
 {
-	std::cout << "copy" << std::endl;
+	//std::cout << "copy" << std::endl;
 
 	is_on_map = other.is_on_map;
 	is_picked_up = other.is_picked_up;

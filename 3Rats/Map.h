@@ -48,7 +48,7 @@ private:
 	void set_corners(std::vector<std::vector <int>>& map_data);
 
 	void save_data(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data);
-	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width);
+	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
 
 	int get_tile(int x, int y);
 
