@@ -1,26 +1,28 @@
 #include <SDL.h>
 #include <iostream>
 #include <SDL_image.h>
+#include <vector>
+#include <stdlib.h>     /* srand, rand */
 
-#include "player.h"
 #include "Item.h"
-#include "Clock.h"
-#include "Frame.h"
-#include "Menu.h"
-#include "Bowl.h"
-
+#include "Body.h"
+#include "Map.h"
+#include "player.h"
+#include "Tile.h"
+#include "Random.h"
+#include "Hypermap.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
 	SDL_Texture* texture = nullptr;
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
-		std::cout << "Error" << std::endl;
+		std::cout << "Error Surface" << std::endl;
 	else
 	{
 		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
 		if (texture == NULL)
-			std::cout << "Error" << std::endl;
+			std::cout << "Error Texture" << std::endl;
 	}
 
 	SDL_FreeSurface(surface);
@@ -47,31 +49,118 @@ int main(int argc, char* argv[])
 
 	int time = 0;
 
+	const int screen_width = 600;
+	const int screen_hight = 420;
+
+	const int tile_amount = 54;
+	const int map_amount = 10;
+	const int item_amount = 54;
+	const int player_amount = 3;
+
+	int map_number = 0;
+
 	SDL_Init(SDL_INIT_VIDEO);
 
-	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 420, SDL_WINDOW_SHOWN);
+	if (TTF_Init() < 0)
+	{
+		std::cout << "Error: " << TTF_GetError() << std::endl;
+	}
+
+	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-	Item banan(renderTarget, "banan.png", 200, 120, 3, 4);
+	// random object
+	Random rand;
 
-	Player mango(renderTarget, "mango.png", 200, 200, 3, 4);
-	Player fridolin(renderTarget, "fridolin.png", 200, 160, 3, 4);
-	Player remy(renderTarget, "remy.png", 200, 120, 3, 4);
+	// clock object 
+	Clock clock;
+	clock.set_renderer(renderTarget);
+	clock.load();
 
-	Frame clockFrame(renderTarget, "frame.png", 0, 320, 1, 1);
+	Body clock_frame;
+	clock_frame.set_surface(renderTarget, "ui_textures/clock_frame.png");
+	clock_frame.set_cords(400, 320);
 
-	Clock clockMinEin(renderTarget, "clock.png", 202, 330, 10, 1);
-	Clock clockMinZen(renderTarget, "clock.png", 138, 330, 10, 1);
+	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 
-	Clock clockHouEin(renderTarget, "clock.png", 74, 330, 10, 1);
-	Clock clockHouZen(renderTarget, "clock.png", 10, 330, 10, 1);
+	clock.set_up(&clock_frame);
+	clock.set_time(16, 30);
 
-	Menu menu(renderTarget, "wall.png", 10, 10, 1, 1);
+	// item array
+	Item item_array[item_amount];
+	Item item;
+	item.set_surface(renderTarget);
+	item.set_cords(-100, -100);
 
-	Bowl foodBowl(renderTarget, "bowlNew.png", 450, 200, 1, 1);
+	for (int i = 0; i < item_amount; i++)
+	{
+		item_array[i] = item;
+	}
+	
+	// tile array
+	Tile tile_array[tile_amount];
+	Tile tile;
+	tile.set_surface(renderTarget);
+	tile.set_cords(-100, -100);
+
+	for (int i = 0; i < tile_amount; i++)
+	{
+		tile_array[i] = tile;
+	}
+	
+	// map array
+	Map map_array[map_amount];
+	Map map;
+
+	map.set_tile_array(tile_array, tile_amount);
+	map.set_item_array(item_array, item_amount);
+
+	for (int i = 0; i < map_amount; i++)
+	{
+		map_array[i] = map;
+	}
 
 
-	SDL_Texture* texture = LoadTexture("groundNew2.png", renderTarget);
+	Hypermap hypermap;
+
+	hypermap.set_renderer(renderTarget);
+
+	hypermap.set_map_array(map_array, map_amount);
+	hypermap.set_item_array(item_array, item_amount);
+	hypermap.set_tile_array(tile_array, item_amount);
+
+	hypermap.set_up();
+
+	map_array[0].set_type(2);
+	map_array[0].show_it();
+
+	for (int i = 1; i < map_amount; i++)
+	{
+		map_array[i].set_type(rand.flip_coin()); 
+		map_array[i].show_it();
+	}
+	map_array[0].set_textures();
+
+	Player player_array[player_amount];
+	
+	for (int i = 0; i < player_amount; i++)
+	{
+		Player player;
+		player.set_player_number(i);
+		player.set_hypermap(&hypermap);
+		player_array[i] = player;
+	}
+
+	player_array[0].set_surface(renderTarget, "player_textures/mango.png");
+	player_array[0].set_cords(32, 32, 3, 4);
+
+	player_array[1].set_surface(renderTarget, "player_textures/fridolin.png");
+	player_array[1].set_cords(32, 32, 3, 4);
+
+	player_array[2].set_surface(renderTarget, "player_textures/remy.png");
+	player_array[2].set_cords(400, 300, 3, 4);
+
+	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 	
 	bool isRunning = true;
@@ -82,7 +171,8 @@ int main(int argc, char* argv[])
 		prevTime = currentTime;
 		currentTime = SDL_GetTicks();
 		delta = (currentTime - prevTime) / 1000.0f;
-		while (SDL_PollEvent(&ev) != 0)
+
+		while (SDL_PollEvent(&ev) != 0)		// ------------- key-events
 		{
 			// Getting the quit and keyboard events
 			if (ev.type == SDL_QUIT)
@@ -98,90 +188,65 @@ int main(int argc, char* argv[])
 				case SDLK_1:
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
-				case SDLK_f:
-					if (menuOn) 
-					{
-						menu.SetTexture(renderTarget, "empty.png");
-						menuOn = false;
-					} 
-					else
-					{
-						switch (hunger) 
-						{
-						case 0:
-							menu.SetTexture(renderTarget, "menu0.png");
-							break;
-						case 1:
-							menu.SetTexture(renderTarget, "menu1.png");
-							break;
-						case 2:
-							menu.SetTexture(renderTarget, "menu2.png");
-							break;
-						case 3:
-							menu.SetTexture(renderTarget, "menu3.png");
-							break;
-						}
-						menuOn = true;
-					}
+				case SDLK_u:
+					player_array[1].use_item();
+					player_array[2].use_item();
+					player_array[0].set_enter(false);
 					break;
 
+				case SDLK_r:
+					player_array[0].SetX(0);
+					player_array[0].SetY(0);
+					player_array[0].set_enter(false);
+					break;
+
+				case SDLK_p:
+					player_array[1].place_item();
+					player_array[2].place_item();
+					player_array[0].set_enter(false);
+					break;
+
+				case SDLK_n:
+					player_array[1].set_has_goal(false);
+					player_array[2].set_has_goal(false);
+					player_array[0].set_enter(false);
+
+					break;
 				case SDLK_e:
-
-					if (bananAmount >= 1) 
-					{
-						bananAmount--;
-						banan.~Item();
-						hunger--;
-					}
-					break;
+					player_array[0].set_enter(true);
 				}
 			}
 		}
 
 		keyState = SDL_GetKeyboardState(NULL);
 
-		foodBowl.Update(delta);
 
-		banan.Update(delta);
+		// update 
+		hypermap.update(delta);
 
-		mango.Update(delta, keyState, mode, mango , banan, bananAmount);
-		fridolin.Update(delta, keyState, mode, mango, banan, bananAmount);
-		remy.Update(delta, keyState, mode, fridolin, banan, bananAmount);
+		player_array[0].Update(delta, keyState, mode, player_array[0], map_array, map_amount, map_number);
+		for (int i = 1; i < player_amount; i++)
+		{
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1], map_array, map_amount, map_number);
+		}
 
-		clockFrame.Update(delta);
-
-		clockMinEin.Update(delta, wait,				false, &time);
-		clockMinZen.Update(delta, wait * 10,		true, &time);
-		clockHouEin.Update(delta, wait * 10 * 6,	false, &time);
-		clockHouZen.Update(delta, wait * 10 * 60,	true, &time);
-
-		menu.Update(delta, hunger);
+		clock.update(delta);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
-		// Drawing the cuurent image to the window
+		// Drawing the curent image to the window
 		SDL_RenderClear(renderTarget);
 		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
-		//SDL_RenderCopy(renderTarget, text, NULL, &textRect);
+		// draw 
+		hypermap.draw(renderTarget);
 
-		foodBowl.Draw(renderTarget);
+		for (int i = 0; i < player_amount; i++)
+		{
+			player_array[i].Draw(renderTarget);
+		}
 
-		banan.Draw(renderTarget);
-
-		mango.Draw(renderTarget);
-		fridolin.Draw(renderTarget);
-		remy.Draw(renderTarget);
-
-		clockFrame.Draw(renderTarget);
-
-		clockMinEin.Draw(renderTarget);
-		clockMinZen.Draw(renderTarget);
-		clockHouEin.Draw(renderTarget);
-		clockHouZen.Draw(renderTarget);
-
-		menu.Draw(renderTarget);
-
+		clock.draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
 	}

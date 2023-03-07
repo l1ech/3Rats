@@ -6,39 +6,38 @@
 #include <iostream>
 #include <string>
 
-class Item
+#include "Body.h"
+
+class Item : public Body
 {
 private:
-	SDL_Rect cropRect;
-	SDL_Texture* texture;
-	SDL_Rect positionRect;
 
 
-	float moveSpeed;
-	float frameCounter, searchCounter;
-	float frameWidth, frameHeight;
-	int textureWidth;
-	bool isActive;
-	SDL_Scancode keys[4];
-	int originX, originY;
-	int radius;
+	bool is_on_map;
+	bool is_picked_up;
 
-	int ItemNumber;
-	bool isExisting;
+	double weight;		// make it that this affacts 
+						// how fast it can be carried arround
+						// maybe: if two rats need 
+						// to carry it together?
+
 
 public:
-	Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
+	Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y);
+	Item(Item& other);
+	Item();
 	~Item();
 
-	void Update(float delta);
+	//Item& operator=(Item& other);
+
+	//void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
-	int GetOriginX();
-	int GetOriginY();
-	int GetRadius();
-	bool GetExistence();
-	void SetExistence(bool value);
+	bool get_on_map();
+	void set_on_map(bool value);
 
-	void SetX(int x);
-	void SetY(int y);
+	bool get_pick_up();
+	void set_pick_up(bool value);
+
+
 };

@@ -6,47 +6,107 @@
 #include <iostream>
 #include <string>
 
+#include "Body.h"
 #include "Item.h"
+#include "Map.h"
+#include "Tile.h"
+#include "Hypermap.h"
 
 
-class Player
+class Player : public Body
 {
 private:
-	SDL_Rect cropRect;
-	SDL_Texture* texture;
-	SDL_Rect positionRect;
 
+	Random random;
+
+	int item_type;
+
+	bool wants_enter_door;
+
+	int player_number;
+
+	int item_hold_id;
+	int item_search_id;
+	bool holds_item;
+	bool has_goal;
 
 	float moveSpeed;
-	float frameCounter, searchCounter, waitCounter;
-	float frameWidth, frameHeight;
-	int textureWidth;
+	float waitCounter;
 	bool isActive;
-	SDL_Scancode keys[4];
-	int originX, originY;
-	int radius;
 
-	int playerNumber;
-	int direction;
+	int direction_rat;
 	int goalX, goalY;
-	bool search, found;
-	bool bananPicked;
 	bool wait;
 
+	Hypermap* hypermap;
+
+	Item* item_array;
+	int item_array_size;
+
+	Tile* tile_array;
+	int tile_array_size;
+
+	struct block_direction_counter {
+		int right;
+		int left;
+		int up;
+		int down;
+	};
+
+	struct block_direction {
+		bool right;
+		bool left;
+		bool up;
+		bool down;
+	};
+
+	struct player_move
+	{
+		bool up;
+		bool down;
+		bool left;
+		bool right;
+	};
+
+	// for update fuction:
+	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
+	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
+	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
+	void check_door(int& map_number,Map* map_array, int map_amount, Tile* tile_array, int length);
+
+	void make_player_move(player_move move, block_direction direction, float delta);
+	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat);
+	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item);
 public:
+
+
+	Player();
 	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Item& i, int& bananAmount);
+	//void set_surface(SDL_Renderer* renderTarget, std::string name);
+	void set_cords(int x, int y, int framesX, int framesY);
+	void set_player_number(int number);
+	void set_hypermap(Hypermap* hypermap);
+
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Map* map_array, int map_amount, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal();
 	void SetNewGoal(int x, int y);
 
-
-	int GetOriginX();
-	int GetOriginY();
-	int GetRadius();
 	int GetDirection();
+
+	bool intersectsWithBody(Body& b);
+
+	bool is_available();
+	void make_goal();
+
+	void use_item();
+	void place_item();
+
+	void set_has_goal(bool value);
+
+	void set_enter(bool value);
 };
 

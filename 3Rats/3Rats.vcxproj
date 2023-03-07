@@ -19,23 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bowl.cpp" />
+    <ClCompile Include="Body.cpp" />
     <ClCompile Include="Clock.cpp" />
-    <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Hypermap.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Thing.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bowl.h" />
+    <ClInclude Include="Body.h" />
     <ClInclude Include="Clock.h" />
-    <ClInclude Include="Frame.h" />
+    <ClInclude Include="Hypermap.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Thing.h" />
+    <ClInclude Include="Random.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
