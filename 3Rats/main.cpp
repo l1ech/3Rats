@@ -61,11 +61,30 @@ int main(int argc, char* argv[])
 
 	SDL_Init(SDL_INIT_VIDEO);
 
+	if (TTF_Init() < 0)
+	{
+		std::cout << "Error: " << TTF_GetError() << std::endl;
+	}
+
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-	//random object
+	// random object
 	Random rand;
+
+	// clock object 
+	Clock clock;
+	clock.set_renderer(renderTarget);
+	clock.load();
+
+	Body clock_frame;
+	clock_frame.set_surface(renderTarget, "ui_textures/clock_frame.png");
+	clock_frame.set_cords(400, 320);
+
+	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
+
+	clock.set_up(&clock_frame);
+	clock.set_time(16, 30);
 
 	// item array
 	Item item_array[item_amount];
@@ -104,13 +123,18 @@ int main(int argc, char* argv[])
 
 	Hypermap hypermap;
 
+	hypermap.set_renderer(renderTarget);
+
 	hypermap.set_map_array(map_array, map_amount);
 	hypermap.set_item_array(item_array, item_amount);
 	hypermap.set_tile_array(tile_array, item_amount);
 
 	hypermap.set_up();
 
-	for (int i = 0; i < map_amount; i++)
+	map_array[0].set_type(2);
+	map_array[0].show_it();
+
+	for (int i = 1; i < map_amount; i++)
 	{
 		map_array[i].set_type(rand.flip_coin()); 
 		map_array[i].show_it();
@@ -182,6 +206,9 @@ int main(int argc, char* argv[])
 				case SDLK_n:
 					player_array[1].set_has_goal(false);
 					player_array[2].set_has_goal(false);
+					break;
+				case SDLK_e:
+
 				}
 			}
 		}
@@ -198,6 +225,8 @@ int main(int argc, char* argv[])
 			player_array[i].Update(delta, keyState, mode, player_array[i - 1], map_array, map_amount, map_number);
 		}
 
+		clock.update(delta);
+
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
 		// Drawing the curent image to the window
@@ -211,6 +240,8 @@ int main(int argc, char* argv[])
 		{
 			player_array[i].Draw(renderTarget);
 		}
+
+		clock.draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
 	}

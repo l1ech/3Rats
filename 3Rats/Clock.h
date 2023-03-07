@@ -1,20 +1,50 @@
 #pragma once
 
+#include <SDL_ttf.h>
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include <string>
-#include <iostream>
+#include "Body.h"
 
-#include "Thing.h"
-
-class Clock : public Thing
+class Clock : public Body
 {
 private:
-	float clockCounter;
+	double count;
 
-	int min, hou;
+	int min;
+	int hour;
+
+	std::string str_time_min;
+	std::string str_time_hour;
+
+	std::string time;
+
+	SDL_Renderer* renderer;
+	SDL_Surface* surfaceMessage;
+	SDL_Texture* Message;
+	SDL_Texture* texture;
+
+	SDL_Rect cropRect;
+	SDL_Rect Message_rect;
+	SDL_Color red;
+	TTF_Font* font;
+
+	Body* clockframe;
+
+	bool update_time;
+
+
 public:
-	Clock(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
-	void Update(float delta, float wait, bool zen,int *time);
+	Clock();
+	~Clock();
+
+	void set_renderer(SDL_Renderer* renderTarget);
+	void load();
+
+	void update(double delta);
+	void draw(SDL_Renderer* renderTarget);
+
+	void set_up(Body* clockframe);
+
+	void set_time( int hour, int min);
 };

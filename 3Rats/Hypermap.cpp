@@ -61,7 +61,7 @@ void Hypermap::set_up()
 
 void Hypermap::update(float delta)
 {
-	time += delta;
+	//time += delta;
 
 	for (int i = 0; i < map_array_size; i++)
 	{
@@ -84,6 +84,11 @@ void Hypermap::draw(SDL_Renderer* renderTarget)
 	{
 		item_array[i].Draw(renderTarget);
 	}
+}
+
+void Hypermap::set_renderer(SDL_Renderer* renderTarget)
+{
+	this->renderTarget = renderTarget;
 }
 
 Map* Hypermap::get_map()

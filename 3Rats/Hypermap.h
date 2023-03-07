@@ -1,9 +1,13 @@
 #pragma once
 
 #include "Map.h"
+#include "Clock.h"
+
 class Hypermap
 {
 private:
+	SDL_Renderer* renderTarget;
+
 	double time;
 
 	Map* map_array;
@@ -36,6 +40,8 @@ public:
 
 	void update(float delta);
 	void draw(SDL_Renderer* renderTarget);
+
+	void set_renderer(SDL_Renderer* renderTarget);
 
 	Map* get_map();
 

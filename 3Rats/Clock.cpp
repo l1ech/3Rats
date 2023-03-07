@@ -1,107 +1,147 @@
 #include "Clock.h"
 
-Clock::Clock(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
+
+
+Clock::Clock()
 {
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
-		if (texture == NULL)
-			std::cout << "Error" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
-	positionRect.x = x;
-	positionRect.y = y;
-
-	textureWidth = cropRect.w;
-
-	cropRect.w /= framesX;
-	cropRect.h /= framesY;
-
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
-
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
-
-	radius = frameWidth / 2;
-
-	isActive = false;
-
-	static int ClockNumber = 0;
-	ClockNumber++;
-
-	clockCounter = 0;
+	update_time = true;
 }
 
-void Clock::Update(float delta, float wait, bool zen,int *time)
+Clock::~Clock()
 {
-	clockCounter += delta;
+	// Don't forget to free your surface and texture
+	SDL_FreeSurface(surfaceMessage);
+	SDL_DestroyTexture(Message);
+}
 
-	if (clockCounter >= wait)
+
+void Clock::set_renderer(SDL_Renderer* renderTarget)
+{
+	renderer = renderTarget;
+
+}
+
+void Clock::load()
+{
+	
+
+	//this opens a font style and sets a size
+	font = TTF_OpenFont("fonts/sans.ttf", 24);
+	if (font == NULL)
 	{
-		clockCounter = 0;
+		std::cout << "Error Font" << std::endl;
+	}
+		
+	// this is the color in rgb format,
+	// maxing out all would give you the color white,
+	// and it will be your text's color
+	red = { 255, 0, 0 };
+
+	// as TTF_RenderText_Solid could only be used on
+	// SDL_Surface then you have to create the surface first
+	surfaceMessage = TTF_RenderText_Solid(font, "99:99", red);
+
+	// now you can convert it into a texture
+	Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+	Message_rect.x = 400;  //controls the rect's x coordinate 
+	Message_rect.y = 330; // controls the rect's y coordinte
+	Message_rect.w = 200; // controls the width of the rect
+	Message_rect.h = 90; // controls the height of the rect
+
+	// (0,0) is on the top left of the window/screen,
+	// think a rect as the text's box,
+	// that way it would be very simple to understand
+
+	
+
+	
+}
+
+void Clock::update(double delta)
+{
+	count += delta;
+
+	//std::cout << count << std::endl;
+
+	if (count >= 5)
+	{
+		count = 0;
 		min++;
+		update_time = true;
 	}
 
-	if (min == 60)
+	if (min >= 60)
 	{
 		min = 0;
-		hou++;
+		hour++;
+		update_time = true;
 	}
 
-	int minEin = min % 10;
-	int minZen = min - minEin;
-
-	int houEin = hou % 10;
-	int houZen = hou - houEin;
-
-	//std::cout << houZen << houEin << ":" << minZen << minEin << std::endl;
-
-	if (zen = true && minEin == 6) 
+	if (hour >= 24)
 	{
-		minEin = 0;
+		hour = 0;
+		update_time = true;
 	}
 
-	switch (minEin) 
+	str_time_min = std::to_string((int)min);
+	str_time_hour = std::to_string((int)hour);
+
+	if (str_time_min.size() == 1)
 	{
-	case 0: 
-		cropRect.x = frameWidth * 9;
-		break;
-	case 1:
-		cropRect.x = frameWidth * 0;
-		break;
-	case 2:
-		cropRect.x = frameWidth * 1;
-		break;
-	case 3:
-		cropRect.x = frameWidth * 2;
-		break;
-	case 4:
-		cropRect.x = frameWidth * 3;
-		break;
-	case 5:
-		cropRect.x = frameWidth * 4;
-		break;
-	case 6:
-		cropRect.x = frameWidth * 5;
-		break;
-	case 7:
-		cropRect.x = frameWidth * 6;
-		break;
-	case 8:
-		cropRect.x = frameWidth * 7;
-		break;
-	case 9:
-		cropRect.x = frameWidth * 8;
-		break;
-	default:
-		cropRect.x = frameWidth * 9;
+		str_time_min = "0" + str_time_min;
 	}
+
+	if (str_time_hour.size() == 1)
+	{
+		str_time_hour = "0" + str_time_hour;
+	}
+
+	time = str_time_hour + ":" + str_time_min;
+
+	// befor i made it with this update flag memory was to big to fast. 
+	// alternative idea: somehow free space like in the ~clock.
+
+	if (update_time)
+	{
+		// as TTF_RenderText_Solid could only be used on
+		// SDL_Surface then you have to create the surface first
+		surfaceMessage = TTF_RenderText_Solid(font, time.c_str(), red);
+
+
+		// now you can convert it into a texture
+		Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+		update_time = false;
+	}
+}
+
+void Clock::draw(SDL_Renderer* renderTarget)
+{
+	(*clockframe).Draw(renderTarget);
+
+	//std::cout << "draw!!!!!!" << std::endl;
+
+	// Now since it's a texture, you have to put RenderCopy
+	// in your game loop area, the area where the whole code executes
+
+	// you put the renderer's name first, the Message,
+	// the crop size (you can ignore this if you don't want
+	// to dabble with cropping), and the rect which is the size
+	// and coordinate of your texture
+	SDL_RenderCopy(renderTarget, Message, NULL, &Message_rect);
+
+	
+}
+
+void Clock::set_up(Body* clock_frame_ptr)
+{
+	this->clockframe = clock_frame_ptr;
+}
+
+void Clock::set_time(int hour, int min)
+{
+	count = 0;
+	this->min = min;
+	this->hour = hour;
 }

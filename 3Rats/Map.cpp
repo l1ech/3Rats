@@ -140,9 +140,48 @@ void Map::make_garden(bool item_generation)
 
     trim_boarder(data, map_data);
 
-    print_vector(data, data[0].size(), data.size());
+    //print_vector(data, data[0].size(), data.size());
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
+
+    save_data(map_data, item_data);
+}
+
+void Map::make_cage(bool item_generation)
+{
+    width = 9;
+    height = 6;
+
+    int start_x = 1;
+    int start_y = 1;
+
+    int end_x = width;
+    int end_y = height;
+
+    Random rand;
+
+    std::pair <int, int> hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+
+    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
+    std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+
+    build_frame(data, 1, 14);
+
+    if (1)      // in this case it has to generate a hole. maybe not ?
+                // maybe it generates a hole only if the player does an action?
+                // for now for testing it is this
+    {
+        std::cout << hole.first << "  " << hole.second << std::endl;
+        data[hole.second][hole.first] = 13;
+    }
+
+
+    trim_boarder(data, map_data);
+
+    //print_vector(data, data[0].size(), data.size());
+
+    //if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
 
     save_data(map_data, item_data);
 }
@@ -204,6 +243,9 @@ void Map::set_type(int type)
 
     case 1:
         make_garden(true);
+        break;
+    case 2:
+        make_cage(false);
         break;
 
     default:
@@ -321,7 +363,13 @@ void Map::set_textures()
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].is_hole = true;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_hole.png");
-                std::cout << "draw"<<std::endl;
+                break;
+            case 14:
+                tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
+                tile_array[get_tile(w, h)].is_hole = false;
+                tile_array[get_tile(w, h)].set_texture("maze_textures/news_paper_pieces.png");
                 break;
 
             default:
@@ -451,6 +499,19 @@ void Map::build_frame(std::vector<std::vector <int>>& data, std::pair<int, int >
 
     data[entrance.second][entrance.first] = 2;
     data[exit.second][exit.first] = 0;
+}
+
+void Map::build_frame(std::vector<std::vector <int>>& data, int wall, int space)
+{
+    for (int h = 0; h < height + 2; h++)
+    {
+        for (int w = 0; w < width + 2; w++)
+        {
+            if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = wall;
+            else data[h][w] = space;
+
+        }
+    }
 }
 
 void Map::print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y)

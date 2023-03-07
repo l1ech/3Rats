@@ -39,10 +39,12 @@ private:
 	//types of generation
 	void make_maze(bool item_generation);
 	void make_garden(bool item_generations);
+	void make_cage(bool item_generation);
 
 	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
 	void build_frame(std::vector<std::vector <int>>& map_data, std::pair<int , int >entrance, std::pair<int, int >exit, int wall, int space);
+	void build_frame(std::vector<std::vector <int>>& map_data, int wall, int space);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	void set_corners(std::vector<std::vector <int>>& map_data);

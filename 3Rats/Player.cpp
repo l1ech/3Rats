@@ -121,6 +121,18 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 				map_number--;
 				map_array[map_number].set_textures();
 			}
+			if (tile_array[i].is_hole && map_number != map_amount - 1)
+			{
+				positionRect.x = 0;
+				positionRect.y = 0;
+
+				// for testing this is set to be linear map. which is wrong.
+				// it has to be 3d so a hole would move the map in z direction 
+				// also x and y should also have a directional influance on the map
+
+				map_number++;	
+				map_array[map_number].set_textures();
+			}
 			else
 			{
 				break;
