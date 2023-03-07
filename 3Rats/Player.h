@@ -16,29 +16,30 @@
 class Player : public Body
 {
 private:
+	Hypermap* hypermap;
 
 	Random random;
+	int player_number;
 
-	int item_type;
+	// holding item type 
+	// should be done by the inventory not in the player!
+	int item_type;	
 
 	bool wants_enter_door;
-
-	int player_number;
 
 	int item_hold_id;
 	int item_search_id;
 	bool holds_item;
 	bool has_goal;
 
-	float moveSpeed;
 	float waitCounter;
-	bool isActive;
-
-	int direction_rat;
-	int goalX, goalY;
 	bool wait;
 
-	Hypermap* hypermap;
+	float moveSpeed;
+	bool isActive;
+	int direction_rat;
+
+	int goalX, goalY;
 
 	Item* item_array;
 	int item_array_size;
