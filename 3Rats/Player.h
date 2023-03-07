@@ -74,6 +74,7 @@ private:
 	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
 	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
 	void check_door(int& map_number,Map* map_array, int map_amount, Tile* tile_array, int length);
+	void make_rat_position(int direction, int& rat_x, int& rat_y);
 
 	void make_player_move(player_move move, block_direction direction, float delta);
 	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat);

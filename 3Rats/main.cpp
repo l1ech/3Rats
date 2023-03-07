@@ -118,6 +118,7 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < map_amount; i++)
 	{
 		map_array[i] = map;
+		map_array[i].set_map_id(i);
 	}
 
 

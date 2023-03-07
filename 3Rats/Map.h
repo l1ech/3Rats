@@ -16,6 +16,9 @@
 class Map
 {
 private:
+
+	int map_id;
+
 	int item_id;
 	int* item_on_map;
 	double time;
@@ -74,5 +77,8 @@ public:
 	void show_it();
 
 	void set_ptr(int* ptr);
+
+	void set_map_id(int numer);
+	int get_map_id();
 
 };

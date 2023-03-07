@@ -113,7 +113,7 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			{
 				wants_enter_door = false;
 
-				positionRect.x = 0;
+				positionRect.x = map_array[];
 				positionRect.y = 0;
 
 				map_number++;
@@ -151,6 +151,26 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			}
 			
 		}
+	}
+}
+
+void Player::make_rat_position(int direction, int& rat_x, int& rat_y)
+{
+	switch (direction) {
+	case 0:
+		rat_y -= 55;
+		break;
+	case 1:
+		rat_y += 55;
+		break;
+	case 2:
+		rat_x -= 55;
+		break;
+	case 3:
+		rat_x += 55;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -428,22 +448,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	int frontRatX = front_rat.GetOriginX();
 	int frontRatY = front_rat.GetOriginY();
 
-	switch (front_rat.GetDirection()) {
-	case 0:
-		rat_y -= 55;
-		break;
-	case 1:
-		rat_y += 55;
-		break;
-	case 2:
-		rat_x -= 55;
-		break;
-	case 3:
-		rat_x += 55;
-		break;
-	default:
-		break;
-	}
+	make_rat_position(front_rat.GetDirection(), rat_x, rat_y);
 
 	float dist1 = sqrt(pow(abs(front_rat.GetOriginX() - rat_x), 2) + pow(abs(front_rat.GetOriginY() - rat_y), 2));
 	float dist2 = sqrt(pow(abs(front_rat.GetOriginX() - rat_x), 2) + pow(abs(front_rat.GetOriginY() - rat_y), 2));

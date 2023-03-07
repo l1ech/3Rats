@@ -413,6 +413,10 @@ void Map::set_ptr(int* ptr)
     item_on_map = ptr;
 }
 
+void Map::set_map_id(int numer) { map_id = numer; }
+
+int Map::get_map_id() { return map_id; }
+
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
 {
     Random rand;
