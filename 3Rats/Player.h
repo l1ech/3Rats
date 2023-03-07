@@ -93,14 +93,13 @@ public:
 	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Map* map_array, int map_amount, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  
 
-	void SetNewGoal();
 	void SetNewGoal(int x, int y);
 
 	int GetDirection();
 
 	bool intersectsWithBody(Body& b);
 
-	bool is_available();
+	bool is_item_available_on_map();
 	void make_goal();
 
 	void use_item();

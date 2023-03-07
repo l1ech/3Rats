@@ -383,7 +383,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	item_array = hypermap->get_item_array();
 	item_array_size = hypermap->get_item_size();
 
-	if (is_available())
+	if (is_item_available_on_map())
 	{
 		make_goal();
 	}
@@ -536,12 +536,6 @@ void Player::Draw(SDL_Renderer* renderTarget)
 }
 
 
-void Player::SetNewGoal()
-{
-	goalX = rand() % 600;
-	goalY = rand() % 400;
-}
-
 void Player::SetNewGoal(int x, int y)
 {
 	goalX = x;
@@ -561,7 +555,7 @@ bool Player::intersectsWithBody(Body& b)
 	return true;
 }
 
-bool Player::is_available()
+bool Player::is_item_available_on_map()
 {
 	bool available = false;
 
