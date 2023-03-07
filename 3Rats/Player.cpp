@@ -232,6 +232,8 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		holds_item = true;
 		item.set_pick_up(true);
 		has_goal = false;
+
+		item_type = 1;
 		
 	}
 	else if (rat_x == goal_x && rat_y == goal_y && item.get_pick_up())
@@ -243,6 +245,7 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 
 Player::Player()
 {
+	item_type = 0;
 
 	filePath = "meta_textures/place_holder.png";
 	item_search_id = 0;
@@ -267,6 +270,8 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 {
 	has_goal = false;
 	item_search_id = 0;
+
+	item_type = 0;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
 	if (surface == NULL)
@@ -579,3 +584,43 @@ void Player::make_goal()
 		if (random_item_number == item_array_size - 1) random_item_number = 0;
 	}
 }
+
+void Player::use_item()
+{
+	if (item_type == 0)
+	{
+
+	}
+	else if (item_type == 1)
+	{
+		holds_item = false;
+		item_array[item_hold_id].SetX(-100);
+		item_array[item_hold_id].SetY(-100);
+		item_array[item_hold_id].set_on_map(false);
+
+		std::cout << "yumm!" << std::endl;
+		item_type = 0;
+
+	}
+}
+
+void Player::place_item()
+{
+	if (item_type == 0)
+	{
+
+	}
+	else if (item_type == 1)
+	{
+		holds_item = false;
+		std::cout << "placed!"<<std::endl;
+		item_type = 0;
+
+	}
+}
+
+void Player::set_has_goal(bool value)
+{
+	has_goal = value;
+}
+

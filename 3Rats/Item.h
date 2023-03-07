@@ -12,8 +12,8 @@ class Item : public Body
 {
 private:
 
-	bool is_on_map;
 
+	bool is_on_map;
 	bool is_picked_up;
 
 
@@ -33,4 +33,6 @@ public:
 
 	bool get_pick_up();
 	void set_pick_up(bool value);
+
+
 };

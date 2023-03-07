@@ -123,6 +123,7 @@ void Map::make_garden(bool item_generation)
 
     std::pair <int, int> entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
     std::pair <int, int> exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    std::pair <int, int> hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -130,7 +131,16 @@ void Map::make_garden(bool item_generation)
 
     build_frame(data, entrence, exit, 1, 12);
 
+    if (rand.roll_dice())
+    {
+        std::cout << hole.first << "  " << hole.second << std::endl;
+        data[hole.second][hole.first] = 13;
+    }
+
+
     trim_boarder(data, map_data);
+
+    print_vector(data, data[0].size(), data.size());
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
 
@@ -212,6 +222,7 @@ void Map::set_textures()
             case 0: //end_door
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
                 tile_array[get_tile(w, h)].is_exit = true;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -219,6 +230,7 @@ void Map::set_textures()
             case 1: //wall
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(1);
                 break;
@@ -226,6 +238,7 @@ void Map::set_textures()
             case 2: //start_door
                 tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
                 tile_array[get_tile(w, h)].is_entrance = true;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_exit = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -234,6 +247,7 @@ void Map::set_textures()
             case 4: //left (horizontal)
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -243,6 +257,7 @@ void Map::set_textures()
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -251,6 +266,7 @@ void Map::set_textures()
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -259,6 +275,7 @@ void Map::set_textures()
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -267,6 +284,7 @@ void Map::set_textures()
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_hight(0);
                 break;
@@ -274,6 +292,7 @@ void Map::set_textures()
             case 10: //right-down
                 tile_array[get_tile(w, h)].set_hight(0);
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
@@ -282,6 +301,7 @@ void Map::set_textures()
             case 11: //hard-wall 
                 tile_array[get_tile(w, h)].set_hight(0);
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 //tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
@@ -290,15 +310,25 @@ void Map::set_textures()
             case 12:
                 tile_array[get_tile(w, h)].set_hight(0);
                 tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
                 //tile_array[get_tile(w, h)].set_texture("place_holder.png");
+                break;
+            case 13:
+                tile_array[get_tile(w, h)].set_hight(0);
+                tile_array[get_tile(w, h)].is_exit = false;
+                tile_array[get_tile(w, h)].is_entrance = false;
+                tile_array[get_tile(w, h)].is_hole = true;
+                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_hole.png");
+                std::cout << "draw"<<std::endl;
                 break;
 
             default:
                 tile_array[get_tile(w, h)].set_hight(0);
                 tile_array[get_tile(w, h)].is_exit = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
+                tile_array[get_tile(w, h)].is_hole = false;
                 tile_array[get_tile(w, h)].set_texture("maze_textures/place_holder.png");
                 break;
             }

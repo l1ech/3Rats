@@ -164,7 +164,9 @@ int main(int argc, char* argv[])
 				case SDLK_1:
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
-				case SDLK_f:
+				case SDLK_u:
+					player_array[1].use_item();
+					player_array[2].use_item();
 					break;
 
 				case SDLK_r:
@@ -172,8 +174,14 @@ int main(int argc, char* argv[])
 					player_array[0].SetY(0);
 					break;
 
-				case SDLK_g:
+				case SDLK_p:
+					player_array[1].place_item();
+					player_array[2].place_item();
 					break;
+
+				case SDLK_n:
+					player_array[1].set_has_goal(false);
+					player_array[2].set_has_goal(false);
 				}
 			}
 		}

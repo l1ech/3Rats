@@ -19,6 +19,8 @@ private:
 
 	Random random;
 
+	int item_type;
+
 	int player_number;
 
 	int item_hold_id;
@@ -97,5 +99,10 @@ public:
 
 	bool is_available();
 	void make_goal();
+
+	void use_item();
+	void place_item();
+
+	void set_has_goal(bool value);
 };
 
