@@ -1,5 +1,7 @@
 #include "Clock.h"
 
+// the code from here is modified frome this stack echange
+// https://stackoverflow.com/a/22889483/18288994
 
 
 Clock::Clock()
