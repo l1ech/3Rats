@@ -369,7 +369,7 @@ void Map::set_textures()
                 tile_array[get_tile(w, h)].is_exit = false;
                 tile_array[get_tile(w, h)].is_entrance = false;
                 tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/place_hoalder.png");
+                tile_array[get_tile(w, h)].set_texture("maze_textures/place_holder.png");
                 break;
 
             default:

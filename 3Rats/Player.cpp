@@ -101,6 +101,10 @@ void Player::get_direction_blocked(block_direction_counter& counter, block_direc
 
 void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* tile_array, int length)
 {
+	// make it that all players spawn at the new door
+	// not at 0, 0 
+	// new door could be anywhere
+
 	for (int i = 0; i < length; i++)
 	{
 		if (intersectsWithBody(tile_array[i]) && player_number == 0 && wants_enter_door)
@@ -261,6 +265,30 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 	{
 		std::cout << "did not found!" << " p: " << player_number << "item number: " << item_search_id << std::endl;;
 		has_goal = false;
+	}
+}
+
+void Player::hold_item_in_mouth(Item& item)
+{
+	if (direction_rat == 0)
+	{
+		item.SetX(GetOriginX() - 24);
+		item.SetY(GetOriginY() - 32 - 14);
+	}
+	else if (direction_rat == 1)
+	{
+		item.SetX(GetOriginX() - 24);
+		item.SetY(GetOriginY() - 32 + 14);
+	}
+	else if (direction_rat == 2)
+	{
+		item.SetX(GetOriginX() - 24 - 14);
+		item.SetY(GetOriginY() - 32);
+	}
+	else if (direction_rat == 3)
+	{
+		item.SetX(GetOriginX() - 24 + 14);
+		item.SetY(GetOriginY() - 32);
 	}
 }
 
@@ -470,28 +498,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	// make item visible on a player
 	if (holds_item)
 	{
-
-		if (direction_rat == 0)
-		{
-			item_array[item_hold_id].SetX(GetOriginX() - 24);
-			item_array[item_hold_id].SetY(GetOriginY() - 32 - 14);
-		}
-		else if (direction_rat == 1)
-		{
-			item_array[item_hold_id].SetX(GetOriginX() - 24);
-			item_array[item_hold_id].SetY(GetOriginY() - 32 + 14);
-		}
-		else if (direction_rat == 2)
-		{
-			item_array[item_hold_id].SetX(GetOriginX() - 24 - 14);
-			item_array[item_hold_id].SetY(GetOriginY() - 32);
-		}
-		else if (direction_rat == 3)
-		{
-			item_array[item_hold_id].SetX(GetOriginX() - 24 + 14);
-			item_array[item_hold_id].SetY(GetOriginY() - 32);
-		}
-
+		hold_item_in_mouth(item_array[item_hold_id]);
 	}
 
 	// make movement in texture for player
@@ -530,18 +537,9 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	}
 }
 
-void Player::Draw(SDL_Renderer* renderTarget)
-{
-	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
-}
+void Player::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect); }
 
-
-void Player::SetNewGoal(int x, int y)
-{
-	goalX = x;
-	goalY = y;
-}
-
+void Player::SetNewGoal(int x, int y) { goalX = x; goalY = y; }
 
 int Player::GetDirection() { return direction_rat; }
 
@@ -634,13 +632,7 @@ void Player::place_item()
 	}
 }
 
-void Player::set_has_goal(bool value)
-{
-	has_goal = value;
-}
+void Player::set_has_goal(bool value){ has_goal = value; }
 
-void Player::set_enter(bool value)
-{
-	wants_enter_door = value;
-}
+void Player::set_enter(bool value){ wants_enter_door = value; }
 

@@ -78,6 +78,9 @@ private:
 	void make_player_move(player_move move, block_direction direction, float delta);
 	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat);
 	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item);
+
+	void hold_item_in_mouth(Item& item);
+
 public:
 
 
@@ -99,14 +102,14 @@ public:
 
 	bool intersectsWithBody(Body& b);
 
+	// needed to for the rats to find goals 
 	bool is_item_available_on_map();
 	void make_goal();
 
+	// inputs from main to player object
 	void use_item();
 	void place_item();
-
-	void set_has_goal(bool value);
-
+	void set_has_goal(bool value);	// this is for debug 
 	void set_enter(bool value);
 };
 
