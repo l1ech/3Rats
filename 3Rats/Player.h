@@ -21,6 +21,8 @@ private:
 
 	int item_type;
 
+	bool wants_enter_door;
+
 	int player_number;
 
 	int item_hold_id;
@@ -104,5 +106,7 @@ public:
 	void place_item();
 
 	void set_has_goal(bool value);
+
+	void set_enter(bool value);
 };
 

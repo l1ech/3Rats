@@ -191,24 +191,29 @@ int main(int argc, char* argv[])
 				case SDLK_u:
 					player_array[1].use_item();
 					player_array[2].use_item();
+					player_array[0].set_enter(false);
 					break;
 
 				case SDLK_r:
 					player_array[0].SetX(0);
 					player_array[0].SetY(0);
+					player_array[0].set_enter(false);
 					break;
 
 				case SDLK_p:
 					player_array[1].place_item();
 					player_array[2].place_item();
+					player_array[0].set_enter(false);
 					break;
 
 				case SDLK_n:
 					player_array[1].set_has_goal(false);
 					player_array[2].set_has_goal(false);
+					player_array[0].set_enter(false);
+
 					break;
 				case SDLK_e:
-
+					player_array[0].set_enter(true);
 				}
 			}
 		}

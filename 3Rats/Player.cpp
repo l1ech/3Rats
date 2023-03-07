@@ -103,18 +103,22 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 {
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(tile_array[i]) && player_number == 0)
+		if (intersectsWithBody(tile_array[i]) && player_number == 0 && wants_enter_door)
 		{
 			if (tile_array[i].is_exit && map_number != map_amount - 1)
 			{
+				wants_enter_door = false;
+
 				positionRect.x = 0;
 				positionRect.y = 0;
 
 				map_number++;
 				map_array[map_number].set_textures();
 			}
-			if (tile_array[i].is_entrance && map_number != 0 && !1)	// disabled for testing
+			if (tile_array[i].is_entrance && map_number != 0)	// disabled for testing
 			{
+				wants_enter_door = false;
+
 				positionRect.x = 0;
 				positionRect.y = 0;
 
@@ -123,6 +127,8 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			}
 			if (tile_array[i].is_hole && map_number != map_amount - 1)
 			{
+				wants_enter_door = false;
+
 				positionRect.x = 0;
 				positionRect.y = 0;
 
@@ -132,11 +138,14 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 
 				map_number++;	
 				map_array[map_number].set_textures();
+
+				
 			}
 			else
 			{
 				break;
 			}
+			
 		}
 	}
 }
@@ -634,5 +643,10 @@ void Player::place_item()
 void Player::set_has_goal(bool value)
 {
 	has_goal = value;
+}
+
+void Player::set_enter(bool value)
+{
+	wants_enter_door = value;
 }
 
