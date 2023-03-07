@@ -9,6 +9,8 @@ private:
 public:
 	Tile();
 
-	bool is_exit, is_entrance, is_hole;
+	bool is_exit;
+	bool is_entrance;
+	bool is_hole;
 
 };

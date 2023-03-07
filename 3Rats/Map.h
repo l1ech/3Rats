@@ -19,6 +19,10 @@ private:
 
 	int map_id;
 
+	std::pair<int, int> entrence;
+	std::pair<int, int> exit;
+	std::pair<int, int> hole;
+
 	int item_id;
 	int* item_on_map;
 	double time;
@@ -80,5 +84,10 @@ public:
 
 	void set_map_id(int numer);
 	int get_map_id();
+
+	std::pair <int, int> give_entry_door();
+	std::pair <int, int> give_exit_door();
+	std::pair <int, int> give_hole_door();
+
 
 };

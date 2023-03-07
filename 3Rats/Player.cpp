@@ -109,29 +109,34 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 	{
 		if (intersectsWithBody(tile_array[i]) && player_number == 0 && wants_enter_door)
 		{
-			if (tile_array[i].is_exit && map_number != map_amount - 1)
+			wants_enter_door = false;
+			if (tile_array[i].is_exit			&& map_number != map_amount - 1)
 			{
-				wants_enter_door = false;
-
-				positionRect.x = map_array[];
-				positionRect.y = 0;
-
 				map_number++;
 				map_array[map_number].set_textures();
-			}
-			if (tile_array[i].is_entrance && map_number != 0)	// disabled for testing
+				std::pair <int, int> entrance = map_array[map_number].give_entry_door();
+
+				positionRect.x = entrance.first * 64 - cropRect.w;
+				positionRect.y = entrance.second * 64 - cropRect.h;
+
+				//std::cout << "player 1: " << this->player_number << std::endl;
+				//std::cout << "player 2: " << (this->player_number)++ << std::endl;
+				//std::cout << "player 3: " << ((this->cropRect.w)++)++ << std::endl;
+
+			} 
+			else if (tile_array[i].is_entrance	&& map_number != 0)	// disabled for testing
 			{
-				wants_enter_door = false;
-
-				positionRect.x = 0;
-				positionRect.y = 0;
-
 				map_number--;
 				map_array[map_number].set_textures();
+				std::pair <int, int> exit = map_array[map_number].give_exit_door();
+
+				positionRect.x = exit.first * 64 - cropRect.w;
+				positionRect.y = exit.second * 64 - cropRect.h;
 			}
-			if (tile_array[i].is_hole && map_number != map_amount - 1)
+			else if (tile_array[i].is_hole		&& map_number != map_amount - 1)
 			{
-				wants_enter_door = false;
+				map_number++;
+				map_array[map_number].set_textures();
 
 				positionRect.x = 0;
 				positionRect.y = 0;
@@ -139,17 +144,7 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 				// for testing this is set to be linear map. which is wrong.
 				// it has to be 3d so a hole would move the map in z direction 
 				// also x and y should also have a directional influance on the map
-
-				map_number++;	
-				map_array[map_number].set_textures();
-
-				
 			}
-			else
-			{
-				break;
-			}
-			
 		}
 	}
 }

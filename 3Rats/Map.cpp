@@ -84,8 +84,9 @@ void Map::make_maze(bool item_generation)
 
     Random rand;
 
-    std::pair <int, int> entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
-    std::pair <int, int> exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
+    exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    hole = { -100, -100 };
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -121,9 +122,9 @@ void Map::make_garden(bool item_generation)
 
     Random rand;
 
-    std::pair <int, int> entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
-    std::pair <int, int> exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
-    std::pair <int, int> hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
+    exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -160,7 +161,10 @@ void Map::make_cage(bool item_generation)
 
     Random rand;
 
-    std::pair <int, int> hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+
+    exit = { -100, -100 };
+    entrence = { -100, -100 };
+    hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -259,125 +263,128 @@ void Map::set_textures()
     {
         for (int w = 0; w < width; w++)
         {
+            Tile& inspected_tile = tile_array[get_tile(w, h)];
+            Item& inspected_item = item_array[get_tile(w, h)];
+
             switch (data[h][w].first)
             {
             case 0: //end_door
-                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
-                tile_array[get_tile(w, h)].is_exit = true;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                inspected_tile.set_texture("maze_textures/maze_door.png");
+                inspected_tile.is_exit = true;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(0);
                 break;
 
             case 1: //wall
-                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(1);
+                inspected_tile.set_texture("maze_textures/maze_wall.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(1);
                 break;
 
             case 2: //start_door
-                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_door.png");
-                tile_array[get_tile(w, h)].is_entrance = true;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                inspected_tile.set_texture("maze_textures/maze_door.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = true;
+                inspected_tile.set_hight(0);
                 break;
 
             case 3: //right (horizontal)
             case 4: //left (horizontal)
-                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_horizontal.png");
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                inspected_tile.set_texture("maze_textures/walk_way_shadow_horizontal.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(0);
                 break;
 
             case 5: //up (vertical)
             case 6: //down (vertical)
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_vertical.png");
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                //inspected_tile.set_texture("maze_textures/ground.png");
+                inspected_tile.set_texture("maze_textures/walk_way_shadow_vertical.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(0);
                 break;
 
             case 7: //left-up
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_up.png");
-                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                //inspected_tile.set_texture("maze_textures/walk_way_shadow_left_up.png");
+                inspected_tile.set_texture("maze_textures/ground.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(0);
                 break;
 
             case 8: //right-up 
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
-                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                //inspected_tile.set_texture("maze_textures/walk_way_shadow_right_down.png");
+                inspected_tile.set_texture("maze_textures/ground.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(0);
                 break;
 
             case 9: //left-down
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_left_down.png");
-                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_hight(0);
+                //inspected_tile.set_texture("maze_textures/walk_way_shadow_left_down.png");
+                inspected_tile.set_texture("maze_textures/ground.png");
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_hight(0);
                 break;
 
             case 10: //right-down
-                tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/walk_way_shadow_right_down.png");
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_texture("maze_textures/ground.png");
+                //inspected_tile.set_texture("maze_textures/walk_way_shadow_right_down.png");
                 break;
 
             case 11: //hard-wall 
-                tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                //tile_array[get_tile(w, h)].set_texture("maze_textures/maze_wall.png");
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_texture("maze_textures/ground.png");
+                //inspected_tile.set_texture("maze_textures/maze_wall.png");
                 break;
 
             case 12:
-                tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/ground.png");
-                //tile_array[get_tile(w, h)].set_texture("place_holder.png");
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.set_texture("maze_textures/ground.png");
+                //inspected_tile.set_texture("place_holder.png");
                 break;
             case 13:
-                tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].is_hole = true;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/maze_hole.png");
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.is_hole = true;
+                inspected_tile.set_texture("maze_textures/maze_hole.png");
                 break;
             case 14:
-                tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/place_holder.png");
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.set_texture("maze_textures/place_holder.png");
                 break;
 
             default:
-                tile_array[get_tile(w, h)].set_hight(0);
-                tile_array[get_tile(w, h)].is_exit = false;
-                tile_array[get_tile(w, h)].is_entrance = false;
-                tile_array[get_tile(w, h)].is_hole = false;
-                tile_array[get_tile(w, h)].set_texture("maze_textures/place_holder.png");
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.set_texture("maze_textures/place_holder.png");
                 break;
             }
 
@@ -386,16 +393,16 @@ void Map::set_textures()
 
             if (data[h][w].second == 1)
             {
-                item_array[get_tile(w, h)].set_on_map(true);
-                item_array[get_tile(w, h)].set_cords(x_cord, y_cord);
-                item_array[get_tile(w, h)].set_texture("item_textures/mushroom.png");
+                inspected_item.set_on_map(true);
+                inspected_item.set_cords(x_cord, y_cord);
+                inspected_item.set_texture("item_textures/mushroom.png");
                 item_id++;
             }
             else if (data[h][w].second == 0)
             {
-                item_array[get_tile(w, h)].set_on_map(false);
-                item_array[get_tile(w, h)].set_cords(-100, -100);
-                item_array[get_tile(w, h)].set_texture("item_textures/place_holder.png");
+                inspected_item.set_on_map(false);
+                inspected_item.set_cords(-100, -100);
+                inspected_item.set_texture("item_textures/place_holder.png");
             }
         }
     }
@@ -416,6 +423,12 @@ void Map::set_ptr(int* ptr)
 void Map::set_map_id(int numer) { map_id = numer; }
 
 int Map::get_map_id() { return map_id; }
+
+std::pair <int, int> Map::give_entry_door() { return { entrence.first, entrence.second }; }
+
+std::pair<int, int> Map::give_exit_door() { return { exit.first, exit.second }; }
+
+std::pair<int, int> Map::give_hole_door() { return { hole.first, hole.second }; }
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
 {
