@@ -454,7 +454,10 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	int rat_x = this->GetOriginX();
 	int rat_y = this->GetOriginY();
 
-	int frontRatX = front_rat.GetOriginX();
+	// focus point of a non-player rat.
+	// maybe put this inside the function that makes 
+	// the cords to it to stand and hole items
+	int frontRatX = front_rat.GetOriginX();	
 	int frontRatY = front_rat.GetOriginY();
 
 	make_rat_position(front_rat.GetDirection(), rat_x, rat_y);
@@ -474,7 +477,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
 
-	if (saturation == 0) // game over
+	if (saturation == 0) // game over. make a flag that -> game_over = true;
 
 	// colision with door check
 	check_door(map_number, map_array, map_amount, tile_array, tile_array_size);

@@ -183,8 +183,8 @@ void Map::make_cage(bool item_generation)
         data[hole.second][hole.first] = 13;
     }
 
-    data[food_bowl.second][food_bowl.first] = 14;
-    data[bed.second][bed.first] = 15;
+    data[food_bowl.second][food_bowl.first] = 15;
+    data[bed.second][bed.first] = 16;
 
 
     trim_boarder(data, map_data);
@@ -274,6 +274,12 @@ void Map::set_textures()
 
             switch (data[h][w].first)
             {
+                //maybe i should define some kind of object that
+                // so that you could use this as a copy for the others 
+                // less code more readable
+
+                // make that next!
+
             case 0: //end_door
                 inspected_tile.set_texture("maze_textures/maze_door.png");
                 inspected_tile.is_exit = true;
@@ -390,7 +396,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("maze_textures/place_holder.png");
+                inspected_tile.set_texture("textures/interactable/test.png");
                 break;
 
             case 16:
@@ -398,7 +404,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("maze_textures/place_holder.png");
+                inspected_tile.set_texture("textures/interactable/test.png");
                 break;
 
             default:
