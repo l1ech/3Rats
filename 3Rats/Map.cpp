@@ -166,6 +166,9 @@ void Map::make_cage(bool item_generation)
     entrence = { -100, -100 };
     hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
 
+    std::pair<int, int> food_bowl = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    std::pair<int, int> bed = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
@@ -179,6 +182,9 @@ void Map::make_cage(bool item_generation)
         std::cout << hole.first << "  " << hole.second << std::endl;
         data[hole.second][hole.first] = 13;
     }
+
+    data[food_bowl.second][food_bowl.first] = 14;
+    data[bed.second][bed.first] = 15;
 
 
     trim_boarder(data, map_data);
@@ -372,6 +378,22 @@ void Map::set_textures()
                 inspected_tile.set_texture("maze_textures/maze_hole.png");
                 break;
             case 14:
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.set_texture("maze_textures/place_holder.png");
+                break;
+
+            case 15:
+                inspected_tile.set_hight(0);
+                inspected_tile.is_exit = false;
+                inspected_tile.is_entrance = false;
+                inspected_tile.is_hole = false;
+                inspected_tile.set_texture("maze_textures/place_holder.png");
+                break;
+
+            case 16:
                 inspected_tile.set_hight(0);
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
