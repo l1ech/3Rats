@@ -106,6 +106,8 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < tile_amount; i++)
 	{
 		tile_array[i] = tile;
+		tile_array[i].set_surface(renderTarget, "meta_textures/place_holder.png");
+		tile_array[i].set_cords(-100, -100);
 	}
 	
 	// map array

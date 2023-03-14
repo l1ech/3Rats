@@ -265,7 +265,6 @@ void Map::set_type(int type)
 
 void Map::set_textures()
 {
-    /*
     Tile end_door(true, false, false, "maze_textures/maze_door.png", 0);
     Tile wall(false, false, false, "maze_textures/maze_wall.png", 1);
     Tile start_door(false, true, false, "maze_textures/maze_door.png", 0);
@@ -273,8 +272,6 @@ void Map::set_textures()
     Tile vertical(false, false, false, "maze_textures/walk_way_shadow_vertical.png", 0);
     Tile ground(false, false, false, "maze_textures/ground.png", 0);
     Tile maze_hole(false, false, true, "maze_textures/maze_hole.png", 0);
-
-    */
     
     for (int h = 0; h < height; h++)
     {
@@ -307,8 +304,7 @@ void Map::set_textures()
                 inspected_tile.is_entrance = false;
                 inspected_tile.set_hight(1);
                 
-                
-                //inspected_tile = maze_hole;
+                //inspected_tile = wall;
 
                 break;
 

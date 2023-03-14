@@ -479,7 +479,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	// food tick system: 
 
-	if (tick_food(10)) saturation--;
+	if (tick_food(100)) saturation--;
 
 	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
 
