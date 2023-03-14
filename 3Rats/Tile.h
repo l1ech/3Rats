@@ -8,6 +8,7 @@ private:
 
 public:
 	Tile();
+	Tile(bool exit, bool entrance, bool hole, std::string path, int height);
 
 	bool is_exit;
 	bool is_entrance;
