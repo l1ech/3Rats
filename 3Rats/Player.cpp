@@ -107,10 +107,16 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 
 	for (int i = 0; i < length; i++)
 	{
-		if (intersectsWithBody(tile_array[i]) && player_number == 0 && wants_enter_door)
+		bool last_room = (map_number == map_amount - 1);
+		bool first_room = (map_number == 0);
+
+		if (!wants_enter_door) break;
+		if (!(player_number == 0)) break;
+
+		if (intersectsWithBody(tile_array[i]) && player_number == 0)
 		{
 			wants_enter_door = false;
-			if (tile_array[i].is_exit			&& map_number != map_amount - 1)
+			if (tile_array[i].is_exit && !last_room)
 			{
 				map_number++;
 				map_array[map_number].set_textures();
@@ -124,7 +130,7 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 				//std::cout << "player 3: " << ((this->cropRect.w)++)++ << std::endl;
 
 			} 
-			else if (tile_array[i].is_entrance	&& map_number != 0)	// disabled for testing
+			else if (tile_array[i].is_entrance	&& !first_room)
 			{
 				map_number--;
 				map_array[map_number].set_textures();
@@ -477,7 +483,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
 
-	if (saturation == 0) // game over. make a flag that -> game_over = true;
+	if (saturation == 0) {} // game over. make a flag that -> game_over = true;
 
 	// colision with door check
 	check_door(map_number, map_array, map_amount, tile_array, tile_array_size);
