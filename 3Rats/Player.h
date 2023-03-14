@@ -47,6 +47,9 @@ private:
 	Tile* tile_array;
 	int tile_array_size;
 
+	int saturation;		// 0 - 100
+						// ticksystem removing hunger
+
 	struct block_direction_counter {
 		int right;
 		int left;
@@ -75,6 +78,7 @@ private:
 	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
 	void check_door(int& map_number,Map* map_array, int map_amount, Tile* tile_array, int length);
 	void make_rat_position(int direction, int& rat_x, int& rat_y);
+	int tick_food(int num);
 
 	void make_player_move(player_move move, block_direction direction, float delta);
 	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat);
@@ -86,7 +90,7 @@ public:
 
 
 	Player();
-	Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
+	//Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);

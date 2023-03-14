@@ -169,6 +169,16 @@ void Player::make_rat_position(int direction, int& rat_x, int& rat_y)
 	}
 }
 
+int Player::tick_food(int num)
+{
+	Random random;
+
+	//random.roll_custom_dice(10);	//10% 1/10 ?
+
+	if (random.roll_custom_dice(num) == 1) return 1;
+	else return 0;
+}
+
 void Player::make_player_move(player_move move, block_direction direction, float delta)
 {
 	if (move.up && !direction.up)	//up
@@ -311,6 +321,8 @@ Player::Player()
 {
 	item_type = 0;
 
+	saturation = 100;
+
 	filePath = "meta_textures/place_holder.png";
 	item_search_id = 0;
 	has_goal = false;
@@ -329,7 +341,7 @@ Player::Player()
 	searchCounter = rand() % 100;
 	searchCounter /= 100.0f;
 }
-
+/*
 Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
 {
 	has_goal = false;
@@ -373,7 +385,7 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 	keys[1] = SDL_SCANCODE_S;
 	keys[2] = SDL_SCANCODE_A;
 	keys[3] = SDL_SCANCODE_D;
-	
+
 	moveSpeed = 200.0f;
 
 	wait = false;
@@ -381,6 +393,8 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 	searchCounter = rand() % 100;
 	searchCounter /= 100.0f;
 }
+*/
+
 
 Player::~Player()
 {
@@ -428,14 +442,14 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	if (is_item_available_on_map())
 	{
-		make_goal();
+		make_goal();	// make it so: goal = make_goal();
 	}
 	else
 	{
 		mode = 0;
 	}
 
-	isActive = true;
+	isActive = true;	// do i need this?
 
 	int rat_x = this->GetOriginX();
 	int rat_y = this->GetOriginY();
@@ -453,6 +467,14 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	block_direction_counter counter = { 0, 0, 0, 0 };
 
 	block_direction direction = { 0, 0, 0, 0 };
+
+	// food tick system: 
+
+	if (tick_food(10)) saturation--;
+
+	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
+
+	if (saturation == 0) // game over
 
 	// colision with door check
 	check_door(map_number, map_array, map_amount, tile_array, tile_array_size);
