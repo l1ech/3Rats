@@ -72,21 +72,24 @@ int main(int argc, char* argv[])
 	// random object
 	Random rand;
 
-	// clock object 
-	Clock clock;
-	clock.set_renderer(renderTarget);
-	clock.load();
-
+	// clock frame
+	// ==========================================
 	Body clock_frame;
 	clock_frame.set_surface(renderTarget, "ui_textures/clock_frame.png");
 	clock_frame.set_cords(400, 320);
 
+	// clock object 
+	// ==========================================
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
+	Clock clock;
+	clock.set_renderer(renderTarget);
+	clock.load();
 
 	clock.set_up(&clock_frame);
 	clock.set_time(16, 30);
 
 	// item array
+	// ==========================================
 	Item item_array[item_amount];
 	Item item;
 	item.set_surface(renderTarget);
@@ -98,6 +101,7 @@ int main(int argc, char* argv[])
 	}
 	
 	// tile array
+	// ==========================================
 	Tile tile_array[tile_amount];
 	Tile tile;
 	tile.set_surface(renderTarget);
@@ -111,6 +115,7 @@ int main(int argc, char* argv[])
 	}
 	
 	// map array
+	// ==========================================
 	Map map_array[map_amount];
 	Map map;
 
@@ -123,6 +128,8 @@ int main(int argc, char* argv[])
 		map_array[i].set_map_id(i);
 	}
 
+	// hypermap object
+	// ==========================================
 
 	Hypermap hypermap;
 
@@ -144,6 +151,8 @@ int main(int argc, char* argv[])
 	}
 	map_array[0].set_textures();
 
+	// player array
+	// ==========================================
 	Player player_array[player_amount];
 	
 	for (int i = 0; i < player_amount; i++)
@@ -162,6 +171,9 @@ int main(int argc, char* argv[])
 
 	player_array[2].set_surface(renderTarget, "player_textures/remy.png");
 	player_array[2].set_cords(400, 300, 3, 4);
+
+	// ==========================================
+
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
