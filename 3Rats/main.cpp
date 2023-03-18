@@ -30,6 +30,103 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	return texture;
 }
 
+void init_clock_frame(SDL_Renderer* render_target, Body* body)
+{
+	body->set_surface(render_target, "ui_textures/clock_frame.png");
+	body->set_cords(400, 320);
+}
+
+void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body)
+{
+	clock->set_renderer(render_target);
+	clock->load();
+	clock->set_up(body);
+	clock->set_time(16, 30);
+}
+
+void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
+{
+	Item item_templet;
+	item_templet.set_surface(render_target);
+	item_templet.set_cords(-100, -100);
+
+	for (int i = 0; i < item_amount; i++)
+	{
+		item_array[i] = item_templet;
+	}
+}
+
+void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_amount)
+{
+	Tile tile_templet;
+	tile_templet.set_surface(render_target);	// doppelt gemoppelt?
+	tile_templet.set_cords(-100, -100);
+
+	for (int i = 0; i < tile_amount; i++)
+	{
+		tile_array[i] = tile_templet;
+		tile_array[i].set_surface(render_target, "meta_textures/place_holder.png");
+		tile_array[i].set_cords(-100, -100);
+	}
+}
+
+void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount)
+{
+	Map map_templet;
+
+	map_templet.set_tile_array(tile_array, tile_amount);
+	map_templet.set_item_array(item_array, item_amount);
+
+	for (int i = 0; i < map_amount; i++)
+	{
+		map_array[i] = map_templet;
+		map_array[i].set_map_id(i);
+	}
+}
+
+void init_hyper_map(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Hypermap* hypermap)
+{
+	Random random;
+	hypermap->set_renderer(renderTarget);
+
+	hypermap->set_map_array(map_array, map_amount);
+	hypermap->set_item_array(item_array, item_amount);
+	hypermap->set_tile_array(tile_array, item_amount);
+
+	hypermap->set_up();
+
+	map_array[0].set_type(2);
+	map_array[0].show_it();
+
+	for (int i = 1; i < map_amount; i++)
+	{
+		map_array[i].set_type(random.flip_coin());
+		map_array[i].show_it();
+	}
+	map_array[0].set_textures();
+}
+
+void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Hypermap& hypermap)
+{
+	for (int i = 0; i < player_amount; i++)
+	{
+		Player player;
+		player.set_player_number(i);
+		player.set_hypermap(&hypermap);
+		player_array[i] = player;
+	}
+
+	player_array[0].set_surface(render_target, "player_textures/mango.png");
+	player_array[0].set_cords(32, 32, 3, 4);
+
+	player_array[1].set_surface(render_target, "player_textures/fridolin.png");
+	player_array[1].set_cords(32, 32, 3, 4);
+
+	player_array[2].set_surface(render_target, "player_textures/remy.png");
+	player_array[2].set_cords(400, 300, 3, 4);
+}
+
+
 int main(int argc, char* argv[])
 {
 	// Initiallaizing and loading variables
@@ -69,110 +166,36 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
+
+	// ================================ INIT GAME OBJECTS ================================
+	// ===================================================================================
+
 	// random object
 	Random rand;
 
-	// clock frame
-	// ==========================================
 	Body clock_frame;
-	clock_frame.set_surface(renderTarget, "ui_textures/clock_frame.png");
-	clock_frame.set_cords(400, 320);
+	init_clock_frame(renderTarget, &clock_frame);
 
-	// clock object 
-	// ==========================================
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	Clock clock;
-	clock.set_renderer(renderTarget);
-	clock.load();
+	init_clock(renderTarget, &clock, &clock_frame);
 
-	clock.set_up(&clock_frame);
-	clock.set_time(16, 30);
-
-	// item array
-	// ==========================================
 	Item item_array[item_amount];
-	Item item;
-	item.set_surface(renderTarget);
-	item.set_cords(-100, -100);
+	init_item_array(renderTarget, item_array, item_amount);
 
-	for (int i = 0; i < item_amount; i++)
-	{
-		item_array[i] = item;
-	}
-	
-	// tile array
-	// ==========================================
 	Tile tile_array[tile_amount];
-	Tile tile;
-	tile.set_surface(renderTarget);
-	tile.set_cords(-100, -100);
+	init_tile_array(renderTarget, tile_array, tile_amount);
 
-	for (int i = 0; i < tile_amount; i++)
-	{
-		tile_array[i] = tile;
-		tile_array[i].set_surface(renderTarget, "meta_textures/place_holder.png");
-		tile_array[i].set_cords(-100, -100);
-	}
-	
-	// map array
-	// ==========================================
 	Map map_array[map_amount];
-	Map map;
-
-	map.set_tile_array(tile_array, tile_amount);
-	map.set_item_array(item_array, item_amount);
-
-	for (int i = 0; i < map_amount; i++)
-	{
-		map_array[i] = map;
-		map_array[i].set_map_id(i);
-	}
-
-	// hypermap object
-	// ==========================================
+	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount);
 
 	Hypermap hypermap;
+	init_hyper_map(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, &hypermap);
 
-	hypermap.set_renderer(renderTarget);
-
-	hypermap.set_map_array(map_array, map_amount);
-	hypermap.set_item_array(item_array, item_amount);
-	hypermap.set_tile_array(tile_array, item_amount);
-
-	hypermap.set_up();
-
-	map_array[0].set_type(2);
-	map_array[0].show_it();
-
-	for (int i = 1; i < map_amount; i++)
-	{
-		map_array[i].set_type(rand.flip_coin()); 
-		map_array[i].show_it();
-	}
-	map_array[0].set_textures();
-
-	// player array
-	// ==========================================
 	Player player_array[player_amount];
-	
-	for (int i = 0; i < player_amount; i++)
-	{
-		Player player;
-		player.set_player_number(i);
-		player.set_hypermap(&hypermap);
-		player_array[i] = player;
-	}
+	init_player_array(renderTarget, player_array, player_amount, hypermap);
 
-	player_array[0].set_surface(renderTarget, "player_textures/mango.png");
-	player_array[0].set_cords(32, 32, 3, 4);
-
-	player_array[1].set_surface(renderTarget, "player_textures/fridolin.png");
-	player_array[1].set_cords(32, 32, 3, 4);
-
-	player_array[2].set_surface(renderTarget, "player_textures/remy.png");
-	player_array[2].set_cords(400, 300, 3, 4);
-
-	// ==========================================
+	// ===================================================================================
 
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
