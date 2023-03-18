@@ -94,7 +94,7 @@ void Map::make_maze(bool item_generation)
 
     build_frame(data, entrence, exit, 9, 1);
 
-    while (rec_pos(entrence.second, entrence.second, data, data[start_x][start_y]) != 0) { }
+    while (rec_pos(entrence.first, entrence.second, data, data[entrence.first][entrence.second]) != 0) { }
 
     trim_boarder(data, map_data);
 
