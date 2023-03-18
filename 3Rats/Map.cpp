@@ -84,9 +84,9 @@ void Map::make_maze(bool item_generation)
 
     Random rand;
 
-    entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
-    exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
-    hole = { -100, -100 };
+    make_doors_entry(3);
+    make_doors_exit(1);
+    make_doors_hole(-100, -100);
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -94,7 +94,7 @@ void Map::make_maze(bool item_generation)
 
     build_frame(data, entrence, exit, 9, 1);
 
-    while (rec_pos(start_x, start_y, data, data[start_x][start_y]) != 0) { }
+    while (rec_pos(entrence.second, entrence.second, data, data[start_x][start_y]) != 0) { }
 
     trim_boarder(data, map_data);
 
@@ -122,9 +122,9 @@ void Map::make_garden(bool item_generation)
 
     Random rand;
 
-    entrence = { rand.roll_custom_dice(start_x), rand.roll_custom_dice(start_y) };
-    exit = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
-    hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    make_doors_entry(3);
+    make_doors_exit(1);
+    make_doors_hole(rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y));
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -469,6 +469,71 @@ std::pair <int, int> Map::give_entry_door() { return { entrence.first, entrence.
 std::pair<int, int> Map::give_exit_door() { return { exit.first, exit.second }; }
 
 std::pair<int, int> Map::give_hole_door() { return { hole.first, hole.second }; }
+
+void Map::make_doors_entry(int x, int y)
+{
+    Random random;
+    entrence = { random.roll_custom_dice(x), random.roll_custom_dice(y) };
+}
+
+void Map::make_doors_exit(int x, int y)
+{
+    Random random;
+    exit = { random.roll_custom_dice(x), random.roll_custom_dice(y) };
+}
+
+void Map::make_doors_hole(int x, int y)
+{
+    hole = { x, y };
+}
+
+void Map::make_doors_entry(int direction)
+{
+    //direction => 0 = north, 1 = east, 2 = south, 3 = west
+    Random random;
+    switch (direction)
+    {
+    case 0:
+        entrence = { random.roll_custom_dice(9), 1 };
+        break;
+    case 1:
+        entrence = { 9 , random.roll_custom_dice(6) };
+        break;
+    case 2:
+        entrence = { random.roll_custom_dice(9), 6 };
+        break;
+    case 3:
+        entrence = { 1, random.roll_custom_dice(6) };
+        break;
+    default:
+        std::cout << "error" << std::endl;
+        break;
+    }
+}
+
+void Map::make_doors_exit(int direction)
+{
+    //direction => 0 = north, 1 = east, 2 = south, 3 = west
+    Random random;
+    switch (direction)
+    {
+    case 0:
+        exit = { random.roll_custom_dice(9), 1 };
+        break;
+    case 1:
+        exit = { 9 , random.roll_custom_dice(6) };
+        break;
+    case 2:
+        exit = { random.roll_custom_dice(9), 6 };
+        break;
+    case 3:
+        exit = { 1, random.roll_custom_dice(6) };
+        break;
+    default:
+        std::cout << "error" << std::endl;
+        break;
+    }
+}
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
 {

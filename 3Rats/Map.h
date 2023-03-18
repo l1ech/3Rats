@@ -48,6 +48,16 @@ private:
 	void make_garden(bool item_generations);
 	void make_cage(bool item_generation);
 
+	// helper functions for generation
+
+	void make_doors_entry(int x, int y);
+	void make_doors_exit(int x, int y);
+	void make_doors_hole(int x, int y);
+
+	void make_doors_entry(int direction);
+	void make_doors_exit(int direction);
+
+
 	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
 	void build_frame(std::vector<std::vector <int>>& map_data, std::pair<int , int >entrance, std::pair<int, int >exit, int wall, int space);
