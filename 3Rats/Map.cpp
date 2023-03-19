@@ -94,17 +94,17 @@ void Map::make_maze(bool item_generation)
 
     build_frame(data, entrence, exit, 9, 1);
 
-    while (rec_pos(entrence.second, entrence.second, data, data[start_x][start_y]) != 0) { }
+    while (rec_pos(entrence.first, entrence.second, data, data[start_x][start_y]) != 0) { }
 
     trim_boarder(data, map_data);
 
-    //print_vector(map_data, map_data[0].size(), map_data.size());
+    print_vector(map_data, map_data[0].size(), map_data.size());
 
     //set_corners(map_data);
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80
 
-    //print_vector(item_data, item_data[0].size(), item_data.size());
+    print_vector(item_data, item_data[0].size(), item_data.size());
 
     save_data(map_data, item_data);
 }

@@ -94,6 +94,7 @@ void init_hyper_map(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	hypermap->set_tile_array(tile_array, item_amount);
 
 	hypermap->set_up();
+	hypermap->make_maze();
 
 	map_array[0].set_type(2);
 	map_array[0].show_it();

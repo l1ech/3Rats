@@ -8,6 +8,10 @@ class Hypermap
 private:
 	SDL_Renderer* renderTarget;
 
+	int height, width;
+
+	std::vector<std::pair<std::pair<int, int >, std::pair<int, int >>> connections;
+
 	double time;
 
 	Map* map_array;
@@ -37,6 +41,14 @@ public:
 	int get_item_size();
 
 	void set_up();
+
+	void make_maze();
+	void make_points(int a_x, int a_y, int b_x, int b_y);
+	void build_frame(std::vector<std::vector <int>>& map_data, std::pair<int, int >entrance, std::pair<int, int >exit, int wall, int space);
+	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
+	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
+	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
+
 
 	void update(float delta);
 	void draw(SDL_Renderer* renderTarget);
