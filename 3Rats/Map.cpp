@@ -84,8 +84,8 @@ void Map::make_maze(bool item_generation)
 
     Random rand;
 
-    make_doors_entry(3);
-    make_doors_exit(1);
+    make_doors_entry(entry_direction);
+    make_doors_exit(exit_direction);
     make_doors_hole(-100, -100);
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
@@ -122,8 +122,8 @@ void Map::make_garden(bool item_generation)
 
     Random rand;
 
-    make_doors_entry(3);
-    make_doors_exit(1);
+    make_doors_entry(entry_direction);
+    make_doors_exit(exit_direction);
     make_doors_hole(rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y));
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
@@ -764,4 +764,30 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
 int Map::get_tile(int x, int y)
 {
     return y * width + x;
+}
+
+void Map::set_layout(int num)
+{
+    switch (num)
+    {
+    case 3:
+        entry_direction = 3;
+        exit_direction = 1;
+        break;
+    case 4:
+        entry_direction = 3;
+        exit_direction = 1;
+        break;
+    case 5:
+        entry_direction = 0;
+        exit_direction = 2;
+        break;
+    case 6:
+        entry_direction = 0;
+        exit_direction = 2;
+        break;
+    default:
+        std::cout << "error! the value is: "<< num << std::endl;
+        break;
+    }
 }

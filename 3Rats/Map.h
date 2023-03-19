@@ -23,6 +23,9 @@ private:
 	std::pair<int, int> exit;
 	std::pair<int, int> hole;
 
+	int entry_direction;
+	int exit_direction;
+
 	int item_id;
 	int* item_on_map;
 	double time;
@@ -94,6 +97,8 @@ public:
 
 	void set_map_id(int numer);
 	int get_map_id();
+
+	void set_layout(int num);
 
 	std::pair <int, int> give_entry_door();
 	std::pair <int, int> give_exit_door();

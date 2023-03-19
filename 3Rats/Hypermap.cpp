@@ -119,24 +119,48 @@ void Hypermap::make_maze()
 
 	make_points(1, 1, 5, 5);
 	
-	std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
-	std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
+	data.resize(height + 2);
+	for (int i = 0; i < data.size(); i++) {
+		data[i].resize(width + 2);
+		for (int j = 0; j < data[i].size(); j++) {
+			data[i][j] = std::make_pair(0, 0);
+		}
+	}
+
+	map_data.resize(height);
+	for (int i = 0; i < map_data.size(); i++) {
+		map_data[i].resize(width);
+		for (int j = 0; j < map_data[i].size(); j++) {
+			map_data[i][j] = std::make_pair(0, 0);
+		}
+	}
 
 	build_frame(data, connections[0].first, connections[0].second, 9, 1);
 
 	std::cout << "data =============" << std::endl;
 	print_vector(data, data[0].size(), data.size());
 
-	while (rec_pos(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y]) != 0) {}
+
+	std::cout << "hidden data =============" << std::endl;
+	print_vector_hidden(data, data[0].size(), data.size());
+
+	while (find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0) != 0) {}
 
 
-	std::cout << "=============" << std::endl;
-	print_vector(map_data, map_data[0].size(), map_data.size());
+	std::cout << "hidden data after fill =============" << std::endl;
+	print_vector_hidden(data, data[0].size(), data.size());
+
+	std::cout << "data =============" << std::endl;
+	print_vector(data, data[0].size(), data.size());
 
 	trim_boarder(data, map_data);
 
-	std::cout << "=============" << std::endl;
+	std::cout << "map data =============" << std::endl;
 	print_vector(map_data, map_data[0].size(), map_data.size());
+
+	std::cout << "hidden map data =============" << std::endl;
+	print_vector_hidden(map_data, map_data[0].size(), map_data.size());
+
 
 	//save_data(map_data);
 	
@@ -150,104 +174,101 @@ void Hypermap::make_points(int a_x, int a_y, int b_x, int b_y)
 	connections.push_back({ point_a, point_b });
 }
 
-void Hypermap::build_frame(std::vector<std::vector<int>>& data, std::pair<int, int> entrance, std::pair<int, int> exit, int wall, int space)
+void Hypermap::build_frame(std::vector<std::vector<std::pair<int, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit, int wall, int space)
 {
 	for (int h = 0; h < height + 2; h++)
 	{
 		for (int w = 0; w < width + 2; w++)
 		{
-			if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = wall;
-			else data[h][w] = space;
+			if (w == 0 || w == width + 1 || h == 0 || h == height + 1) 
+				data[h][w].first = wall;
+			else 
+				data[h][w].first = space;
 
+			data[h][w].second = 0;
 		}
 	}
 
-	data[entrance.second][entrance.first] = 2;
-	data[exit.second][exit.first] = 0;
+	data[entrance.second][entrance.first].first = 2;
+	data[exit.second][exit.first].first = 0;
 }
 
-int Hypermap::rec_pos(int x, int y, std::vector<std::vector<int>>& arg, int& prev_direction)
+int Hypermap::find_empty_space(int x, int y, std::vector<std::vector<std::pair<int, int>>>& map, int& prev_direction, int iterator)
 {
+	iterator++;
+
 	Random rand;
 
 	int direction;
 
-	//print_vector(arg, width + 2, height + 2);
-
-	//================= set new location
-	if (rand.flip_coin())
-	{//horizontal
-		if (rand.flip_coin())
-		{
-			direction = 3;
+	// Set new location
+	if (rand.flip_coin()) {  // Horizontal
+		if (rand.flip_coin()) {
+			direction = EAST;  // Right
 			x++;
-		}//right
-		else
-		{
-			direction = 4;
+		}
+		else {
+			direction = WEST;  // Left
 			x--;
-		}//left
+		}
 	}
-	else
-	{//vertical
-		if (rand.flip_coin())
-		{
-			direction = 5;
+	else {  // Vertical
+		if (rand.flip_coin()) {
+			direction = NORTH;  // Up
 			y++;
-		}//up
-		else
-		{
-			direction = 6;
+		}
+		else {
+			direction = SOUTH;  // Down
 			y--;
-		}//down
+		}
 	}
-	//================= try new location
 
-	int point_value = arg[y][x];
+	// Try new location
+	int point_value = map[y][x].first;
 
-	if (point_value == 0)                         // finish or path
-	{
+	if (point_value == EMPTY) {  // Empty field
 		return point_value;
 	}
-	else if (point_value == 1)                    // empty field == wall
-	{
-		arg[y][x] = direction;
+	else if (point_value == WALL) {  // Wall
+		map[y][x].first = direction;
+		map[y][x].second = iterator;
+		counter_maps = iterator;
 
-		int vall = rec_pos(x, y, arg, direction);
+		int vall = find_empty_space(x, y, map, direction, iterator);
 
-		if (vall == 0)
-		{
+		if (vall == EMPTY) {
 			return vall;
 		}
-		else if (vall == 1)
-		{
-
-			arg[y][x] = direction;
+		else if (vall == WALL) {
+			map[y][x].first = direction;
+			map[y][x].second = iterator;
+			counter_maps = iterator;
 		}
-		else
-		{
-			arg[y][x] = 1;
+		else {
+			map[y][x].first = WALL;
+			map[y][x].second = 0;
 			return vall;
 		}
 	}
-	else
-	{
+	else {  // Finish or path
 		return point_value;
 	}
 }
 
-void Hypermap::trim_boarder(std::vector<std::vector<int>>& data, std::vector<std::vector<int>>& map_data)
+
+void Hypermap::trim_boarder(std::vector<std::vector<std::pair<int, int>>>& data, std::vector<std::vector<std::pair<int, int>>>& map_data)
 {
 	for (int h = 0; h < height; h++)
 	{
 		for (int w = 0; w < width; w++)
 		{
-			map_data[h][w] = data[h + 1][w + 1];
+			map_data[h][w].first = data[h + 1][w + 1].first;
+			map_data[h][w].second = data[h + 1][w + 1].second;
 		}
 	}
 }
 
-void Hypermap::print_vector(std::vector<std::vector<int>>& arg, int size_x, int size_y)
+void Hypermap::print_vector(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -255,9 +276,39 @@ void Hypermap::print_vector(std::vector<std::vector<int>>& arg, int size_x, int 
 	{
 		for (int w = 0; w < size_x; w++)
 		{
-			std::cout << arg[h][w];
+			std::cout << arg[h][w].first;
 
 		}
 		std::cout << std::endl;
+	}
+}
+
+void Hypermap::print_vector_hidden(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
+{
+	std::cout << "vector: " << std::endl;
+
+	for (int h = 0; h < size_y; h++)
+	{
+		for (int w = 0; w < size_x; w++)
+		{
+			std::cout << arg[h][w].second;
+
+		}
+		std::cout << std::endl;
+	}
+}
+
+int Hypermap::get_layout(int num)
+{
+	for (int h = 0; h < height; h++)
+	{
+		for (int w = 0; w < height; w++)
+		{
+			int temp = map_data[h][w].second;
+			if ( temp == num)
+			{
+				return map_data[h][w].first;
+			}
+		}
 	}
 }

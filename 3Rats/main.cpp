@@ -101,6 +101,12 @@ void init_hyper_map(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 
 	for (int i = 1; i < map_amount; i++)
 	{
+		if (hypermap->counter_maps == i)
+		{
+			std::cout << "END GENERATED!" << std::endl;
+			break;
+		}
+		map_array[i].set_layout(hypermap->get_layout(i));
 		map_array[i].set_type(random.flip_coin());
 		map_array[i].show_it();
 	}
