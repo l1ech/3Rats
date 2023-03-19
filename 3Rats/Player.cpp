@@ -143,9 +143,10 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			{
 				map_number++;
 				map_array[map_number].set_textures();
+				std::pair <int, int> entrance = map_array[map_number].give_entry_door();
 
-				positionRect.x = 0;
-				positionRect.y = 0;
+				positionRect.x = entrance.first * 64 - cropRect.w;
+				positionRect.y = entrance.second * 64 - cropRect.h;
 
 				// for testing this is set to be linear map. which is wrong.
 				// it has to be 3d so a hole would move the map in z direction 
