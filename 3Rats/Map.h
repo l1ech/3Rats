@@ -97,9 +97,6 @@ public:
 	std::pair <int, int> give_exit_door();
 	std::pair <int, int> give_hole_door();
 
-	Tile* get_tile_array();
-	int get_tile_array_size();
-
 	int get_hight();
 	int get_width();
 

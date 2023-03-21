@@ -107,10 +107,16 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_hyper_map(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Level* Level)
+void init_hyper_map(SDL_Renderer* renderTarget, Map* map_array, int map_amount, Level* Level)
 {
 	Random random;
 	Level->set_renderer(renderTarget);
+
+	Item* item_array = map_array[0].get_item_array();
+	int item_amount = map_array[0].get_item_size();
+
+	Tile* tile_array = map_array[0].get_tile_array();
+	int tile_amount = map_array[0].get_tile_size();
 
 	Level->set_map_array(map_array, map_amount);
 	Level->set_item_array(item_array, item_amount);
@@ -220,7 +226,7 @@ int main(int argc, char* argv[])
 	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount);
 
 	Level Level;
-	init_hyper_map(renderTarget, tile_array,tile_amount, item_array, item_amount, map_array, map_amount, &Level);
+	init_hyper_map(renderTarget, map_array, map_amount, &Level);
 
 	Player player_array[player_amount];
 	init_player_array(renderTarget, player_array, player_amount, Level);

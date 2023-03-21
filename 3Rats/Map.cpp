@@ -424,16 +424,6 @@ std::pair<int, int> Map::give_exit_door() { return { exit.first, exit.second }; 
 
 std::pair<int, int> Map::give_hole_door() { return { hole.first, hole.second }; }
 
-Tile* Map::get_tile_array()
-{
-    return nullptr;
-}
-
-int Map::get_tile_array_size()
-{
-    return 0;
-}
-
 int Map::get_hight()
 {
     return height;
