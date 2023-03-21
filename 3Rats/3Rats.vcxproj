@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Clock.cpp" />
-    <ClCompile Include="Hypermap.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -33,7 +33,7 @@
   <ItemGroup>
     <ClInclude Include="Body.h" />
     <ClInclude Include="Clock.h" />
-    <ClInclude Include="Hypermap.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map_Structure.h" />

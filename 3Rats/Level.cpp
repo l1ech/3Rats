@@ -1,24 +1,24 @@
-#include "Hypermap.h"
+#include "Level.h"
 
-Hypermap::Hypermap()
+Level::Level()
 {
 	number_items_on_map = 0;
 	width = 5;
 	height = 5;
 }
 
-void Hypermap::set_map_array(Map* map, int map_size)
+void Level::set_map_array(Map* map, int map_size)
 {
 	map_array = map;
 	map_array_size = map_size;
 }
 
-Map* Hypermap::get_map_array()
+Map* Level::get_map_array()
 {
 	return map_array;
 }
 
-void Hypermap::set_up()
+void Level::set_up()
 {
 	ptr = &number_items_on_map;
 
@@ -28,7 +28,7 @@ void Hypermap::set_up()
 	}
 }
 
-void Hypermap::update(float delta)
+void Level::update(float delta)
 {
 	//time += delta;
 
@@ -38,7 +38,7 @@ void Hypermap::update(float delta)
 	}
 }
 
-void Hypermap::draw(SDL_Renderer* renderTarget)
+void Level::draw(SDL_Renderer* renderTarget)
 {
 	for (int i = 0; i < map_array_size; i++)
 	{
@@ -55,22 +55,22 @@ void Hypermap::draw(SDL_Renderer* renderTarget)
 	}
 }
 
-void Hypermap::set_renderer(SDL_Renderer* renderTarget)
+void Level::set_renderer(SDL_Renderer* renderTarget)
 {
 	this->renderTarget = renderTarget;
 }
 
-Map* Hypermap::get_map()
+Map* Level::get_map()
 {
 	return map_array;
 }
 
-int Hypermap::get_map_size()
+int Level::get_map_size()
 {
 	return map_array_size;
 }
 
-void Hypermap::make_maze()
+void Level::make_maze()
 {
 	int start_x = 1;
 	int start_y = 1;
@@ -133,7 +133,7 @@ void Hypermap::make_maze()
 	
 }
 
-void Hypermap::make_points(int a_x, int a_y, int b_x, int b_y)
+void Level::make_points(int a_x, int a_y, int b_x, int b_y)
 {
 	std::pair <int, int > point_a = { a_x, a_y };
 	std::pair <int, int > point_b = { b_x, b_y };
@@ -141,7 +141,7 @@ void Hypermap::make_points(int a_x, int a_y, int b_x, int b_y)
 	connections.push_back({ point_a, point_b });
 }
 
-void Hypermap::build_frame(std::vector<std::vector<std::pair<int, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit, int wall, int space)
+void Level::build_frame(std::vector<std::vector<std::pair<int, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit, int wall, int space)
 {
 	for (int h = 0; h < height + 2; h++)
 	{
@@ -160,7 +160,7 @@ void Hypermap::build_frame(std::vector<std::vector<std::pair<int, int>>>& data, 
 	data[exit.second][exit.first].first = 0;
 }
 
-int Hypermap::find_empty_space(int x, int y, std::vector<std::vector<std::pair<int, int>>>& map, int& prev_direction, int iterator)
+int Level::find_empty_space(int x, int y, std::vector<std::vector<std::pair<int, int>>>& map, int& prev_direction, int iterator)
 {
 	iterator++;
 
@@ -223,7 +223,7 @@ int Hypermap::find_empty_space(int x, int y, std::vector<std::vector<std::pair<i
 }
 
 
-void Hypermap::trim_boarder(std::vector<std::vector<std::pair<int, int>>>& data, std::vector<std::vector<std::pair<int, int>>>& map_data)
+void Level::trim_boarder(std::vector<std::vector<std::pair<int, int>>>& data, std::vector<std::vector<std::pair<int, int>>>& map_data)
 {
 	for (int h = 0; h < height; h++)
 	{
@@ -235,7 +235,7 @@ void Hypermap::trim_boarder(std::vector<std::vector<std::pair<int, int>>>& data,
 	}
 }
 
-void Hypermap::print_vector(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
+void Level::print_vector(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -250,7 +250,7 @@ void Hypermap::print_vector(std::vector<std::vector<std::pair<int, int>>>& arg, 
 	}
 }
 
-void Hypermap::print_vector_hidden(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
+void Level::print_vector_hidden(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -265,7 +265,7 @@ void Hypermap::print_vector_hidden(std::vector<std::vector<std::pair<int, int>>>
 	}
 }
 
-int Hypermap::get_layout(int num)
+int Level::get_layout(int num)
 {
 	for (int h = 0; h < height; h++)
 	{

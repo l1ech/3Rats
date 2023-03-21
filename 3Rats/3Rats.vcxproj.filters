@@ -36,7 +36,7 @@
     <ClCompile Include="Random.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Hypermap.cpp">
+    <ClCompile Include="Level.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Clock.cpp">
@@ -65,7 +65,7 @@
     <ClInclude Include="Random.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Hypermap.h">
+    <ClInclude Include="Level.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Clock.h">

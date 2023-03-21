@@ -10,7 +10,7 @@
 #include "player.h"
 #include "Tile.h"
 #include "Random.h"
-#include "Hypermap.h"
+#include "Level.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -107,42 +107,42 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_hyper_map(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Hypermap* hypermap)
+void init_hyper_map(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Level* Level)
 {
 	Random random;
-	hypermap->set_renderer(renderTarget);
+	Level->set_renderer(renderTarget);
 
-	hypermap->set_map_array(map_array, map_amount);
-	hypermap->set_item_array(item_array, item_amount);
-	hypermap->set_tile_array(tile_array, item_amount);
+	Level->set_map_array(map_array, map_amount);
+	Level->set_item_array(item_array, item_amount);
+	Level->set_tile_array(tile_array, item_amount);
 
-	hypermap->set_up();
-	hypermap->make_maze();
+	Level->set_up();
+	Level->make_maze();
 
 	map_array[0].set_type(2);
 	map_array[0].show_it();
 
 	for (int i = 1; i < map_amount; i++)
 	{
-		if (hypermap->counter_maps == i)
+		if (Level->counter_maps == i)
 		{
 			std::cout << "END GENERATED!" << std::endl;
 			break;
 		}
-		map_array[i].set_layout(hypermap->get_layout(i));
+		map_array[i].set_layout(Level->get_layout(i));
 		map_array[i].set_type(random.flip_coin());
 		map_array[i].show_it();
 	}
 	map_array[0].set_textures();
 }
 
-void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Hypermap& hypermap)
+void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Level& Level)
 {
 	for (int i = 0; i < player_amount; i++)
 	{
 		Player player;
 		player.set_player_number(i);
-		player.set_hypermap(&hypermap);
+		player.set_Level(&Level);
 		player_array[i] = player;
 	}
 
@@ -219,11 +219,11 @@ int main(int argc, char* argv[])
 	Map map_array[map_amount];
 	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount);
 
-	Hypermap hypermap;
-	init_hyper_map(renderTarget, tile_array,tile_amount, item_array, item_amount, map_array, map_amount, &hypermap);
+	Level Level;
+	init_hyper_map(renderTarget, tile_array,tile_amount, item_array, item_amount, map_array, map_amount, &Level);
 
 	Player player_array[player_amount];
-	init_player_array(renderTarget, player_array, player_amount, hypermap);
+	init_player_array(renderTarget, player_array, player_amount, Level);
 
 	// ===================================================================================
 
@@ -298,7 +298,7 @@ int main(int argc, char* argv[])
 
 
 		// update 
-		hypermap.update(delta);
+		Level.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[0], map_array, map_amount, map_number);
 		for (int i = 1; i < player_amount; i++)
@@ -315,7 +315,7 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
 		// draw 
-		hypermap.draw(renderTarget);
+		Level.draw(renderTarget);
 
 		for (int i = 0; i < player_amount; i++)
 		{

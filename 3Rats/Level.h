@@ -4,7 +4,7 @@
 #include "Clock.h"
 #include "Map_Structure.h"
 
-class Hypermap : public Map_Structure
+class Level : public Map_Structure
 {
 private:
 	SDL_Renderer* renderTarget;
@@ -33,7 +33,7 @@ private:
 	std::vector<std::vector <std::pair<int, int>>> map_data;//(std::pair<int, int>(height), std::vector<int>(width));
 
 public:
-	Hypermap();
+	Level();
 
 	void set_map_array(Map* map, int size);
 	Map* get_map_array();
