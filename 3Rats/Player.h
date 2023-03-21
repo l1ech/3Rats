@@ -41,6 +41,10 @@ private:
 
 	int goalX, goalY;
 
+	Map* map_array;
+	int map_array_size;
+	int* map_number;
+
 	Item* item_array;
 	int item_array_size;
 
@@ -76,7 +80,7 @@ private:
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
 	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
 	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
-	void check_door(int& map_number,Map* map_array, int map_amount, Tile* tile_array, int length);
+	void check_door(Topography* topography,Map* map_array, int map_amount, Tile* tile_array, int length);
 	void make_rat_position(int direction, int& rat_x, int& rat_y);
 	int tick_food(int num);
 
@@ -98,7 +102,7 @@ public:
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Map* map_array, int map_amount, int& map_number);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Topography* topograpy, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal(int x, int y);

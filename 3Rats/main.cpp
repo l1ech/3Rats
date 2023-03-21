@@ -306,10 +306,10 @@ int main(int argc, char* argv[])
 		// update 
 		topography.update(delta);
 
-		player_array[0].Update(delta, keyState, mode, player_array[0], map_array, map_amount, map_number);
+		player_array[0].Update(delta, keyState, mode, player_array[0], &topography, map_number);
 		for (int i = 1; i < player_amount; i++)
 		{
-			player_array[i].Update(delta, keyState, mode, player_array[i - 1], map_array, map_amount, map_number);
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1], &topography, map_number);
 		}
 
 		clock.update(delta);

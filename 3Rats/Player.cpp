@@ -99,11 +99,13 @@ void Player::get_direction_blocked(block_direction_counter& counter, block_direc
 	else direction.up = true;
 }
 
-void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* tile_array, int length)
+void Player::check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length)
 {
 	// make it that all players spawn at the new door
 	// not at 0, 0 
 	// new door could be anywhere
+
+	int map_number = topography->get_map_number();
 
 	for (int i = 0; i < length; i++)
 	{
@@ -119,6 +121,7 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			if (tile_array[i].is_exit && !last_room)
 			{
 				map_number++;
+				topography->set_map_number(map_number);
 				map_array[map_number].set_textures();
 				std::pair <int, int> entrance = map_array[map_number].give_entry_door();
 
@@ -133,6 +136,7 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			else if (tile_array[i].is_entrance	&& !first_room)
 			{
 				map_number--;
+				topography->set_map_number(map_number);
 				map_array[map_number].set_textures();
 				std::pair <int, int> exit = map_array[map_number].give_exit_door();
 
@@ -142,6 +146,7 @@ void Player::check_door(int& map_number, Map* map_array, int map_amount, Tile* t
 			else if (tile_array[i].is_hole		&& map_number != map_amount - 1)
 			{
 				map_number++;
+				topography->set_map_number(map_number);
 				map_array[map_number].set_textures();
 				std::pair <int, int> entrance = map_array[map_number].give_entry_door();
 
@@ -439,8 +444,14 @@ void Player::set_Topography(Topography* h)
 }
 
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Map* map_array, int map_amount, int& map_number)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat,Topography* topography, int& map_number)
 {
+	// Map* map_array, int map_amount, int& map_number
+
+	map_array = topography->get_map_array();
+	map_array_size = topography->get_map_size();
+	//map_number = topography->get_map_number();
+
 	tile_array = topography->get_tile_array();
 	tile_array_size = topography->get_tile_size();
 
@@ -487,7 +498,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	if (saturation == 0) {} // game over. make a flag that -> game_over = true;
 
 	// colision with door check
-	check_door(map_number, map_array, map_amount, tile_array, tile_array_size);
+	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
 
 	blocked_i = get_blocked_array(tile_array, tile_array_size);
 

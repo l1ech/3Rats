@@ -9,6 +9,8 @@ class Topography : public Level_Structure
 private:
 	SDL_Renderer* renderTarget;
 
+	int current_map_id;
+
 	const int WALL = 1;
 	const int EMPTY = 0;
 
@@ -38,6 +40,9 @@ public:
 	void set_map_array(Map* map, int size);
 	Map* get_map_array();
 	int get_map_size();
+
+	int get_map_number();
+	void set_map_number(int number);
 
 	void set_up();
 

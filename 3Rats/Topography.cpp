@@ -5,6 +5,7 @@ Topography::Topography()
 	number_items_on_map = 0;
 	width = 5;
 	height = 5;
+	current_map_id = 0;
 }
 
 void Topography::set_map_array(Map* map, int map_size)
@@ -26,6 +27,16 @@ void Topography::set_up()
 	{
 		map_array[i].set_ptr(ptr);
 	}
+}
+
+int Topography::get_map_number()
+{
+	return current_map_id;
+}
+
+void Topography::set_map_number(int number)
+{
+	current_map_id = number;
 }
 
 void Topography::update(float delta)
