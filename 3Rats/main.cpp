@@ -190,8 +190,6 @@ int main(int argc, char* argv[])
 	const int item_amount = 54;
 	const int player_amount = 3;
 
-	int map_number = 0;
-
 	SDL_Init(SDL_INIT_VIDEO);
 
 	if (TTF_Init() < 0)
@@ -306,10 +304,10 @@ int main(int argc, char* argv[])
 		// update 
 		topography.update(delta);
 
-		player_array[0].Update(delta, keyState, mode, player_array[0], &topography, map_number);
+		player_array[0].Update(delta, keyState, mode, player_array[0], &topography);
 		for (int i = 1; i < player_amount; i++)
 		{
-			player_array[i].Update(delta, keyState, mode, player_array[i - 1], &topography, map_number);
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1], &topography);
 		}
 
 		clock.update(delta);

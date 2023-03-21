@@ -102,7 +102,7 @@ public:
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
 
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Topography* topograpy, int& map_number);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Topography* topograpy);
 	void Draw(SDL_Renderer* renderTarget);  
 
 	void SetNewGoal(int x, int y);
