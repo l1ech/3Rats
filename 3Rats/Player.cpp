@@ -444,7 +444,7 @@ void Player::set_Topography(Topography* h)
 }
 
 
-void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat,Topography* topography)
+void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat)
 {
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();

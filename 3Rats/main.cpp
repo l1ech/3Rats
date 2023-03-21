@@ -300,14 +300,15 @@ int main(int argc, char* argv[])
 
 		keyState = SDL_GetKeyboardState(NULL);
 
+		// =================================== UPDATE GAME ===================================
+		// ===================================================================================
 
-		// update 
 		topography.update(delta);
 
-		player_array[0].Update(delta, keyState, mode, player_array[0], &topography);
+		player_array[0].Update(delta, keyState, mode, player_array[2]);
 		for (int i = 1; i < player_amount; i++)
 		{
-			player_array[i].Update(delta, keyState, mode, player_array[i - 1], &topography);
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
 		}
 
 		clock.update(delta);
@@ -318,7 +319,9 @@ int main(int argc, char* argv[])
 		SDL_RenderClear(renderTarget);
 		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
-		// draw 
+		// ==================================== DRAW GAME ====================================
+		// ===================================================================================
+
 		topography.draw(renderTarget);
 
 		for (int i = 0; i < player_amount; i++)
