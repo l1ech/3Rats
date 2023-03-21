@@ -192,29 +192,29 @@ void Player::make_player_move(player_move move, block_direction direction, float
 	{
 		positionRect.y -= moveSpeed * delta;
 		cropRect.y = frameHeight * 3;
-		direction_rat = 0;
+		current_direction = 0;
 	}
 	else if (move.down && !direction.down)			//down
 	{
 		positionRect.y += moveSpeed * delta;
 		cropRect.y = 0;
-		direction_rat = 1;
+		current_direction = 1;
 	}
 	else if (move.left && !direction.left)			//left
 	{
 		positionRect.x -= moveSpeed * delta;
 		cropRect.y = frameHeight;
-		direction_rat = 2;
+		current_direction = 2;
 	}
 	else if (move.right && !direction.right)			//right
 	{
 		positionRect.x += moveSpeed * delta;
 		cropRect.y = frameHeight * 2;
-		direction_rat = 3;
+		current_direction = 3;
 	}
 	else
 	{
-		isActive = false;
+		is_moving = false;
 	}
 }
 
@@ -224,35 +224,35 @@ void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 	{
 		positionRect.y -= moveSpeed * delta;
 		cropRect.y = frameHeight * 3;
-		direction_rat = 0;
+		current_direction = 0;
 	}
 	else if (rat_y < front_rat_y && !direction.down)
 	{
 		positionRect.y += moveSpeed * delta;
 		cropRect.y = 0;
-		direction_rat = 1;
+		current_direction = 1;
 	}
 	else if (rat_x > front_rat_x && !direction.left)
 	{
 		positionRect.x -= moveSpeed * delta;
 		cropRect.y = frameHeight;
-		direction_rat = 2;
+		current_direction = 2;
 	}
 	else if (rat_x < front_rat_x && !direction.right)
 	{
 		positionRect.x += moveSpeed * delta;
 		cropRect.y = frameHeight * 2;
-		direction_rat = 3;
+		current_direction = 3;
 	}
 	else
 	{
-		direction_rat = front_rat.GetDirection();
+		current_direction = front_rat.GetDirection();
 	}
 
-	if (direction_rat == 0) cropRect.y = frameHeight * 3;
-	if (direction_rat == 1) cropRect.y = 0;
-	if (direction_rat == 2) cropRect.y = frameHeight;
-	if (direction_rat == 3) cropRect.y = frameHeight * 2;
+	if (current_direction == 0) cropRect.y = frameHeight * 3;
+	if (current_direction == 1) cropRect.y = 0;
+	if (current_direction == 2) cropRect.y = frameHeight;
+	if (current_direction == 3) cropRect.y = frameHeight * 2;
 }
 
 void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item)
@@ -261,25 +261,25 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 	{
 		positionRect.y -= moveSpeed * delta;
 		cropRect.y = frameHeight * 3;
-		direction_rat = 0;
+		current_direction = 0;
 	}
 	else if (rat_y < goal_y && !direction.down)
 	{
 		positionRect.y += moveSpeed * delta;
 		cropRect.y = 0;
-		direction_rat = 1;
+		current_direction = 1;
 	}
 	else if (rat_x > goal_x && !direction.left)
 	{
 		positionRect.x -= moveSpeed * delta;
 		cropRect.y = frameHeight;
-		direction_rat = 2;
+		current_direction = 2;
 	}
 	else if (rat_x < goal_x && !direction.right)
 	{
 		positionRect.x += moveSpeed * delta;
 		cropRect.y = frameHeight * 2;
-		direction_rat = 3;
+		current_direction = 3;
 	}
 	else if (rat_x == goal_x && rat_y == goal_y&& !item.get_pick_up())
 	{
@@ -302,22 +302,22 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 
 void Player::hold_item_in_mouth(Item& item)
 {
-	if (direction_rat == 0)
+	if (current_direction == 0)
 	{
 		item.SetX(GetOriginX() - 24);
 		item.SetY(GetOriginY() - 32 - 14);
 	}
-	else if (direction_rat == 1)
+	else if (current_direction == 1)
 	{
 		item.SetX(GetOriginX() - 24);
 		item.SetY(GetOriginY() - 32 + 14);
 	}
-	else if (direction_rat == 2)
+	else if (current_direction == 2)
 	{
 		item.SetX(GetOriginX() - 24 - 14);
 		item.SetY(GetOriginY() - 32);
 	}
-	else if (direction_rat == 3)
+	else if (current_direction == 3)
 	{
 		item.SetX(GetOriginX() - 24 + 14);
 		item.SetY(GetOriginY() - 32);
@@ -334,7 +334,7 @@ Player::Player()
 	item_search_id = 0;
 	has_goal = false;
 
-	isActive = false;
+	is_moving = false;
 
 	keys[0] = SDL_SCANCODE_W;
 	keys[1] = SDL_SCANCODE_S;
@@ -386,7 +386,7 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 
 	radius = frameWidth / 2;
 
-	isActive = false;
+	is_moving = false;
 
 	keys[0] = SDL_SCANCODE_W;
 	keys[1] = SDL_SCANCODE_S;
@@ -456,7 +456,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 		mode = 0;
 	}
 
-	isActive = true;	// do i need this?
+	is_moving = true;	// do i need this?
 
 	int rat_x = this->GetOriginX();
 	int rat_y = this->GetOriginY();
@@ -534,7 +534,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	}
 
 	// make movement in texture for player
-	if (isActive)
+	if (is_moving)
 	{
 		frameCounter += delta;
 		searchCounter += delta;
@@ -573,7 +573,7 @@ void Player::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, tex
 
 void Player::SetNewGoal(int x, int y) { goalX = x; goalY = y; }
 
-int Player::GetDirection() { return direction_rat; }
+int Player::GetDirection() { return current_direction; }
 
 
 bool Player::intersectsWithBody(Body& b)

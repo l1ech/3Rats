@@ -36,8 +36,8 @@ private:
 	bool wait;
 
 	float moveSpeed;
-	bool isActive;
-	int direction_rat;
+	bool is_moving;
+	int current_direction;
 
 	int goalX, goalY;
 
