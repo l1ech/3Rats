@@ -3,8 +3,8 @@
 Hypermap::Hypermap()
 {
 	number_items_on_map = 0;
-	width = 10;
-	height = 10;
+	width = 5;
+	height = 5;
 }
 
 void Hypermap::set_map_array(Map* map, int map_size)
@@ -16,39 +16,6 @@ void Hypermap::set_map_array(Map* map, int map_size)
 Map* Hypermap::get_map_array()
 {
 	return map_array;
-}
-
-void Hypermap::set_tile_array(Tile* tile, int tile_size)
-{
-
-	tile_array = tile;
-	tile_array_size = tile_size;
-}
-
-Tile* Hypermap::get_tile_array()
-{
-	return tile_array;
-}
-
-int Hypermap::get_tile_size()
-{
-	return tile_array_size;
-}
-
-void Hypermap::set_item_array(Item* item, int item_size)
-{
-	item_array = item;
-	item_array_size = item_size;
-}
-
-Item* Hypermap::get_item_array()
-{
-	return item_array;
-}
-
-int Hypermap::get_item_size()
-{
-	return item_array_size;
 }
 
 void Hypermap::set_up()
@@ -117,7 +84,7 @@ void Hypermap::make_maze()
 	make_doors_hole(-100, -100);
 	*/
 
-	make_points(1, 1, 9, 9);
+	make_points(start_x, start_y, end_x, end_y);
 	
 	data.resize(height + 2);
 	for (int i = 0; i < data.size(); i++) {

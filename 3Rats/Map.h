@@ -12,8 +12,9 @@
 #include "Item.h"
 #include "Tile.h"
 #include "Random.h"
+#include "Map_Structure.h"
 
-class Map
+class Map : public Map_Structure
 {
 private:
 
@@ -37,12 +38,6 @@ private:
 
 	std::vector<int> directions;
 	std::vector<std::vector <std::vector<std::vector<int>>>>hyper_map;
-
-	Item* item_array;
-	int item_array_size;
-
-	Tile* tile_array;
-	int tile_array_size;
 
 	std::pair<int, int> data[6][9];
 
@@ -85,8 +80,6 @@ public:
 	void Draw(SDL_Renderer* renderTarget);
 
 	//set up functions 
-	void set_item_array(Item* item, int size);
-	void set_tile_array(Tile* body, int size);	//make similar to item array
 	void set_type(int type);
 	void set_textures();
 
@@ -104,5 +97,10 @@ public:
 	std::pair <int, int> give_exit_door();
 	std::pair <int, int> give_hole_door();
 
+	Tile* get_tile_array();
+	int get_tile_array_size();
+
+	int get_hight();
+	int get_width();
 
 };

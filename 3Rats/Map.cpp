@@ -196,52 +196,6 @@ void Map::make_cage(bool item_generation)
     save_data(map_data, item_data);
 }
 
-
-void Map::set_item_array(Item* item, int size)
-{
-    item_array = item;
-    item_array_size = size;
-
-    int x_cord = 0;
-    int y_cord = 0;
-
-    int i = 0;
-
-    for (int h = 0; h < height; h++)
-    {
-        for (int w = 0; w < width; w++)
-        {
-            x_cord = w * 64;
-            y_cord = h * 64;
-            item_array[i].set_cords(x_cord, y_cord);
-            i++;
-        }
-    }
-}
-
-void Map::set_tile_array(Tile* tile, int size)
-{   
-    tile_array = tile;
-    tile_array_size = size;
-
-    int x_cord = 0;
-    int y_cord = 0;
-
-    int i = 0;
-
-    for (int h = 0; h < height; h++)
-    {
-        for (int w = 0; w < width; w++)
-        {
-            x_cord = w * 64;
-            y_cord = h * 64;
-
-            tile_array[i].set_cords(x_cord, y_cord);
-            i++;
-        }
-    }
-}
-
 void Map::set_type(int type)
 {
     switch (type)
@@ -469,6 +423,26 @@ std::pair <int, int> Map::give_entry_door() { return { entrence.first, entrence.
 std::pair<int, int> Map::give_exit_door() { return { exit.first, exit.second }; }
 
 std::pair<int, int> Map::give_hole_door() { return { hole.first, hole.second }; }
+
+Tile* Map::get_tile_array()
+{
+    return nullptr;
+}
+
+int Map::get_tile_array_size()
+{
+    return 0;
+}
+
+int Map::get_hight()
+{
+    return height;
+}
+
+int Map::get_width()
+{
+    return width;
+}
 
 void Map::make_doors_entry(int x, int y)
 {

@@ -70,12 +70,35 @@ void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_am
 	}
 }
 
+template<typename T>
+void init_grid_coords(T* array, int size, int height, int width)
+{
+	int x_cord = 0;
+	int y_cord = 0;
+
+	int i = 0;
+
+	for (int h = 0; h < height; h++)
+	{
+		for (int w = 0; w < width; w++)
+		{
+			x_cord = w * 64;
+			y_cord = h * 64;
+			array[i].set_cords(x_cord, y_cord);
+			i++;
+		}
+	}
+}
+
 void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount)
 {
 	Map map_templet;
 
 	map_templet.set_tile_array(tile_array, tile_amount);
+	init_grid_coords(tile_array, tile_amount, map_templet.get_hight(), map_templet.get_width());
 	map_templet.set_item_array(item_array, item_amount);
+	init_grid_coords(item_array, item_amount, map_templet.get_hight(), map_templet.get_width());
+
 
 	for (int i = 0; i < map_amount; i++)
 	{
@@ -197,7 +220,7 @@ int main(int argc, char* argv[])
 	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount);
 
 	Hypermap hypermap;
-	init_hyper_map(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, &hypermap);
+	init_hyper_map(renderTarget, tile_array,tile_amount, item_array, item_amount, map_array, map_amount, &hypermap);
 
 	Player player_array[player_amount];
 	init_player_array(renderTarget, player_array, player_amount, hypermap);
@@ -243,6 +266,14 @@ int main(int argc, char* argv[])
 					player_array[0].SetX(0);
 					player_array[0].SetY(0);
 					player_array[0].set_enter(false);
+
+					player_array[1].SetX(0);
+					player_array[1].SetY(0);
+					player_array[1].set_enter(false);
+
+					player_array[2].SetX(0);
+					player_array[2].SetY(0);
+					player_array[2].set_enter(false);
 					break;
 
 				case SDLK_p:
