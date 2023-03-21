@@ -3,7 +3,7 @@
 #include"Tile.h"
 #include"Item.h"
 
-class Map_Structure
+class Level_Structure
 {
 protected:
 	Item* item_array;	// implement to use instead of having maps do it

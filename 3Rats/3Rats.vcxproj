@@ -21,11 +21,11 @@
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Clock.cpp" />
-    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Map_Structure.cpp" />
+    <ClCompile Include="Level_Structure.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -33,10 +33,10 @@
   <ItemGroup>
     <ClInclude Include="Body.h" />
     <ClInclude Include="Clock.h" />
-    <ClInclude Include="Level.h" />
+    <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="Map_Structure.h" />
+    <ClInclude Include="Level_Structure.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Tile.h" />

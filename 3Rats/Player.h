@@ -10,13 +10,13 @@
 #include "Item.h"
 #include "Map.h"
 #include "Tile.h"
-#include "Level.h"
+#include "Topography.h"
 
 
 class Player : public Body
 {
 private:
-	Level* level;
+	Topography* topography;
 
 	Random random;
 	int player_number;
@@ -96,7 +96,7 @@ public:
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
-	void set_Level(Level* Level);
+	void set_Topography(Topography* topography);
 
 	void Update(float delta, const Uint8* keyState, int mode, Player& p1, Map* map_array, int map_amount, int& map_number);
 	void Draw(SDL_Renderer* renderTarget);  

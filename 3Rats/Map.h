@@ -12,9 +12,9 @@
 #include "Item.h"
 #include "Tile.h"
 #include "Random.h"
-#include "Map_Structure.h"
+#include "Level_Structure.h"
 
-class Map : public Map_Structure
+class Map : public Level_Structure
 {
 private:
 
@@ -96,6 +96,7 @@ public:
 	std::pair <int, int> give_entry_door();
 	std::pair <int, int> give_exit_door();
 	std::pair <int, int> give_hole_door();
+
 
 	int get_hight();
 	int get_width();

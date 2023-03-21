@@ -433,19 +433,19 @@ void Player::set_player_number(int number)
 	player_number = number;
 }
 
-void Player::set_Level(Level* h)
+void Player::set_Topography(Topography* h)
 {
-	level = h;
+	topography = h;
 }
 
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat, Map* map_array, int map_amount, int& map_number)
 {
-	tile_array = level->get_tile_array();
-	tile_array_size = level->get_tile_size();
+	tile_array = topography->get_tile_array();
+	tile_array_size = topography->get_tile_size();
 
-	item_array = level->get_item_array();
-	item_array_size = level->get_item_size();
+	item_array = topography->get_item_array();
+	item_array_size = topography->get_item_size();
 
 	if (is_item_available_on_map())
 	{

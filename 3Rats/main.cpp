@@ -10,7 +10,7 @@
 #include "player.h"
 #include "Tile.h"
 #include "Random.h"
-#include "Level.h"
+#include "Topography.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -107,10 +107,10 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_hyper_map(SDL_Renderer* renderTarget, Map* map_array, int map_amount, Level* Level)
+void init_hyper_map(SDL_Renderer* renderTarget, Map* map_array, int map_amount, Topography* topography)
 {
 	Random random;
-	Level->set_renderer(renderTarget);
+	topography->set_renderer(renderTarget);
 
 	Item* item_array = map_array[0].get_item_array();
 	int item_amount = map_array[0].get_item_size();
@@ -118,37 +118,37 @@ void init_hyper_map(SDL_Renderer* renderTarget, Map* map_array, int map_amount, 
 	Tile* tile_array = map_array[0].get_tile_array();
 	int tile_amount = map_array[0].get_tile_size();
 
-	Level->set_map_array(map_array, map_amount);
-	Level->set_item_array(item_array, item_amount);
-	Level->set_tile_array(tile_array, item_amount);
+	topography->set_map_array(map_array, map_amount);
+	topography->set_item_array(item_array, item_amount);
+	topography->set_tile_array(tile_array, item_amount);
 
-	Level->set_up();
-	Level->make_maze();
+	topography->set_up();
+	topography->make_maze();
 
 	map_array[0].set_type(2);
 	map_array[0].show_it();
 
 	for (int i = 1; i < map_amount; i++)
 	{
-		if (Level->counter_maps == i)
+		if (topography->counter_maps == i)
 		{
 			std::cout << "END GENERATED!" << std::endl;
 			break;
 		}
-		map_array[i].set_layout(Level->get_layout(i));
+		map_array[i].set_layout(topography->get_layout(i));
 		map_array[i].set_type(random.flip_coin());
 		map_array[i].show_it();
 	}
 	map_array[0].set_textures();
 }
 
-void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Level& Level)
+void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Topography& topography)
 {
 	for (int i = 0; i < player_amount; i++)
 	{
 		Player player;
 		player.set_player_number(i);
-		player.set_Level(&Level);
+		player.set_Topography(&topography);
 		player_array[i] = player;
 	}
 
@@ -225,11 +225,11 @@ int main(int argc, char* argv[])
 	Map map_array[map_amount];
 	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount);
 
-	Level Level;
-	init_hyper_map(renderTarget, map_array, map_amount, &Level);
+	Topography topography;
+	init_hyper_map(renderTarget, map_array, map_amount, &topography);
 
 	Player player_array[player_amount];
-	init_player_array(renderTarget, player_array, player_amount, Level);
+	init_player_array(renderTarget, player_array, player_amount, topography);
 
 	// ===================================================================================
 
@@ -304,7 +304,7 @@ int main(int argc, char* argv[])
 
 
 		// update 
-		Level.update(delta);
+		topography.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[0], map_array, map_amount, map_number);
 		for (int i = 1; i < player_amount; i++)
@@ -321,7 +321,7 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
 		// draw 
-		Level.draw(renderTarget);
+		topography.draw(renderTarget);
 
 		for (int i = 0; i < player_amount; i++)
 		{
