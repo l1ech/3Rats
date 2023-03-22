@@ -120,5 +120,9 @@ public:
 	void place_item();
 	void set_has_goal(bool value);	// this is for debug 
 	void set_enter(bool value);
+	void teleport_to_entrence();	
+	// in future make this function to be able to 
+	// be teleport to what ever is given in parameters
+
 };
 

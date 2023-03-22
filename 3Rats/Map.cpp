@@ -7,6 +7,8 @@ Map::Map()
     height = 6;
 
     item_id = 0;
+
+    map_generation_try = 0;
 }
 
 Map::Map(const Map& b)
@@ -15,6 +17,7 @@ Map::Map(const Map& b)
     width = 9;
     height = 6;
     item_id = 0;
+    map_generation_try = 0;
 }
 
 Map::Map(Tile arg[], int size, int w, int h, int type)
@@ -24,6 +27,7 @@ Map::Map(Tile arg[], int size, int w, int h, int type)
 	height = h;
 
     item_id = 0;
+    map_generation_try = 0;
 
 	tile_array = arg;
 	tile_array_size = size;
@@ -94,7 +98,10 @@ void Map::make_maze(bool item_generation)
 
     build_frame(data, entrence, exit, 9, 1);
 
-    while (rec_pos(entrence.first, entrence.second, data, data[start_x][start_y]) != 0) { }
+    while (rec_pos(entrence.first, entrence.second, data, data[start_x][start_y]) != 0) 
+    { 
+        map_generation_try++;
+    }
 
     trim_boarder(data, map_data);
 
@@ -105,6 +112,8 @@ void Map::make_maze(bool item_generation)
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80
 
     print_vector(item_data, item_data[0].size(), item_data.size());
+
+    std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -402,13 +411,6 @@ void Map::set_textures()
     }
 }
 
-
-void Map::show_it()
-{
-    std::cout << "iteration: " << rec_iter << std::endl;
-    rec_iter = 0;
-}
-
 void Map::set_ptr(int* ptr)
 {
     item_on_map = ptr;
@@ -418,11 +420,11 @@ void Map::set_map_id(int numer) { map_id = numer; }
 
 int Map::get_map_id() { return map_id; }
 
-std::pair <int, int> Map::give_entry_door() { return { entrence.first, entrence.second }; }
+std::pair <int, int> Map::get_entry_door() { return { entrence.first, entrence.second }; }
 
-std::pair<int, int> Map::give_exit_door() { return { exit.first, exit.second }; }
+std::pair<int, int> Map::get_exit_door() { return { exit.first, exit.second }; }
 
-std::pair<int, int> Map::give_hole_door() { return { hole.first, hole.second }; }
+std::pair<int, int> Map::get_hole_door() { return { hole.first, hole.second }; }
 
 int Map::get_hight()
 {
@@ -625,7 +627,7 @@ void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::ve
         }
     }
 }
-
+/*
 void Map::set_corners(std::vector<std::vector<int>>& map_data)
 {
     int direction, prev_direction;
@@ -639,7 +641,7 @@ void Map::set_corners(std::vector<std::vector<int>>& map_data)
         else if (prev_direction == 3)
         {
             if (direction == 5)
-            { 
+            {
                 directions[i] = 9;
             }
             else if (direction == 6)
@@ -686,6 +688,8 @@ void Map::set_corners(std::vector<std::vector<int>>& map_data)
         }
     }
 }
+
+*/
 
 void Map::save_data(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data)
 {

@@ -20,6 +20,8 @@ private:
 
 	int map_id;
 
+	int map_generation_try;
+
 	std::pair<int, int> entrence;
 	std::pair<int, int> exit;
 	std::pair<int, int> hole;
@@ -62,7 +64,7 @@ private:
 	void build_frame(std::vector<std::vector <int>>& map_data, int wall, int space);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
-	void set_corners(std::vector<std::vector <int>>& map_data);
+	//void set_corners(std::vector<std::vector <int>>& map_data);
 
 	void save_data(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data);
 	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
@@ -83,22 +85,19 @@ public:
 	void set_type(int type);
 	void set_textures();
 
-	//dev info
-	void show_it();
-
 	void set_ptr(int* ptr);
 
 	void set_map_id(int numer);
 	int get_map_id();
 
-	void set_layout(int num);
-
-	std::pair <int, int> give_entry_door();
-	std::pair <int, int> give_exit_door();
-	std::pair <int, int> give_hole_door();
-
-
 	int get_hight();
 	int get_width();
+
+	void set_layout(int num);
+
+	std::pair <int, int> get_entry_door();
+	std::pair <int, int> get_exit_door();
+	std::pair <int, int> get_hole_door();
+
 
 };

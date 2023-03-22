@@ -41,8 +41,8 @@ public:
 	Map* get_map_array();
 	int get_map_size();
 
-	int get_map_number();
-	void set_map_number(int number);
+	int get_current_map_id();
+	void set_current_map_id(int number);
 
 	void set_up();
 

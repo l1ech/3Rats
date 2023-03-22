@@ -105,12 +105,12 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 	// not at 0, 0 
 	// new door could be anywhere
 
-	int map_number = topography->get_map_number();
+	int current_map_id = topography->get_current_map_id();
 
 	for (int i = 0; i < length; i++)
 	{
-		bool last_room = (map_number == map_amount - 1);
-		bool first_room = (map_number == 0);
+		bool last_room = (current_map_id == map_amount - 1);
+		bool first_room = (current_map_id == 0);
 
 		if (!wants_enter_door) break;
 		if (!(player_number == 0)) break;
@@ -120,10 +120,10 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 			wants_enter_door = false;
 			if (tile_array[i].is_exit && !last_room)
 			{
-				map_number++;
-				topography->set_map_number(map_number);
-				map_array[map_number].set_textures();
-				std::pair <int, int> entrance = map_array[map_number].give_entry_door();
+				current_map_id++;
+				topography->set_current_map_id(current_map_id);
+				map_array[current_map_id].set_textures();
+				std::pair <int, int> entrance = map_array[current_map_id].get_entry_door();
 
 				positionRect.x = entrance.first * 64 - cropRect.w;
 				positionRect.y = entrance.second * 64 - cropRect.h;
@@ -135,20 +135,20 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 			} 
 			else if (tile_array[i].is_entrance	&& !first_room)
 			{
-				map_number--;
-				topography->set_map_number(map_number);
-				map_array[map_number].set_textures();
-				std::pair <int, int> exit = map_array[map_number].give_exit_door();
+				current_map_id--;
+				topography->set_current_map_id(current_map_id);
+				map_array[current_map_id].set_textures();
+				std::pair <int, int> exit = map_array[current_map_id].get_exit_door();
 
 				positionRect.x = exit.first * 64 - cropRect.w;
 				positionRect.y = exit.second * 64 - cropRect.h;
 			}
-			else if (tile_array[i].is_hole		&& map_number != map_amount - 1)
+			else if (tile_array[i].is_hole		&& current_map_id != map_amount - 1)
 			{
-				map_number++;
-				topography->set_map_number(map_number);
-				map_array[map_number].set_textures();
-				std::pair <int, int> entrance = map_array[map_number].give_entry_door();
+				current_map_id++;
+				topography->set_current_map_id(current_map_id);
+				map_array[current_map_id].set_textures();
+				std::pair <int, int> entrance = map_array[current_map_id].get_entry_door();
 
 				positionRect.x = entrance.first * 64 - cropRect.w;
 				positionRect.y = entrance.second * 64 - cropRect.h;
@@ -327,6 +327,14 @@ void Player::hold_item_in_mouth(Item& item)
 		item.SetX(GetOriginX() - 24 + 14);
 		item.SetY(GetOriginY() - 32);
 	}
+}
+
+void Player::teleport_to_entrence()
+{
+	Map* map_ptr = topography->get_map_array();
+
+	SetX(map_ptr[topography->get_current_map_id()].get_entry_door().first * 64 - cropRect.w);
+	SetY(map_ptr[topography->get_current_map_id()].get_entry_door().second * 64 - cropRect.h);
 }
 
 Player::Player()

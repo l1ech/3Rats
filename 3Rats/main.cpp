@@ -107,26 +107,26 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_hyper_map(SDL_Renderer* renderTarget, Map* map_array, int map_amount, Topography* topography)
+void init_hyper_map(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Topography* topography)
 {
 	Random random;
 	topography->set_renderer(renderTarget);
 
-	Item* item_array = map_array[0].get_item_array();
-	int item_amount = map_array[0].get_item_size();
+	Item* item_ptr = map_ptr[0].get_item_array();
+	int item_amount = map_ptr[0].get_item_size();
 
-	Tile* tile_array = map_array[0].get_tile_array();
-	int tile_amount = map_array[0].get_tile_size();
+	Tile* tile_ptr = map_ptr[0].get_tile_array();
+	int tile_amount = map_ptr[0].get_tile_size();
 
-	topography->set_map_array(map_array, map_amount);
-	topography->set_item_array(item_array, item_amount);
-	topography->set_tile_array(tile_array, item_amount);
+	topography->set_map_array(map_ptr, map_amount);
+	topography->set_item_array(item_ptr, item_amount);
+	topography->set_tile_array(tile_ptr, item_amount);
 
 	topography->set_up();
 	topography->make_maze();
 
-	map_array[0].set_type(2);
-	map_array[0].show_it();
+	map_ptr[0].set_type(2);
+	//map_ptr[0].show_it();
 
 	for (int i = 1; i < map_amount; i++)
 	{
@@ -135,11 +135,11 @@ void init_hyper_map(SDL_Renderer* renderTarget, Map* map_array, int map_amount, 
 			std::cout << "END GENERATED!" << std::endl;
 			break;
 		}
-		map_array[i].set_layout(topography->get_layout(i));
-		map_array[i].set_type(random.flip_coin());
-		map_array[i].show_it();
+		map_ptr[i].set_layout(topography->get_layout(i));
+		map_ptr[i].set_type(random.flip_coin());
+		//map_ptr[i].show_it();
 	}
-	map_array[0].set_textures();
+	map_ptr[0].set_textures();
 }
 
 void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Topography& topography)
@@ -267,16 +267,11 @@ int main(int argc, char* argv[])
 					break;
 
 				case SDLK_r:
-					player_array[0].SetX(0);
-					player_array[0].SetY(0);
+					player_array[0].teleport_to_entrence();
+					player_array[1].teleport_to_entrence();
+					player_array[2].teleport_to_entrence();
 					player_array[0].set_enter(false);
-
-					player_array[1].SetX(0);
-					player_array[1].SetY(0);
 					player_array[1].set_enter(false);
-
-					player_array[2].SetX(0);
-					player_array[2].SetY(0);
 					player_array[2].set_enter(false);
 					break;
 

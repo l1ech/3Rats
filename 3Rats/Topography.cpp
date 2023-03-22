@@ -29,12 +29,12 @@ void Topography::set_up()
 	}
 }
 
-int Topography::get_map_number()
+int Topography::get_current_map_id()
 {
 	return current_map_id;
 }
 
-void Topography::set_map_number(int number)
+void Topography::set_current_map_id(int number)
 {
 	current_map_id = number;
 }
