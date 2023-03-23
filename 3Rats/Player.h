@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "Tile.h"
 #include "Topography.h"
+#include "Door.h"
 
 
 class Player : public Body

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <ClInclude Include="Body.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />

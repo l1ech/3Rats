@@ -83,6 +83,8 @@ int Topography::get_map_size()
 
 void Topography::make_maze()
 {
+	std::cout << "generating topology..."<<std::endl;
+
 	int start_x = 1;
 	int start_y = 1;
 
@@ -115,28 +117,23 @@ void Topography::make_maze()
 
 	build_frame(data, connections[0].first, connections[0].second, 9, 1);
 
-	std::cout << "data =============" << std::endl;
-	print_vector(data, data[0].size(), data.size());
-
-
-	std::cout << "hidden data =============" << std::endl;
-	print_vector_hidden(data, data[0].size(), data.size());
-
 	while (find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0) != 0) {}
 
+	/*
+	std::cout << "___________ topology data ___________" << std::endl;
+	print_vector(data, data[0].size(), data.size());
 
-	std::cout << "hidden data after fill =============" << std::endl;
+	std::cout << "___________ second layer  ___________" << std::endl;
 	print_vector_hidden(data, data[0].size(), data.size());
 
-	std::cout << "data =============" << std::endl;
-	print_vector(data, data[0].size(), data.size());
+	*/
 
 	trim_boarder(data, map_data);
 
-	std::cout << "map data =============" << std::endl;
+	std::cout << "___________ topology data ___________" << std::endl;
 	print_vector(map_data, map_data[0].size(), map_data.size());
 
-	std::cout << "hidden map data =============" << std::endl;
+	std::cout << "___________ second layer  ___________" << std::endl;
 	print_vector_hidden(map_data, map_data[0].size(), map_data.size());
 
 

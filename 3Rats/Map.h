@@ -13,18 +13,23 @@
 #include "Tile.h"
 #include "Random.h"
 #include "Level_Structure.h"
+#include "Door.h"
 
 class Map : public Level_Structure
 {
 private:
 
+	bool debug_flag;
+
 	int map_id;
 
 	int map_generation_try;
 
-	std::pair<int, int> entrence;
-	std::pair<int, int> exit;
-	std::pair<int, int> hole;
+	Door door_array[3];
+
+	//std::pair<int, int> entrence;
+	//std::pair<int, int> exit;
+	//std::pair<int, int> hole;
 
 	int entry_direction;
 	int exit_direction;
@@ -49,18 +54,12 @@ private:
 	void make_cage(bool item_generation);
 
 	// helper functions for generation
-
-	void make_doors_entry(int x, int y);
-	void make_doors_exit(int x, int y);
-	void make_doors_hole(int x, int y);
-
-	void make_doors_entry(int direction);
-	void make_doors_exit(int direction);
-
+	void make_door(int direction, int index, int type);
+	void make_doors(int entry_direction, int exit_direction, int type_generation, int end_x, int end_y);
 
 	//functions for maze generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
-	void build_frame(std::vector<std::vector <int>>& map_data, std::pair<int , int >entrance, std::pair<int, int >exit, int wall, int space);
+	void build_frame(std::vector<std::vector <int>>& map_data, Door entry, Door exit, int wall, int space);
 	void build_frame(std::vector<std::vector <int>>& map_data, int wall, int space);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
@@ -95,9 +94,5 @@ public:
 
 	void set_layout(int num);
 
-	std::pair <int, int> get_entry_door();
-	std::pair <int, int> get_exit_door();
-	std::pair <int, int> get_hole_door();
-
-
+	Door get_door(int index);
 };

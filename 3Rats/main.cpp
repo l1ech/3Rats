@@ -137,7 +137,6 @@ void init_hyper_map(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, To
 		}
 		map_ptr[i].set_layout(topography->get_layout(i));
 		map_ptr[i].set_type(random.flip_coin());
-		//map_ptr[i].show_it();
 	}
 	map_ptr[0].set_textures();
 }

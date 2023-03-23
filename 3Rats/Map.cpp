@@ -9,6 +9,8 @@ Map::Map()
     item_id = 0;
 
     map_generation_try = 0;
+
+    debug_flag = false;
 }
 
 Map::Map(const Map& b)
@@ -18,10 +20,13 @@ Map::Map(const Map& b)
     height = 6;
     item_id = 0;
     map_generation_try = 0;
+    debug_flag = true;
 }
 
 Map::Map(Tile arg[], int size, int w, int h, int type)
 {
+    debug_flag = true;
+
     rec_iter = 0;
 	width = w;
 	height = h;
@@ -88,32 +93,52 @@ void Map::make_maze(bool item_generation)
 
     Random rand;
 
-    make_doors_entry(entry_direction);
-    make_doors_exit(exit_direction);
-    make_doors_hole(-100, -100);
+    make_doors(entry_direction, exit_direction, 0, end_x, end_y);
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
-    build_frame(data, entrence, exit, 9, 1);
+    build_frame(data, door_array[0], door_array[1], 9, 1);
 
-    while (rec_pos(entrence.first, entrence.second, data, data[start_x][start_y]) != 0) 
+    if(debug_flag)
+    {
+        std::cout << "_____________ frame ______________" << std::endl;
+        print_vector(data, data[0].size(), data.size());
+    }
+    
+    while (rec_pos(door_array[0].get_x(), door_array[0].get_y(), data, data[start_x][start_y]) != 0)
     { 
         map_generation_try++;
     }
 
+    if (debug_flag)
+    {
+        std::cout << "_________ map data pre trim _________" << std::endl;
+        print_vector(data, data[0].size(), data.size());
+    }
+    
     trim_boarder(data, map_data);
 
-    print_vector(map_data, map_data[0].size(), map_data.size());
+    if (debug_flag)
+    {
+        std::cout << "_____________ map data _____________" << std::endl;
+        print_vector(map_data, map_data[0].size(), map_data.size());
+    }    
 
     //set_corners(map_data);
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80
 
-    print_vector(item_data, item_data[0].size(), item_data.size());
+    if (debug_flag)
+    {
+        std::cout << "____________ item data _____________" << std::endl;
+        print_vector(item_data, item_data[0].size(), item_data.size());
+
+    }    
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
+    std::cout << "saving data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -131,28 +156,26 @@ void Map::make_garden(bool item_generation)
 
     Random rand;
 
-    make_doors_entry(entry_direction);
-    make_doors_exit(exit_direction);
-    make_doors_hole(rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y));
+    make_doors(entry_direction, exit_direction, 1, end_x, end_y);
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
-    build_frame(data, entrence, exit, 1, 12);
+    build_frame(data, door_array[0], door_array[1], 1, 12);
 
     if (rand.roll_dice())
     {
-        std::cout << hole.first << "  " << hole.second << std::endl;
-        data[hole.second][hole.first] = 13;
+        data[door_array[2].get_y()][door_array[2].get_x()] = 13;
     }
-
 
     trim_boarder(data, map_data);
 
-    //print_vector(data, data[0].size(), data.size());
-
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
+
+    std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
+
+    std::cout << "saving data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -170,11 +193,8 @@ void Map::make_cage(bool item_generation)
 
     Random rand;
 
-
-    exit = { -100, -100 };
-    entrence = { -100, -100 };
-    hole = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
-
+    make_doors(entry_direction, exit_direction, 2, end_x, end_y);
+    
     std::pair<int, int> food_bowl = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
     std::pair<int, int> bed = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
 
@@ -188,8 +208,7 @@ void Map::make_cage(bool item_generation)
                 // maybe it generates a hole only if the player does an action?
                 // for now for testing it is this
     {
-        std::cout << hole.first << "  " << hole.second << std::endl;
-        data[hole.second][hole.first] = 13;
+        data[door_array[2].get_y()][door_array[2].get_x()] = 13;
     }
 
     data[food_bowl.second][food_bowl.first] = 15;
@@ -198,26 +217,42 @@ void Map::make_cage(bool item_generation)
 
     trim_boarder(data, map_data);
 
-    //print_vector(data, data[0].size(), data.size());
-
     //if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
+
+    std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
+    std::cout << "saving data..." << std::endl;
 
     save_data(map_data, item_data);
 }
 
 void Map::set_type(int type)
 {
+    const int MAZE_TYPE = 0;
+    const int GARDEN_TYPE = 1;
+    const int CAGE_TYPE = 2;
+
+    bool item_generatio = true;
+
     switch (type)
     {
 
-    case 0:
+    case MAZE_TYPE:
+        std::cout << "===========================================" << std::endl;
+        std::cout << "generating maze..." << std::endl;
+        std::cout << "items generation: "<< item_generatio << std::endl;
         make_maze(true);
         break;
 
-    case 1:
+    case GARDEN_TYPE:
+        std::cout << "===========================================" << std::endl;
+        std::cout << "generating garden..." << std::endl;
+        std::cout << "items generation: " << item_generatio << std::endl;
         make_garden(true);
         break;
-    case 2:
+    case CAGE_TYPE:
+        std::cout << "===========================================" << std::endl;
+        std::cout << "generating cage..." << std::endl;
+        std::cout << "items generation: " << item_generatio << std::endl;
         make_cage(false);
         break;
 
@@ -419,12 +454,18 @@ void Map::set_ptr(int* ptr)
 void Map::set_map_id(int numer) { map_id = numer; }
 
 int Map::get_map_id() { return map_id; }
+/*
+Door Map::get_door(int type)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if ()
+    }
+    return Door();
+}
+*/
 
-std::pair <int, int> Map::get_entry_door() { return { entrence.first, entrence.second }; }
-
-std::pair<int, int> Map::get_exit_door() { return { exit.first, exit.second }; }
-
-std::pair<int, int> Map::get_hole_door() { return { hole.first, hole.second }; }
+Door Map::get_door(int index) { return door_array[index]; }
 
 int Map::get_hight()
 {
@@ -436,40 +477,23 @@ int Map::get_width()
     return width;
 }
 
-void Map::make_doors_entry(int x, int y)
-{
-    Random random;
-    entrence = { random.roll_custom_dice(x), random.roll_custom_dice(y) };
-}
-
-void Map::make_doors_exit(int x, int y)
-{
-    Random random;
-    exit = { random.roll_custom_dice(x), random.roll_custom_dice(y) };
-}
-
-void Map::make_doors_hole(int x, int y)
-{
-    hole = { x, y };
-}
-
-void Map::make_doors_entry(int direction)
+void Map::make_door(int direction, int index, int type)
 {
     //direction => 0 = north, 1 = east, 2 = south, 3 = west
     Random random;
     switch (direction)
     {
     case 0:
-        entrence = { random.roll_custom_dice(9), 1 };
+        door_array[index].init_door(random.roll_custom_dice(9), 1, type);
         break;
     case 1:
-        entrence = { 9 , random.roll_custom_dice(6) };
+        door_array[index].init_door(9, random.roll_custom_dice(6), type);
         break;
     case 2:
-        entrence = { random.roll_custom_dice(9), 6 };
+        door_array[index].init_door(random.roll_custom_dice(9), 6, type);
         break;
     case 3:
-        entrence = { 1, random.roll_custom_dice(6) };
+        door_array[index].init_door(1, random.roll_custom_dice(6), type);
         break;
     default:
         std::cout << "error" << std::endl;
@@ -477,28 +501,35 @@ void Map::make_doors_entry(int direction)
     }
 }
 
-void Map::make_doors_exit(int direction)
+void Map::make_doors(int entry_direction, int exit_direction, int type_generation, int end_x, int end_y)
 {
-    //direction => 0 = north, 1 = east, 2 = south, 3 = west
+    const int MAZE_TYPE = 0;
+    const int GARDEN_TYPE = 1;
+    const int CAGE_TYPE = 2;
+
     Random random;
-    switch (direction)
+
+    switch (type_generation)
     {
-    case 0:
-        exit = { random.roll_custom_dice(9), 1 };
+    case MAZE_TYPE:
+        make_door(entry_direction, 0, 1);
+        make_door(exit_direction, 1, 2);
+        door_array[2].init_door(-100, -100, 3);
         break;
-    case 1:
-        exit = { 9 , random.roll_custom_dice(6) };
+    case GARDEN_TYPE:
+        make_door(entry_direction, 0, 1);
+        make_door(exit_direction, 1, 2);
+        door_array[2].init_door(random.roll_custom_dice(end_x), random.roll_custom_dice(end_y), 3);
         break;
-    case 2:
-        exit = { random.roll_custom_dice(9), 6 };
-        break;
-    case 3:
-        exit = { 1, random.roll_custom_dice(6) };
+    case CAGE_TYPE:
+        door_array[0].init_door(-100, -100, 1);
+        door_array[1].init_door(-100, -100, 2);
+        door_array[2].init_door(random.roll_custom_dice(end_x), random.roll_custom_dice(end_y), 3);
         break;
     default:
-        std::cout << "error" << std::endl;
+        std::cout << "ERROR: generating doors!";
         break;
-    }
+    }    
 }
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
@@ -573,20 +604,20 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
     }
 }
 
-void Map::build_frame(std::vector<std::vector <int>>& data, std::pair<int, int >entrance, std::pair<int, int >exit, int wall, int space)
+void Map::build_frame(std::vector<std::vector<int>>& data, Door entry, Door exit, int wall, int space)
 {
     for (int h = 0; h < height + 2; h++)
     {
         for (int w = 0; w < width + 2; w++)
         {
             if (w == 0 || w == width + 1 || h == 0 || h == height + 1) data[h][w] = wall;
-            else data[h][w] = space;
+            else data[h][w]= space;
 
         }
     }
 
-    data[entrance.second][entrance.first] = 2;
-    data[exit.second][exit.first] = 0;
+    data[entry.get_y()][entry.get_x()] = 2;
+    data[exit.get_y()][exit.get_x()] = 0;
 }
 
 void Map::build_frame(std::vector<std::vector <int>>& data, int wall, int space)
@@ -707,8 +738,6 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
 {
     Random rand;
 
-    std::cout << *item_on_map << std::endl;
-
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -759,3 +788,5 @@ void Map::set_layout(int num)
         break;
     }
 }
+
+

@@ -123,10 +123,10 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 				current_map_id++;
 				topography->set_current_map_id(current_map_id);
 				map_array[current_map_id].set_textures();
-				std::pair <int, int> entrance = map_array[current_map_id].get_entry_door();
+				Door entry = map_array[current_map_id].get_door(0);
 
-				positionRect.x = entrance.first * 64 - cropRect.w;
-				positionRect.y = entrance.second * 64 - cropRect.h;
+				positionRect.x = entry.get_x() * 64 - cropRect.w;
+				positionRect.y = entry.get_y() * 64 - cropRect.h;
 
 				//std::cout << "player 1: " << this->player_number << std::endl;
 				//std::cout << "player 2: " << (this->player_number)++ << std::endl;
@@ -138,20 +138,20 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 				current_map_id--;
 				topography->set_current_map_id(current_map_id);
 				map_array[current_map_id].set_textures();
-				std::pair <int, int> exit = map_array[current_map_id].get_exit_door();
+				Door exit = map_array[current_map_id].get_door(1);
 
-				positionRect.x = exit.first * 64 - cropRect.w;
-				positionRect.y = exit.second * 64 - cropRect.h;
+				positionRect.x = exit.get_x() * 64 - cropRect.w;
+				positionRect.y = exit.get_y() * 64 - cropRect.h;
 			}
 			else if (tile_array[i].is_hole		&& current_map_id != map_amount - 1)
 			{
 				current_map_id++;
 				topography->set_current_map_id(current_map_id);
 				map_array[current_map_id].set_textures();
-				std::pair <int, int> entrance = map_array[current_map_id].get_entry_door();
+				Door entry = map_array[current_map_id].get_door(0);
 
-				positionRect.x = entrance.first * 64 - cropRect.w;
-				positionRect.y = entrance.second * 64 - cropRect.h;
+				positionRect.x = entry.get_x() * 64 - cropRect.w;
+				positionRect.y = entry.get_y() * 64 - cropRect.h;
 
 				// for testing this is set to be linear map. which is wrong.
 				// it has to be 3d so a hole would move the map in z direction 
@@ -333,8 +333,8 @@ void Player::teleport_to_entrence()
 {
 	Map* map_ptr = topography->get_map_array();
 
-	SetX(map_ptr[topography->get_current_map_id()].get_entry_door().first * 64 - cropRect.w);
-	SetY(map_ptr[topography->get_current_map_id()].get_entry_door().second * 64 - cropRect.h);
+	SetX(map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - cropRect.w);
+	SetY(map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - cropRect.h);
 }
 
 Player::Player()
