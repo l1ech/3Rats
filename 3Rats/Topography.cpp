@@ -66,6 +66,11 @@ void Topography::draw(SDL_Renderer* renderTarget)
 	}
 }
 
+void Topography::print_connections(std::vector<std::pair<std::pair<int, int>, std::pair<int, int>>>)
+{
+	std::cout << "print points..." << std::endl;
+}
+
 void Topography::set_renderer(SDL_Renderer* renderTarget)
 {
 	this->renderTarget = renderTarget;
@@ -98,6 +103,8 @@ void Topography::make_maze()
 	*/
 
 	make_points(start_x, start_y, end_x, end_y);
+
+	print_connections(connections);
 	
 	data.resize(height + 2);
 	for (int i = 0; i < data.size(); i++) {
@@ -115,19 +122,25 @@ void Topography::make_maze()
 		}
 	}
 
-	build_frame(data, connections[0].first, connections[0].second, 9, 1);
+	build_frame(data, connections[0].first, connections[0].second);
 
-	while (find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0) != 0) {}
+	// change end char to be a bool value and if the generation was correct then 
+	// return 1 else 0
+
+	std::string end_char = "1";
+	while (end_char != FINISH)
+	{
+		end_char = find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0);
+	}
 
 	/*
-	std::cout << "___________ topology data ___________" << std::endl;
+	std::cout << "___________ topology data - walkway__" << std::endl;
 	print_vector(data, data[0].size(), data.size());
 
 	std::cout << "___________ second layer  ___________" << std::endl;
 	print_vector_hidden(data, data[0].size(), data.size());
 
-	*/
-
+	*/	
 	trim_boarder(data, map_data);
 
 	std::cout << "___________ topology data ___________" << std::endl;
@@ -149,32 +162,33 @@ void Topography::make_points(int a_x, int a_y, int b_x, int b_y)
 	connections.push_back({ point_a, point_b });
 }
 
-void Topography::build_frame(std::vector<std::vector<std::pair<int, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit, int wall, int space)
+void Topography::build_frame(std::vector<std::vector<std::pair<std::string, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit)
 {
 	for (int h = 0; h < height + 2; h++)
 	{
 		for (int w = 0; w < width + 2; w++)
 		{
 			if (w == 0 || w == width + 1 || h == 0 || h == height + 1) 
-				data[h][w].first = wall;
+				data[h][w].first = WALL;
 			else 
-				data[h][w].first = space;
+				data[h][w].first = EMPTY;
 
 			data[h][w].second = 0;
 		}
 	}
 
-	data[entrance.second][entrance.first].first = 2;
-	data[exit.second][exit.first].first = 0;
+	data[entrance.second][entrance.first].first = START;
+	data[exit.second][exit.first].first = FINISH;
 }
 
-int Topography::find_empty_space(int x, int y, std::vector<std::vector<std::pair<int, int>>>& map, int& prev_direction, int iterator)
+std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<std::pair<std::string, int>>>& map, std::string& prev_direction, int iterator)
 {
 	iterator++;
 
 	Random rand;
 
-	int direction;
+	std::string direction;
+	std::string prev_point_value = map[y][x].first;
 
 	// Set new location
 	if (rand.flip_coin()) {  // Horizontal
@@ -199,39 +213,42 @@ int Topography::find_empty_space(int x, int y, std::vector<std::vector<std::pair
 	}
 
 	// Try new location
-	int point_value = map[y][x].first;
-
+	std::string point_value = map[y][x].first;
+	/*
+	std::cout << "trying position... " << std::endl;
+	std::cout << "[x: " << x << ", y: " << y << "] = "<< point_value << std::endl;
+	*/
+	
 	if (point_value == EMPTY) {  // Empty field
-		return point_value;
-	}
-	else if (point_value == WALL) {  // Wall
 		map[y][x].first = direction;
 		map[y][x].second = iterator;
 		counter_maps = iterator;
 
-		int vall = find_empty_space(x, y, map, direction, iterator);
+		std::string vall = find_empty_space(x, y, map, direction, iterator);
 
 		if (vall == EMPTY) {
-			return vall;
-		}
-		else if (vall == WALL) {
 			map[y][x].first = direction;
 			map[y][x].second = iterator;
 			counter_maps = iterator;
 		}
-		else {
-			map[y][x].first = WALL;
+		else if (vall == FINISH)
+		{
+			return vall;
+		}
+		else
+		{
+			map[y][x].first = EMPTY;
 			map[y][x].second = 0;
 			return vall;
 		}
 	}
-	else {  // Finish or path
+	else {  // Finish or path or Wall
 		return point_value;
 	}
 }
 
 
-void Topography::trim_boarder(std::vector<std::vector<std::pair<int, int>>>& data, std::vector<std::vector<std::pair<int, int>>>& map_data)
+void Topography::trim_boarder(std::vector<std::vector<std::pair<std::string, int>>>& data, std::vector<std::vector<std::pair<std::string, int>>>& map_data)
 {
 	for (int h = 0; h < height; h++)
 	{
@@ -243,7 +260,7 @@ void Topography::trim_boarder(std::vector<std::vector<std::pair<int, int>>>& dat
 	}
 }
 
-void Topography::print_vector(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
+void Topography::print_vector(std::vector<std::vector<std::pair<std::string, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -258,7 +275,7 @@ void Topography::print_vector(std::vector<std::vector<std::pair<int, int>>>& arg
 	}
 }
 
-void Topography::print_vector_hidden(std::vector<std::vector<std::pair<int, int>>>& arg, int size_x, int size_y)
+void Topography::print_vector_hidden(std::vector<std::vector<std::pair<std::string, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -273,7 +290,7 @@ void Topography::print_vector_hidden(std::vector<std::vector<std::pair<int, int>
 	}
 }
 
-int Topography::get_layout(int num)
+std::string Topography::get_layout(int num)
 {
 	for (int h = 0; h < height; h++)
 	{

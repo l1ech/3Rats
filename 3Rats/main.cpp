@@ -11,6 +11,7 @@
 #include "Tile.h"
 #include "Random.h"
 #include "Topography.h"
+#include "main.h"
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
