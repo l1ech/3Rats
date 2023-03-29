@@ -59,14 +59,13 @@ void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_am
 void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_amount)
 {
 	Tile tile_templet;
-	tile_templet.set_surface(render_target);	// doppelt gemoppelt?
+	tile_templet.set_surface(render_target, "meta_textures/place_holder.png");
 	tile_templet.set_cords(-100, -100);
+
 
 	for (int i = 0; i < tile_amount; i++)
 	{
 		tile_array[i] = tile_templet;
-		tile_array[i].set_surface(render_target, "meta_textures/place_holder.png");
-		tile_array[i].set_cords(-100, -100);
 	}
 }
 

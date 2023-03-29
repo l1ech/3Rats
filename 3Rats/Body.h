@@ -34,14 +34,15 @@ public:
 	~Body();
 
 	std::string get_filepath();
+	void Update(float delta);
+	void Draw(SDL_Renderer* renderTarget);
 
 	void set_surface(SDL_Renderer* renderTarget);
 	void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords(int x, int y);
+	void SetX(int x);
+	void SetY(int y);
 	void set_texture(std::string name);
-
-	void Update(float delta);
-	void Draw(SDL_Renderer* renderTarget);
 
 	int GetOriginX();
 	int GetOriginY();
@@ -49,8 +50,4 @@ public:
 
 	void set_hight(int value);
 	int get_hight();
-
-	void SetX(int x);
-	void SetY(int y);
-
 };
