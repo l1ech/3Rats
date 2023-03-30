@@ -410,16 +410,6 @@ void Map::set_ptr(int* ptr)
 void Map::set_map_id(int numer) { map_id = numer; }
 
 int Map::get_map_id() { return map_id; }
-/*
-Door Map::get_door(int type)
-{
-    for (int i = 0; i < 3; i++)
-    {
-        if ()
-    }
-    return Door();
-}
-*/
 
 Door Map::get_door(int index) { return door_array[index]; }
 
@@ -624,65 +614,8 @@ void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::ve
 /*
 void Map::set_corners(std::vector<std::vector<int>>& map_data)
 {
-    int direction, prev_direction;
-
-    for (int i = directions.size() - 1; i > 0; i--)
-    {
-        prev_direction = directions[i];
-        direction = directions[i - 1];
-
-        if (prev_direction == direction) { }
-        else if (prev_direction == 3)
-        {
-            if (direction == 5)
-            {
-                directions[i] = 9;
-            }
-            else if (direction == 6)
-            {
-                directions[i] = 8;
-            }
-        }
-        else if (prev_direction == 4)
-        {
-            if (direction == 5)
-            {
-                directions[i] = 7;
-            }
-            else if (direction == 6)
-            {
-                directions[i] = 9;
-            }
-        }
-        else if (prev_direction == 5)
-        {
-            if (direction == 3)
-            {
-                directions[i] = 10;
-            }
-            else if (direction == 4)
-            {
-                directions[i] = 11;
-            }
-        }
-        else if (prev_direction == 6)
-        {
-            if (direction == 3)
-            {
-                directions[i] = 12;
-            }
-            else if (direction == 4)
-            {
-                directions[i] = 13;
-            }
-        }
-        else
-        {
-            std::cout << "ERROR DIRECTION" << std::endl;
-        }
-    }
+    //make something smart here
 }
-
 */
 
 void Map::save_data(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data)
@@ -753,5 +686,3 @@ void Map::set_layout(std::string layout)
         std::cout << "error! the value is: " << layout << std::endl;
     }
 }
-
-
