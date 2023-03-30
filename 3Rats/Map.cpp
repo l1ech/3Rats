@@ -752,30 +752,6 @@ void Map::set_layout(std::string layout)
     {
         std::cout << "error! the value is: " << layout << std::endl;
     }
-    /*
-    switch (std::stoi(layout))
-    {
-    case 3:
-        entry_direction = 3;
-        exit_direction = 1;
-        break;
-    case 4:
-        entry_direction = 3;
-        exit_direction = 1;
-        break;
-    case 5:
-        entry_direction = 0;
-        exit_direction = 2;
-        break;
-    case 6:
-        entry_direction = 0;
-        exit_direction = 2;
-        break;
-    default:
-        std::cout << "error! the value is: "<< layout << std::endl;
-        break;
-    }
-    */
 }
 
 
