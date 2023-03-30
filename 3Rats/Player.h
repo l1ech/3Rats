@@ -96,10 +96,7 @@ private:
 	void hold_item_in_mouth(Item& item);
 
 public:
-
-
 	Player();
-	//Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY);
 	~Player();
 
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);

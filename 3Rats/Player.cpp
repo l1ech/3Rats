@@ -362,60 +362,6 @@ Player::Player()
 	searchCounter = rand() % 100;
 	searchCounter /= 100.0f;
 }
-/*
-Player::Player(SDL_Renderer* renderTarget, std::string file_path, int x, int y, int framesX, int framesY)
-{
-	has_goal = false;
-	item_search_id = 0;
-
-	item_type = 0;
-
-	SDL_Surface* surface = IMG_Load(file_path.c_str());
-	if (surface == NULL)
-		std::cout << "Error" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
-		if (texture == NULL)
-			std::cout << "Error" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
-
-	position_rect.x = x;
-	position_rect.y = y;
-
-	textureWidth = crop_rect.w;
-
-	crop_rect.w /= framesX;
-	crop_rect.h /= framesY;
-
-	frameWidth = position_rect.w = crop_rect.w;
-	frameHeight = position_rect.h = crop_rect.h;
-
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
-
-	radius = frameWidth / 2;
-
-	is_moving = false;
-
-	keys[0] = SDL_SCANCODE_W;
-	keys[1] = SDL_SCANCODE_S;
-	keys[2] = SDL_SCANCODE_A;
-	keys[3] = SDL_SCANCODE_D;
-
-	moveSpeed = 200.0f;
-
-	wait = false;
-
-	searchCounter = rand() % 100;
-	searchCounter /= 100.0f;
-}
-*/
-
 
 Player::~Player()
 {
