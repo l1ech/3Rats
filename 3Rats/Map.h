@@ -77,7 +77,7 @@ private:
 
 public:
 	Map();
-	Map(const Map& b);
+	//Map(const Map& b);
 	Map(Tile arg[], int size, int w, int h, int type);
 	~Map();
 

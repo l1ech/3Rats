@@ -31,9 +31,9 @@ public:
 	~Body();
 
 	void update(float delta);
-	void draw(SDL_Renderer* renderTarget);
+	void draw(SDL_Renderer* render_target);
 
-	void set_surface(SDL_Renderer* renderTarget);
+	void set_surface(SDL_Renderer* render_target);
 	void set_texture(std::string name);
 	void set_cords(int x, int y);
 	void set_hight(int value);

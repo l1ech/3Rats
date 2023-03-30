@@ -12,7 +12,7 @@ Map::Map()
 
     debug_flag = false;
 }
-
+/*
 Map::Map(const Map& b)
 {
     rec_iter = 0;
@@ -22,6 +22,8 @@ Map::Map(const Map& b)
     map_generation_try = 0;
     debug_flag = true;
 }
+
+*/
 
 Map::Map(Tile arg[], int size, int w, int h, int type)
 {
