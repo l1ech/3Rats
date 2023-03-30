@@ -17,6 +17,10 @@
 class Player : public Body
 {
 private:
+	SDL_Scancode keys[4];
+
+	float frameCounter, searchCounter;
+
 	Topography* topography;
 
 	Random random;

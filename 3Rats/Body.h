@@ -9,19 +9,19 @@
 class Body
 {
 protected:
-	SDL_Rect cropRect;
-	SDL_Texture* texture;
-	SDL_Rect positionRect;
-
 	SDL_Renderer* ptr_renderer;
+	SDL_Texture* texture;
 
-	float frameCounter, searchCounter;
+	std::string filePath;
+
+	SDL_Rect positionRect;
+	SDL_Rect cropRect;
+
 	float frameWidth, frameHeight;
 	int textureWidth;
-	SDL_Scancode keys[4];
+
 	int originX, originY;
 	int radius;
-	std::string filePath;
 
 	int hight;
 
@@ -42,6 +42,4 @@ public:
 	int get_origin_y();
 	int get_radius();
 	int get_hight();
-
-
 };

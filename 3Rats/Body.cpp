@@ -10,6 +10,16 @@ Body::~Body()
 	SDL_DestroyTexture(texture);
 }
 
+void Body::update(float delta)
+{
+	//std::cout << "update" << std::endl;
+}
+
+void Body::draw(SDL_Renderer* renderTarget)
+{
+	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
+}
+
 void Body::set_surface(SDL_Renderer* renderTarget)
 {
 	filePath = "meta_textures/place_holder.png";
@@ -28,22 +38,6 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 	SDL_FreeSurface(surface);
 
 	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-}
-
-void Body::set_cords(int x, int y)
-{
-	positionRect.x = x;
-	positionRect.y = y;
-
-	textureWidth = cropRect.w;
-
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
-
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
-
-	radius = frameWidth / 2;
 }
 
 void Body::set_texture(std::string name)
@@ -66,27 +60,29 @@ void Body::set_texture(std::string name)
 
 }
 
-
-void Body::update(float delta)
+void Body::set_cords(int x, int y)
 {
-	//std::cout << "update" << std::endl;
+	positionRect.x = x;
+	positionRect.y = y;
+
+	textureWidth = cropRect.w;
+
+	frameWidth = positionRect.w = cropRect.w;
+	frameHeight = positionRect.h = cropRect.h;
+
+	originX = frameWidth / 2;
+	originY = frameHeight / 2;
+
+	radius = frameWidth / 2;
 }
 
-void Body::draw(SDL_Renderer* renderTarget)
-{
-	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
-}
+void Body::set_hight(int value) { this->hight = value; }
 
+
+int Body::get_hight() { return this->hight; }
 
 int Body::get_origin_x() { return positionRect.x + originX; }
 
 int Body::get_origin_y() { return positionRect.y + originY; }
 
 int Body::get_radius() { return radius; }
-
-
-void Body::set_hight(int value) { this->hight = value; }
-
-int Body::get_hight() { return this->hight; }
-
-
