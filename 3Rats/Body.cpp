@@ -10,14 +10,9 @@ Body::~Body()
 	SDL_DestroyTexture(texture);
 }
 
-std::string Body::get_filepath()
+void Body::set_surface(SDL_Renderer* renderTarget)
 {
-	return filePath;
-}
-
-void Body::set_surface(SDL_Renderer* renderTarget, std::string name)
-{
-	filePath = name;
+	filePath = "meta_textures/place_holder.png";
 	ptr_renderer = renderTarget;
 
 	SDL_Surface* surface = IMG_Load(filePath.c_str());
@@ -33,7 +28,6 @@ void Body::set_surface(SDL_Renderer* renderTarget, std::string name)
 	SDL_FreeSurface(surface);
 
 	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
 }
 
 void Body::set_cords(int x, int y)

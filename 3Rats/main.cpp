@@ -33,7 +33,8 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 
 void init_clock_frame(SDL_Renderer* render_target, Body* body)
 {
-	body->set_surface(render_target, "ui_textures/clock_frame.png");
+	body->set_surface(render_target);
+	body->set_texture("ui_textures/clock_frame.png");
 	body->set_cords(400, 320);
 }
 
@@ -48,7 +49,8 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body)
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
 {
 	Item item_templet;
-	item_templet.set_surface(render_target, "meta_textures/place_holder.png");
+	item_templet.set_surface(render_target);
+	item_templet.set_texture("meta_textures/place_holder.png");
 	item_templet.set_cords(-100, -100);
 
 	for (int i = 0; i < item_amount; i++)
@@ -60,7 +62,8 @@ void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_am
 void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_amount)
 {
 	Tile tile_templet;
-	tile_templet.set_surface(render_target, "meta_textures/place_holder.png");
+	tile_templet.set_surface(render_target);
+	tile_templet.set_texture("meta_textures/place_holder.png");
 	tile_templet.set_cords(-100, -100);
 
 
@@ -151,13 +154,16 @@ void init_player_array(SDL_Renderer* render_target, Player* player_array, int pl
 		player_array[i] = player;
 	}
 
-	player_array[0].set_surface(render_target, "player_textures/mango.png");
+	player_array[0].set_surface(render_target);
+	player_array[0].set_texture("player_textures/mango.png");
 	player_array[0].set_cords_frames(32, 32, 3, 4);
 
-	player_array[1].set_surface(render_target, "player_textures/fridolin.png");
+	player_array[1].set_surface(render_target);
+	player_array[1].set_texture("player_textures/fridolin.png");
 	player_array[1].set_cords_frames(32, 32, 3, 4);
 
-	player_array[2].set_surface(render_target, "player_textures/remy.png");
+	player_array[2].set_surface(render_target);
+	player_array[2].set_texture("player_textures/remy.png");
 	player_array[2].set_cords_frames(400, 300, 3, 4);
 }
 

@@ -33,12 +33,11 @@ public:
 	void update(float delta);
 	void draw(SDL_Renderer* renderTarget);
 
-	void set_surface(SDL_Renderer* renderTarget, std::string name);
+	void set_surface(SDL_Renderer* renderTarget);
 	void set_texture(std::string name);
 	void set_cords(int x, int y);
 	void set_hight(int value);
 
-	std::string get_filepath();
 	int get_origin_x();
 	int get_origin_y();
 	int get_radius();
