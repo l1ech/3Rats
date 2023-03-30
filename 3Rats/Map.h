@@ -18,19 +18,11 @@
 class Map : public Level_Structure
 {
 private:
-
-	bool debug_flag;
-
 	int map_id;
 
 	int map_generation_try;
 
 	Door door_array[3];
-
-	//std::pair<int, int> entrence;
-	//std::pair<int, int> exit;
-	//std::pair<int, int> hole;
-
 
 	int entry_direction;
 	int exit_direction;
@@ -82,19 +74,15 @@ public:
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
-	//set up functions 
 	void set_type(int type);
 	void set_textures();
-
 	void set_ptr(int* ptr);
-
 	void set_map_id(int numer);
-	int get_map_id();
-
-	int get_hight();
-	int get_width();
-
 	void set_layout(std::string layout);
 
+
+	int get_map_id();
+	int get_hight();
+	int get_width();
 	Door get_door(int index);
 };

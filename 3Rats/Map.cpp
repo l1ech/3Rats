@@ -9,8 +9,6 @@ Map::Map()
     item_id = 0;
 
     map_generation_try = 0;
-
-    debug_flag = false;
 }
 
 Map::~Map()
@@ -46,42 +44,17 @@ void Map::make_maze(bool item_generation)
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
     build_frame(data, door_array[0], door_array[1], 9, 1);
-
-    if(debug_flag)
-    {
-        std::cout << "_____________ frame ______________" << std::endl;
-        print_vector(data, data[0].size(), data.size());
-    }
     
     while (rec_pos(door_array[0].get_x(), door_array[0].get_y(), data, data[start_x][start_y]) != 0)
     { 
         map_generation_try++;
     }
-
-    if (debug_flag)
-    {
-        std::cout << "_________ map data pre trim _________" << std::endl;
-        print_vector(data, data[0].size(), data.size());
-    }
     
     trim_boarder(data, map_data);
 
-    if (debug_flag)
-    {
-        std::cout << "_____________ map data _____________" << std::endl;
-        print_vector(map_data, map_data[0].size(), map_data.size());
-    }    
-
     //set_corners(map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80
-
-    if (debug_flag)
-    {
-        std::cout << "____________ item data _____________" << std::endl;
-        print_vector(item_data, item_data[0].size(), item_data.size());
-
-    }    
+    if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80  
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
     std::cout << "saving data..." << std::endl;
