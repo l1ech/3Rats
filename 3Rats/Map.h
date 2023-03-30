@@ -31,6 +31,7 @@ private:
 	//std::pair<int, int> exit;
 	//std::pair<int, int> hole;
 
+
 	int entry_direction;
 	int exit_direction;
 
@@ -62,6 +63,7 @@ private:
 	void build_frame(std::vector<std::vector <int>>& map_data, Door entry, Door exit, int wall, int space);
 	void build_frame(std::vector<std::vector <int>>& map_data, int wall, int space);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
+	void print_doors();
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	//void set_corners(std::vector<std::vector <int>>& map_data);
 
@@ -69,6 +71,8 @@ private:
 	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
 
 	int get_tile(int x, int y);
+
+
 
 
 public:
@@ -92,7 +96,7 @@ public:
 	int get_hight();
 	int get_width();
 
-	void set_layout(int num);
+	void set_layout(std::string layout);
 
 	Door get_door(int index);
 };

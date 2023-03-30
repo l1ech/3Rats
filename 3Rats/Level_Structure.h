@@ -11,6 +11,20 @@ protected:
 
 	Tile* tile_array;	// this 2
 	int tile_array_size;
+	/*
+	const std::string EMPTY = ".";
+	const std::string WALL = "#";
+	const std::string FINISH = "F";
+	const std::string START = "S";
+
+	const std::string NORTH = "N";
+	const std::string EAST = "E";
+	const std::string SOUTH = "S";
+	const std::string WEST = "W";
+	
+	*/
+	
+	
 public:
 	void set_tile_array(Tile* tile, int tile_size);
 	Tile* get_tile_array();

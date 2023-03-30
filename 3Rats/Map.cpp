@@ -95,6 +95,8 @@ void Map::make_maze(bool item_generation)
 
     make_doors(entry_direction, exit_direction, 0, end_x, end_y);
 
+    print_doors();
+
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
@@ -158,6 +160,8 @@ void Map::make_garden(bool item_generation)
 
     make_doors(entry_direction, exit_direction, 1, end_x, end_y);
 
+    print_doors();
+
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
@@ -194,6 +198,8 @@ void Map::make_cage(bool item_generation)
     Random rand;
 
     make_doors(entry_direction, exit_direction, 2, end_x, end_y);
+
+    print_doors();
     
     std::pair<int, int> food_bowl = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
     std::pair<int, int> bed = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
@@ -654,6 +660,13 @@ void Map::print_vector(std::vector<std::vector <int>>& arg, int size_x, int size
     }
 }
 
+void Map::print_doors()
+{
+    std::cout << "Entry: [" << door_array[0].get_x() << ";" << door_array[0].get_y() << "]" << std::endl;
+    std::cout << "Exit: [" << door_array[1].get_x() << ";" << door_array[1].get_y() << "]" << std::endl;
+    std::cout << "Hole: [" << door_array[2].get_x() << ";" << door_array[2].get_y() << "]" << std::endl;
+}
+
 void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data)   //trim boarder
 {
     for (int h = 0; h < height; h++)
@@ -769,9 +782,34 @@ int Map::get_tile(int x, int y)
     return y * width + x;
 }
 
-void Map::set_layout(int num)
+void Map::set_layout(std::string layout)
 {
-    switch (num)
+    if (layout == "N")
+    {
+        entry_direction = 3;
+        exit_direction = 1;
+    }
+    else if (layout == "E")
+    {
+        entry_direction = 3;
+        exit_direction = 1;
+    }
+    else if (layout == "S")
+    {
+        entry_direction = 0;
+        exit_direction = 2;
+    }
+    else if (layout == "W")
+    {
+        entry_direction = 0;
+        exit_direction = 2;
+    }
+    else
+    {
+        std::cout << "error! the value is: " << layout << std::endl;
+    }
+    /*
+    switch (std::stoi(layout))
     {
     case 3:
         entry_direction = 3;
@@ -790,9 +828,10 @@ void Map::set_layout(int num)
         exit_direction = 2;
         break;
     default:
-        std::cout << "error! the value is: "<< num << std::endl;
+        std::cout << "error! the value is: "<< layout << std::endl;
         break;
     }
+    */
 }
 
 
