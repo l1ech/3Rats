@@ -12,64 +12,6 @@ Map::Map()
 
     debug_flag = false;
 }
-/*
-Map::Map(const Map& b)
-{
-    rec_iter = 0;
-    width = 9;
-    height = 6;
-    item_id = 0;
-    map_generation_try = 0;
-    debug_flag = true;
-}
-
-*/
-
-Map::Map(Tile arg[], int size, int w, int h, int type)
-{
-    debug_flag = true;
-
-    rec_iter = 0;
-	width = w;
-	height = h;
-
-    item_id = 0;
-    map_generation_try = 0;
-
-	tile_array = arg;
-	tile_array_size = size;
-
-	int x_cord = 0;
-	int y_cord = 0;
-
-	for (int i = 0; i < tile_array_size; i++)
-	{
-		tile_array[i].set_cords(x_cord, y_cord);
-		//tile_array[i].set_texture("maze_wall.png");
-		x_cord += 64;
-
-		if (x_cord >= 576)
-		{
-			y_cord += 64;
-			x_cord = 0;
-		}
-	}
-
-    switch (type)
-    {
-
-    case 0:
-        make_maze(true);
-        break;
-
-    case 1:
-        make_garden(true);
-        break;
-
-    default:
-        break;
-    }
-}
 
 Map::~Map()
 {
