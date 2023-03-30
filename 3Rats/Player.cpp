@@ -32,8 +32,8 @@ std::vector<std::vector<bool>> Player::get_blocked_array(Tile* tile_array, int l
 			if (tile_array[i].get_hight() == 1)
 			{
 
-				int delta_x = tile_array[i].get_origin_x() - positionRect.x;
-				int delta_y = tile_array[i].get_origin_y() - positionRect.y;
+				int delta_x = tile_array[i].get_origin_x() - position_rect.x;
+				int delta_y = tile_array[i].get_origin_y() - position_rect.y;
 
 				if (delta_x > 0) block.right = true;
 				else if (delta_x < 0) block.left = true;
@@ -125,12 +125,12 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 				map_array[current_map_id].set_textures();
 				Door entry = map_array[current_map_id].get_door(0);
 
-				positionRect.x = entry.get_x() * 64 - cropRect.w;
-				positionRect.y = entry.get_y() * 64 - cropRect.h;
+				position_rect.x = entry.get_x() * 64 - crop_rect.w;
+				position_rect.y = entry.get_y() * 64 - crop_rect.h;
 
 				//std::cout << "player 1: " << this->player_number << std::endl;
 				//std::cout << "player 2: " << (this->player_number)++ << std::endl;
-				//std::cout << "player 3: " << ((this->cropRect.w)++)++ << std::endl;
+				//std::cout << "player 3: " << ((this->crop_rect.w)++)++ << std::endl;
 
 			} 
 			else if (tile_array[i].is_entrance	&& !first_room)
@@ -140,8 +140,8 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 				map_array[current_map_id].set_textures();
 				Door exit = map_array[current_map_id].get_door(1);
 
-				positionRect.x = exit.get_x() * 64 - cropRect.w;
-				positionRect.y = exit.get_y() * 64 - cropRect.h;
+				position_rect.x = exit.get_x() * 64 - crop_rect.w;
+				position_rect.y = exit.get_y() * 64 - crop_rect.h;
 			}
 			else if (tile_array[i].is_hole		&& current_map_id != map_amount - 1)
 			{
@@ -150,8 +150,8 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 				map_array[current_map_id].set_textures();
 				Door entry = map_array[current_map_id].get_door(0);
 
-				positionRect.x = entry.get_x() * 64 - cropRect.w;
-				positionRect.y = entry.get_y() * 64 - cropRect.h;
+				position_rect.x = entry.get_x() * 64 - crop_rect.w;
+				position_rect.y = entry.get_y() * 64 - crop_rect.h;
 
 				// for testing this is set to be linear map. which is wrong.
 				// it has to be 3d so a hole would move the map in z direction 
@@ -195,26 +195,26 @@ void Player::make_player_move(player_move move, block_direction direction, float
 {
 	if (move.up && !direction.up)	//up
 	{
-		positionRect.y -= moveSpeed * delta;
-		cropRect.y = frameHeight * 3;
+		position_rect.y -= moveSpeed * delta;
+		crop_rect.y = frame_height * 3;
 		current_direction = 0;
 	}
 	else if (move.down && !direction.down)			//down
 	{
-		positionRect.y += moveSpeed * delta;
-		cropRect.y = 0;
+		position_rect.y += moveSpeed * delta;
+		crop_rect.y = 0;
 		current_direction = 1;
 	}
 	else if (move.left && !direction.left)			//left
 	{
-		positionRect.x -= moveSpeed * delta;
-		cropRect.y = frameHeight;
+		position_rect.x -= moveSpeed * delta;
+		crop_rect.y = frame_height;
 		current_direction = 2;
 	}
 	else if (move.right && !direction.right)			//right
 	{
-		positionRect.x += moveSpeed * delta;
-		cropRect.y = frameHeight * 2;
+		position_rect.x += moveSpeed * delta;
+		crop_rect.y = frame_height * 2;
 		current_direction = 3;
 	}
 	else
@@ -227,26 +227,26 @@ void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 {
 	if (rat_y > front_rat_y && !direction.up)
 	{
-		positionRect.y -= moveSpeed * delta;
-		cropRect.y = frameHeight * 3;
+		position_rect.y -= moveSpeed * delta;
+		crop_rect.y = frame_height * 3;
 		current_direction = 0;
 	}
 	else if (rat_y < front_rat_y && !direction.down)
 	{
-		positionRect.y += moveSpeed * delta;
-		cropRect.y = 0;
+		position_rect.y += moveSpeed * delta;
+		crop_rect.y = 0;
 		current_direction = 1;
 	}
 	else if (rat_x > front_rat_x && !direction.left)
 	{
-		positionRect.x -= moveSpeed * delta;
-		cropRect.y = frameHeight;
+		position_rect.x -= moveSpeed * delta;
+		crop_rect.y = frame_height;
 		current_direction = 2;
 	}
 	else if (rat_x < front_rat_x && !direction.right)
 	{
-		positionRect.x += moveSpeed * delta;
-		cropRect.y = frameHeight * 2;
+		position_rect.x += moveSpeed * delta;
+		crop_rect.y = frame_height * 2;
 		current_direction = 3;
 	}
 	else
@@ -254,36 +254,36 @@ void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 		current_direction = front_rat.GetDirection();
 	}
 
-	if (current_direction == 0) cropRect.y = frameHeight * 3;
-	if (current_direction == 1) cropRect.y = 0;
-	if (current_direction == 2) cropRect.y = frameHeight;
-	if (current_direction == 3) cropRect.y = frameHeight * 2;
+	if (current_direction == 0) crop_rect.y = frame_height * 3;
+	if (current_direction == 1) crop_rect.y = 0;
+	if (current_direction == 2) crop_rect.y = frame_height;
+	if (current_direction == 3) crop_rect.y = frame_height * 2;
 }
 
 void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item)
 {
 	if (rat_y > goal_y && !direction.up)
 	{
-		positionRect.y -= moveSpeed * delta;
-		cropRect.y = frameHeight * 3;
+		position_rect.y -= moveSpeed * delta;
+		crop_rect.y = frame_height * 3;
 		current_direction = 0;
 	}
 	else if (rat_y < goal_y && !direction.down)
 	{
-		positionRect.y += moveSpeed * delta;
-		cropRect.y = 0;
+		position_rect.y += moveSpeed * delta;
+		crop_rect.y = 0;
 		current_direction = 1;
 	}
 	else if (rat_x > goal_x && !direction.left)
 	{
-		positionRect.x -= moveSpeed * delta;
-		cropRect.y = frameHeight;
+		position_rect.x -= moveSpeed * delta;
+		crop_rect.y = frame_height;
 		current_direction = 2;
 	}
 	else if (rat_x < goal_x && !direction.right)
 	{
-		positionRect.x += moveSpeed * delta;
-		cropRect.y = frameHeight * 2;
+		position_rect.x += moveSpeed * delta;
+		crop_rect.y = frame_height * 2;
 		current_direction = 3;
 	}
 	else if (rat_x == goal_x && rat_y == goal_y&& !item.get_pick_up())
@@ -333,8 +333,8 @@ void Player::teleport_to_entrence()
 	Map* map_ptr = topography->get_map_array();
 	
 	set_cords(
-		map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - cropRect.w,
-		map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - cropRect.h
+		map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - crop_rect.w,
+		map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - crop_rect.h
 	);
 }
 
@@ -344,7 +344,7 @@ Player::Player()
 
 	saturation = 100;
 
-	filePath = "meta_textures/place_holder.png";
+	file_path = "meta_textures/place_holder.png";
 	item_search_id = 0;
 	has_goal = false;
 
@@ -363,14 +363,14 @@ Player::Player()
 	searchCounter /= 100.0f;
 }
 /*
-Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, int framesX, int framesY)
+Player::Player(SDL_Renderer* renderTarget, std::string file_path, int x, int y, int framesX, int framesY)
 {
 	has_goal = false;
 	item_search_id = 0;
 
 	item_type = 0;
 
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
+	SDL_Surface* surface = IMG_Load(file_path.c_str());
 	if (surface == NULL)
 		std::cout << "Error" << std::endl;
 	else
@@ -382,18 +382,18 @@ Player::Player(SDL_Renderer* renderTarget, std::string filePath, int x, int y, i
 
 	SDL_FreeSurface(surface);
 
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
+	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 
-	positionRect.x = x;
-	positionRect.y = y;
+	position_rect.x = x;
+	position_rect.y = y;
 
-	textureWidth = cropRect.w;
+	textureWidth = crop_rect.w;
 
-	cropRect.w /= framesX;
-	cropRect.h /= framesY;
+	crop_rect.w /= framesX;
+	crop_rect.h /= framesY;
 
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
+	frameWidth = position_rect.w = crop_rect.w;
+	frameHeight = position_rect.h = crop_rect.h;
 
 	originX = frameWidth / 2;
 	originY = frameHeight / 2;
@@ -425,21 +425,21 @@ Player::~Player()
 
 void Player::set_cords_frames(int x, int y, int framesX, int framesY)
 {
-	positionRect.x = x;
-	positionRect.y = y;
+	position_rect.x = x;
+	position_rect.y = y;
 
-	textureWidth = cropRect.w;
+	texture_width = crop_rect.w;
 
-	cropRect.w /= framesX;
-	cropRect.h /= framesY;
+	crop_rect.w /= framesX;
+	crop_rect.h /= framesY;
 
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
+	frame_width = position_rect.w = crop_rect.w;
+	frame_height = position_rect.h = crop_rect.h;
 
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
+	origin_x = frame_width / 2;
+	origin_y = frame_height / 2;
 
-	radius = frameWidth / 2;
+	radius = frame_width / 2;
 }
 
 void Player::set_player_number(int number)
@@ -561,9 +561,9 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 		if (frameCounter >= 0.25f)
 		{
 			frameCounter = 0;
-			cropRect.x += frameWidth;
-			if (cropRect.x >= textureWidth)
-				cropRect.x = 0;
+			crop_rect.x += frame_width;
+			if (crop_rect.x >= texture_width)
+				crop_rect.x = 0;
 		}
 
 		if (searchCounter >= 2.0f)
@@ -582,11 +582,11 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	else
 	{
 		frameCounter = 0;
-		cropRect.x = frameWidth;
+		crop_rect.x = frame_width;
 	}
 }
 
-void Player::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect); }
+void Player::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); }
 
 void Player::SetNewGoal(int x, int y) { goalX = x; goalY = y; }
 

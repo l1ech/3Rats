@@ -12,15 +12,15 @@ protected:
 	SDL_Renderer* ptr_renderer;
 	SDL_Texture* texture;
 
-	std::string filePath;
+	std::string file_path;
 
-	SDL_Rect positionRect;
-	SDL_Rect cropRect;
+	SDL_Rect position_rect;
+	SDL_Rect crop_rect;
 
-	float frameWidth, frameHeight;
-	int textureWidth;
+	float frame_width, frame_height;
+	int texture_width;
 
-	int originX, originY;
+	int origin_x, origin_y;
 	int radius;
 
 	int hight;

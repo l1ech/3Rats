@@ -17,15 +17,15 @@ void Body::update(float delta)
 
 void Body::draw(SDL_Renderer* renderTarget)
 {
-	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
+	SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect);
 }
 
 void Body::set_surface(SDL_Renderer* renderTarget)
 {
-	filePath = "meta_textures/place_holder.png";
+	file_path = "meta_textures/place_holder.png";
 	ptr_renderer = renderTarget;
 
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
+	SDL_Surface* surface = IMG_Load(file_path.c_str());
 	if (surface == NULL)
 		std::cout << "Error Body Surface" << std::endl;
 	else
@@ -37,14 +37,14 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 
 	SDL_FreeSurface(surface);
 
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
+	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 }
 
 void Body::set_texture(std::string name)
 {
-	filePath = name;
+	file_path = name;
 
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
+	SDL_Surface* surface = IMG_Load(file_path.c_str());
 	if (surface == NULL)
 		std::cout << "Error Body Surface" << std::endl;
 	else
@@ -56,24 +56,24 @@ void Body::set_texture(std::string name)
 
 	SDL_FreeSurface(surface);
 
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
+	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 
 }
 
 void Body::set_cords(int x, int y)
 {
-	positionRect.x = x;
-	positionRect.y = y;
+	position_rect.x = x;
+	position_rect.y = y;
 
-	textureWidth = cropRect.w;
+	texture_width = crop_rect.w;
 
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
+	frame_width = position_rect.w = crop_rect.w;
+	frame_height = position_rect.h = crop_rect.h;
 
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
+	origin_x = frame_width / 2;
+	origin_y = frame_height / 2;
 
-	radius = frameWidth / 2;
+	radius = frame_width / 2;
 }
 
 void Body::set_hight(int value) { this->hight = value; }
@@ -81,8 +81,8 @@ void Body::set_hight(int value) { this->hight = value; }
 
 int Body::get_hight() { return this->hight; }
 
-int Body::get_origin_x() { return positionRect.x + originX; }
+int Body::get_origin_x() { return position_rect.x + origin_x; }
 
-int Body::get_origin_y() { return positionRect.y + originY; }
+int Body::get_origin_y() { return position_rect.y + origin_y; }
 
 int Body::get_radius() { return radius; }

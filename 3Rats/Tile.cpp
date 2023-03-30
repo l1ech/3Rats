@@ -8,7 +8,7 @@ Tile::Tile()
 	is_exit = false;
 	is_hole = false;
 
-	filePath = "meta_textures/place_holder.png";
+	file_path = "meta_textures/place_holder.png";
 }
 Tile::Tile(const Tile& other)
 {
@@ -17,13 +17,13 @@ Tile::Tile(const Tile& other)
 	is_entrance = other.is_entrance;
 	is_hole = other.is_hole;
 
-	filePath = other.filePath;
+	file_path = other.file_path;
 
 	this->hight = other.hight;
 
 	this->ptr_renderer = other.ptr_renderer;
 
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
+	SDL_Surface* surface = IMG_Load(file_path.c_str());
 	if (surface == NULL)
 		std::cout << "Error Body Surface" << std::endl;
 	else
@@ -35,20 +35,20 @@ Tile::Tile(const Tile& other)
 
 	SDL_FreeSurface(surface);
 
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
+	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 
-	positionRect.x = other.originX;
-	positionRect.y = other.originY;
+	position_rect.x = other.origin_x;
+	position_rect.y = other.origin_y;
 
-	textureWidth = cropRect.w;
+	texture_width = crop_rect.w;
 
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
+	frame_width = position_rect.w = crop_rect.w;
+	frame_height = position_rect.h = crop_rect.h;
 
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
+	origin_x = frame_width / 2;
+	origin_y = frame_height / 2;
 
-	radius = frameWidth / 2;
+	radius = frame_width / 2;
 }
 
 Tile::Tile(bool exit, bool entrance, bool hole, std::string path, int height)
@@ -57,7 +57,7 @@ Tile::Tile(bool exit, bool entrance, bool hole, std::string path, int height)
 	is_entrance = entrance;
 	is_hole = hole;
 
-	filePath = path;
+	file_path = path;
 
 	this->hight = height;
 }
@@ -78,8 +78,8 @@ Tile& Tile::operator=(Tile rhs)
 
 	this->ptr_renderer = rhs.ptr_renderer;
 
-	this->positionRect = rhs.positionRect;
-	this->cropRect = rhs.cropRect;
+	this->position_rect = rhs.position_rect;
+	this->crop_rect = rhs.crop_rect;
 
 	return *this;
 }
