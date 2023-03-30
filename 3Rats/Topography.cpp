@@ -57,12 +57,12 @@ void Topography::draw(SDL_Renderer* renderTarget)
 	}
 	for (int i = 0; i < tile_array_size; i++)
 	{
-		tile_array[i].Draw(renderTarget);
+		tile_array[i].draw(renderTarget);
 	}
 
 	for (int i = 0; i < item_array_size; i++)
 	{
-		item_array[i].Draw(renderTarget);
+		item_array[i].draw(renderTarget);
 	}
 }
 

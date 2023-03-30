@@ -30,19 +30,19 @@ public:
 	Body();
 	~Body();
 
-	std::string get_filepath();
-	void Update(float delta);
-	void Draw(SDL_Renderer* renderTarget);
+	void update(float delta);
+	void draw(SDL_Renderer* renderTarget);
 
 	void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_texture(std::string name);
-
 	void set_cords(int x, int y);
-
-	int GetOriginX();
-	int GetOriginY();
-	int GetRadius();
-
 	void set_hight(int value);
+
+	std::string get_filepath();
+	int get_origin_x();
+	int get_origin_y();
+	int get_radius();
 	int get_hight();
+
+
 };

@@ -284,10 +284,16 @@ int main(int argc, char* argv[])
 					player_array[1].set_has_goal(false);
 					player_array[2].set_has_goal(false);
 					player_array[0].set_enter(false);
-
 					break;
 				case SDLK_e:
 					player_array[0].set_enter(true);
+					break;
+				case SDLK_t:
+					std::cout << "tp next room" << std::endl;
+					break;
+				case SDLK_z:
+					std::cout << "tp prev room" << std::endl;
+					break;
 				}
 			}
 		}

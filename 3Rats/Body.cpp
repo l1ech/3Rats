@@ -73,22 +73,22 @@ void Body::set_texture(std::string name)
 }
 
 
-void Body::Update(float delta)
+void Body::update(float delta)
 {
 	//std::cout << "update" << std::endl;
 }
 
-void Body::Draw(SDL_Renderer* renderTarget)
+void Body::draw(SDL_Renderer* renderTarget)
 {
 	SDL_RenderCopy(renderTarget, texture, &cropRect, &positionRect);
 }
 
 
-int Body::GetOriginX() { return positionRect.x + originX; }
+int Body::get_origin_x() { return positionRect.x + originX; }
 
-int Body::GetOriginY() { return positionRect.y + originY; }
+int Body::get_origin_y() { return positionRect.y + originY; }
 
-int Body::GetRadius() { return radius; }
+int Body::get_radius() { return radius; }
 
 
 void Body::set_hight(int value) { this->hight = value; }

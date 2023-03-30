@@ -32,8 +32,8 @@ std::vector<std::vector<bool>> Player::get_blocked_array(Tile* tile_array, int l
 			if (tile_array[i].get_hight() == 1)
 			{
 
-				int delta_x = tile_array[i].GetOriginX() - positionRect.x;
-				int delta_y = tile_array[i].GetOriginY() - positionRect.y;
+				int delta_x = tile_array[i].get_origin_x() - positionRect.x;
+				int delta_y = tile_array[i].get_origin_y() - positionRect.y;
 
 				if (delta_x > 0) block.right = true;
 				else if (delta_x < 0) block.left = true;
@@ -312,19 +312,19 @@ void Player::hold_item_in_mouth(Item& item)
 
 	if (current_direction == 0)
 	{
-		item.set_cords(GetOriginX() - 24, GetOriginY() - 32 - offset);
+		item.set_cords(get_origin_x() - 24, get_origin_y() - 32 - offset);
 	}
 	else if (current_direction == 1)
 	{
-		item.set_cords(GetOriginX() - 24, GetOriginY() - 32 + offset);
+		item.set_cords(get_origin_x() - 24, get_origin_y() - 32 + offset);
 	}
 	else if (current_direction == 2)
 	{
-		item.set_cords(GetOriginX() - 24 - offset, GetOriginY() - 32);
+		item.set_cords(get_origin_x() - 24 - offset, get_origin_y() - 32);
 	}
 	else if (current_direction == 3)
 	{
-		item.set_cords(GetOriginX() - 24 + offset, GetOriginY() - 32);
+		item.set_cords(get_origin_x() - 24 + offset, get_origin_y() - 32);
 	}
 }
 
@@ -475,19 +475,19 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	is_moving = true;	// do i need this?
 
-	int rat_x = this->GetOriginX();
-	int rat_y = this->GetOriginY();
+	int rat_x = this->get_origin_x();
+	int rat_y = this->get_origin_y();
 
 	// focus point of a non-player rat.
 	// maybe put this inside the function that makes 
 	// the cords to it to stand and hole items
-	int frontRatX = front_rat.GetOriginX();	
-	int frontRatY = front_rat.GetOriginY();
+	int frontRatX = front_rat.get_origin_x();	
+	int frontRatY = front_rat.get_origin_y();
 
 	make_rat_position(front_rat.GetDirection(), rat_x, rat_y);
 
-	float dist1 = sqrt(pow(abs(front_rat.GetOriginX() - rat_x), 2) + pow(abs(front_rat.GetOriginY() - rat_y), 2));
-	float dist2 = sqrt(pow(abs(front_rat.GetOriginX() - rat_x), 2) + pow(abs(front_rat.GetOriginY() - rat_y), 2));
+	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
+	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
 
 	std::vector<std::vector<bool>> blocked_i(tile_array_size, std::vector<bool>(4));
 
@@ -595,7 +595,7 @@ int Player::GetDirection() { return current_direction; }
 
 bool Player::intersectsWithBody(Body& b)
 {
-	if (sqrt(pow(GetOriginX() - b.GetOriginX(), 2) + pow(GetOriginY() - b.GetOriginY(), 2)) >= radius + b.GetRadius())
+	if (sqrt(pow(get_origin_x() - b.get_origin_x(), 2) + pow(get_origin_y() - b.get_origin_y(), 2)) >= radius + b.get_radius())
 	{
 		return false;
 	}
@@ -631,8 +631,8 @@ void Player::make_goal()
 
 			SetNewGoal
 			(
-				item_array[random_item_number].GetOriginX(),
-				item_array[random_item_number].GetOriginY()
+				item_array[random_item_number].get_origin_x(),
+				item_array[random_item_number].get_origin_y()
 			);
 
 			item_search_id = random_item_number;

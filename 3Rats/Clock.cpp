@@ -120,7 +120,7 @@ void Clock::update(double delta)
 
 void Clock::draw(SDL_Renderer* renderTarget)
 {
-	(*clockframe).Draw(renderTarget);
+	(*clockframe).draw(renderTarget);
 
 	//std::cout << "draw!!!!!!" << std::endl;
 
