@@ -3,92 +3,6 @@
 
 Body::Body()
 {
-	filePath = "meta_textures/place_holder.png";
-}
-
-Body::Body(int x, int y)
-{
-	//std::cout << "constructor mit x y aufruf" << std::endl;
-
-	filePath = "meta_textures/place_holder.png";
-	positionRect.x = x;
-	positionRect.y = y;
-
-}
-
-Body::Body(const Body& b)
-{
-
-	ptr_renderer = b.ptr_renderer;
-
-	//std::cout << "copy constructor aufruf" << std::endl;
-
-	filePath = b.filePath;
-
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error Body Surface" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
-		if (texture == NULL)
-			std::cout << "Error Body Texture" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
-	positionRect.x = b.originX;
-	positionRect.y = b.originY;
-
-	textureWidth = cropRect.w;
-
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
-
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
-
-	radius = frameWidth / 2;
-
-}
-
-Body::Body(SDL_Renderer* renderTarget, int x, int y)
-{
-
-	ptr_renderer = renderTarget;
-
-	//std::cout << "normaler constructor aufruf" << std::endl;
-
-	filePath = "meta_textures/place_holder.png";
-
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error Body Surface" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
-		if (texture == NULL)
-			std::cout << "Error Body Texture" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
-	positionRect.x = x;
-	positionRect.y = y;
-
-	textureWidth = cropRect.w;
-
-	frameWidth = positionRect.w = cropRect.w;
-	frameHeight = positionRect.h = cropRect.h;
-
-	originX = frameWidth / 2;
-	originY = frameHeight / 2;
-
-	radius = frameWidth / 2;
 }
 
 Body::~Body()
@@ -99,27 +13,6 @@ Body::~Body()
 std::string Body::get_filepath()
 {
 	return filePath;
-}
-
-
-void Body::set_surface(SDL_Renderer* renderTarget)
-{
-	ptr_renderer = renderTarget;
-
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error Body Surface" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
-		if (texture == NULL)
-			std::cout << "Error Body Texture" << std::endl;
-	}
-
-	SDL_FreeSurface(surface);
-
-	SDL_QueryTexture(texture, NULL, NULL, &cropRect.w, &cropRect.h);
-
 }
 
 void Body::set_surface(SDL_Renderer* renderTarget, std::string name)

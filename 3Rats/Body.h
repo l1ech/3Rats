@@ -28,21 +28,18 @@ protected:
 public:
 
 	Body();
-	Body(int x, int y);
-	Body(const Body& b);
-	Body(SDL_Renderer* renderTarget, int x, int y);
 	~Body();
 
 	std::string get_filepath();
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
-	void set_surface(SDL_Renderer* renderTarget);
 	void set_surface(SDL_Renderer* renderTarget, std::string name);
+	void set_texture(std::string name);
+
 	void set_cords(int x, int y);
 	void SetX(int x);
 	void SetY(int y);
-	void set_texture(std::string name);
 
 	int GetOriginX();
 	int GetOriginY();

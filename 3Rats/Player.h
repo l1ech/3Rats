@@ -99,7 +99,7 @@ public:
 	~Player();
 
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);
-	void set_cords(int x, int y, int framesX, int framesY);
+	void set_cords_frames(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
 

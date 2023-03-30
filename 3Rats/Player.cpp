@@ -307,34 +307,35 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 
 void Player::hold_item_in_mouth(Item& item)
 {
+	// add he offsets to make more sense. just for example i did it fo 14
+	int offset = 14;
+
 	if (current_direction == 0)
 	{
-		item.SetX(GetOriginX() - 24);
-		item.SetY(GetOriginY() - 32 - 14);
+		item.set_cords(GetOriginX() - 24, GetOriginY() - 32 - offset);
 	}
 	else if (current_direction == 1)
 	{
-		item.SetX(GetOriginX() - 24);
-		item.SetY(GetOriginY() - 32 + 14);
+		item.set_cords(GetOriginX() - 24, GetOriginY() - 32 + offset);
 	}
 	else if (current_direction == 2)
 	{
-		item.SetX(GetOriginX() - 24 - 14);
-		item.SetY(GetOriginY() - 32);
+		item.set_cords(GetOriginX() - 24 - offset, GetOriginY() - 32);
 	}
 	else if (current_direction == 3)
 	{
-		item.SetX(GetOriginX() - 24 + 14);
-		item.SetY(GetOriginY() - 32);
+		item.set_cords(GetOriginX() - 24 + offset, GetOriginY() - 32);
 	}
 }
 
 void Player::teleport_to_entrence()
 {
 	Map* map_ptr = topography->get_map_array();
-
-	SetX(map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - cropRect.w);
-	SetY(map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - cropRect.h);
+	
+	set_cords(
+		map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - cropRect.w,
+		map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - cropRect.h
+	);
 }
 
 Player::Player()
@@ -422,7 +423,7 @@ Player::~Player()
 }
 
 
-void Player::set_cords(int x, int y, int framesX, int framesY)
+void Player::set_cords_frames(int x, int y, int framesX, int framesY)
 {
 	positionRect.x = x;
 	positionRect.y = y;

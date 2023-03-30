@@ -48,7 +48,7 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body)
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
 {
 	Item item_templet;
-	item_templet.set_surface(render_target);
+	item_templet.set_surface(render_target, "meta_textures/place_holder.png");
 	item_templet.set_cords(-100, -100);
 
 	for (int i = 0; i < item_amount; i++)
@@ -152,13 +152,13 @@ void init_player_array(SDL_Renderer* render_target, Player* player_array, int pl
 	}
 
 	player_array[0].set_surface(render_target, "player_textures/mango.png");
-	player_array[0].set_cords(32, 32, 3, 4);
+	player_array[0].set_cords_frames(32, 32, 3, 4);
 
 	player_array[1].set_surface(render_target, "player_textures/fridolin.png");
-	player_array[1].set_cords(32, 32, 3, 4);
+	player_array[1].set_cords_frames(32, 32, 3, 4);
 
 	player_array[2].set_surface(render_target, "player_textures/remy.png");
-	player_array[2].set_cords(400, 300, 3, 4);
+	player_array[2].set_cords_frames(400, 300, 3, 4);
 }
 
 
