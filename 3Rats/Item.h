@@ -23,12 +23,8 @@ private:
 
 
 public:
-	Item(SDL_Renderer* renderTarget, std::string filePath, int x, int y);
-	Item(Item& other);
 	Item();
 	~Item();
-
-	//Item& operator=(Item& other);
 
 	//void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
