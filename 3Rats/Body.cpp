@@ -96,9 +96,3 @@ void Body::set_hight(int value) { this->hight = value; }
 int Body::get_hight() { return this->hight; }
 
 
-void Body::SetX(int x) { positionRect.x = x; }
-
-void Body::SetY(int y) { positionRect.y = y; }
-
-
-

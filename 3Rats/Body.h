@@ -38,8 +38,6 @@ public:
 	void set_texture(std::string name);
 
 	void set_cords(int x, int y);
-	void SetX(int x);
-	void SetY(int y);
 
 	int GetOriginX();
 	int GetOriginY();

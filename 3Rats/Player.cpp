@@ -656,8 +656,7 @@ void Player::use_item()
 	else if (item_type == 1)
 	{
 		holds_item = false;
-		item_array[item_hold_id].SetX(-100);
-		item_array[item_hold_id].SetY(-100);
+		item_array[item_hold_id].set_cords(-100, -100);
 		item_array[item_hold_id].set_on_map(false);
 
 		std::cout << "yumm!" << std::endl;
