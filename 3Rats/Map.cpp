@@ -328,7 +328,7 @@ void Map::generate_maze(bool item_generation)
 
     Random rand;
 
-    generate_doors(entry_direction, exit_direction, 0, end_x, end_y);
+    generate_doors(entry_direction, exit_direction, 0);
 
     print_doors();
 
@@ -368,7 +368,7 @@ void Map::generate_garden(bool item_generation)
 
     Random rand;
 
-    generate_doors(entry_direction, exit_direction, 1, end_x, end_y);
+    generate_doors(entry_direction, exit_direction, 1);
 
     print_doors();
 
@@ -402,7 +402,7 @@ void Map::generate_cage(bool item_generation)
 
     Random rand;
 
-    generate_doors(entry_direction, exit_direction, 2, end_x, end_y);
+    generate_doors(entry_direction, exit_direction, 2);
 
     print_doors();
     
@@ -437,27 +437,42 @@ void Map::generate_door(int direction, int index, int type, bool active)
 {
     //direction => 0 = north, 1 = east, 2 = south, 3 = west
     Random random;
-    switch (direction)
+
+    if (direction == 5)
     {
-    case 0:
-        door_array[index].init_door(random.roll_custom_dice(9), 1, type, active);
-        break;
-    case 1:
-        door_array[index].init_door(9, random.roll_custom_dice(6), type, active);
-        break;
-    case 2:
-        door_array[index].init_door(random.roll_custom_dice(9), 6, type, active);
-        break;
-    case 3:
-        door_array[index].init_door(1, random.roll_custom_dice(6), type, active);
-        break;
-    default:
-        std::cout << "error" << std::endl;
-        break;
+        if (active)
+        {
+            door_array[index].init_door(random.roll_custom_dice(width), random.roll_custom_dice(height), type, active);
+        }
+        else
+        {
+            door_array[index].init_door(-100, -100, type, active);
+        }
     }
+    else
+    {
+        switch (direction)
+        {
+        case 0:
+            door_array[index].init_door(random.roll_custom_dice(9), 1, type, active);
+            break;
+        case 1:
+            door_array[index].init_door(9, random.roll_custom_dice(6), type, active);
+            break;
+        case 2:
+            door_array[index].init_door(random.roll_custom_dice(9), 6, type, active);
+            break;
+        case 3:
+            door_array[index].init_door(1, random.roll_custom_dice(6), type, active);
+            break;
+        default:
+            std::cout << "error" << std::endl;
+            break;
+        }
+    }    
 }
 
-void Map::generate_doors(int entry_direction, int exit_direction, int type_generation, int end_x, int end_y)
+void Map::generate_doors(int entry_direction, int exit_direction, int type_generation)
 {
     const int MAZE_TYPE = 0;
     const int GARDEN_TYPE = 1;
@@ -469,19 +484,19 @@ void Map::generate_doors(int entry_direction, int exit_direction, int type_gener
     {
     case MAZE_TYPE:
         generate_door(entry_direction, 0, 1, true);
-        generate_door(exit_direction, 1, 2, true);
-        door_array[2].init_door(-100, -100, 3, false);
+        generate_door(exit_direction, 1, 2,  true);
+        generate_door(5,              2, 3,  false);
         break;
     case GARDEN_TYPE:
         generate_door(entry_direction, 0, 1, true);
-        generate_door(exit_direction, 1, 2, true);
-        door_array[2].init_door(random.roll_custom_dice(end_x), random.roll_custom_dice(end_y), 3, true);
+        generate_door(exit_direction, 1, 2,  true);
+        generate_door(5,              2, 3,  true);
         break;
     case CAGE_TYPE:
-        door_array[0].init_door(-100, -100, 1, false);
-        door_array[1].init_door(-100, -100, 2, false);
-        door_array[2].init_door(random.roll_custom_dice(end_x), random.roll_custom_dice(end_y), 3, true);
-        break;
+        generate_door(5, 0, 1, false);
+        generate_door(5, 1, 2, false);
+        generate_door(5, 2, 3, true);
+break;
     default:
         std::cout << "ERROR: generating doors!";
         break;

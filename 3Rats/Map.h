@@ -48,7 +48,7 @@ private:
 
 	// helper functions for generation
 	void generate_door(int direction, int index, int type, bool active);
-	void generate_doors(int entry_direction, int exit_direction, int type_generation, int end_x, int end_y);
+	void generate_doors(int entry_direction, int exit_direction, int type_generation);
 
 	//functions for generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
