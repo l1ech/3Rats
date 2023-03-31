@@ -533,32 +533,32 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
     //print_vector(arg, width + 2, height + 2);
 
     //================= set new location
-    if (rand.flip_coin())
-    {//horizontal
-        if (rand.flip_coin())
-        {
-            direction = RIGHT;
-            x++;
-        }//right
-        else
-        {
-            direction = LEFT;
-            x--;
-        }//left
+    switch (rand.roll_custom_dice(4))
+    {
+    case 1:
+        direction = RIGHT;
+        x++;
+        break;
+
+    case 2:
+        direction = LEFT;
+        x--;
+        break;
+
+    case 3:
+        direction = UP;
+        y++;
+        break;
+
+    case 4:
+        direction = DOWN;
+        y--;
+        break;
+
+    default:
+        break;
     }
-    else
-    {//vertical
-        if (rand.flip_coin())
-        {
-            direction = UP;
-            y++;
-        }//up
-        else
-        {
-            direction = DOWN;
-            y--;
-        }//down
-    }
+
     //================= try new location
 
     int point_value = arg[y][x];
