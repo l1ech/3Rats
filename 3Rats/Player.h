@@ -14,13 +14,15 @@
 class Player : public Body
 {
 private:
+
+	Random* random_ptr;
+
 	SDL_Scancode keys[4];
 
 	float frameCounter, searchCounter;
 
 	Topography* topography;
 
-	Random random;
 	int player_number;
 
 	// holding item type 
@@ -100,6 +102,7 @@ public:
 	void set_cords_frames(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
+	void set_random_pointer(Random& random);
 
 	void Update(float delta, const Uint8* keyState, int mode, Player& p1);
 	void Draw(SDL_Renderer* renderTarget);  

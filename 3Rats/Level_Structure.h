@@ -2,10 +2,15 @@
 
 #include"Tile.h"
 #include"Item.h"
+#include "Random.h"
+
 
 class Level_Structure
 {
 protected:
+
+	Random* random_ptr;
+
 	Item* item_array;	// implement to use instead of having maps do it
 	int item_array_size;
 
@@ -34,5 +39,5 @@ public:
 	Item* get_item_array();
 	int get_item_size();
 
-
+	void set_random_pointer(Random& random);
 };

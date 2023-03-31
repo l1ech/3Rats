@@ -288,8 +288,6 @@ void Map::set_layout(std::string layout)
 
 void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width, int probability)
 {
-    Random rand;
-
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -298,7 +296,7 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
             {
                 item_data[i][j] = 0;
             }
-            else if (*item_on_map < item_array_size && rand.roll_custom_dice(probability) == 1)
+            else if (*item_on_map < item_array_size && random_ptr->roll_custom_dice(probability) == 1)
             {
                 item_data[i][j] = 1;
                 (*item_on_map)++;
@@ -325,8 +323,6 @@ void Map::generate_maze(bool item_generation)
 
     int end_x = width;
     int end_y = height;
-
-    Random rand;
 
     generate_doors(entry_direction, exit_direction, 0);
 
@@ -368,8 +364,6 @@ void Map::generate_garden(bool item_generation)
     int end_x = width;
     int end_y = height;
 
-    Random rand;
-
     generate_doors(entry_direction, exit_direction, 1);
 
     print_doors();
@@ -404,14 +398,20 @@ void Map::generate_cage(bool item_generation)
     int end_x = width;
     int end_y = height;
 
-    Random rand;
-
     generate_doors(entry_direction, exit_direction, 2);
 
     print_doors();
     
-    std::pair<int, int> food_bowl = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
-    std::pair<int, int> bed = { rand.roll_custom_dice(end_x), rand.roll_custom_dice(end_y) };
+    std::pair<int, int> food_bowl = 
+    { 
+        random_ptr->roll_custom_dice(end_x), 
+        random_ptr->roll_custom_dice(end_y) 
+    };
+    std::pair<int, int> bed = 
+    { 
+        random_ptr->roll_custom_dice(end_x), 
+        random_ptr->roll_custom_dice(end_y) 
+    };
 
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
@@ -442,13 +442,17 @@ void Map::generate_cage(bool item_generation)
 void Map::generate_door(int direction, int index, int type, bool active)
 {
     //direction => 0 = north, 1 = east, 2 = south, 3 = west
-    Random random;
-
     if (direction == 5)
     {
         if (active)
         {
-            door_array[index].init_door(random.roll_custom_dice(width), random.roll_custom_dice(height), type, active);
+            door_array[index].init_door
+            (
+                random_ptr->roll_custom_dice(width), 
+                random_ptr->roll_custom_dice(height),
+                type, 
+                active
+            );
         }
         else
         {
@@ -460,16 +464,16 @@ void Map::generate_door(int direction, int index, int type, bool active)
         switch (direction)
         {
         case 0:
-            door_array[index].init_door(random.roll_custom_dice(9), 1, type, active);
+            door_array[index].init_door(random_ptr->roll_custom_dice(9), 1, type, active);
             break;
         case 1:
-            door_array[index].init_door(9, random.roll_custom_dice(6), type, active);
+            door_array[index].init_door(9, random_ptr->roll_custom_dice(6), type, active);
             break;
         case 2:
-            door_array[index].init_door(random.roll_custom_dice(9), 6, type, active);
+            door_array[index].init_door(random_ptr->roll_custom_dice(9), 6, type, active);
             break;
         case 3:
-            door_array[index].init_door(1, random.roll_custom_dice(6), type, active);
+            door_array[index].init_door(1, random_ptr->roll_custom_dice(6), type, active);
             break;
         default:
             std::cout << "error" << std::endl;
@@ -525,15 +529,13 @@ void Map::generate_doors(int entry_direction, int exit_direction, int type_gener
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
 {
-    Random rand;
-
     rec_iter++;
-    int direction;
-
-    //print_vector(arg, width + 2, height + 2);
+    int direction = ERROR_DIRECTION;
 
     //================= set new location
-    switch (rand.roll_custom_dice(4))
+    // make this one structure a new function maybe???
+
+    switch (random_ptr->roll_custom_dice(4))
     {
     case 1:
         direction = RIGHT;
@@ -556,6 +558,8 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
         break;
 
     default:
+        direction = ERROR_DIRECTION;
+        std::cout << "ERROR: Direction is wrong." << std::endl;
         break;
     }
 

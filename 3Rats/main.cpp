@@ -93,7 +93,7 @@ void init_grid_coords(T* array, int size, int height, int width)
 	}
 }
 
-void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount)
+void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Random& random)
 {
 	Map map_templet;
 
@@ -101,7 +101,7 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	init_grid_coords(tile_array, tile_amount, map_templet.get_hight(), map_templet.get_width());
 	map_templet.set_item_array(item_array, item_amount);
 	init_grid_coords(item_array, item_amount, map_templet.get_hight(), map_templet.get_width());
-
+	map_templet.set_random_pointer(random);
 
 	for (int i = 0; i < map_amount; i++)
 	{
@@ -110,9 +110,8 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_hyper_map(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Topography* topography)
+void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Topography* topography, Random& random )
 {
-	Random random;
 	topography->set_renderer(renderTarget);
 
 	Item* item_ptr = map_ptr[0].get_item_array();
@@ -124,12 +123,12 @@ void init_hyper_map(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, To
 	topography->set_map_array(map_ptr, map_amount);
 	topography->set_item_array(item_ptr, item_amount);
 	topography->set_tile_array(tile_ptr, item_amount);
+	topography->set_random_pointer(random);
 
 	topography->set_up();
 	topography->make_maze();
 
 	map_ptr[0].set_type(2);
-	//map_ptr[0].show_it();
 
 	for (int i = 1; i < map_amount; i++)
 	{
@@ -144,13 +143,14 @@ void init_hyper_map(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, To
 	map_ptr[0].set_textures();
 }
 
-void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Topography& topography)
+void init_player_array(SDL_Renderer* render_target, Player* player_array, int player_amount, Topography& topography, Random& random)
 {
 	for (int i = 0; i < player_amount; i++)
 	{
 		Player player;
 		player.set_player_number(i);
 		player.set_Topography(&topography);
+		player.set_random_pointer(random);
 		player_array[i] = player;
 	}
 
@@ -210,7 +210,10 @@ int main(int argc, char* argv[])
 	// ===================================================================================
 
 	// random object
-	Random rand;
+	Random random;
+	// add a init_function for this random object
+	// so that a seed is beeing used to recreate it
+	// also pass the random object to all others 
 
 	Body clock_frame;
 	init_clock_frame(renderTarget, &clock_frame);
@@ -226,13 +229,13 @@ int main(int argc, char* argv[])
 	init_tile_array(renderTarget, tile_array, tile_amount);
 
 	Map map_array[map_amount];
-	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount);
+	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, random);
 
 	Topography topography;
-	init_hyper_map(renderTarget, map_array, map_amount, &topography);
+	init_topography(renderTarget, map_array, map_amount, &topography, random);
 
 	Player player_array[player_amount];
-	init_player_array(renderTarget, player_array, player_amount, topography);
+	init_player_array(renderTarget, player_array, player_amount, topography, random);
 
 	// ===================================================================================
 

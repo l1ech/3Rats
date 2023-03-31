@@ -8,7 +8,6 @@
 #include "Body.h"
 #include "Item.h"
 #include "Tile.h"
-#include "Random.h"
 #include "Level_Structure.h"
 #include "Door.h"
 
@@ -21,7 +20,8 @@ private:
 		RIGHT = 3,
 		LEFT = 4,
 		UP = 5,
-		DOWN = 6
+		DOWN = 6,
+		ERROR_DIRECTION = 20
 	};
 
 	int map_id;

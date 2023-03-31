@@ -19,3 +19,6 @@ void Level_Structure::set_item_array(Item* item, int item_size)
 Item* Level_Structure::get_item_array() { return item_array; }
 
 int Level_Structure::get_item_size() { return item_array_size; }
+
+void Level_Structure::set_random_pointer(Random& random) { random_ptr = &random; }
+

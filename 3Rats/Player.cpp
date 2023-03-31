@@ -183,11 +183,9 @@ void Player::make_rat_position(int direction, int& rat_x, int& rat_y)
 
 int Player::tick_food(int num)
 {
-	Random random;
-
 	//random.roll_custom_dice(10);	//10% 1/10 ?
 
-	if (random.roll_custom_dice(num) == 1) return 1;
+	if (random_ptr->roll_custom_dice(num) == 1) return 1;
 	else return 0;
 }
 
@@ -398,6 +396,11 @@ void Player::set_Topography(Topography* h)
 	topography = h;
 }
 
+void Player::set_random_pointer(Random& random)
+{
+	random_ptr = &random;
+}
+
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat)
 {
@@ -571,7 +574,7 @@ void Player::make_goal()
 
 	while (!has_goal)
 	{
-		if (item_array[random_item_number].get_on_map() && random.flip_coin())
+		if (item_array[random_item_number].get_on_map() && random_ptr->flip_coin())
 		{
 			has_goal = true;
 

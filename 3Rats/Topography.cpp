@@ -185,31 +185,37 @@ std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<s
 {
 	iterator++;
 
-	Random rand;
-
 	std::string direction;
 	std::string prev_point_value = map[y][x].first;
 
 	// Set new location
-	if (rand.flip_coin()) {  // Horizontal
-		if (rand.flip_coin()) {
-			direction = EAST;  // Right
-			x++;
-		}
-		else {
-			direction = WEST;  // Left
-			x--;
-		}
-	}
-	else {  // Vertical
-		if (rand.flip_coin()) {
-			direction = NORTH;  // Up
-			y++;
-		}
-		else {
-			direction = SOUTH;  // Down
-			y--;
-		}
+	// make this one structure a new function maybe???
+
+	switch (random_ptr->roll_custom_dice(4))
+	{
+	case 1:
+		direction = EAST;
+		x++;
+		break;
+
+	case 2:
+		direction = WEST;
+		x--;
+		break;
+
+	case 3:
+		direction = NORTH;
+		y++;
+		break;
+
+	case 4:
+		direction = SOUTH;
+		y--;
+		break;
+
+	default:
+		std::cout << "ERROR: Direction is wrong." << std::endl;
+		break;
 	}
 
 	// Try new location
