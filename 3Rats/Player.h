@@ -25,6 +25,8 @@ private:
 
 	int player_number;
 
+	bool dead = false;
+
 	// holding item type 
 	// should be done by the inventory not in the player!
 	int item_type;	

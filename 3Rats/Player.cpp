@@ -404,6 +404,10 @@ void Player::set_random_pointer(Random& random)
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat)
 {
+	if (dead)
+	{
+		return;
+	}
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();
 
@@ -450,7 +454,11 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
 
-	if (saturation == 0) {} // game over. make a flag that -> game_over = true;
+	if (saturation == 0) 
+	{
+		std::cout << "Rat #" << player_number << " died of hunger."<<std::endl;
+		dead = true;
+	} 
 
 	// colision with door check
 	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
@@ -604,6 +612,8 @@ void Player::use_item()
 	}
 	else if (item_type == 1)
 	{
+		saturation = 100;
+
 		holds_item = false;
 		item_array[item_hold_id].set_cords(-100, -100);
 		item_array[item_hold_id].set_on_map(false);

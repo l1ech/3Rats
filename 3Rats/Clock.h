@@ -12,6 +12,10 @@ private:
 	int min;
 	int hour;
 
+	int day_counter;
+
+	bool is_running;
+
 	std::string str_time_min;
 	std::string str_time_hour;
 
@@ -45,4 +49,9 @@ public:
 	void set_up(Body* clockframe);
 
 	void set_time( int hour, int min);
+
+	bool get_running()
+	{
+		return is_running;
+	}
 };

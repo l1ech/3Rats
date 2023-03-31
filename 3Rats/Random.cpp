@@ -10,6 +10,12 @@ Random::Random(uint32_t seed_val_parameter)
     rng.seed(seed_val);
 }
 
+Random::Random()
+{
+    seed_val = 1;
+    rng.seed(seed_val);
+}
+
 bool Random::flip_coin()
 {
     std::uniform_int_distribution<uint32_t> uint_dist(0, 1); // range [0,1]

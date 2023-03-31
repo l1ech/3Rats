@@ -167,6 +167,30 @@ void init_player_array(SDL_Renderer* render_target, Player* player_array, int pl
 	player_array[2].set_cords_frames(400, 300, 3, 4);
 }
 
+uint32_t generate_seed(int seed_generation)
+{
+	Random key_generator;
+
+	uint32_t seed = 1;
+
+	std::cout << "Seed: ";
+
+	switch (key_generator.roll_custom_dice(3))
+	{
+	case 0:
+		seed = 1;
+		break;
+	case 1:
+		seed = key_generator.roll_custom_dice(999 * 999);
+		break;
+	case 3:
+		std::cin >> seed;
+		break;
+	default:
+		break;
+	}
+	return seed;
+}
 
 int main(int argc, char* argv[])
 {
@@ -205,14 +229,19 @@ int main(int argc, char* argv[])
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-
 	// ================================ INIT GAME OBJECTS ================================
 	// ===================================================================================
-
-	uint32_t seed;
-
-	std::cout << "Seed: ";
-	std::cin >> seed;
+	
+	int seed_generation;
+	
+	std::cout << "What type of generation?" << std::endl;
+	std::cout << "fix seed (testing): 0" << std::endl;
+	std::cout << "user input: 1" << std::endl;
+	std::cout << "random seed: 2" << std::endl;
+	std::cin >> seed_generation;
+	std::cout << "/n";
+	
+	uint32_t seed = generate_seed(seed_generation);
 
 	// random object
 	Random random(seed);
@@ -250,6 +279,12 @@ int main(int argc, char* argv[])
 
 	while (isRunning)
 	{
+
+		if (clock.get_running() == false)
+		{
+			isRunning = false;
+		}
+
 		prevTime = currentTime;
 		currentTime = SDL_GetTicks();
 		delta = (currentTime - prevTime) / 1000.0f;
@@ -271,6 +306,7 @@ int main(int argc, char* argv[])
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
 				case SDLK_u:
+					player_array[0].use_item();
 					player_array[1].use_item();
 					player_array[2].use_item();
 					player_array[0].set_enter(false);

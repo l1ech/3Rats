@@ -11,6 +11,8 @@ private:
 public:
 
 	Random(uint32_t seed_val);
+	Random();					// this constructor allways starts with the same 
+								// seed = 1
 
 	bool flip_coin();
 	int roll_dice();
