@@ -1,8 +1,5 @@
 #pragma once
 
-#include <SDL.h>
-#include <SDL_image.h>
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,6 +15,15 @@
 class Map : public Level_Structure
 {
 private:
+
+	enum Direction
+	{
+		RIGHT = 3,
+		LEFT = 4,
+		UP = 5,
+		DOWN = 6
+	};
+
 	int map_id;
 
 	int map_generation_try;
@@ -40,7 +46,7 @@ private:
 	std::vector<std::vector <std::vector<std::vector<int>>>>hyper_map;
 
 	std::pair<int, int> data[6][9];
-
+	
 	//types of generation
 	void generate_maze(bool item_generation);
 	void generate_garden(bool item_generations);
@@ -52,12 +58,13 @@ private:
 
 	//functions for generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
-	void build_frame(std::vector<std::vector <int>>& map_data, Door* door_array, int wall, int space);
-	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
+	void build_frame(std::vector<std::vector <int>>& map_data, int wall, int space);
+	void place_doors(std::vector<std::vector<int>>& data, Door* door_array);
+	void print_vector(const std::vector<std::vector<int>>& arg, const int& size_x, const int& size_y);
 	void print_doors();
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	//void set_corners(std::vector<std::vector <int>>& map_data);
-	void save_data(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data);
+	void save_data(const std::vector<std::vector <int>>& map_data, const std::vector<std::vector <int>>& item_data);
 	
 	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
 
