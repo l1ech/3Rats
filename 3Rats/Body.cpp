@@ -1,24 +1,13 @@
 #include "Body.h"
 #include <memory>
 
-Body::Body()
-{
-}
+Body::Body() { }
 
-Body::~Body()
-{
-	SDL_DestroyTexture(texture);
-}
+Body::~Body() { SDL_DestroyTexture(texture); }
 
-void Body::update(float delta)
-{
-	//std::cout << "update" << std::endl;
-}
+void Body::update(float delta) { }
 
-void Body::draw(SDL_Renderer* renderTarget)
-{
-	SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect);
-}
+void Body::draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); }
 
 void Body::set_surface(SDL_Renderer* renderTarget)
 {
