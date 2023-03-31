@@ -209,11 +209,13 @@ int main(int argc, char* argv[])
 	// ================================ INIT GAME OBJECTS ================================
 	// ===================================================================================
 
+	uint32_t seed;
+
+	std::cout << "Seed: ";
+	std::cin >> seed;
+
 	// random object
-	Random random;
-	// add a init_function for this random object
-	// so that a seed is beeing used to recreate it
-	// also pass the random object to all others 
+	Random random(seed);
 
 	Body clock_frame;
 	init_clock_frame(renderTarget, &clock_frame);
