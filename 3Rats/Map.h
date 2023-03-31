@@ -18,19 +18,11 @@
 class Map : public Level_Structure
 {
 private:
-
-	bool debug_flag;
-
 	int map_id;
 
 	int map_generation_try;
 
 	Door door_array[3];
-
-	//std::pair<int, int> entrence;
-	//std::pair<int, int> exit;
-	//std::pair<int, int> hole;
-
 
 	int entry_direction;
 	int exit_direction;
@@ -50,30 +42,26 @@ private:
 	std::pair<int, int> data[6][9];
 
 	//types of generation
-	void make_maze(bool item_generation);
-	void make_garden(bool item_generations);
-	void make_cage(bool item_generation);
+	void generate_maze(bool item_generation);
+	void generate_garden(bool item_generations);
+	void generate_cage(bool item_generation);
 
 	// helper functions for generation
-	void make_door(int direction, int index, int type);
-	void make_doors(int entry_direction, int exit_direction, int type_generation, int end_x, int end_y);
+	void generate_door(int direction, int index, int type, bool active);
+	void generate_doors(int entry_direction, int exit_direction, int type_generation);
 
-	//functions for maze generation
+	//functions for generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);
-	void build_frame(std::vector<std::vector <int>>& map_data, Door entry, Door exit, int wall, int space);
-	void build_frame(std::vector<std::vector <int>>& map_data, int wall, int space);
+	void build_frame(std::vector<std::vector <int>>& map_data, Door* door_array, int wall, int space);
 	void print_vector(std::vector<std::vector <int>>& arg, int size_x, int size_y);
 	void print_doors();
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	//void set_corners(std::vector<std::vector <int>>& map_data);
-
 	void save_data(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data);
+	
 	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
 
 	int get_tile(int x, int y);
-
-
-
 
 public:
 	Map();
@@ -82,19 +70,15 @@ public:
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
-	//set up functions 
 	void set_type(int type);
 	void set_textures();
-
 	void set_ptr(int* ptr);
-
 	void set_map_id(int numer);
-	int get_map_id();
-
-	int get_hight();
-	int get_width();
-
 	void set_layout(std::string layout);
 
+
+	int get_map_id();
+	int get_hight();
+	int get_width();
 	Door get_door(int index);
 };
