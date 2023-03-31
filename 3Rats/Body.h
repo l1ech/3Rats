@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 
 #include <string>
+#include <iostream>
 
 class Body
 {
