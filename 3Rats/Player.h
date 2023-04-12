@@ -9,9 +9,9 @@
 #include "Tile.h"
 #include "Topography.h"
 #include "Door.h"
+#include "Mop.h"
 
-
-class Player : public Body
+class Player : public Body, public Mop
 {
 private:
 
@@ -60,28 +60,6 @@ private:
 	int saturation;		// 0 - 100
 						// ticksystem removing hunger
 
-	struct block_direction_counter {
-		int right;
-		int left;
-		int up;
-		int down;
-	};
-
-	struct block_direction {
-		bool right;
-		bool left;
-		bool up;
-		bool down;
-	};
-
-	struct player_move
-	{
-		bool up;
-		bool down;
-		bool left;
-		bool right;
-	};
-
 	// for update fuction:
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
 	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
@@ -96,37 +74,31 @@ private:
 
 	void hold_item_in_mouth(Item& item);
 
+	void food_tick();
+
 public:
 	Player();
 	~Player();
+
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1);
+	void Draw(SDL_Renderer* renderTarget);
 
 	//void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords_frames(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
 	void set_random_pointer(Random& random);
-
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1);
-	void Draw(SDL_Renderer* renderTarget);  
-
-	void SetNewGoal(int x, int y);
-
-	int GetDirection();
-
-	bool intersectsWithBody(Body& b);
-
-	// needed to for the rats to find goals 
-	bool is_item_available_on_map();
-	void make_goal();
-
-	// inputs from main to player object
-	void use_item();
-	void place_item();
 	void set_has_goal(bool value);	// this is for debug 
 	void set_enter(bool value);
-	void teleport_to_entrence();	
-	// in future make this function to be able to 
-	// be teleport to what ever is given in parameters
+	void place_item();		//change set_item
+	void teleport_to_entrence();	// change to set_pos(entrence);
+	void SetNewGoal(int x, int y);
+	void use_item();		// set_item_use
+
+	int GetDirection();
+	bool intersectsWithBody(Body& b);		//get intersect
+	bool is_item_available_on_map();		//get available item on map
+	void make_goal();		// get new goal
 
 };
 

@@ -326,6 +326,20 @@ void Player::hold_item_in_mouth(Item& item)
 	}
 }
 
+void Player::food_tick()
+{
+	if (tick_food(100)) saturation--;
+
+	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
+
+	if (saturation == 0)
+	{
+		std::cout << "Rat #" << player_number << " died of hunger." << std::endl;
+		dead = true;
+	}
+
+}
+
 void Player::teleport_to_entrence()
 {
 	Map* map_ptr = topography->get_map_array();
@@ -449,15 +463,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	// food tick system: 
 
-	if (tick_food(100)) saturation--;
-
-	if (saturation == 20) std::cout << "rat " << player_number << " is hungry" << std::endl;
-
-	if (saturation == 0) 
-	{
-		std::cout << "Rat #" << player_number << " died of hunger."<<std::endl;
-		dead = true;
-	} 
+	food_tick();
 
 	// colision with door check
 	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
