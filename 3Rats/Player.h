@@ -15,8 +15,6 @@ class Player : public Body, public Mop
 {
 private:
 
-	Random* random_ptr;
-
 	SDL_Scancode keys[4];
 
 	float frameCounter, searchCounter;
@@ -25,7 +23,6 @@ private:
 
 	int player_number;
 
-	bool dead = false;
 
 	// holding item type 
 	// should be done by the inventory not in the player!
@@ -40,10 +37,6 @@ private:
 
 	float waitCounter;
 	bool wait;
-
-	float moveSpeed;
-	bool is_moving;
-	int current_direction;
 
 	int goalX, goalY;
 
@@ -65,7 +58,7 @@ private:
 	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
 	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
 	void check_door(Topography* topography,Map* map_array, int map_amount, Tile* tile_array, int length);
-	void make_rat_position(int direction, int& rat_x, int& rat_y);
+	std::pair<int, int> direction_to_offset(int direction);
 	int tick_food(int num);
 
 	void make_player_move(player_move move, block_direction direction, float delta);
@@ -83,14 +76,13 @@ public:
 	void Update(float delta, const Uint8* keyState, int mode, Player& p1);
 	void Draw(SDL_Renderer* renderTarget);
 
-	//void set_surface(SDL_Renderer* renderTarget, std::string name);
 	void set_cords_frames(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
 	void set_random_pointer(Random& random);
 	void set_has_goal(bool value);	// this is for debug 
 	void set_enter(bool value);
-	void place_item();		//change set_item
+	void place_item();		//set_item
 	void teleport_to_entrence();	// change to set_pos(entrence);
 	void SetNewGoal(int x, int y);
 	void use_item();		// set_item_use

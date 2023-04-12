@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Body.h"
+#include "Random.h"
 
 class Mop
 {
@@ -30,6 +31,15 @@ public:
 		bool left;
 		bool right;
 	};
+
+
+	float moveSpeed;
+	bool is_moving;
+	int current_direction;
+
+	bool dead;
+
+	Random* random_ptr;
 
 
 };

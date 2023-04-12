@@ -161,24 +161,28 @@ void Player::check_door(Topography* topography, Map* map_array, int map_amount, 
 	}
 }
 
-void Player::make_rat_position(int direction, int& rat_x, int& rat_y)
+std::pair<int, int> Player::direction_to_offset(int direction)
 {
+	std::pair<int, int> pos = { 0, 0 };
+
 	switch (direction) {
 	case 0:
-		rat_y -= 55;
+		pos.second -= 55;
 		break;
 	case 1:
-		rat_y += 55;
+		pos.second += 55;
 		break;
 	case 2:
-		rat_x -= 55;
+		pos.first -= 55;
 		break;
 	case 3:
-		rat_x += 55;
+		pos.first += 55;
 		break;
 	default:
 		break;
 	}
+
+	return pos;
 }
 
 int Player::tick_food(int num)
@@ -352,6 +356,7 @@ void Player::teleport_to_entrence()
 
 Player::Player()
 {
+	dead = false;
 	item_type = 0;
 
 	saturation = 100;
@@ -450,7 +455,10 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	int frontRatX = front_rat.get_origin_x();	
 	int frontRatY = front_rat.get_origin_y();
 
-	make_rat_position(front_rat.GetDirection(), rat_x, rat_y);
+	std::pair <int, int> offests = direction_to_offset(front_rat.GetDirection());
+
+	rat_x = offests.first;
+	rat_y = offests.second;
 
 	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
 	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
