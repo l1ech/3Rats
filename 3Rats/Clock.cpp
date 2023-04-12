@@ -9,6 +9,7 @@ Clock::Clock()
 	update_time = true;
 	is_running = true;
 	day_counter = 0;
+	day = true;
 
 }
 
@@ -118,11 +119,13 @@ void Clock::update(double delta)
 		update_time = false;
 	}
 
-	if (hour == 17)
+	if (hour == 16 && min == 35 && day && !1)
 	{
 		day_counter++;
 		std::cout << "day# " << day_counter << " passed. its time to sleep now!" << std::endl;
+		// is player back at base?
 		is_running = false;
+		day = false;
 	}
 }
 

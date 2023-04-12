@@ -7,6 +7,9 @@
 class Clock : public Body
 {
 private:
+
+	bool day;
+
 	double count;
 
 	int min;

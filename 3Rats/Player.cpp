@@ -408,6 +408,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	{
 		return;
 	}
+
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();
 
@@ -425,8 +426,6 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	{
 		mode = 0;
 	}
-
-	is_moving = true;	// do i need this?
 
 	int rat_x = this->get_origin_x();
 	int rat_y = this->get_origin_y();

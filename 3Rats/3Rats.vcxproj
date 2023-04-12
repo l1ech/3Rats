@@ -22,6 +22,8 @@
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Mop.cpp" />
     <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
@@ -35,6 +37,8 @@
     <ClInclude Include="Body.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Mop.h" />
     <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />

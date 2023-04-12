@@ -175,20 +175,22 @@ uint32_t generate_seed(int seed_generation)
 
 	std::cout << "Seed: ";
 
-	switch (key_generator.roll_custom_dice(3))
+	switch (seed_generation)
 	{
 	case 0:
-		seed = 1;
-		break;
-	case 1:
 		seed = key_generator.roll_custom_dice(999 * 999);
 		break;
-	case 3:
+	case 1:
 		std::cin >> seed;
+		break;
+	case 2:
+		seed = 1;
 		break;
 	default:
 		break;
 	}
+
+	std::cout << seed << std::endl;
 	return seed;
 }
 
@@ -232,16 +234,32 @@ int main(int argc, char* argv[])
 	// ================================ INIT GAME OBJECTS ================================
 	// ===================================================================================
 	
-	int seed_generation;
+	int type_generation;
+	int seed_input;
 	
 	std::cout << "What type of generation?" << std::endl;
-	std::cout << "fix seed (testing): 0" << std::endl;
+	std::cout << "random seed: 0" << std::endl;
 	std::cout << "user input: 1" << std::endl;
-	std::cout << "random seed: 2" << std::endl;
-	std::cin >> seed_generation;
+	std::cout << "fix seed (testing): 2" << std::endl;
+	std::cin >> type_generation;
 	std::cout << "/n";
+
+	switch (type_generation)
+	{
+	case 0:
+		seed_input = 0;
+		break;
+	case 1:
+		std::cin >> seed_input;
+		break;
+	case 2:
+		seed_input = 0;
+		break;
+	default:
+		break;
+	}
 	
-	uint32_t seed = generate_seed(seed_generation);
+	uint32_t seed = generate_seed(seed_input);
 
 	// random object
 	Random random(seed);
