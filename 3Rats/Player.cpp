@@ -193,6 +193,19 @@ int Player::tick_food(int num)
 	else return 0;
 }
 
+
+void Player::init_colision_map(std::vector<std::vector<bool>>& map)
+{
+	// initialize the outer vector with tile_array_size rows
+	map.resize(tile_array_size);
+
+	// initialize each inner vector with 4 columns and set all values to false
+	for (int i = 0; i < tile_array_size; ++i) {
+		map[i].resize(4, false);
+	}
+
+}
+
 void Player::make_player_move(player_move move, block_direction direction, float delta)
 {
 	if (move.up && !direction.up)	//up
@@ -460,13 +473,13 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	rat_x = offests.first;
 	rat_y = offests.second;
 
+	/*
 	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
 	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
-
-	std::vector<std::vector<bool>> blocked_i(tile_array_size, std::vector<bool>(4));
-
-	block_direction_counter counter = { 0, 0, 0, 0 };
-
+	*/
+	
+	init_colision_map(collision_map);
+	block_direction_counter collision_counter = { 0, 0, 0, 0 };
 	block_direction direction = { 0, 0, 0, 0 };
 
 	// food tick system: 
@@ -476,11 +489,11 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	// colision with door check
 	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
 
-	blocked_i = get_blocked_array(tile_array, tile_array_size);
+	collision_map = get_blocked_array(tile_array, tile_array_size);
 
-	calculate_blocked_side(counter, blocked_i, tile_array_size);
+	calculate_blocked_side(collision_counter, collision_map, tile_array_size);
 
-	get_direction_blocked(counter, direction, tile_array_size);
+	get_direction_blocked(collision_counter, direction, tile_array_size);
 
 	// make players move
 	
