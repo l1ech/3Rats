@@ -50,8 +50,6 @@ private:
 	Tile* tile_array;
 	int tile_array_size;
 
-	std::vector<std::vector<bool>> collision_map;
-
 
 	int saturation;		// 0 - 100
 						// ticksystem removing hunger

@@ -477,7 +477,9 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
 	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
 	*/
-	
+
+	std::vector<std::vector<bool>> collision_map;
+
 	init_colision_map(collision_map);
 	block_direction_counter collision_counter = { 0, 0, 0, 0 };
 	block_direction direction = { 0, 0, 0, 0 };
