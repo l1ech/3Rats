@@ -242,7 +242,6 @@ int main(int argc, char* argv[])
 	std::cout << "user input: 1" << std::endl;
 	std::cout << "fix seed (testing): 2" << std::endl;
 	std::cin >> type_generation;
-	std::cout << "/n";
 
 	switch (type_generation)
 	{
@@ -260,6 +259,7 @@ int main(int argc, char* argv[])
 	}
 	
 	uint32_t seed = generate_seed(seed_input);
+	std::cout << "Seed: " << seed << std::endl;
 
 	// random object
 	Random random(seed);
