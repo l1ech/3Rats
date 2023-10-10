@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <tuple>
 
 #include "Body.h"
 #include "Item.h"
@@ -9,13 +10,11 @@
 #include "Tile.h"
 #include "Topography.h"
 #include "Door.h"
+#include "Mop.h"
 
-
-class Player : public Body
+class Player : public Body, public Mop
 {
 private:
-
-	Random* random_ptr;
 
 	SDL_Scancode keys[4];
 
@@ -24,6 +23,7 @@ private:
 	Topography* topography;
 
 	int player_number;
+
 
 	// holding item type 
 	// should be done by the inventory not in the player!
@@ -39,10 +39,6 @@ private:
 	float waitCounter;
 	bool wait;
 
-	float moveSpeed;
-	bool is_moving;
-	int current_direction;
-
 	int goalX, goalY;
 
 	Map* map_array;
@@ -55,38 +51,22 @@ private:
 	Tile* tile_array;
 	int tile_array_size;
 
+
 	int saturation;		// 0 - 100
 						// ticksystem removing hunger
 
-	struct block_direction_counter {
-		int right;
-		int left;
-		int up;
-		int down;
-	};
-
-	struct block_direction {
-		bool right;
-		bool left;
-		bool up;
-		bool down;
-	};
-
-	struct player_move
-	{
-		bool up;
-		bool down;
-		bool left;
-		bool right;
-	};
-
-	// for update fuction:
+	// for update fuction
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
-	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
-	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
-	void check_door(Topography* topography,Map* map_array, int map_amount, Tile* tile_array, int length);
-	void make_rat_position(int direction, int& rat_x, int& rat_y);
+	block_direction_counter calculate_blocked_side(std::vector<std::vector<bool>> blocked_i, int length);
+	std::tuple<bool, bool, bool, bool> get_direction_blocked(block_direction_counter& counter, int length);
+	int check_door(Topography* topography,Map* map_array, int map_amount, Tile* tile_array, int length);
+	bool handle_exit(int current_map);
+	bool handle_entrance(int current_map);
+	bool handle_hole(int current_map);
+	
+	std::pair<int, int> direction_to_offset(int direction);
 	int tick_food(int num);
+	void init_colision_map(std::vector<std::vector<bool>>& map);
 
 	void make_player_move(player_move move, block_direction direction, float delta);
 	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat);
@@ -94,37 +74,30 @@ private:
 
 	void hold_item_in_mouth(Item& item);
 
+	void food_tick();
+
 public:
 	Player();
 	~Player();
 
-	//void set_surface(SDL_Renderer* renderTarget, std::string name);
+	void Update(float delta, const Uint8* keyState, int mode, Player& p1);
+	void Draw(SDL_Renderer* renderTarget);
+
 	void set_cords_frames(int x, int y, int framesX, int framesY);
 	void set_player_number(int number);
 	void set_Topography(Topography* topography);
 	void set_random_pointer(Random& random);
-
-	void Update(float delta, const Uint8* keyState, int mode, Player& p1);
-	void Draw(SDL_Renderer* renderTarget);  
-
-	void SetNewGoal(int x, int y);
-
-	int GetDirection();
-
-	bool intersectsWithBody(Body& b);
-
-	// needed to for the rats to find goals 
-	bool is_item_available_on_map();
-	void make_goal();
-
-	// inputs from main to player object
-	void use_item();
-	void place_item();
 	void set_has_goal(bool value);	// this is for debug 
 	void set_enter(bool value);
-	void teleport_to_entrence();	
-	// in future make this function to be able to 
-	// be teleport to what ever is given in parameters
+	void place_item();		//set_item
+	void teleport_to_entrence();	// change to set_pos(entrence);
+	void SetNewGoal(int x, int y);
+	void use_item();		// set_item_use
+
+	int GetDirection();
+	bool intersectsWithBody(Body& b);		//get intersect
+	bool is_item_available_on_map();		//get available item on map
+	void make_goal();		// get new goal
 
 };
 

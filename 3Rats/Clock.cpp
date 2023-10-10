@@ -7,6 +7,10 @@
 Clock::Clock()
 {
 	update_time = true;
+	is_running = true;
+	day_counter = 0;
+	day = true;
+
 }
 
 Clock::~Clock()
@@ -15,7 +19,6 @@ Clock::~Clock()
 	SDL_FreeSurface(surfaceMessage);
 	SDL_DestroyTexture(Message);
 }
-
 
 void Clock::set_renderer(SDL_Renderer* renderTarget)
 {
@@ -55,7 +58,6 @@ void Clock::load()
 	// think a rect as the text's box,
 	// that way it would be very simple to understand
 
-	
 
 	
 }
@@ -115,6 +117,15 @@ void Clock::update(double delta)
 		Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
 
 		update_time = false;
+	}
+
+	if (hour == 16 && min == 35 && day && !1)
+	{
+		day_counter++;
+		std::cout << "day# " << day_counter << " passed. its time to sleep now!" << std::endl;
+		// is player back at base?
+		is_running = false;
+		day = false;
 	}
 }
 

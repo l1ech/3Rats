@@ -29,5 +29,5 @@ Tile::Tile(const Tile& other)
 
 Tile::~Tile()
 {
-	std::cout << "destructor" << std::endl;
+	//std::cout << "destructor" << std::endl;
 }
