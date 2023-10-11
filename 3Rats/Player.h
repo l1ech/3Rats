@@ -10,9 +10,9 @@
 #include "Tile.h"
 #include "Topography.h"
 #include "Door.h"
-#include "Mop.h"
+#include "Move_controller.h"
 
-class Player : public Body, public Mop
+class Player : public Body, public Move_controller
 {
 private:
 
@@ -50,6 +50,37 @@ private:
 
 	Tile* tile_array;
 	int tile_array_size;
+
+	struct block_direction_counter {
+		int right;
+		int left;
+		int up;
+		int down;
+	};
+
+	struct block_direction {
+		bool right;
+		bool left;
+		bool up;
+		bool down;
+	};
+
+	struct player_move
+	{
+		bool up;
+		bool down;
+		bool left;
+		bool right;
+	};
+
+
+	float moveSpeed;
+	bool is_moving;
+	int current_direction;
+
+	bool dead;
+
+	Random* random_ptr;
 
 
 	int saturation;		// 0 - 100

@@ -203,7 +203,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("maze_textures/place_holder.png");
+                inspected_tile.set_texture("maze_textures/wooden_floor.png");
                 break;
 
             case 15:

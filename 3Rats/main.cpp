@@ -13,6 +13,40 @@
 #include "Topography.h"
 #include "Text.h"
 
+int world_seed_generation(bool value)
+{
+	if (value)
+	{
+		return 0;
+	}
+	else
+	{
+		int type_generation;
+		int seed_input;
+
+		std::cout << "What type of generation?" << std::endl;
+		std::cout << "random seed: 0" << std::endl;
+		std::cout << "user input: 1" << std::endl;
+		std::cout << "fix seed (testing): 2" << std::endl;
+		std::cin >> type_generation;
+
+		switch (type_generation)
+		{
+		case 0:
+			seed_input = 0;
+			break;
+		case 1:
+			std::cin >> seed_input;
+			break;
+		case 2:
+			seed_input = 0;
+			break;
+		default:
+			break;
+		}
+		return seed_input;
+	}
+}
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
 	SDL_Texture* texture = nullptr;
@@ -239,29 +273,7 @@ int main(int argc, char* argv[])
 	// ================================ INIT GAME OBJECTS ================================
 	// ===================================================================================
 	
-	int type_generation;
-	int seed_input;
-	
-	std::cout << "What type of generation?" << std::endl;
-	std::cout << "random seed: 0" << std::endl;
-	std::cout << "user input: 1" << std::endl;
-	std::cout << "fix seed (testing): 2" << std::endl;
-	std::cin >> type_generation;
-
-	switch (type_generation)
-	{
-	case 0:
-		seed_input = 0;
-		break;
-	case 1:
-		std::cin >> seed_input;
-		break;
-	case 2:
-		seed_input = 0;
-		break;
-	default:
-		break;
-	}
+	int seed_input = world_seed_generation(1); // 1 = testing/ 2 = normal
 	
 	uint32_t seed = generate_seed(seed_input);
 	std::cout << "Seed: " << seed << std::endl;
