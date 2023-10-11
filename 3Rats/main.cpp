@@ -13,12 +13,6 @@
 #include "Topography.h"
 #include "Text.h"
 
-void init_text_time() 
-{
-
-}
-
-
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
 	SDL_Texture* texture = nullptr;
@@ -37,6 +31,12 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	return texture;
 }
 
+void init_text_time(SDL_Renderer* render_target, Text* text_time)
+{
+	text_time->set_renderer(render_target);
+	text_time->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
+}
+
 void init_clock_frame(SDL_Renderer* render_target, Body* body)
 {
 	body->set_surface(render_target);
@@ -46,9 +46,8 @@ void init_clock_frame(SDL_Renderer* render_target, Body* body)
 
 void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body, Text* text_time)
 {
-	clock->set_renderer(render_target);
-	clock->load();
-	clock->set_up(body);
+	clock->set_text(text_time);
+	clock->set_body(body);
 	clock->set_time(16, 30);
 }
 
@@ -271,7 +270,7 @@ int main(int argc, char* argv[])
 	Random random(seed);
 
 	Text text_time;
-	init_text_time();
+	init_text_time(renderTarget, &text_time);
 
 	Body clock_frame;
 	init_clock_frame(renderTarget, &clock_frame);

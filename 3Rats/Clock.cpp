@@ -15,51 +15,6 @@ Clock::Clock()
 
 Clock::~Clock()
 {
-	// Don't forget to free your surface and texture
-	SDL_FreeSurface(surfaceMessage);
-	SDL_DestroyTexture(Message);
-}
-
-void Clock::set_renderer(SDL_Renderer* renderTarget)
-{
-	renderer = renderTarget;
-
-}
-
-void Clock::load()
-{
-	
-
-	//this opens a font style and sets a size
-	font = TTF_OpenFont("fonts/sans.ttf", 24);
-	if (font == NULL)
-	{
-		std::cout << "Error Font" << std::endl;
-	}
-		
-	// this is the color in rgb format,
-	// maxing out all would give you the color white,
-	// and it will be your text's color
-	red = { 255, 0, 0 };
-
-	// as TTF_RenderText_Solid could only be used on
-	// SDL_Surface then you have to create the surface first
-	surfaceMessage = TTF_RenderText_Solid(font, "99:99", red);
-
-	// now you can convert it into a texture
-	Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
-
-	Message_rect.x = 400;  //controls the rect's x coordinate 
-	Message_rect.y = 330; // controls the rect's y coordinte
-	Message_rect.w = 200; // controls the width of the rect
-	Message_rect.h = 90; // controls the height of the rect
-
-	// (0,0) is on the top left of the window/screen,
-	// think a rect as the text's box,
-	// that way it would be very simple to understand
-
-
-	
 }
 
 void Clock::update(double delta)
@@ -108,14 +63,7 @@ void Clock::update(double delta)
 
 	if (update_time)
 	{
-		// as TTF_RenderText_Solid could only be used on
-		// SDL_Surface then you have to create the surface first
-		surfaceMessage = TTF_RenderText_Solid(font, time.c_str(), red);
-
-
-		// now you can convert it into a texture
-		Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
-
+		text->update(time);
 		update_time = false;
 	}
 
@@ -132,24 +80,17 @@ void Clock::update(double delta)
 void Clock::draw(SDL_Renderer* renderTarget)
 {
 	(*clockframe).draw(renderTarget);
-
-	//std::cout << "draw!!!!!!" << std::endl;
-
-	// Now since it's a texture, you have to put RenderCopy
-	// in your game loop area, the area where the whole code executes
-
-	// you put the renderer's name first, the Message,
-	// the crop size (you can ignore this if you don't want
-	// to dabble with cropping), and the rect which is the size
-	// and coordinate of your texture
-	SDL_RenderCopy(renderTarget, Message, NULL, &Message_rect);
-
-	
+	text->draw(renderTarget);
 }
 
-void Clock::set_up(Body* clock_frame_ptr)
+void Clock::set_body(Body* clock_frame_ptr)
 {
 	this->clockframe = clock_frame_ptr;
+}
+
+void Clock::set_text(Text* text_time)
+{
+	this->text = text_time;
 }
 
 void Clock::set_time(int hour, int min)
