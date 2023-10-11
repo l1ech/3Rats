@@ -58,53 +58,6 @@ std::vector<std::vector<bool>> Player::get_blocked_array(Tile* tile_array, int l
 	return blocked_i;
 }
 
-Player::block_direction_counter Player::calculate_blocked_side(std::vector<std::vector<bool>> blocked_i, int length)
-{
-	block_direction_counter counter {0, 0, 0, 0};
-	for (int i = 0; i < length; i++)
-	{
-		for (int k = 0; k < 4; k++)
-		{
-			if (blocked_i[i][k])
-			{
-				if		(k == 0) counter.right++;
-				else if (k == 1) counter.left++;
-				else if (k == 2) counter.down++;
-				else if (k == 3) counter.up++;
-				else {}
-			}
-			else
-			{
-				if		(k == 0) counter.right--;
-				else if (k == 1) counter.left--;
-				else if (k == 2) counter.down--;
-				else if (k == 3) counter.up--;
-				else {}
-			}
-		}
-	}
-	return counter;
-}
-
-std::tuple<bool, bool, bool, bool> Player::get_direction_blocked(block_direction_counter& counter, int length)
-{
-	std::tuple<bool, bool, bool, bool> direction(false, false, false, false);
-
-	if (counter.right + length == 0)  std::get<0>(direction) = false;
-	else std::get<0>(direction);
-
-	if (counter.left + length == 0) std::get<1>(direction) = false;
-	else std::get<1>(direction);
-
-	if (counter.down + length == 0) std::get<2>(direction) = false;
-	else std::get<2>(direction);
-
-	if (counter.up + length == 0) std::get<3>(direction) = false;
-	else std::get<3>(direction);
-
-	return direction;
-}
-
 bool Player::handle_exit(int current_map_id)
 {
 	// Handle exit tile logic
@@ -225,27 +178,27 @@ void Player::init_colision_map(std::vector<std::vector<bool>>& map)
 
 }
 
-void Player::make_player_move(player_move move, block_direction direction, float delta)
+void Player::make_player_move(player_move move, float delta)
 {
-	if (move.up && !direction.up)	//up
+	if (move.up)	//up
 	{
 		position_rect.y -= moveSpeed * delta;
 		crop_rect.y = frame_height * 3;
 		current_direction = 0;
 	}
-	else if (move.down && !direction.down)			//down
+	else if (move.down)			//down
 	{
 		position_rect.y += moveSpeed * delta;
 		crop_rect.y = 0;
 		current_direction = 1;
 	}
-	else if (move.left && !direction.left)			//left
+	else if (move.left)			//left
 	{
 		position_rect.x -= moveSpeed * delta;
 		crop_rect.y = frame_height;
 		current_direction = 2;
 	}
-	else if (move.right && !direction.right)			//right
+	else if (move.right)			//right
 	{
 		position_rect.x += moveSpeed * delta;
 		crop_rect.y = frame_height * 2;
@@ -257,27 +210,27 @@ void Player::make_player_move(player_move move, block_direction direction, float
 	}
 }
 
-void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Player& front_rat)
+void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, float delta, Player& front_rat)
 {
-	if (rat_y > front_rat_y && !direction.up)
+	if (rat_y > front_rat_y)
 	{
 		position_rect.y -= moveSpeed * delta;
 		crop_rect.y = frame_height * 3;
 		current_direction = 0;
 	}
-	else if (rat_y < front_rat_y && !direction.down)
+	else if (rat_y < front_rat_y)
 	{
 		position_rect.y += moveSpeed * delta;
 		crop_rect.y = 0;
 		current_direction = 1;
 	}
-	else if (rat_x > front_rat_x && !direction.left)
+	else if (rat_x > front_rat_x)
 	{
 		position_rect.x -= moveSpeed * delta;
 		crop_rect.y = frame_height;
 		current_direction = 2;
 	}
-	else if (rat_x < front_rat_x && !direction.right)
+	else if (rat_x < front_rat_x)
 	{
 		position_rect.x += moveSpeed * delta;
 		crop_rect.y = frame_height * 2;
@@ -294,27 +247,27 @@ void Player::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 	if (current_direction == 3) crop_rect.y = frame_height * 2;
 }
 
-void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item)
+void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, float delta, Item& item)
 {
-	if (rat_y > goal_y && !direction.up)
+	if (rat_y > goal_y)
 	{
 		position_rect.y -= moveSpeed * delta;
 		crop_rect.y = frame_height * 3;
 		current_direction = 0;
 	}
-	else if (rat_y < goal_y && !direction.down)
+	else if (rat_y < goal_y)
 	{
 		position_rect.y += moveSpeed * delta;
 		crop_rect.y = 0;
 		current_direction = 1;
 	}
-	else if (rat_x > goal_x && !direction.left)
+	else if (rat_x > goal_x)
 	{
 		position_rect.x -= moveSpeed * delta;
 		crop_rect.y = frame_height;
 		current_direction = 2;
 	}
-	else if (rat_x < goal_x && !direction.right)
+	else if (rat_x < goal_x)
 	{
 		position_rect.x += moveSpeed * delta;
 		crop_rect.y = frame_height * 2;
@@ -488,9 +441,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	std::vector<std::vector<bool>> collision_map;
 
 	init_colision_map(collision_map);
-	block_direction_counter collision_counter = { 0, 0, 0, 0 };
-	block_direction direction_blocked = { 0, 0, 0, 0 };
-
+	
 	if (is_item_available_on_map())
 	{
 		make_goal();	// make it so: goal = make_goal();
@@ -520,27 +471,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	// collsion_direction = check_collision()
 	collision_map = get_blocked_array(tile_array, tile_array_size);
 
-	collision_counter = calculate_blocked_side(collision_map, tile_array_size);
-
-	std::tuple<bool, bool, bool, bool> blocked_dir_tuple = get_direction_blocked(collision_counter, tile_array_size);
-
-	if (std::get<0>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.left = true;
-	}
-	if (std::get<1>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.right = true;
-	}
-	if (std::get<2>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.down = true;
-	}
-	if (std::get<3>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.up = true;
-	}
-
+	
 	// ================================================ // make players move
 	
 	player_move move = { keyState[keys[0]], keyState[keys[1]], keyState[keys[2]], keyState[keys[3]] };
@@ -548,7 +479,7 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 	// player 1
 	if (player_number == 0)//--------------------Player control
 	{
-		make_player_move(move, direction_blocked, delta);
+		make_player_move(move, delta);
 	}
 	// player 2 & 3
 	else  
@@ -558,17 +489,17 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 			//find item control
 			if (mode == 1 && !holds_item)
 			{
-				follow_goal(rat_x, rat_y, goalX, goalY, direction_blocked, delta, item_array[item_search_id]);
+				follow_goal(rat_x, rat_y, goalX, goalY, delta, item_array[item_search_id]);
 			}
 			// autopilot 
 			else if (mode == 1 && holds_item)
 			{
-				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction_blocked, delta, front_rat);
+				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, delta, front_rat);
 
 			}
 			else if (mode == 0 )
 			{
-				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction_blocked, delta, front_rat);
+				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, delta, front_rat);
 			}
 		}
 	}
