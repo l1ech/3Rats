@@ -3,6 +3,7 @@
 #include <SDL_ttf.h>
 
 #include "Body.h"
+//#include "Text.h"
 
 class Clock : public Body
 {
@@ -38,6 +39,7 @@ private:
 
 	bool update_time;
 
+	//Text* text;
 
 public:
 	Clock();

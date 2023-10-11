@@ -24,6 +24,7 @@
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Mop.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Mop.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />

@@ -11,7 +11,13 @@
 #include "Tile.h"
 #include "Random.h"
 #include "Topography.h"
-#include "main.h"
+#include "Text.h"
+
+void init_text_time() 
+{
+
+}
+
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -38,7 +44,7 @@ void init_clock_frame(SDL_Renderer* render_target, Body* body)
 	body->set_cords(400, 320);
 }
 
-void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body)
+void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body, Text* text_time)
 {
 	clock->set_renderer(render_target);
 	clock->load();
@@ -264,12 +270,15 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
+	Text text_time;
+	init_text_time();
+
 	Body clock_frame;
 	init_clock_frame(renderTarget, &clock_frame);
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	Clock clock;
-	init_clock(renderTarget, &clock, &clock_frame);
+	init_clock(renderTarget, &clock, &clock_frame, &text_time);
 
 	Item item_array[item_amount];
 	init_item_array(renderTarget, item_array, item_amount);
