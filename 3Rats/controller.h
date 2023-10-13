@@ -92,19 +92,22 @@ public:
 	Controller();
 	~Controller();
 
-	//does not need body
+	//Controller
 	void set_controller_number(int number);
-	void set_Topography(Topography* topography);
-	void set_random_pointer(Random& random);
-	void set_has_goal(bool value);	// this is for debug 
-	void set_enter(bool value);
-	void place_item();		//set_item
-	void SetNewGoal(int x, int y);
-	void use_item();		// set_item_use
 
+	//AI
+	void set_has_goal(bool value);	// this is for debug 
+	void SetNewGoal(int x, int y);
+
+	
+	//PLAYER
+	void set_enter(bool value);
 	int GetDirection();
 	bool is_item_available_on_map();		//get available item on map
-	void make_goal();		// get new goal
+	void make_goal();						// get new goal
 
+	// does this need to be here?
+	void set_Topography(Topography* topography);
+	void set_random_pointer(Random& random);
 };
 

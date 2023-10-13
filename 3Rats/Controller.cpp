@@ -172,41 +172,6 @@ void Controller::make_goal()
 	}
 }
 
-void Controller::use_item()
-{
-	if (item_type == 0)
-	{
-
-	}
-	else if (item_type == 1)
-	{
-		//saturation = 100;
-
-		holds_item = false;
-		item_array[item_hold_id].set_cords(-100, -100);
-		item_array[item_hold_id].set_on_map(false);
-
-		std::cout << "yumm!" << std::endl;
-		item_type = 0;
-
-	}
-}
-
-void Controller::place_item()
-{
-	if (item_type == 0)
-	{
-
-	}
-	else if (item_type == 1)
-	{
-		holds_item = false;
-		std::cout << "placed!" << std::endl;
-		item_type = 0;
-
-	}
-}
-
 void Controller::set_has_goal(bool value) { has_goal = value; }
 
 void Controller::set_enter(bool value) { wants_enter_door = value; }
