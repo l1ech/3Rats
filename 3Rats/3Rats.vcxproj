@@ -19,12 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Acteur.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Mop.cpp" />
-    <ClCompile Include="Move_controller.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -36,12 +37,13 @@
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Acteur.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Mop.h" />
-    <ClInclude Include="Move_controller.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />
