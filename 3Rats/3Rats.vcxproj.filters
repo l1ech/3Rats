@@ -57,10 +57,10 @@
     <ClCompile Include="Text.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Controller.cpp">
+    <ClCompile Include="Acteur.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Acteur.cpp">
+    <ClCompile Include="Controller.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,10 +104,10 @@
     <ClInclude Include="Text.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Controller.h">
+    <ClInclude Include="Acteur.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Acteur.h">
+    <ClInclude Include="Controller.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
