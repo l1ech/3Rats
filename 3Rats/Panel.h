@@ -9,38 +9,8 @@ class Panel : public Body, public Text
 {
 private:
 
-	bool day;
-
-	double count;
-
-	int min;
-	int hour;
-
-	int day_counter;
-
-	bool is_running;
-
-	std::string str_time_min;
-	std::string str_time_hour;
-
-	std::string time;
-
-	bool update_time;
-
 public:
 	Panel();
 	~Panel();
-
-	void update(double delta);
 	void draw(SDL_Renderer* renderTarget);
-
-	void set_body(Body* Panel_frame);
-	void set_text(Text* text_time);
-
-	void set_time(int hour, int min);
-
-	bool get_running()
-	{
-		return is_running;
-	}
 };
