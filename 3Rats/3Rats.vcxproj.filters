@@ -39,9 +39,6 @@
     <ClCompile Include="Topography.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Clock.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Level_Structure.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>

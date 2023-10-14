@@ -4,7 +4,7 @@
 #include <iostream>
 
 class Text {
-private:
+protected:
 	SDL_Rect Message_rect;
 	SDL_Color red;
 	TTF_Font* font;

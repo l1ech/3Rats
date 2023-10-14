@@ -68,23 +68,16 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	return texture;
 }
 
-void init_text_time(SDL_Renderer* render_target, Text* text_time)
+void init_clock(SDL_Renderer* render_target, Panel* clock)
 {
-	text_time->set_renderer(render_target);
-	text_time->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
-}
+	clock->set_renderer(render_target);
+	clock->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
+	clock->set_surface(render_target);
+	clock->set_texture("ui_textures/clock_frame.png");
+	clock->set_cords(400, 320);
 
-void init_clock_frame(SDL_Renderer* render_target, Body* body)
-{
-	body->set_surface(render_target);
-	body->set_texture("ui_textures/clock_frame.png");
-	body->set_cords(400, 320);
-}
-
-void init_clock(SDL_Renderer* render_target, Panel* clock, Body* body, Text* text_time)
-{
-	clock->set_text(text_time);
-	clock->set_body(body);
+	//clock->set_text(text_time);
+	//clock->set_body(body);
 	clock->set_time(16, 30);
 }
 
@@ -284,15 +277,9 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
-	Text text_time;
-	init_text_time(renderTarget, &text_time);
-
-	Body clock_frame;
-	init_clock_frame(renderTarget, &clock_frame);
-
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	Panel clock;
-	init_clock(renderTarget, &clock, &clock_frame, &text_time);
+	init_clock(renderTarget, &clock);
 
 	Item item_array[item_amount];
 	init_item_array(renderTarget, item_array, item_amount);

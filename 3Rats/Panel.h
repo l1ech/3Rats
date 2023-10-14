@@ -5,7 +5,7 @@
 #include "Body.h"
 #include "Text.h"
 
-class Panel : public Body
+class Panel : public Body, public Text
 {
 private:
 
@@ -25,11 +25,7 @@ private:
 
 	std::string time;
 
-	Body* panelframe;
-
 	bool update_time;
-
-	Text* text;
 
 public:
 	Panel();

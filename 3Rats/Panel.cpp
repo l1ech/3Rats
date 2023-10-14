@@ -63,7 +63,7 @@ void Panel::update(double delta)
 
 	if (update_time)
 	{
-		text->update(time);
+		Text::update(time);
 		update_time = false;
 	}
 
@@ -79,18 +79,8 @@ void Panel::update(double delta)
 
 void Panel::draw(SDL_Renderer* renderTarget)
 {
-	(*panelframe).draw(renderTarget);
-	text->draw(renderTarget);
-}
-
-void Panel::set_body(Body* panel_frame_ptr)
-{
-	this->panelframe = panel_frame_ptr;
-}
-
-void Panel::set_text(Text* text_time)
-{
-	this->text = text_time;
+	Body::draw(renderTarget);
+	Text::draw(renderTarget);
 }
 
 void Panel::set_time(int hour, int min)
