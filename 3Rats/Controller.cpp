@@ -125,8 +125,6 @@ void Controller::SetNewGoal(int x, int y) { goalX = x; goalY = y; }
 
 int Controller::GetDirection() { return current_direction; }
 
-
-
 bool Controller::is_item_available_on_map()
 {
 	bool available = false;

@@ -201,11 +201,11 @@ void init_acteur_array(SDL_Renderer* render_target, Acteur* acteur_array, int ac
 
 	acteur_array[1].set_surface(render_target);
 	acteur_array[1].set_texture("acteur_textures/fridolin.png");
-	acteur_array[1].set_cords_frames(32, 32, 3, 4);
+	acteur_array[1].set_cords_frames(64, 64, 3, 4);
 
 	acteur_array[2].set_surface(render_target);
 	acteur_array[2].set_texture("acteur_textures/remy.png");
-	acteur_array[2].set_cords_frames(400, 300, 3, 4);
+	acteur_array[2].set_cords_frames(420, 420, 3, 4);
 }
 
 uint32_t generate_seed(int seed_generation)
@@ -353,9 +353,9 @@ int main(int argc, char* argv[])
 					break;
 
 				case SDLK_r:
-					acteur_array[0].teleport_to_entrence();
-					acteur_array[1].teleport_to_entrence();
-					acteur_array[2].teleport_to_entrence();
+					acteur_array[0].unstuck();
+					acteur_array[1].unstuck();
+					acteur_array[2].unstuck();
 					acteur_array[0].set_enter(false);
 					acteur_array[1].set_enter(false);
 					acteur_array[2].set_enter(false);

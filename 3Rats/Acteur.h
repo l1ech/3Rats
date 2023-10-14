@@ -19,6 +19,8 @@ private:
 	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item);
 	void hold_item_in_mouth(Item& item); 
 
+	void update_arrays();
+
 
 public:
 	Acteur();
@@ -27,7 +29,7 @@ public:
 	void Update(float delta, const Uint8* keyState, int mode, Acteur& p1);
 	void Draw(SDL_Renderer* renderTarget);
 
-	void teleport_to_entrence();	// change to set_pos(entrence);
+	void unstuck();	// change to set_pos(entrence);
 	void set_cords_frames(int x, int y, int framesX, int framesY);
 	bool intersectsWithBody(Body& b);		//get intersect
 	void use_item();		// set_item_use

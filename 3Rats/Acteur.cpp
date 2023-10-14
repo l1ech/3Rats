@@ -1,6 +1,5 @@
 #include "Acteur.h"
 
-
 void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
 {
 	if (dead)
@@ -8,14 +7,7 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 		return;
 	}
 
-	map_array = topography->get_map_array();
-	map_array_size = topography->get_map_size();
-
-	tile_array = topography->get_tile_array();
-	tile_array_size = topography->get_tile_size();
-
-	item_array = topography->get_item_array();
-	item_array_size = topography->get_item_size();
+	update_arrays();
 
 	if (is_item_available_on_map())
 	{
@@ -37,13 +29,8 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 
 	std::pair <int, int> offests = direction_to_offset(front_rat.GetDirection());
 
-	rat_x = offests.first;
-	rat_y = offests.second;
-
-	/*
-	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
-	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
-	*/
+	rat_x = rat_x + offests.first;
+	rat_y = rat_y + offests.second;
 
 	std::vector<std::vector<bool>> collision_map;
 
@@ -394,6 +381,19 @@ void Acteur::hold_item_in_mouth(Item& item)
 	}
 }
 
+void Acteur::update_arrays()
+{
+	map_array = topography->get_map_array();
+	map_array_size = topography->get_map_size();
+
+	tile_array = topography->get_tile_array();
+	tile_array_size = topography->get_tile_size();
+
+	item_array = topography->get_item_array();
+	item_array_size = topography->get_item_size();
+
+}
+
 Acteur::Acteur()
 {
 
@@ -411,7 +411,7 @@ Acteur::~Acteur()
 
 }
 
-void Acteur::teleport_to_entrence()
+void Acteur::unstuck()
 {
 	Map* map_ptr = topography->get_map_array();
 
