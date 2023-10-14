@@ -12,6 +12,7 @@
 #include "Random.h"
 #include "Topography.h"
 #include "Text.h"
+#include "Panel.h"
 
 
 int world_seed_generation(bool value)
@@ -80,7 +81,7 @@ void init_clock_frame(SDL_Renderer* render_target, Body* body)
 	body->set_cords(400, 320);
 }
 
-void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body, Text* text_time)
+void init_clock(SDL_Renderer* render_target, Panel* clock, Body* body, Text* text_time)
 {
 	clock->set_text(text_time);
 	clock->set_body(body);
@@ -290,7 +291,7 @@ int main(int argc, char* argv[])
 	init_clock_frame(renderTarget, &clock_frame);
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
-	Clock clock;
+	Panel clock;
 	init_clock(renderTarget, &clock, &clock_frame, &text_time);
 
 	Item item_array[item_amount];

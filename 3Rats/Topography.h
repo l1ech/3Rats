@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Map.h"
-#include "Clock.h"
 #include "Level_Structure.h"
 
 class Topography : public Level_Structure
