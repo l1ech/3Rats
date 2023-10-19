@@ -12,6 +12,7 @@
 #include "Topography.h"
 #include "Text.h"
 #include "Acteur.h"
+#include "Panel.h"
 
 int world_seed_generation(bool value)
 {
@@ -65,23 +66,15 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	return texture;
 }
 
-void init_text_time(SDL_Renderer* render_target, Text* text_time)
+void init_clock(SDL_Renderer* render_target, Panel* clock)
 {
-	text_time->set_renderer(render_target);
-	text_time->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
-}
+	clock->Text::set_renderer(render_target);
+	clock->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
 
-void init_clock_frame(SDL_Renderer* render_target, Body* body)
-{
-	body->set_surface(render_target);
-	body->set_texture("ui_textures/clock_frame.png");
-	body->set_cords(400, 320);
-}
+	clock->Body::set_surface(render_target);
+	clock->set_texture("ui_textures/clock_frame.png");
+	clock->set_cords(400, 320);
 
-void init_clock(SDL_Renderer* render_target, Clock* clock, Body* body, Text* text_time)
-{
-	clock->set_text(text_time);
-	clock->set_body(body);
 	clock->set_time(16, 30);
 }
 
@@ -182,28 +175,28 @@ void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, T
 	map_ptr[0].set_textures();
 }
 
-void init_acteur_array(SDL_Renderer* render_target, Acteur* acteur_array, int acteur_amount, Topography& topography, Random& random)
+void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int player_amount, Topography& topography, Random& random)
 {
-	for (int i = 0; i < acteur_amount; i++)
+	for (int i = 0; i < player_amount; i++)
 	{
-		Acteur acteur;
-		acteur.set_controller_number(i);
-		acteur.set_Topography(&topography);
-		acteur.set_random_pointer(random);
-		acteur_array[i] = acteur;
+		Acteur player;
+		player.set_controller_number(i);
+		player.set_Topography(&topography);
+		player.set_random_pointer(random);
+		player_array[i] = player;
 	}
 
-	acteur_array[0].set_surface(render_target);
-	acteur_array[0].set_texture("rat_textures/mango.png");
-	acteur_array[0].set_cords_frames(32, 32, 3, 4);
+	player_array[0].set_surface(render_target);
+	player_array[0].set_texture("rat_textures/mango.png");
+	player_array[0].set_cords_frames(32, 32, 3, 4);
 
-	acteur_array[1].set_surface(render_target);
-	acteur_array[1].set_texture("rat_textures/fridolin.png");
-	acteur_array[1].set_cords_frames(32, 32, 3, 4);
+	player_array[1].set_surface(render_target);
+	player_array[1].set_texture("rat_textures/fridolin.png");
+	player_array[1].set_cords_frames(32, 32, 3, 4);
 
-	acteur_array[2].set_surface(render_target);
-	acteur_array[2].set_texture("rat_textures/remy.png");
-	acteur_array[2].set_cords_frames(400, 300, 3, 4);
+	player_array[2].set_surface(render_target);
+	player_array[2].set_texture("rat_textures/remy.png");
+	player_array[2].set_cords_frames(400, 300, 3, 4);
 }
 
 void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount, Topography& topography, Random& random)
@@ -274,7 +267,7 @@ int main(int argc, char* argv[])
 	const int tile_amount = 54;
 	const int map_amount = 10;
 	const int item_amount = 54;
-	const int acteur_amount = 3;
+	const int player_amount = 3;
 	const int entity_amount = 1;
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -298,16 +291,11 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
-	Text text_time;
-	init_text_time(renderTarget, &text_time);
-
-	Body clock_frame;
-	init_clock_frame(renderTarget, &clock_frame);
+	Panel clock;
+	init_clock(renderTarget, &clock);
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
-	Clock clock;
-	init_clock(renderTarget, &clock, &clock_frame, &text_time);
-
+	
 	Item item_array[item_amount];
 	init_item_array(renderTarget, item_array, item_amount);
 
@@ -320,8 +308,8 @@ int main(int argc, char* argv[])
 	Topography topography;
 	init_topography(renderTarget, map_array, map_amount, &topography, random);
 
-	Acteur acteur_array[acteur_amount];
-	init_acteur_array(renderTarget, acteur_array, acteur_amount, topography, random);
+	Acteur player_array[player_amount];
+	init_player_array(renderTarget, player_array, player_amount, topography, random);
 
 	Acteur entity[entity_amount];
 	init_entity(renderTarget, entity, entity_amount, topography, random);
@@ -337,12 +325,6 @@ int main(int argc, char* argv[])
 
 	while (isRunning)
 	{
-
-		if (clock.get_running() == false)
-		{
-			isRunning = false;
-		}
-
 		prevTime = currentTime;
 		currentTime = SDL_GetTicks();
 		delta = (currentTime - prevTime) / 1000.0f;
@@ -364,37 +346,37 @@ int main(int argc, char* argv[])
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
 				case SDLK_u:
-					acteur_array[0].use_item();
-					acteur_array[1].use_item();
-					acteur_array[2].use_item();
-					acteur_array[0].set_enter(false);
+					player_array[0].use_item();
+					player_array[1].use_item();
+					player_array[2].use_item();
+					player_array[0].set_enter(false);
 					break;
 
 				case SDLK_r:
-					acteur_array[0].teleport_to_entrence();
-					acteur_array[1].teleport_to_entrence();
-					acteur_array[2].teleport_to_entrence();
-					acteur_array[0].set_enter(false);
-					acteur_array[1].set_enter(false);
-					acteur_array[2].set_enter(false);
+					player_array[0].teleport_to_entrence();
+					player_array[1].teleport_to_entrence();
+					player_array[2].teleport_to_entrence();
+					player_array[0].set_enter(false);
+					player_array[1].set_enter(false);
+					player_array[2].set_enter(false);
 					break;
 				case SDLK_o:
 					entity[0].teleport_to_entrence();
 					break;
 
 				case SDLK_p:
-					acteur_array[1].place_item();
-					acteur_array[2].place_item();
-					acteur_array[0].set_enter(false);
+					player_array[1].place_item();
+					player_array[2].place_item();
+					player_array[0].set_enter(false);
 					break;
 
 				case SDLK_n:
-					acteur_array[1].set_has_goal(false);
-					acteur_array[2].set_has_goal(false);
-					acteur_array[0].set_enter(false);
+					player_array[1].set_has_goal(false);
+					player_array[2].set_has_goal(false);
+					player_array[0].set_enter(false);
 					break;
 				case SDLK_e:
-					acteur_array[0].set_enter(true);
+					player_array[0].set_enter(true);
 					break;
 				case SDLK_t:
 					std::cout << "tp next room" << std::endl;
@@ -413,10 +395,10 @@ int main(int argc, char* argv[])
 
 		topography.update(delta);
 
-		acteur_array[0].Update(delta, keyState, mode, acteur_array[2]);
-		for (int i = 1; i < acteur_amount; i++)
+		player_array[0].Update(delta, keyState, mode, player_array[2]);
+		for (int i = 1; i < player_amount; i++)
 		{
-			acteur_array[i].Update(delta, keyState, mode, acteur_array[i - 1]);
+			player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
 		}
 
 		entity[0].update(delta);
@@ -433,9 +415,9 @@ int main(int argc, char* argv[])
 
 		topography.draw(renderTarget);
 
-		for (int i = 0; i < acteur_amount; i++)
+		for (int i = 0; i < player_amount; i++)
 		{
-			acteur_array[i].Draw(renderTarget);
+			player_array[i].Draw(renderTarget);
 		}
 		entity[0].draw(renderTarget);
 		clock.draw(renderTarget);

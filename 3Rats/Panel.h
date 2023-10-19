@@ -5,7 +5,7 @@
 #include "Body.h"
 #include "Text.h"
 
-class Clock : public Body
+class Panel : public Body, public Text
 {
 private:
 
@@ -25,23 +25,20 @@ private:
 
 	std::string time;
 
-	Body* clockframe;
+	Body* panelframe;
 
 	bool update_time;
 
 	Text* text;
 
 public:
-	Clock();
-	~Clock();
+	Panel();
+	~Panel();
 
 	void update(double delta);
 	void draw(SDL_Renderer* renderTarget);
 
-	void set_body(Body* clock_frame);
-	void set_text(Text* text_time);
-
-	void set_time( int hour, int min);
+	void set_time(int hour, int min);
 
 	bool get_running()
 	{
