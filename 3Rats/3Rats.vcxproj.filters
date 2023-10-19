@@ -54,6 +54,12 @@
     <ClCompile Include="Text.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Acteur.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -90,6 +96,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Acteur.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
