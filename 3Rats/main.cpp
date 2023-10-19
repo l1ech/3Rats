@@ -206,9 +206,14 @@ void init_acteur_array(SDL_Renderer* render_target, Acteur* acteur_array, int ac
 	acteur_array[2].set_cords_frames(400, 300, 3, 4);
 }
 
-void init_rocky(SDL_Renderer* render_target, Acteur* rocky)
+void init_rocky(SDL_Renderer* render_target, Acteur* rocky, Topography& topography, Random& random)
 {
 	rocky->set_controller_number(4);
+	rocky->set_Topography(&topography);
+	rocky->set_random_pointer(random);
+	rocky->set_surface(render_target);
+	rocky->set_texture("npc_textures/rocky.png");
+	rocky->set_cords_frames(4000, 4000, 1, 1);
 }
 
 uint32_t generate_seed(int seed_generation)
@@ -312,7 +317,7 @@ int main(int argc, char* argv[])
 	init_acteur_array(renderTarget, acteur_array, acteur_amount, topography, random);
 
 	Acteur rocky;
-	init_rocky(renderTarget, &rocky);
+	init_rocky(renderTarget, &rocky, topography, random);
 
 	// ===================================================================================
 
@@ -362,6 +367,7 @@ int main(int argc, char* argv[])
 					acteur_array[0].teleport_to_entrence();
 					acteur_array[1].teleport_to_entrence();
 					acteur_array[2].teleport_to_entrence();
+					rocky.teleport_to_entrence();
 					acteur_array[0].set_enter(false);
 					acteur_array[1].set_enter(false);
 					acteur_array[2].set_enter(false);
@@ -404,6 +410,7 @@ int main(int argc, char* argv[])
 			acteur_array[i].Update(delta, keyState, mode, acteur_array[i - 1]);
 		}
 
+		rocky.update(delta);
 		clock.update(delta);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -421,7 +428,7 @@ int main(int argc, char* argv[])
 		{
 			acteur_array[i].Draw(renderTarget);
 		}
-
+		rocky.draw(renderTarget);
 		clock.draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);

@@ -42,7 +42,6 @@ protected:
 	// ticksystem removing hunger
 
 // for update fuction
-	//need body
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
 	void check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length);
 	void make_acteur_move(controller_move move, block_direction direction, float delta);
