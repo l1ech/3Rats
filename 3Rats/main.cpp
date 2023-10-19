@@ -12,7 +12,7 @@
 #include "Topography.h"
 #include "Text.h"
 #include "Acteur.h"
-#include "Panel.h"
+#include "Clock.h"
 
 int world_seed_generation(bool value)
 {
@@ -66,7 +66,7 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	return texture;
 }
 
-void init_clock(SDL_Renderer* render_target, Panel* clock)
+void init_clock(SDL_Renderer* render_target, Clock* clock)
 {
 	clock->Text::set_renderer(render_target);
 	clock->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
@@ -291,7 +291,7 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
-	Panel clock;
+	Clock clock;
 	init_clock(renderTarget, &clock);
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
