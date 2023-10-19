@@ -23,8 +23,6 @@
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="Mop.cpp" />
-    <ClCompile Include="Move_controller.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -40,8 +38,6 @@
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Mop.h" />
-    <ClInclude Include="Move_controller.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />

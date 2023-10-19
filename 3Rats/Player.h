@@ -9,9 +9,8 @@
 #include "Tile.h"
 #include "Topography.h"
 #include "Door.h"
-#include "Mop.h"
 
-class Player : public Body, public Mop
+class Player : public Body
 {
 private:
 
