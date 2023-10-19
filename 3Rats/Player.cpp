@@ -58,16 +58,15 @@ std::vector<std::vector<bool>> Player::get_blocked_array(Tile* tile_array, int l
 	return blocked_i;
 }
 
-Player::block_direction_counter Player::calculate_blocked_side(std::vector<std::vector<bool>> blocked_i, int length)
+void Player::calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length)
 {
-	block_direction_counter counter {0, 0, 0, 0};
 	for (int i = 0; i < length; i++)
 	{
 		for (int k = 0; k < 4; k++)
 		{
 			if (blocked_i[i][k])
 			{
-				if		(k == 0) counter.right++;
+				if (k == 0) counter.right++;
 				else if (k == 1) counter.left++;
 				else if (k == 2) counter.down++;
 				else if (k == 3) counter.up++;
@@ -75,7 +74,7 @@ Player::block_direction_counter Player::calculate_blocked_side(std::vector<std::
 			}
 			else
 			{
-				if		(k == 0) counter.right--;
+				if (k == 0) counter.right--;
 				else if (k == 1) counter.left--;
 				else if (k == 2) counter.down--;
 				else if (k == 3) counter.up--;
@@ -83,102 +82,84 @@ Player::block_direction_counter Player::calculate_blocked_side(std::vector<std::
 			}
 		}
 	}
-	return counter;
 }
 
-std::tuple<bool, bool, bool, bool> Player::get_direction_blocked(block_direction_counter& counter, int length)
+void Player::get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length)
 {
-	std::tuple<bool, bool, bool, bool> direction(false, false, false, false);
+	if (counter.right + length == 0) direction.right = false;
+	else direction.right = true;
 
-	if (counter.right + length == 0)  std::get<0>(direction) = false;
-	else std::get<0>(direction);
+	if (counter.left + length == 0) direction.left = false;
+	else direction.left = true;
 
-	if (counter.left + length == 0) std::get<1>(direction) = false;
-	else std::get<1>(direction);
+	if (counter.down + length == 0) direction.down = false;
+	else direction.down = true;
 
-	if (counter.down + length == 0) std::get<2>(direction) = false;
-	else std::get<2>(direction);
-
-	if (counter.up + length == 0) std::get<3>(direction) = false;
-	else std::get<3>(direction);
-
-	return direction;
+	if (counter.up + length == 0) direction.up = false;
+	else direction.up = true;
 }
 
-bool Player::handle_exit(int current_map_id)
+void Player::check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length)
 {
-	// Handle exit tile logic
-	current_map_id++;
-	topography->set_current_map_id(current_map_id);
-	map_array[current_map_id].set_textures();
-	Door entry = map_array[current_map_id].get_door(0);
+	// make it that all players spawn at the new door
+	// not at 0, 0 
+	// new door could be anywhere
 
-	position_rect.x = entry.get_x() * 64 - crop_rect.w;
-	position_rect.y = entry.get_y() * 64 - crop_rect.h;
-
-	return true;
-}
-
-bool Player::handle_entrance(int current_map_id)
-{
-	// Handle entrance tile logic
-	current_map_id--;
-	topography->set_current_map_id(current_map_id);
-	map_array[current_map_id].set_textures();
-	Door exit = map_array[current_map_id].get_door(1);
-
-	position_rect.x = exit.get_x() * 64 - crop_rect.w;
-	position_rect.y = exit.get_y() * 64 - crop_rect.h;
-
-	return true;
-}
-
-bool Player::handle_hole(int current_map_id)
-{
-	// Handle hole tile logic
-	current_map_id++;
-	topography->set_current_map_id(current_map_id);
-	map_array[current_map_id].set_textures();
-	Door entry = map_array[current_map_id].get_door(0);
-
-	position_rect.x = entry.get_x() * 64 - crop_rect.w;
-	position_rect.y = entry.get_y() * 64 - crop_rect.h;
-
-	return true;
-}
-
-int Player::check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length)
-{
 	int current_map_id = topography->get_current_map_id();
-	bool last_room = (current_map_id == map_array_size - 1);
-	bool first_room = (current_map_id == 0);
 
 	for (int i = 0; i < length; i++)
 	{
-		if (!intersectsWithBody(tile_array[i]))
-		{
-			continue;
-		}
+		bool last_room = (current_map_id == map_amount - 1);
+		bool first_room = (current_map_id == 0);
 
-		wants_enter_door = false;
+		if (!wants_enter_door) break;
+		if (!(player_number == 0)) break;
 
-		if (tile_array[i].is_exit && !last_room)
+		if (intersectsWithBody(tile_array[i]) && player_number == 0)
 		{
-			if (handle_exit(current_map_id)) return 1;
-		}
-		else if (tile_array[i].is_entrance && !first_room)
-		{
-			if (handle_entrance(current_map_id)) return 2;
-		}
-		else if (tile_array[i].is_hole && current_map_id != map_amount - 1)
-		{
-			if (handle_hole(current_map_id)) return 3;
+			wants_enter_door = false;
+			if (tile_array[i].is_exit && !last_room)
+			{
+				current_map_id++;
+				topography->set_current_map_id(current_map_id);
+				map_array[current_map_id].set_textures();
+				Door entry = map_array[current_map_id].get_door(0);
+
+				position_rect.x = entry.get_x() * 64 - crop_rect.w;
+				position_rect.y = entry.get_y() * 64 - crop_rect.h;
+
+				//std::cout << "player 1: " << this->player_number << std::endl;
+				//std::cout << "player 2: " << (this->player_number)++ << std::endl;
+				//std::cout << "player 3: " << ((this->crop_rect.w)++)++ << std::endl;
+
+			}
+			else if (tile_array[i].is_entrance && !first_room)
+			{
+				current_map_id--;
+				topography->set_current_map_id(current_map_id);
+				map_array[current_map_id].set_textures();
+				Door exit = map_array[current_map_id].get_door(1);
+
+				position_rect.x = exit.get_x() * 64 - crop_rect.w;
+				position_rect.y = exit.get_y() * 64 - crop_rect.h;
+			}
+			else if (tile_array[i].is_hole && current_map_id != map_amount - 1)
+			{
+				current_map_id++;
+				topography->set_current_map_id(current_map_id);
+				map_array[current_map_id].set_textures();
+				Door entry = map_array[current_map_id].get_door(0);
+
+				position_rect.x = entry.get_x() * 64 - crop_rect.w;
+				position_rect.y = entry.get_y() * 64 - crop_rect.h;
+
+				// for testing this is set to be linear map. which is wrong.
+				// it has to be 3d so a hole would move the map in z direction 
+				// also x and y should also have a directional influance on the map
+			}
 		}
 	}
-
-	return 0;
 }
-
 
 std::pair<int, int> Player::direction_to_offset(int direction)
 {
@@ -320,7 +301,7 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		crop_rect.y = frame_height * 2;
 		current_direction = 3;
 	}
-	else if (rat_x == goal_x && rat_y == goal_y&& !item.get_pick_up())
+	else if (rat_x == goal_x && rat_y == goal_y && !item.get_pick_up())
 	{
 		std::cout << "found!" << " p: " << player_number << "item number: " << item_search_id << std::endl;;
 
@@ -330,7 +311,7 @@ void Player::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		has_goal = false;
 
 		item_type = 1;
-		
+
 	}
 	else if (rat_x == goal_x && rat_y == goal_y && item.get_pick_up())
 	{
@@ -379,7 +360,7 @@ void Player::food_tick()
 void Player::teleport_to_entrence()
 {
 	Map* map_ptr = topography->get_map_array();
-	
+
 	set_cords(
 		map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - crop_rect.w,
 		map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - crop_rect.h
@@ -455,7 +436,11 @@ void Player::set_random_pointer(Random& random)
 
 void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_rat)
 {
-	// ==================================================== // initialisation
+	if (dead)
+	{
+		return;
+	}
+
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();
 
@@ -464,32 +449,6 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 
 	item_array = topography->get_item_array();
 	item_array_size = topography->get_item_size();
-
-	int rat_x = this->get_origin_x();
-	int rat_y = this->get_origin_y();
-
-	// focus point of a non-player rat.
-	// maybe put this inside the function that makes 
-	// the cords to it to stand and hole items
-	int frontRatX = front_rat.get_origin_x();	
-	int frontRatY = front_rat.get_origin_y();
-
-	std::pair <int, int> offests = direction_to_offset(front_rat.GetDirection());
-
-	rat_x += offests.first;
-	rat_y += offests.second;
-
-
-	/*
-	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
-	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
-	*/
-
-	std::vector<std::vector<bool>> collision_map;
-
-	init_colision_map(collision_map);
-	block_direction_counter collision_counter = { 0, 0, 0, 0 };
-	block_direction direction_blocked = { 0, 0, 0, 0 };
 
 	if (is_item_available_on_map())
 	{
@@ -500,75 +459,72 @@ void Player::Update(float delta, const Uint8* keyState, int mode, Player& front_
 		mode = 0;
 	}
 
-	// ============================================================== //
+	int rat_x = this->get_origin_x();
+	int rat_y = this->get_origin_y();
 
-	if (dead)
-	{
-		return;
-	}
+	// focus point of a non-player rat.
+	// maybe put this inside the function that makes 
+	// the cords to it to stand and hole items
+	int frontRatX = front_rat.get_origin_x();
+	int frontRatY = front_rat.get_origin_y();
+
+	std::pair <int, int> offests = direction_to_offset(front_rat.GetDirection());
+
+	rat_x += offests.first;
+	rat_y += offests.second;
+
+	/*
+	float dist1 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
+	float dist2 = sqrt(pow(abs(front_rat.get_origin_x() - rat_x), 2) + pow(abs(front_rat.get_origin_y() - rat_y), 2));
+	*/
+
+	std::vector<std::vector<bool>> collision_map;
+
+	init_colision_map(collision_map);
+	block_direction_counter collision_counter = { 0, 0, 0, 0 };
+	block_direction direction = { 0, 0, 0, 0 };
 
 	// food tick system: 
 
 	food_tick();
 
-	if (wants_enter_door && (player_number == 0))
-	{
-		// colision with door check
-		int door_check = check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
-	}
+	// colision with door check
+	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
 
-	// collsion_direction = check_collision()
 	collision_map = get_blocked_array(tile_array, tile_array_size);
 
-	collision_counter = calculate_blocked_side(collision_map, tile_array_size);
+	calculate_blocked_side(collision_counter, collision_map, tile_array_size);
 
-	std::tuple<bool, bool, bool, bool> blocked_dir_tuple = get_direction_blocked(collision_counter, tile_array_size);
+	get_direction_blocked(collision_counter, direction, tile_array_size);
 
-	if (std::get<0>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.left = true;
-	}
-	if (std::get<1>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.right = true;
-	}
-	if (std::get<2>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.down = true;
-	}
-	if (std::get<3>(blocked_dir_tuple) == 1)
-	{
-		direction_blocked.up = true;
-	}
+	// make players move
 
-	// ================================================ // make players move
-	
 	player_move move = { keyState[keys[0]], keyState[keys[1]], keyState[keys[2]], keyState[keys[3]] };
 
 	// player 1
 	if (player_number == 0)//--------------------Player control
 	{
-		make_player_move(move, direction_blocked, delta);
+		make_player_move(move, direction, delta);
 	}
 	// player 2 & 3
-	else  
+	else
 	{
 		if (!wait)
 		{
 			//find item control
 			if (mode == 1 && !holds_item)
 			{
-				follow_goal(rat_x, rat_y, goalX, goalY, direction_blocked, delta, item_array[item_search_id]);
+				follow_goal(rat_x, rat_y, goalX, goalY, direction, delta, item_array[item_search_id]);
 			}
 			// autopilot 
 			else if (mode == 1 && holds_item)
 			{
-				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction_blocked, delta, front_rat);
+				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
 
 			}
-			else if (mode == 0 )
+			else if (mode == 0)
 			{
-				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction_blocked, delta, front_rat);
+				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
 			}
 		}
 	}
@@ -705,13 +661,13 @@ void Player::place_item()
 	else if (item_type == 1)
 	{
 		holds_item = false;
-		std::cout << "placed!"<<std::endl;
+		std::cout << "placed!" << std::endl;
 		item_type = 0;
 
 	}
 }
 
-void Player::set_has_goal(bool value){ has_goal = value; }
+void Player::set_has_goal(bool value) { has_goal = value; }
 
-void Player::set_enter(bool value){ wants_enter_door = value; }
+void Player::set_enter(bool value) { wants_enter_door = value; }
 
