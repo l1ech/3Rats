@@ -39,20 +39,20 @@ void Map::set_type(int type)
         std::cout << "===========================================" << std::endl;
         std::cout << "generating maze..." << std::endl;
         std::cout << "items generation: " << item_generatio << std::endl;
-        generate_maze(true);
+        generate_maze(true, false);
         break;
 
     case GARDEN_TYPE:
         std::cout << "===========================================" << std::endl;
         std::cout << "generating garden..." << std::endl;
         std::cout << "items generation: " << item_generatio << std::endl;
-        generate_garden(true);
+        generate_garden(true, true);
         break;
     case CAGE_TYPE:
         std::cout << "===========================================" << std::endl;
         std::cout << "generating cage..." << std::endl;
         std::cout << "items generation: " << item_generatio << std::endl;
-        generate_cage(false);
+        generate_cage(false, false);
         break;
 
     default:
@@ -286,6 +286,11 @@ void Map::set_layout(std::string layout)
     }
 }
 
+void Map::set_entity_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& entity_data, int height, int width, int probability)
+{
+
+}
+
 void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width, int probability)
 {
     for (int i = 0; i < height; i++)
@@ -301,10 +306,8 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
                 item_data[i][j] = 1;
                 (*item_on_map)++;
             }
-
         }
     }
-
 }
 
 int Map::get_map_id() { return map_id; }
@@ -316,7 +319,7 @@ int Map::get_hight() { return height; }
 int Map::get_width() { return width; }
 
 
-void Map::generate_maze(bool item_generation)
+void Map::generate_maze(bool item_generation, bool entity_generation)
 {
     int start_x = 1;
     int start_y = 1;
@@ -353,7 +356,7 @@ void Map::generate_maze(bool item_generation)
     save_data(map_data, item_data);
 }
 
-void Map::generate_garden(bool item_generation)
+void Map::generate_garden(bool item_generation, bool entity_generation)
 {
     width = 9;
     height = 6;
@@ -371,6 +374,7 @@ void Map::generate_garden(bool item_generation)
     std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> entity_data(height, std::vector<int>(width));
 
     build_frame(data, 1, 12);
 
@@ -380,6 +384,8 @@ void Map::generate_garden(bool item_generation)
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
 
+    if (entity_generation) set_entity_to_map(map_data, entity_data, height, width, 70);
+
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
 
     std::cout << "saving data..." << std::endl;
@@ -387,7 +393,7 @@ void Map::generate_garden(bool item_generation)
     save_data(map_data, item_data);
 }
 
-void Map::generate_cage(bool item_generation)
+void Map::generate_cage(bool item_generation, bool entity_generation)
 {
     width = 9;
     height = 6;

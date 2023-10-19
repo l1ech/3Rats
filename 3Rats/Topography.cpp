@@ -133,14 +133,14 @@ void Topography::make_maze()
 		end_char = find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0);
 	}
 
-	/*
+	
 	std::cout << "___________ topology data - walkway__" << std::endl;
 	print_vector(data, data[0].size(), data.size());
 
 	std::cout << "___________ second layer  ___________" << std::endl;
 	print_vector_hidden(data, data[0].size(), data.size());
 
-	*/	
+	
 	trim_boarder(data, map_data);
 
 	std::cout << "___________ topology data ___________" << std::endl;
