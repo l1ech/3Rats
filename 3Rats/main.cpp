@@ -206,14 +206,20 @@ void init_acteur_array(SDL_Renderer* render_target, Acteur* acteur_array, int ac
 	acteur_array[2].set_cords_frames(400, 300, 3, 4);
 }
 
-void init_rocky(SDL_Renderer* render_target, Acteur* rocky, Topography& topography, Random& random)
+void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount, Topography& topography, Random& random)
 {
-	rocky->set_controller_number(4);
-	rocky->set_Topography(&topography);
-	rocky->set_random_pointer(random);
-	rocky->set_surface(render_target);
-	rocky->set_texture("npc_textures/rocky.png");
-	rocky->set_cords_frames(4000, 4000, 1, 1);
+	for (int i = 0; i < entity_amount; i++)
+	{
+		Acteur entity;
+		entity.set_controller_number(3+i);
+		entity.set_Topography(&topography);
+		entity.set_random_pointer(random);
+		entitys[i] = entity;
+	}
+
+	entitys[0].set_surface(render_target);
+	entitys[0].set_texture("npc_textures/entity.png");
+	entitys[0].set_cords_frames(4000, 4000, 1, 1);
 }
 
 uint32_t generate_seed(int seed_generation)
@@ -269,6 +275,7 @@ int main(int argc, char* argv[])
 	const int map_amount = 10;
 	const int item_amount = 54;
 	const int acteur_amount = 3;
+	const int entity_amount = 1;
 
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -316,8 +323,8 @@ int main(int argc, char* argv[])
 	Acteur acteur_array[acteur_amount];
 	init_acteur_array(renderTarget, acteur_array, acteur_amount, topography, random);
 
-	Acteur rocky;
-	init_rocky(renderTarget, &rocky, topography, random);
+	Acteur entity[entity_amount];
+	init_entity(renderTarget, entity, entity_amount, topography, random);
 
 	// ===================================================================================
 
@@ -372,7 +379,7 @@ int main(int argc, char* argv[])
 					acteur_array[2].set_enter(false);
 					break;
 				case SDLK_o:
-					rocky.teleport_to_entrence();
+					entity[0].teleport_to_entrence();
 					break;
 
 				case SDLK_p:
@@ -412,7 +419,7 @@ int main(int argc, char* argv[])
 			acteur_array[i].Update(delta, keyState, mode, acteur_array[i - 1]);
 		}
 
-		rocky.update(delta);
+		entity[0].update(delta);
 		clock.update(delta);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -430,7 +437,7 @@ int main(int argc, char* argv[])
 		{
 			acteur_array[i].Draw(renderTarget);
 		}
-		rocky.draw(renderTarget);
+		entity[0].draw(renderTarget);
 		clock.draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
