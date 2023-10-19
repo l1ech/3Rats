@@ -145,15 +145,6 @@ std::pair<int, int> Acteur::direction_to_offset(int direction)
 	return pos;
 }
 
-int Acteur::tick_food(int num)
-{
-	//random.roll_custom_dice(10);	//10% 1/10 ?
-
-	if (random_ptr->roll_custom_dice(num) == 1) return 1;
-	else return 0;
-}
-
-
 void Acteur::init_colision_map(std::vector<std::vector<bool>>& map)
 {
 	// initialize the outer vector with tile_array_size rows
@@ -301,20 +292,6 @@ void Acteur::hold_item_in_mouth(Item& item)
 	{
 		item.set_cords(get_origin_x() - 24 + offset, get_origin_y() - 32);
 	}
-}
-
-void Acteur::food_tick()
-{
-	if (tick_food(100)) saturation--;
-
-	if (saturation == 20) std::cout << "rat " << acteur_number << " is hungry" << std::endl;
-
-	if (saturation == 0)
-	{
-		std::cout << "Rat #" << acteur_number << " died of hunger." << std::endl;
-		dead = true;
-	}
-
 }
 
 void Acteur::teleport_to_entrence()
