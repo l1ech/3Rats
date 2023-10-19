@@ -73,9 +73,9 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 		bool first_room = (current_map_id == 0);
 
 		if (!wants_enter_door) break;
-		if (!(acteur_number == 0)) break;
+		if (!(controller_number == 0)) break;
 
-		if (intersectsWithBody(tile_array[i]) && acteur_number == 0)
+		if (intersectsWithBody(tile_array[i]) && controller_number == 0)
 		{
 			wants_enter_door = false;
 			if (tile_array[i].is_exit && !last_room)
@@ -88,8 +88,8 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 				position_rect.x = entry.get_x() * 64 - crop_rect.w;
 				position_rect.y = entry.get_y() * 64 - crop_rect.h;
 
-				//std::cout << "acteur 1: " << this->acteur_number << std::endl;
-				//std::cout << "acteur 2: " << (this->acteur_number)++ << std::endl;
+				//std::cout << "acteur 1: " << this->controller_number << std::endl;
+				//std::cout << "acteur 2: " << (this->controller_number)++ << std::endl;
 				//std::cout << "acteur 3: " << ((this->crop_rect.w)++)++ << std::endl;
 
 			}
@@ -121,43 +121,9 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 	}
 }
 
-std::pair<int, int> Acteur::direction_to_offset(int direction)
-{
-	std::pair<int, int> pos = { 0, 0 };
 
-	switch (direction) {
-	case 0:
-		pos.second -= 55;
-		break;
-	case 1:
-		pos.second += 55;
-		break;
-	case 2:
-		pos.first -= 55;
-		break;
-	case 3:
-		pos.first += 55;
-		break;
-	default:
-		break;
-	}
 
-	return pos;
-}
-
-void Acteur::init_colision_map(std::vector<std::vector<bool>>& map)
-{
-	// initialize the outer vector with tile_array_size rows
-	map.resize(tile_array_size);
-
-	// initialize each inner vector with 4 columns and set all values to false
-	for (int i = 0; i < tile_array_size; ++i) {
-		map[i].resize(4, false);
-	}
-
-}
-
-void Acteur::make_acteur_move(acteur_move move, block_direction direction, float delta)
+void Acteur::make_acteur_move(controller_move move, block_direction direction, float delta)
 {
 	if (move.up && !direction.up)	//up
 	{
@@ -254,7 +220,7 @@ void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 	}
 	else if (rat_x == goal_x && rat_y == goal_y && !item.get_pick_up())
 	{
-		std::cout << "found!" << " p: " << acteur_number << "item number: " << item_search_id << std::endl;;
+		std::cout << "found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
 
 		item_hold_id = item_search_id;
 		holds_item = true;
@@ -266,7 +232,7 @@ void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 	}
 	else if (rat_x == goal_x && rat_y == goal_y && item.get_pick_up())
 	{
-		std::cout << "did not found!" << " p: " << acteur_number << "item number: " << item_search_id << std::endl;;
+		std::cout << "did not found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
 		has_goal = false;
 	}
 }
@@ -355,21 +321,6 @@ void Acteur::set_cords_frames(int x, int y, int framesX, int framesY)
 	radius = frame_width / 2;
 }
 
-void Acteur::set_acteur_number(int number)
-{
-	acteur_number = number;
-}
-
-void Acteur::set_Topography(Topography* h)
-{
-	topography = h;
-}
-
-void Acteur::set_random_pointer(Random& random)
-{
-	random_ptr = &random;
-}
-
 
 void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
 {
@@ -416,10 +367,6 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	block_direction_counter collision_counter = { 0, 0, 0, 0 };
 	block_direction direction = { 0, 0, 0, 0 };
 
-	// food tick system: 
-
-	food_tick();
-
 	// colision with door check
 	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
 
@@ -431,10 +378,10 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 
 	// make acteurs move
 
-	acteur_move move = { keyState[keys[0]], keyState[keys[1]], keyState[keys[2]], keyState[keys[3]] };
+	controller_move move = { keyState[keys[0]], keyState[keys[1]], keyState[keys[2]], keyState[keys[3]] };
 
 	// acteur 1
-	if (acteur_number == 0)//--------------------Acteur control
+	if (controller_number == 0)//--------------------Acteur control
 	{
 		make_acteur_move(move, direction, delta);
 	}
@@ -505,10 +452,6 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 
 void Acteur::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); }
 
-void Acteur::SetNewGoal(int x, int y) { goalX = x; goalY = y; }
-
-int Acteur::GetDirection() { return current_direction; }
-
 
 bool Acteur::intersectsWithBody(Body& b)
 {
@@ -519,50 +462,6 @@ bool Acteur::intersectsWithBody(Body& b)
 	return true;
 }
 
-bool Acteur::is_item_available_on_map()
-{
-	bool available = false;
-
-	for (int i = 0; i < item_array_size; i++)
-	{
-		if (!item_array[i].get_pick_up())
-		{
-			if (item_array[i].get_on_map())
-			{
-				available = true;
-			}
-		}
-	}
-	return available;
-}
-
-void Acteur::make_goal()
-{
-	int random_item_number = 0;
-
-	while (!has_goal)
-	{
-		if (item_array[random_item_number].get_on_map() && random_ptr->flip_coin())
-		{
-			has_goal = true;
-
-			SetNewGoal
-			(
-				item_array[random_item_number].get_origin_x(),
-				item_array[random_item_number].get_origin_y()
-			);
-
-			item_search_id = random_item_number;
-
-			std::cout << "p: " << acteur_number << "gx: " << goalX << " gy: " << goalY << std::endl;
-
-		}
-
-		random_item_number++;
-
-		if (random_item_number == item_array_size - 1) random_item_number = 0;
-	}
-}
 
 void Acteur::use_item()
 {
@@ -583,23 +482,3 @@ void Acteur::use_item()
 
 	}
 }
-
-void Acteur::place_item()
-{
-	if (item_type == 0)
-	{
-
-	}
-	else if (item_type == 1)
-	{
-		holds_item = false;
-		std::cout << "placed!" << std::endl;
-		item_type = 0;
-
-	}
-}
-
-void Acteur::set_has_goal(bool value) { has_goal = value; }
-
-void Acteur::set_enter(bool value) { wants_enter_door = value; }
-

@@ -187,7 +187,7 @@ void init_acteur_array(SDL_Renderer* render_target, Acteur* acteur_array, int ac
 	for (int i = 0; i < acteur_amount; i++)
 	{
 		Acteur acteur;
-		acteur.set_acteur_number(i);
+		acteur.set_controller_number(i);
 		acteur.set_Topography(&topography);
 		acteur.set_random_pointer(random);
 		acteur_array[i] = acteur;
@@ -208,7 +208,7 @@ void init_acteur_array(SDL_Renderer* render_target, Acteur* acteur_array, int ac
 
 void init_rocky(SDL_Renderer* render_target, Acteur* rocky)
 {
-	rocky->set_acteur_number(4);
+	rocky->set_controller_number(4);
 }
 
 uint32_t generate_seed(int seed_generation)
