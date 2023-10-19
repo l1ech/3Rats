@@ -367,10 +367,12 @@ int main(int argc, char* argv[])
 					acteur_array[0].teleport_to_entrence();
 					acteur_array[1].teleport_to_entrence();
 					acteur_array[2].teleport_to_entrence();
-					rocky.teleport_to_entrence();
 					acteur_array[0].set_enter(false);
 					acteur_array[1].set_enter(false);
 					acteur_array[2].set_enter(false);
+					break;
+				case SDLK_o:
+					rocky.teleport_to_entrence();
 					break;
 
 				case SDLK_p:

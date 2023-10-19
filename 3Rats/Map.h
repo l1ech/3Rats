@@ -48,9 +48,9 @@ private:
 	std::pair<int, int> data[6][9];
 	
 	//types of generation
-	void generate_maze(bool item_generation);
-	void generate_garden(bool item_generations);
-	void generate_cage(bool item_generation);
+	void generate_maze(bool item_generation, bool entity_generation);
+	void generate_garden(bool item_generations, bool entity_generation);
+	void generate_cage(bool item_generation, bool entity_generation);
 
 	// helper functions for generation
 	void generate_door(int direction, int index, int type, bool active);
@@ -66,6 +66,7 @@ private:
 	//void set_corners(std::vector<std::vector <int>>& map_data);
 	void save_data(const std::vector<std::vector <int>>& map_data, const std::vector<std::vector <int>>& item_data);
 	
+	void set_entity_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& entity_data, int height, int width, int propability);
 	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
 
 	int get_tile(int x, int y);
