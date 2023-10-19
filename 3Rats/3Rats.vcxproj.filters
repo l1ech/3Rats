@@ -57,6 +57,9 @@
     <ClCompile Include="Panel.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Overlay.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Item.h">
@@ -96,6 +99,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Panel.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Overlay.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
