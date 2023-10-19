@@ -40,3 +40,8 @@ void Controller::get_direction_blocked(block_direction_counter& counter, block_d
 	if (counter.up + length == 0) direction.up = false;
 	else direction.up = true;
 }
+
+void Controller::Update(float delta, const Uint8* keyState, int mode, Controller& p1)
+{
+
+}

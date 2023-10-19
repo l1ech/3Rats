@@ -396,11 +396,6 @@ void Acteur::set_random_pointer(Random& random)
 
 void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
 {
-	if (dead)
-	{
-		return;
-	}
-
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();
 

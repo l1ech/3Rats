@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL.h>
 
 #include <vector>
 
@@ -30,5 +31,6 @@ protected:
 
 	void calculate_blocked_side(block_direction_counter& counter, std::vector<std::vector<bool>> blocked_i, int length);
 	void get_direction_blocked(block_direction_counter& counter, block_direction& direction, int length);
+	void Update(float delta, const Uint8* keyState, int mode, Controller& p1);
 
 };
