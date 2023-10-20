@@ -6,20 +6,23 @@
 
 Panel::Panel()
 {
-	update_text = true;
 }
 
 Panel::~Panel()
 {
 }
 
-void Panel::update(double delta)
+void Panel::update()
 {
-	
-	if (update_text)
+	if (old_display_text == display_text)
 	{
+		old_display_text = display_text;
+		return;
+	}
+	else
+	{
+		old_display_text = display_text;
 		Text::update(display_text);
-		update_text = false;
 	}
 }
 

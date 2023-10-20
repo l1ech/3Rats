@@ -16,20 +16,17 @@ void Clock::update(double delta)
 	{
 		spacetime = 0;
 		min++;
-		update_text = true;
 	}
 
 	if (min >= 60)
 	{
 		min = 0;
 		hour++;
-		update_text = true;
 	}
 
 	if (hour >= 24)
 	{
 		hour = 0;
-		update_text = true;
 	}
 
 	str_time_min = std::to_string((int)min);
@@ -50,7 +47,7 @@ void Clock::update(double delta)
 	// befor i made it with this update flag memory was to big to fast. 
 	// alternative idea: somehow free space like in the ~panel.
 
-	Panel::update(delta);
+	Panel::update();
 
 	if (hour == 16 && min == 35 && day && !1)
 	{
@@ -71,4 +68,9 @@ void Clock::set_time(int hour, int min)
 	spacetime = 0;
 	this->min = min;
 	this->hour = hour;
+}
+
+int Clock::get_day()
+{
+	return day_counter;
 }

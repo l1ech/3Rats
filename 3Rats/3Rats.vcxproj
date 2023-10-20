@@ -24,6 +24,7 @@
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="Fade.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Overlay.cpp" />
     <ClCompile Include="Panel.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="Fade.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Overlay.h" />
     <ClInclude Include="Panel.h" />

@@ -8,15 +8,15 @@
 class Panel : public Body, public Text
 {
 protected:
-	bool update_text;
 	std::string display_text;
+	std::string old_display_text;
 
 
 public:
 	Panel();
 	~Panel();
 
-	void update(double delta);
+	void update();
 	void draw(SDL_Renderer* renderTarget);
 
 };

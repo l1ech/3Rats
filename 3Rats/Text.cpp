@@ -43,7 +43,7 @@ void Text::set_renderer(SDL_Renderer* renderTarget)
 	renderer = renderTarget;
 }
 
-void Text::init_text(std::string font_path, int font_size, SDL_Color colour)
+void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int x, int y, int w, int h)
 {
 	this->font_path = font_path;
 	this->font_size = font_size;
@@ -58,12 +58,18 @@ void Text::init_text(std::string font_path, int font_size, SDL_Color colour)
 	surfaceMessage = TTF_RenderText_Solid(font, "99:99", colour);
 	Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
 
-	Message_rect.x = 400;  //controls the rect's x coordinate 
-	Message_rect.y = 330; // controls the rect's y coordinte
-	Message_rect.w = 200; // controls the width of the rect
-	Message_rect.h = 90; // controls the height of the rect
+	Message_rect.x = x;  //controls the rect's x coordinate 
+	Message_rect.y = y; // controls the rect's y coordinte
+	Message_rect.w = w; // controls the width of the rect
+	Message_rect.h = h; // controls the height of the rect
 
 	// (0,0) is on the top left of the window/screen,
 	// think a rect as the text's box,
 	// that way it would be very simple to understand
+}
+
+void Text::set_coords(int x, int y)
+{
+	Message_rect.x = x;  //controls the rect's x coordinate 
+	Message_rect.y = y; // controls the rect's y coordinte
 }
