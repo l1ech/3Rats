@@ -14,6 +14,7 @@
 #include "Acteur.h"
 #include "Clock.h"
 #include "Fade.h"
+#include "Overlay.h"
 
 int world_seed_generation(bool value)
 {
@@ -90,6 +91,11 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade)
 	//clock->set_fade(&fade);
 
 	clock->set_time(16, 30);
+}
+
+void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock)
+{
+
 }
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
@@ -309,7 +315,10 @@ int main(int argc, char* argv[])
 	init_fade(renderTarget, &fade);
 
 	Clock clock;
-	init_clock(renderTarget, &clock, &fade);
+	init_clock(renderTarget, &clock);
+
+	Overlay overlay;
+	init_overlay(renderTarget, &fade, &clock);
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	
