@@ -315,7 +315,7 @@ int main(int argc, char* argv[])
 	init_fade(renderTarget, &fade);
 
 	Clock clock;
-	init_clock(renderTarget, &clock);
+	init_clock(renderTarget, &clock, &fade);
 
 	Overlay overlay;
 	init_overlay(renderTarget, &fade, &clock);

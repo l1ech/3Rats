@@ -348,7 +348,7 @@ void Map::generate_maze(bool item_generation, bool entity_generation)
 
     //set_corners(map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width, 70); // 80 meaning 1/80  
+    if (item_generation) set_items_to_map(map_data, item_data, height, width, 30); // 80 meaning 1/80  
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
     std::cout << "saving data..." << std::endl;
@@ -382,7 +382,7 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     trim_boarder(data, map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
+    if (item_generation) set_items_to_map(map_data, item_data, height, width, 10);  //20 meaning 1/20
 
     if (entity_generation) set_entity_to_map(map_data, entity_data, height, width, 70);
 
