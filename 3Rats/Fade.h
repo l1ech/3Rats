@@ -11,6 +11,4 @@ public:
 	void update(std::string update_text);
 	void draw(SDL_Renderer* renderTarget);
 
-	void in();
-	void out();
 };

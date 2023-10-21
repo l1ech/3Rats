@@ -19,4 +19,6 @@ public:
 	void update();
 	void draw(SDL_Renderer* renderTarget);
 
+	void in();
+	void out();
 };

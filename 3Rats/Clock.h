@@ -6,7 +6,7 @@ class Clock : public Panel
 {
 private:
 
-	bool day;
+	bool is_day;
 
 	double spacetime;
 	int min;
@@ -25,4 +25,6 @@ public:
 	void set_time(int hour, int min);
 
 	int get_day();
+	bool day_time();
+
 };

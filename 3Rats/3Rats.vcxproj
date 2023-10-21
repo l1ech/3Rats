@@ -28,6 +28,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Overlay.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Topography.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Overlay.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="Pause.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Topography.h" />
     <ClInclude Include="Item.h" />

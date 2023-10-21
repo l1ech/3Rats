@@ -31,3 +31,15 @@ void Panel::draw(SDL_Renderer* renderTarget)
 	Body::draw(renderTarget);
 	Text::draw(renderTarget);
 }
+
+void Panel::in()
+{
+	Text::set_coords(0, 0);
+	Body::set_cords(0, 0);
+}
+
+void Panel::out()
+{
+	Text::set_coords(999, 999);
+	Body::set_cords(999, 999);
+}

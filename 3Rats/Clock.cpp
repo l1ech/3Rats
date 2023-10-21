@@ -3,7 +3,7 @@
 Clock::Clock()
 {
 	day_counter = 0;
-	day = true;
+	is_day = true;
 }
 
 void Clock::update(double delta)
@@ -49,12 +49,17 @@ void Clock::update(double delta)
 
 	Panel::update();
 
-	if (hour == 16 && min == 35 && day && !1)
+	if (hour == 22 && min == 00 && is_day)
 	{
 		day_counter++;
-		std::cout << "day# " << day_counter << " passed. its time to sleep now!" << std::endl;
+		std::cout << "is_day# " << day_counter << " passed. its time to sleep now!" << std::endl;
 		// is player back at base?
-		day = false;
+		is_day = false;
+	}
+	else if (hour == 22 && min == 01 && !is_day)
+	{
+		is_day = true;
+		set_time(16, 30);
 	}
 }
 
@@ -70,7 +75,12 @@ void Clock::set_time(int hour, int min)
 	this->hour = hour;
 }
 
-int Clock::get_day()
+int Clock::get_day()		//namechange get_day_number
 {
 	return day_counter;
+}
+
+bool Clock::day_time()		//namechange get_day_value
+{
+	return is_day;
 }
