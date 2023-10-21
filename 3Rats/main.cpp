@@ -16,6 +16,7 @@
 #include "Fade.h"
 #include "Overlay.h"
 #include "Pause.h"
+#include "Chest.h"
 
 int world_seed_generation(bool value)
 {
@@ -67,6 +68,13 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	SDL_FreeSurface(surface);
 
 	return texture;
+}
+
+void init_chest(SDL_Renderer* render_target, Chest* chest)
+{
+	chest->set_surface(render_target);
+	chest->set_texture("item_textures/chest/chest.png");
+	chest->set_cords_frames(32, 32, 1, 4);
 }
 
 void init_fade(SDL_Renderer* render_target, Fade* fade)
@@ -337,6 +345,9 @@ int main(int argc, char* argv[])
 	Item item_array[item_amount];
 	init_item_array(renderTarget, item_array, item_amount);
 
+	Chest chest;
+	init_chest(renderTarget, &chest);
+
 	Tile tile_array[tile_amount];
 	init_tile_array(renderTarget, tile_array, tile_amount);
 
@@ -349,7 +360,7 @@ int main(int argc, char* argv[])
 	Acteur player_array[player_amount];
 	init_player_array(renderTarget, player_array, player_amount, topography, random);
 
-	Acteur entity[entity_amount];
+	Acteur entity[entity_amount];		//chester
 	init_entity(renderTarget, entity, entity_amount, topography, random);
 
 	// ===================================================================================
@@ -451,6 +462,7 @@ int main(int argc, char* argv[])
 		clock.update(delta);
 		fade.update(std::to_string(clock.get_day()));
 		overlay.update(delta);
+		chest.update(delta);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
@@ -472,6 +484,7 @@ int main(int argc, char* argv[])
 		fade.draw(renderTarget);
 		pause.draw(renderTarget);
 		overlay.draw(renderTarget);
+		chest.draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
 	}

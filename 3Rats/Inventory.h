@@ -2,19 +2,21 @@
 
 #include "Item.h"
 
+#include <vector>
+
 // normaly i should use some kind of array of items 
 // but for testing lets do it with int
 
 class Inventory
 {
-private:
-	//Item inventory_slots[];
-	int inventory_slots[];
+protected:
+	std::vector<Item*> inventory;
+	int size;
 public:
 	Inventory();
-	Inventory(int player_amount);
+	void init();
 
-	void init_inventory(int player_amount);
-
-	void set_item_at(int index, int item);
+	void push_item(Item* item);
+	Item* pop_item();
+	void re_size(int newSize);
 };

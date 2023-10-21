@@ -67,6 +67,26 @@ void Body::set_cords(int x, int y)
 
 void Body::set_hight(int value) { this->hight = value; }
 
+void Body::set_cords_frames(int x, int y, int framesX, int framesY)
+{
+
+	position_rect.x = x;
+	position_rect.y = y;
+
+	texture_width = crop_rect.w;
+
+	crop_rect.w /= framesX;
+	crop_rect.h /= framesY;
+
+	frame_width = position_rect.w = crop_rect.w;
+	frame_height = position_rect.h = crop_rect.h;
+
+	origin_x = frame_width / 2;
+	origin_y = frame_height / 2;
+
+	radius = frame_width / 2;
+}
+
 
 int Body::get_hight() { return this->hight; }
 

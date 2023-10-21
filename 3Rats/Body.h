@@ -37,6 +37,7 @@ public:
 	void set_texture(std::string name);
 	void set_cords(int x, int y);
 	void set_hight(int value);
+	void set_cords_frames(int x, int y, int framesX, int framesY);
 
 	int get_origin_x();
 	int get_origin_y();

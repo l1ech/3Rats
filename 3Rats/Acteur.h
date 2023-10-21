@@ -4,14 +4,14 @@
 #include <string>
 
 #include "Body.h"
-#include "Item.h"
 #include "Map.h"
 #include "Tile.h"
 #include "Topography.h"
 #include "Door.h"
 #include "Controller.h"
+#include "Inventory.h"
 
-class Acteur : public Body, public Controller
+class Acteur : public Body, public Controller, public Inventory
 {
 protected:
 
@@ -57,8 +57,6 @@ public:
 	Acteur();
 
 	void Update(float delta, const Uint8* keyState, int mode, Acteur& p1);
-
-	void set_cords_frames(int x, int y, int framesX, int framesY);
 
 	void teleport_to_entrence();	// change to set_pos(entrence);
 	bool intersectsWithBody(Body& b);		//get intersect

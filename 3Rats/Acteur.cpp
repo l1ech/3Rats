@@ -301,27 +301,6 @@ Acteur::~Acteur()
 	SDL_DestroyTexture(texture);
 }
 
-
-void Acteur::set_cords_frames(int x, int y, int framesX, int framesY)
-{
-	position_rect.x = x;
-	position_rect.y = y;
-
-	texture_width = crop_rect.w;
-
-	crop_rect.w /= framesX;
-	crop_rect.h /= framesY;
-
-	frame_width = position_rect.w = crop_rect.w;
-	frame_height = position_rect.h = crop_rect.h;
-
-	origin_x = frame_width / 2;
-	origin_y = frame_height / 2;
-
-	radius = frame_width / 2;
-}
-
-
 void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
 {
 	map_array = topography->get_map_array();

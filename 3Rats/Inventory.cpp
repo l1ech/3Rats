@@ -2,25 +2,35 @@
 
 Inventory::Inventory()
 {
-	inventory_slots[3];
-}
-
-Inventory::Inventory(int player_amount)
-{
-
-	inventory_slots[player_amount];
+    size = 1;
 
 }
 
-void Inventory::init_inventory(int player_amount)
+void Inventory::init()
 {
-	for (int i = 0; i < player_amount; i++)
-	{
-		inventory_slots[i] = 0;
-	}
 }
 
-void Inventory::set_item_at(int index, int item)
+void Inventory::push_item(Item* item)
 {
-	inventory_slots[index] = item;
+    if (inventory.size() <= size)
+    {
+        inventory.push_back(item);
+    }
+    else
+    {
+        std::cout << "ERROR: Inventory is full!" << std::endl;
+    }
+    
+}
+
+Item* Inventory::pop_item()
+{
+    Item* item = inventory.back();
+    inventory.pop_back();
+    return item;
+}
+
+void Inventory::re_size(int newSize)
+{
+    size = newSize;
 }
