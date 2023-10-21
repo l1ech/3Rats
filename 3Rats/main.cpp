@@ -12,7 +12,10 @@
 #include "Topography.h"
 #include "Text.h"
 #include "Acteur.h"
-#include "Panel.h"
+#include "Clock.h"
+#include "Fade.h"
+#include "Overlay.h"
+#include "Pause.h"
 
 int world_seed_generation(bool value)
 {
@@ -66,16 +69,43 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	return texture;
 }
 
-void init_clock(SDL_Renderer* render_target, Panel* clock)
+void init_fade(SDL_Renderer* render_target, Fade* fade)
+{
+	fade->Text::set_renderer(render_target);
+	fade->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+
+	fade->Body::set_surface(render_target);
+	fade->set_texture("ui_textures/fade.png");
+	fade->set_cords(999, 999);
+	//clock->set_fade(&fade);
+}
+
+void init_pause(SDL_Renderer* render_target, Pause* pause)
+{
+	pause->Text::set_renderer(render_target);
+	pause->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+
+	pause->Body::set_surface(render_target);
+	pause->set_texture("ui_textures/fade.png");
+	pause->set_cords(999, 999);
+}
+
+void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
 {
 	clock->Text::set_renderer(render_target);
-	clock->init_text("fonts/sans.ttf", 24, { 255, 0, 0 });
+	clock->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 400, 330, 200, 90);
 
 	clock->Body::set_surface(render_target);
 	clock->set_texture("ui_textures/clock_frame.png");
 	clock->set_cords(400, 320);
-
+	//clock->set_fade(&fade);
+	//clock->set_overlay(overlay);
 	clock->set_time(16, 30);
+}
+
+void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay)
+{
+	overlay->init(fade, clock);
 }
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
@@ -291,8 +321,16 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
-	Panel clock;
-	init_clock(renderTarget, &clock);
+	Fade fade;
+	init_fade(renderTarget, &fade);
+
+	Pause pause;
+	init_pause(renderTarget, &pause);
+
+	Clock clock;
+	Overlay overlay;
+	init_clock(renderTarget, &clock, &fade, &overlay);
+	init_overlay(renderTarget, &fade, &clock, &overlay);
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	
@@ -384,6 +422,12 @@ int main(int argc, char* argv[])
 				case SDLK_z:
 					std::cout << "tp prev room" << std::endl;
 					break;
+				case SDLK_m:
+					pause.in();
+					break;
+				case SDLK_l:
+					pause.out();
+					break;
 				}
 			}
 		}
@@ -402,7 +446,11 @@ int main(int argc, char* argv[])
 		}
 
 		entity[0].update(delta);
+		std::string pause_message = "Pause.";
+		pause.update(pause_message);
 		clock.update(delta);
+		fade.update(std::to_string(clock.get_day()));
+		overlay.update(delta);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
@@ -421,6 +469,9 @@ int main(int argc, char* argv[])
 		}
 		entity[0].draw(renderTarget);
 		clock.draw(renderTarget);
+		fade.draw(renderTarget);
+		pause.draw(renderTarget);
+		overlay.draw(renderTarget);
 
 		SDL_RenderPresent(renderTarget);
 	}
