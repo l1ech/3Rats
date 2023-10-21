@@ -10,11 +10,12 @@
 class Inventory
 {
 protected:
+	Item empty_item;
 	std::vector<Item*> inventory;
-	int size;
+	int max_size;
 public:
 	Inventory();
-	void init();
+	void init(int size);
 
 	void push_item(Item* item);
 	Item* pop_item();

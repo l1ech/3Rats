@@ -72,9 +72,10 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 
 void init_chest(SDL_Renderer* render_target, Chest* chest)
 {
+	chest->init(4);
 	chest->set_surface(render_target);
 	chest->set_texture("item_textures/chest/chest.png");
-	chest->set_cords_frames(32, 32, 1, 4);
+	chest->set_cords_frames(64, 64, 1, 4);
 }
 
 void init_fade(SDL_Renderer* render_target, Fade* fade)
@@ -428,7 +429,7 @@ int main(int argc, char* argv[])
 					player_array[0].set_enter(true);
 					break;
 				case SDLK_t:
-					std::cout << "tp next room" << std::endl;
+					chest.get_item();
 					break;
 				case SDLK_z:
 					std::cout << "tp prev room" << std::endl;

@@ -2,17 +2,21 @@
 
 Inventory::Inventory()
 {
-    size = 1;
-
 }
 
-void Inventory::init()
+void Inventory::init(int size)
 {
+    max_size = size;
+
+    for (int i = 0; i < max_size-1; i++)
+    {
+        inventory.push_back(&empty_item);
+    }
 }
 
 void Inventory::push_item(Item* item)
 {
-    if (inventory.size() <= size)
+    if (inventory.size() <= max_size)
     {
         inventory.push_back(item);
     }
@@ -32,5 +36,5 @@ Item* Inventory::pop_item()
 
 void Inventory::re_size(int newSize)
 {
-    size = newSize;
+    max_size = newSize;
 }
