@@ -11,11 +11,11 @@ Text::~Text()
 	SDL_DestroyTexture(Message);
 }
 
-void Text::update(std::string time)
+void Text::update(std::string text)
 {
 	// as TTF_RenderText_Solid could only be used on
 	// SDL_Surface then you have to create the surface first
-	surfaceMessage = TTF_RenderText_Solid(font, time.c_str(), colour);
+	surfaceMessage = TTF_RenderText_Solid(font, text.c_str(), colour);
 
 
 	// now you can convert it into a texture
@@ -72,4 +72,9 @@ void Text::set_coords(int x, int y)
 {
 	Message_rect.x = x;  //controls the rect's x coordinate 
 	Message_rect.y = y; // controls the rect's y coordinte
+}
+
+void Text::set_music(Mix_Music* music)
+{
+	this->music = music;
 }

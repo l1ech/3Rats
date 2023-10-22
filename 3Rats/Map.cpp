@@ -80,8 +80,9 @@ void Map::set_textures()
     {
         for (int w = 0; w < width; w++)
         {
-            Tile& inspected_tile = tile_array[get_tile(w, h)];
-            Item& inspected_item = item_array[get_tile(w, h)];
+            Tile& inspected_tile = tile_array[get_id(w, h)];
+
+            Item& inspected_item = item_array[get_id(w, h)];
 
             switch (data[h][w].first)
             {
@@ -331,27 +332,31 @@ void Map::generate_maze(bool item_generation, bool entity_generation)
 
     print_doors();
 
-    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));
+    std::vector<std::vector <int>> raw_data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
-    build_frame(data, 9, 1);
+    build_frame(raw_data, 9, 1);
 
-    place_doors(data, door_array);
+    place_doors(raw_data, door_array);
     
-    while (rec_pos(door_array[0].get_x(), door_array[0].get_y(), data, data[start_x][start_y]) != 0)
+    while (rec_pos(door_array[0].get_x(), door_array[0].get_y(), raw_data, raw_data[start_x][start_y]) != 0)
     { 
         map_generation_try++;
     }
     
-    trim_boarder(data, map_data);
+    trim_boarder(raw_data, map_data);
 
     //set_corners(map_data);
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 30); // 80 meaning 1/80  
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
-    std::cout << "saving data..." << std::endl;
+    std::cout << "saving raw_data..." << std::endl;
+
+    //std::cout << "item_data..." << std::endl;
+
+    //print_vector(item_data, width, height);
 
     save_data(map_data, item_data);
 }
@@ -371,16 +376,16 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     print_doors();
 
-    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
+    std::vector<std::vector <int>> raw_data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> entity_data(height, std::vector<int>(width));
 
-    build_frame(data, 1, 12);
+    build_frame(raw_data, 1, 12);
 
-    place_doors(data, door_array);
+    place_doors(raw_data, door_array);
 
-    trim_boarder(data, map_data);
+    trim_boarder(raw_data, map_data);
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 10);  //20 meaning 1/20
 
@@ -388,7 +393,7 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
 
-    std::cout << "saving data..." << std::endl;
+    std::cout << "saving raw_data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -419,7 +424,7 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
         random_ptr->roll_custom_dice(end_y) 
     };
 
-    std::vector<std::vector <int>> data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
+    std::vector<std::vector <int>> raw_data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
 
@@ -427,20 +432,20 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
     // maybe it generates a hole only if the player does an action?
     // for now for testing it is this
 
-    build_frame(data, 1, 14);
+    build_frame(raw_data, 1, 14);
 
-    place_doors(data, door_array);
+    place_doors(raw_data, door_array);
 
-    data[food_bowl.second][food_bowl.first] = 15;
-    data[bed.second][bed.first] = 16;
+    raw_data[food_bowl.second][food_bowl.first] = 15;
+    raw_data[bed.second][bed.first] = 16;
 
 
-    trim_boarder(data, map_data);
+    trim_boarder(raw_data, map_data);
 
     //if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
-    std::cout << "saving data..." << std::endl;
+    std::cout << "saving raw_data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -605,31 +610,31 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
     }
 }
 
-void Map::build_frame(std::vector<std::vector<int>>& data, int wall, int space)
+void Map::build_frame(std::vector<std::vector<int>>& raw_data, int wall, int space)
 {
     for (int h = 0; h < height + 2; h++)
     {
         for (int w = 0; w < width + 2; w++)
         {
-            if      (w == 0)            data[h][w] = wall;
-            else if (w == width + 1)    data[h][w] = wall;
-            else if (h == 0)            data[h][w] = wall;
-            else if (h == height + 1)   data[h][w] = wall;
-            else                        data[h][w] = space;
+            if      (w == 0)            raw_data[h][w] = wall;
+            else if (w == width + 1)    raw_data[h][w] = wall;
+            else if (h == 0)            raw_data[h][w] = wall;
+            else if (h == height + 1)   raw_data[h][w] = wall;
+            else                        raw_data[h][w] = space;
         }
     }
 }
 
-void Map::place_doors(std::vector<std::vector<int>>& data, Door* door_array)
+void Map::place_doors(std::vector<std::vector<int>>& raw_data, Door* door_array)
 {
     if (door_array[0].get_active())
-        data[door_array[0].get_y()][door_array[0].get_x()] = 2;
+        raw_data[door_array[0].get_y()][door_array[0].get_x()] = 2;
 
     if (door_array[1].get_active())
-        data[door_array[1].get_y()][door_array[1].get_x()] = 0;
+        raw_data[door_array[1].get_y()][door_array[1].get_x()] = 0;
 
     if (door_array[2].get_active())
-        data[door_array[2].get_y()][door_array[2].get_x()] = 13;
+        raw_data[door_array[2].get_y()][door_array[2].get_x()] = 13;
 }
 
 void Map::print_vector(const std::vector<std::vector<int>>& arg, const int& size_x, const int& size_y)
@@ -651,13 +656,13 @@ void Map::print_doors()
     std::cout << "Hole: [" << door_array[2].get_x() << ";" << door_array[2].get_y() << "]" << std::endl;
 }
 
-void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data)   //trim boarder
+void Map::trim_boarder(std::vector<std::vector <int>>& raw_data, std::vector<std::vector <int>>& map_data)   //trim boarder
 {
     for (int h = 0; h < height; h++)
     {
         for (int w = 0; w < width; w++)
         {
-            map_data[h][w] = data[h + 1][w + 1];
+            map_data[h][w] = raw_data[h + 1][w + 1];
         }
     }
 }
@@ -682,4 +687,4 @@ void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::ve
     }
 }
 
-int Map::get_tile(int x, int y) { return y * width + x; }
+int Map::get_id(int x, int y) { return y * width + x; }

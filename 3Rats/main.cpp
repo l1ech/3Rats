@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <vector>
 #include <stdlib.h>     /* srand, rand */
 
@@ -17,6 +18,7 @@
 #include "Overlay.h"
 #include "Pause.h"
 #include "Chest.h"
+#include "Button.h"
 
 int world_seed_generation(bool value)
 {
@@ -89,7 +91,7 @@ void init_fade(SDL_Renderer* render_target, Fade* fade)
 	//clock->set_fade(&fade);
 }
 
-void init_pause(SDL_Renderer* render_target, Pause* pause)
+void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button, Mix_Music* music)
 {
 	pause->Text::set_renderer(render_target);
 	pause->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
@@ -97,6 +99,8 @@ void init_pause(SDL_Renderer* render_target, Pause* pause)
 	pause->Body::set_surface(render_target);
 	pause->set_texture("ui_textures/fade.png");
 	pause->set_cords(999, 999);
+	pause->set_button(button);
+	pause->set_music(music);
 }
 
 void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
@@ -315,6 +319,17 @@ int main(int argc, char* argv[])
 	{
 		std::cout << "Error: " << TTF_GetError() << std::endl;
 	}
+	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+		std::cout << "Error: " << TTF_GetError() << std::endl;
+	}
+
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		std::cout << "Error: " << TTF_GetError() << std::endl;
+	}
+
+	Mix_Music* music = Mix_LoadMUS("music/Electronic_Onslaught_short.wav");
+	Mix_PlayMusic(music, -1); // Play music in a loop (-1 for infinite loop)
+	Mix_PauseMusic();
 
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -330,11 +345,15 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
+	Button button(renderTarget, 200, 100, 80, 80);
+	button.Text::set_renderer(renderTarget);
+	button.init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+
 	Fade fade;
 	init_fade(renderTarget, &fade);
 
 	Pause pause;
-	init_pause(renderTarget, &pause);
+	init_pause(renderTarget, &pause, &button, music);
 
 	Clock clock;
 	Overlay overlay;
@@ -435,13 +454,14 @@ int main(int argc, char* argv[])
 					std::cout << "tp prev room" << std::endl;
 					break;
 				case SDLK_m:
-					pause.in();
 					break;
 				case SDLK_l:
-					pause.out();
 					break;
+				case SDLK_ESCAPE:
+					pause.toggle();
 				}
 			}
+			button.handleEvent(ev);
 		}
 
 		keyState = SDL_GetKeyboardState(NULL);
@@ -458,8 +478,8 @@ int main(int argc, char* argv[])
 		}
 
 		entity[0].update(delta);
-		std::string pause_message = "Pause.";
-		pause.update(pause_message);
+		button.update("Music:");
+		pause.update("Pause.");
 		clock.update(delta);
 		fade.update(std::to_string(clock.get_day()));
 		overlay.update(delta);
@@ -483,10 +503,12 @@ int main(int argc, char* argv[])
 		entity[0].draw(renderTarget);
 		clock.draw(renderTarget);
 		fade.draw(renderTarget);
-		pause.draw(renderTarget);
-		overlay.draw(renderTarget);
 		chest.draw(renderTarget);
-
+		overlay.draw(renderTarget);
+		
+		pause.draw(renderTarget);
+		button.draw(renderTarget);
+		if (pause.is_on_screen()) button.render();
 		SDL_RenderPresent(renderTarget);
 	}
 

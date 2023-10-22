@@ -66,11 +66,6 @@ void Topography::draw(SDL_Renderer* renderTarget)
 	}
 }
 
-void Topography::print_connections(std::vector<std::pair<std::pair<int, int>, std::pair<int, int>>>)
-{
-	std::cout << "print points..." << std::endl;
-}
-
 void Topography::set_renderer(SDL_Renderer* renderTarget)
 {
 	this->renderTarget = renderTarget;
@@ -96,16 +91,8 @@ void Topography::make_maze()
 	int end_x = width;
 	int end_y = height;
 
-	/*
-	make_doors_entry(3);
-	make_doors_exit(1);
-	make_doors_hole(-100, -100);
-	*/
-
 	make_points(start_x, start_y, end_x, end_y);
 
-	print_connections(connections);
-	
 	data.resize(height + 2);
 	for (int i = 0; i < data.size(); i++) {
 		data[i].resize(width + 2);

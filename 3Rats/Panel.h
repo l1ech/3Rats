@@ -8,8 +8,7 @@
 class Panel : public Body, public Text
 {
 protected:
-	std::string display_text;
-	std::string old_display_text;
+	bool on_screen;
 
 
 public:

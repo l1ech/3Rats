@@ -6,6 +6,7 @@
 
 Panel::Panel()
 {
+	on_screen = false;
 }
 
 Panel::~Panel()
@@ -34,12 +35,14 @@ void Panel::draw(SDL_Renderer* renderTarget)
 
 void Panel::in()
 {
+	on_screen = true;
 	Text::set_coords(0, 0);
 	Body::set_cords(0, 0);
 }
 
 void Panel::out()
 {
+	on_screen = false;
 	Text::set_coords(999, 999);
 	Body::set_cords(999, 999);
 }

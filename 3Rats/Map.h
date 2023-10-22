@@ -69,7 +69,7 @@ private:
 	void set_entity_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& entity_data, int height, int width, int propability);
 	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
 
-	int get_tile(int x, int y);
+	int get_id(int x, int y);
 
 public:
 	Map();

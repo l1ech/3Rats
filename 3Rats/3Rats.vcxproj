@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Acteur.cpp" />
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Controller.cpp" />
@@ -42,6 +43,7 @@
   <ItemGroup>
     <ClInclude Include="Acteur.h" />
     <ClInclude Include="Body.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Controller.h" />

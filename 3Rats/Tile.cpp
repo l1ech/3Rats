@@ -11,22 +11,6 @@ Tile::Tile()
 	file_path = "meta_textures/place_holder.png";
 }
 
-Tile::Tile(const Tile& other)
-{
-	std::cout << "copy constructor tile" << std::endl;
-	is_exit = other.is_exit;
-	is_entrance = other.is_entrance;
-	is_hole = other.is_hole;
-	this->hight = other.hight;
-
-	this->file_path = other.file_path;
-	this->ptr_renderer = other.ptr_renderer;
-
-	set_surface(other.ptr_renderer);
-	set_texture(other.file_path);
-	set_cords(other.origin_x, other.origin_y);
-}
-
 Tile::~Tile()
 {
 	//std::cout << "destructor" << std::endl;
