@@ -15,7 +15,6 @@ protected:
 	int max_size;
 public:
 	Inventory();
-	void init(int size);
 
 	void push_item(Item* item);
 	Item* pop_item();

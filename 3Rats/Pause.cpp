@@ -29,4 +29,3 @@ void Pause::toggle()
 		button->set_coords(0, 90);
 	}
 }
-

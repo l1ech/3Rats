@@ -19,6 +19,7 @@
 #include "Pause.h"
 #include "Chest.h"
 #include "Button.h"
+#include "Sound.h"
 
 int world_seed_generation(bool value)
 {
@@ -71,11 +72,14 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 
 	return texture;
 }
-
+void init_sound(Sound* sound)
+{
+	sound->init();
+}
 void init_chest(SDL_Renderer* render_target, Chest* chest)
 {
-	chest->init(4);
-	chest->set_surface(render_target);
+	chest->re_size(4);
+	chest->set_renderer(render_target);
 	chest->set_texture("item_textures/chest/chest.png");
 	chest->set_cords_frames(64, 64, 1, 4);
 }
@@ -83,32 +87,30 @@ void init_chest(SDL_Renderer* render_target, Chest* chest)
 void init_fade(SDL_Renderer* render_target, Fade* fade)
 {
 	fade->Text::set_renderer(render_target);
-	fade->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	fade->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
-	fade->Body::set_surface(render_target);
+	fade->Body::set_renderer(render_target);
 	fade->set_texture("ui_textures/fade.png");
 	fade->set_cords(999, 999);
-	//clock->set_fade(&fade);
 }
 
-void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button, Mix_Music* music)
+void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button)
 {
 	pause->Text::set_renderer(render_target);
-	pause->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	pause->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
-	pause->Body::set_surface(render_target);
+	pause->Body::set_renderer(render_target);
 	pause->set_texture("ui_textures/fade.png");
 	pause->set_cords(999, 999);
 	pause->set_button(button);
-	pause->set_music(music);
 }
 
 void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
 {
 	clock->Text::set_renderer(render_target);
-	clock->init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 400, 330, 200, 90);
+	clock->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 400, 330, 200, 90);
 
-	clock->Body::set_surface(render_target);
+	clock->Body::set_renderer(render_target);
 	clock->set_texture("ui_textures/clock_frame.png");
 	clock->set_cords(400, 320);
 	//clock->set_fade(&fade);
@@ -116,15 +118,15 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* 
 	clock->set_time(16, 30);
 }
 
-void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay)
+void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay, Sound* sound)
 {
-	overlay->init(fade, clock);
+	overlay->init(fade, sound, clock);
 }
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
 {
 	Item item_templet;
-	item_templet.set_surface(render_target);
+	item_templet.set_renderer(render_target);
 	item_templet.set_texture("meta_textures/place_holder.png");
 	item_templet.set_cords(-100, -100);
 
@@ -137,7 +139,7 @@ void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_am
 void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_amount)
 {
 	Tile tile_templet;
-	tile_templet.set_surface(render_target);
+	tile_templet.set_renderer(render_target);
 	tile_templet.set_texture("meta_textures/place_holder.png");
 	tile_templet.set_cords(-100, -100);
 
@@ -229,15 +231,15 @@ void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int pl
 		player_array[i] = player;
 	}
 
-	player_array[0].set_surface(render_target);
+	player_array[0].set_renderer(render_target);
 	player_array[0].set_texture("rat_textures/mango.png");
 	player_array[0].set_cords_frames(32, 32, 3, 4);
 
-	player_array[1].set_surface(render_target);
+	player_array[1].set_renderer(render_target);
 	player_array[1].set_texture("rat_textures/fridolin.png");
 	player_array[1].set_cords_frames(32, 32, 3, 4);
 
-	player_array[2].set_surface(render_target);
+	player_array[2].set_renderer(render_target);
 	player_array[2].set_texture("rat_textures/remy.png");
 	player_array[2].set_cords_frames(400, 300, 3, 4);
 }
@@ -253,7 +255,7 @@ void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount
 		entitys[i] = entity;
 	}
 
-	entitys[0].set_surface(render_target);
+	entitys[0].set_renderer(render_target);
 	entitys[0].set_texture("npc_textures/entity.png");
 	entitys[0].set_cords_frames(4000, 4000, 1, 1);
 }
@@ -326,11 +328,6 @@ int main(int argc, char* argv[])
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		std::cout << "Error: " << TTF_GetError() << std::endl;
 	}
-
-	Mix_Music* music = Mix_LoadMUS("music/Electronic_Onslaught_short.wav");
-	Mix_PlayMusic(music, -1); // Play music in a loop (-1 for infinite loop)
-	Mix_PauseMusic();
-
 	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
@@ -345,20 +342,25 @@ int main(int argc, char* argv[])
 	// random object
 	Random random(seed);
 
-	Button button(renderTarget, 200, 100, 80, 80);
-	button.Text::set_renderer(renderTarget);
-	button.init_text("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	Sound sound;
+	init_sound(&sound);
 
 	Fade fade;
 	init_fade(renderTarget, &fade);
-
-	Pause pause;
-	init_pause(renderTarget, &pause, &button, music);
-
+	
 	Clock clock;
 	Overlay overlay;
 	init_clock(renderTarget, &clock, &fade, &overlay);
-	init_overlay(renderTarget, &fade, &clock, &overlay);
+	init_overlay(renderTarget, &fade, &clock, &overlay, &sound);
+
+	Button button(renderTarget, 200, 100, 80, 80);
+	button.Text::set_renderer(renderTarget);
+	button.Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	button.set_overlay(&overlay);
+
+	Pause pause;
+	init_pause(renderTarget, &pause, &button);
+
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	

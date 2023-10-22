@@ -4,16 +4,6 @@ Inventory::Inventory()
 {
 }
 
-void Inventory::init(int size)
-{
-    max_size = size;
-
-    for (int i = 0; i < max_size-1; i++)
-    {
-        inventory.push_back(&empty_item);
-    }
-}
-
 void Inventory::push_item(Item* item)
 {
     if (inventory.size() <= max_size)

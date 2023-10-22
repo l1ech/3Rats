@@ -1,15 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <utility>
-
-#include "Body.h"
-#include "Item.h"
-#include "Tile.h"
 #include "Level_Structure.h"
-#include "Door.h"
 
 class Map : public Level_Structure
 {

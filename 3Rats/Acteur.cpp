@@ -277,7 +277,7 @@ Acteur::Acteur()
 
 	saturation = 100;
 
-	file_path = "meta_textures/place_holder.png";
+	texture_path = "meta_textures/place_holder.png";
 	item_search_id = 0;
 	has_goal = false;
 

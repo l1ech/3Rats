@@ -1,23 +1,12 @@
 #pragma once	
 
-#include <iostream>
-#include <string>
-
 #include "Body.h"
 
 class Item : public Body
 {
 private:
-
-
 	bool is_on_map;
 	bool is_picked_up;
-
-	double weight;		// make it that this affacts 
-						// how fast it can be carried arround
-						// maybe: if two rats need 
-						// to carry it together?
-
 
 public:
 	Item();

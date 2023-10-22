@@ -9,17 +9,17 @@ void Body::update(float delta) { }
 
 void Body::draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); }
 
-void Body::set_surface(SDL_Renderer* renderTarget)
+void Body::set_renderer(SDL_Renderer* renderTarget)
 {
-	file_path = "meta_textures/place_holder.png";
-	ptr_renderer = renderTarget;
+	texture_path = "meta_textures/place_holder.png";
+	render_target = renderTarget;
 
-	SDL_Surface* surface = IMG_Load(file_path.c_str());
+	SDL_Surface* surface = IMG_Load(texture_path.c_str());
 	if (surface == NULL)
 		std::cout << "Error Body Surface" << std::endl;
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
+		texture = SDL_CreateTextureFromSurface(render_target, surface);
 		if (texture == NULL)
 			std::cout << "Error Body Texture" << std::endl;
 	}
@@ -29,16 +29,20 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 }
 
-void Body::set_texture(std::string name)
+void Body::init(std::string path, int x, int y, int h, int framesX, int framesY)
 {
-	file_path = name;
+}
 
-	SDL_Surface* surface = IMG_Load(file_path.c_str());
+void Body::set_texture(std::string path)
+{
+	texture_path = path;
+
+	SDL_Surface* surface = IMG_Load(texture_path.c_str());
 	if (surface == NULL)
 		std::cout << "Error Body Surface" << std::endl;
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
+		texture = SDL_CreateTextureFromSurface(render_target, surface);
 		if (texture == NULL)
 			std::cout << "Error Body Texture" << std::endl;
 	}
@@ -65,7 +69,7 @@ void Body::set_cords(int x, int y)
 	radius = frame_width / 2;
 }
 
-void Body::set_hight(int value) { this->hight = value; }
+void Body::set_hight(int h) { this->hight = h; }
 
 void Body::set_cords_frames(int x, int y, int framesX, int framesY)
 {

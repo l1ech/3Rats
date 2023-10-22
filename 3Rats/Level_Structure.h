@@ -1,8 +1,11 @@
 #pragma once
 
-#include"Tile.h"
-#include"Item.h"
+#include "Tile.h"
+#include "Item.h"
+//#include "Acteur.h"
 #include "Random.h"
+#include "Door.h"
+
 
 
 class Level_Structure

@@ -7,7 +7,7 @@ Text::Text()
 Text::~Text()
 {
 	// Don't forget to free your surface and texture
-	SDL_FreeSurface(surfaceMessage);
+	SDL_FreeSurface(surface_message);
 	SDL_DestroyTexture(Message);
 }
 
@@ -15,11 +15,11 @@ void Text::update(std::string text)
 {
 	// as TTF_RenderText_Solid could only be used on
 	// SDL_Surface then you have to create the surface first
-	surfaceMessage = TTF_RenderText_Solid(font, text.c_str(), colour);
+	surface_message = TTF_RenderText_Solid(font, text.c_str(), colour);
 
 
 	// now you can convert it into a texture
-	Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+	Message = SDL_CreateTextureFromSurface(render_target, surface_message);
 
 }
 
@@ -30,20 +30,20 @@ void Text::draw(SDL_Renderer* renderTarget)
 	// Now since it's a texture, you have to put RenderCopy
 	// in your game loop area, the area where the whole code executes
 
-	// you put the renderer's name first, the Message,
+	// you put the render_target's name first, the Message,
 	// the crop size (you can ignore this if you don't want
 	// to dabble with cropping), and the rect which is the size
 	// and coordinate of your texture
-	SDL_RenderCopy(renderTarget, Message, NULL, &Message_rect);
+	SDL_RenderCopy(renderTarget, Message, NULL, &message_rect);
 
 }
 
 void Text::set_renderer(SDL_Renderer* renderTarget)
 {
-	renderer = renderTarget;
+	render_target = renderTarget;
 }
 
-void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int x, int y, int w, int h)
+void Text::init(std::string font_path, int font_size, SDL_Color colour, int x, int y, int w, int h)
 {
 	this->font_path = font_path;
 	this->font_size = font_size;
@@ -55,13 +55,13 @@ void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int
 		std::cout << "Error Font" << std::endl;
 	}
 
-	surfaceMessage = TTF_RenderText_Solid(font, "99:99", colour);
-	Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+	surface_message = TTF_RenderText_Solid(font, "99:99", colour);
+	Message = SDL_CreateTextureFromSurface(render_target, surface_message);
 
-	Message_rect.x = x;  //controls the rect's x coordinate 
-	Message_rect.y = y; // controls the rect's y coordinte
-	Message_rect.w = w; // controls the width of the rect
-	Message_rect.h = h; // controls the height of the rect
+	message_rect.x = x;  //controls the rect's x coordinate 
+	message_rect.y = y; // controls the rect's y coordinte
+	message_rect.w = w; // controls the width of the rect
+	message_rect.h = h; // controls the height of the rect
 
 	// (0,0) is on the top left of the window/screen,
 	// think a rect as the text's box,
@@ -70,11 +70,7 @@ void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int
 
 void Text::set_coords(int x, int y)
 {
-	Message_rect.x = x;  //controls the rect's x coordinate 
-	Message_rect.y = y; // controls the rect's y coordinte
+	message_rect.x = x;  //controls the rect's x coordinate 
+	message_rect.y = y; // controls the rect's y coordinte
 }
 
-void Text::set_music(Mix_Music* music)
-{
-	this->music = music;
-}

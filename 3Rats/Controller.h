@@ -1,7 +1,4 @@
 #pragma once
-#include <SDL.h>
-
-#include <vector>
 
 #include "Topography.h"
 #include "Random.h"

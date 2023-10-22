@@ -8,7 +8,7 @@ Tile::Tile()
 	is_exit = false;
 	is_hole = false;
 
-	file_path = "meta_textures/place_holder.png";
+	texture_path = "meta_textures/place_holder.png";
 }
 
 Tile::~Tile()

@@ -75,6 +75,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Item.h">
@@ -132,6 +135,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

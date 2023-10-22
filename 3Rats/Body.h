@@ -8,11 +8,13 @@
 
 class Body
 {
-protected:
-	SDL_Renderer* ptr_renderer;
-	SDL_Texture* texture;
+private:
 
-	std::string file_path;
+protected:
+
+	std::string texture_path;
+	SDL_Renderer* render_target;
+	SDL_Texture* texture;
 
 	SDL_Rect position_rect;
 	SDL_Rect crop_rect;
@@ -24,6 +26,11 @@ protected:
 	int radius;
 
 	int hight;
+	double weight;		
+	// make it that this affacts 
+	// how fast it can be carried arround
+	// maybe: if two rats need 
+	// to carry it together?
 
 public:
 
@@ -33,10 +40,12 @@ public:
 	void update(float delta);
 	void draw(SDL_Renderer* render_target);
 
-	void set_surface(SDL_Renderer* render_target);
-	void set_texture(std::string name);
+	void set_renderer(SDL_Renderer* render_target);
+
+	void init(std::string path, int x, int y, int h, int framesX, int framesY);
+	void set_texture(std::string path);
 	void set_cords(int x, int y);
-	void set_hight(int value);
+	void set_hight(int h);
 	void set_cords_frames(int x, int y, int framesX, int framesY);
 
 	int get_origin_x();
