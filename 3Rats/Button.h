@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Text.h"
-#include "Overlay.h"
 
 class Button : public Text
 {
@@ -10,12 +9,15 @@ public:
 
     void render();
     void handleEvent(const SDL_Event& event);
-    void set_overlay(Overlay* overlay);
+    
+    bool get_clicked();
 
 private:
-    Overlay* overlay;
+    Button();
 
     SDL_Renderer* renderer;
     SDL_Rect rect;
     bool clicked;
+
+
 };

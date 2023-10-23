@@ -118,9 +118,9 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* 
 	clock->set_time(16, 30);
 }
 
-void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay, Sound* sound)
+void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay, Sound* sound, Button* button)
 {
-	overlay->init(fade, sound, clock);
+	overlay->init(fade, sound, clock, button);
 }
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
@@ -348,15 +348,16 @@ int main(int argc, char* argv[])
 	Fade fade;
 	init_fade(renderTarget, &fade);
 	
-	Clock clock;
-	Overlay overlay;
-	init_clock(renderTarget, &clock, &fade, &overlay);
-	init_overlay(renderTarget, &fade, &clock, &overlay, &sound);
 
 	Button button(renderTarget, 200, 100, 80, 80);
 	button.Text::set_renderer(renderTarget);
 	button.Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
-	button.set_overlay(&overlay);
+
+
+	Clock clock;
+	Overlay overlay;
+	init_clock(renderTarget, &clock, &fade, &overlay);
+	init_overlay(renderTarget, &fade, &clock, &overlay, &sound, &button);
 
 	Pause pause;
 	init_pause(renderTarget, &pause, &button);

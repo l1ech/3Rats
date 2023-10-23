@@ -1,5 +1,10 @@
 #include "Sound.h"
 
+Sound::Sound()
+{
+	music_playing = false;
+}
+
 void Sound::init()
 {
 	music = Mix_LoadMUS("music/Electronic_Onslaught_short.wav");
@@ -15,4 +20,9 @@ void Sound::pause()
 void Sound::play()
 {
 	Mix_ResumeMusic();
+}
+
+bool Sound::is_music_playing()
+{
+	return music_playing;
 }
