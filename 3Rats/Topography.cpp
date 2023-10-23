@@ -41,12 +41,7 @@ void Topography::set_current_map_id(int number)
 
 void Topography::update(float delta)
 {
-	//time += delta;
 
-	for (int i = 0; i < map_array_size; i++)
-	{
-		//map_array[i].Update(delta);
-	}
 }
 
 void Topography::draw(SDL_Renderer* renderTarget)
@@ -54,15 +49,6 @@ void Topography::draw(SDL_Renderer* renderTarget)
 	for (int i = 0; i < map_array_size; i++)
 	{
 		//map_array[i].Draw(renderTarget);
-	}
-	for (int i = 0; i < tile_array_size; i++)
-	{
-		tile_array[i].draw(renderTarget);
-	}
-
-	for (int i = 0; i < item_array_size; i++)
-	{
-		item_array[i].draw(renderTarget);
 	}
 }
 
@@ -297,3 +283,5 @@ std::string Topography::get_layout(int num)
 		}
 	}
 }
+void Topography::set_random_pointer(Random& random) { random_ptr = &random; }
+

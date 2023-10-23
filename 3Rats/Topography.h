@@ -1,12 +1,21 @@
 #pragma once
 
 #include "Map.h"
-#include "Level_Structure.h"
+#include "Random.h"
+#include "Acteur.h"
 
-class Topography : public Level_Structure
+
+class Topography
 {
 private:
+	Random* random_ptr;
 	SDL_Renderer* renderTarget;
+
+	Map* map_array;
+	int map_array_size;
+
+	Acteur* player_array;
+	int player_array_size;
 
 	int current_map_id;
 
@@ -26,8 +35,6 @@ private:
 
 	double time;
 
-	Map* map_array;
-	int map_array_size;
 
 	int number_items_on_map;
 	int* ptr;
@@ -65,5 +72,7 @@ public:
 	Map* get_map();
 
 	int counter_maps;
+
+	void set_random_pointer(Random& random);
 
 };

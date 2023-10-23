@@ -198,8 +198,6 @@ void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, T
 	int tile_amount = map_ptr[0].get_tile_size();
 
 	topography->set_map_array(map_ptr, map_amount);
-	topography->set_item_array(item_ptr, item_amount);
-	topography->set_tile_array(tile_ptr, item_amount);
 	topography->set_random_pointer(random);
 
 	topography->set_up();
@@ -498,6 +496,16 @@ int main(int argc, char* argv[])
 		// ===================================================================================
 
 		topography.draw(renderTarget);
+
+		for (int i = 0; i < tile_amount; i++)
+		{
+			tile_array[i].draw(renderTarget);
+		}
+
+		for (int i = 0; i < item_amount; i++)
+		{
+			item_array[i].draw(renderTarget);
+		}
 
 		for (int i = 0; i < player_amount; i++)
 		{

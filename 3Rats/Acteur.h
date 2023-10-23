@@ -19,19 +19,12 @@ protected:
 
 	float frameCounter, searchCounter;
 
-
-
-
 	// holding item type 
 	// should be done by the inventory not in the acteur!
-
-
 	int item_hold_id;
 
 	float waitCounter;
 	bool wait;
-
-
 
 	float moveSpeed;
 	bool is_moving;
@@ -42,20 +35,23 @@ protected:
 	// ticksystem removing hunger
 
 // for update fuction
-	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
+
+	//map, tile, item, topotgrapy
 	void check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length);
+	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
+	void hold_item_in_mouth(Item& item);
+
+	//controller
 	void make_acteur_move(controller_move move, block_direction direction, float delta);
 	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Acteur& front_rat);
 	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item);
-	void hold_item_in_mouth(Item& item);
 
 public:
-
-	void Draw(SDL_Renderer* renderTarget);
 
 	//need body
 	Acteur();
 
+	void Draw(SDL_Renderer* renderTarget);
 	void Update(float delta, const Uint8* keyState, int mode, Acteur& p1);
 
 	void teleport_to_entrence();	// change to set_pos(entrence);
@@ -63,6 +59,8 @@ public:
 
 	//not
 	~Acteur();
+
+	//inventory
 	void use_item();		// set_item_use
 
 	

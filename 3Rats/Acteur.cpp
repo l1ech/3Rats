@@ -306,11 +306,11 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();
 
-	tile_array = topography->get_tile_array();
-	tile_array_size = topography->get_tile_size();
+	tile_array = map_array->get_tile_array();
+	tile_array_size = map_array->get_item_size();;
 
-	item_array = topography->get_item_array();
-	item_array_size = topography->get_item_size();
+	item_array = map_array->get_item_array();
+	item_array_size = map_array->get_item_size();
 
 	if (is_item_available_on_map())
 	{
