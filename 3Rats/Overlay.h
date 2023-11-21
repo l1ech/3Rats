@@ -4,7 +4,6 @@
 #include "Clock.h"
 #include "Sound.h"
 #include "Pause.h"
-#include "Button.h"
 
 class Overlay
 {

@@ -4,9 +4,6 @@
 #include <string>
 
 #include "Body.h"
-#include "Map.h"
-#include "Tile.h"
-#include "Topography.h"
 #include "Door.h"
 #include "Controller.h"
 #include "Inventory.h"

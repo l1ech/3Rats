@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Map.h"
-#include "Random.h"
-#include "Acteur.h"
+//#include "Acteur.h"
 
 
 class Topography
@@ -14,8 +13,8 @@ private:
 	Map* map_array;
 	int map_array_size;
 
-	Acteur* player_array;
-	int player_array_size;
+	//Acteur* player_array;
+	//int player_array_size;
 
 	int current_map_id;
 
