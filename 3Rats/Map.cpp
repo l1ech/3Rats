@@ -688,3 +688,26 @@ void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::ve
 }
 
 int Map::get_id(int x, int y) { return y * width + x; }
+
+void Map::set_tile_array(Tile* tile, int tile_size)
+{
+    tile_array = tile;
+    tile_array_size = tile_size;
+}
+
+Tile* Map::get_tile_array() { return tile_array; }
+
+int Map::get_tile_size() { return tile_array_size; }
+
+void Map::set_item_array(Item* item, int item_size)
+{
+    item_array = item;
+    item_array_size = item_size;
+}
+
+Item* Map::get_item_array() { return item_array; }
+
+int Map::get_item_size() { return item_array_size; }
+
+void Map::set_random_pointer(Random& random) { random_ptr = &random; }
+

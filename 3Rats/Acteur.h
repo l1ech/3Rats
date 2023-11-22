@@ -4,7 +4,6 @@
 #include <string>
 
 #include "Body.h"
-#include "Door.h"
 #include "Controller.h"
 #include "Inventory.h"
 

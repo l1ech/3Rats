@@ -2,7 +2,6 @@
 
 #include "Tile.h"
 #include "Item.h"
-//#include "Acteur.h"
 #include "Random.h"
 #include "Door.h"
 
