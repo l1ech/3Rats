@@ -128,7 +128,6 @@ void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_am
 	tile_templet.set_texture("../meta_textures/place_holder.png");
 	tile_templet.set_cords(-100, -100);
 
-
 	for (int i = 0; i < tile_amount; i++)
 	{
 		tile_array[i] = tile_templet;
@@ -300,23 +299,72 @@ int main(int argc, char* argv[])
 	const int player_amount = 3;
 	const int entity_amount = 1;
 
-	SDL_Init(SDL_INIT_VIDEO);
+	//SDL_Init(SDL_INIT_VIDEO);
 
+	// Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cout << "SDL initialization failed: " << SDL_GetError() << std::endl;
+        return 1;
+    }
+
+    // Create a window
+	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
+	if (window == nullptr) {
+        std::cout << "Failed to create window: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        return 1;
+    }
+
+	// Create a renderer
+	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (renderTarget == nullptr) {
+        std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
+
+	// Initialize SDL_ttf
 	if (TTF_Init() < 0)
 	{
 		std::cout << "Error: " << TTF_GetError() << std::endl;
 	}
 
-	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
-	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	// Initialize SDL_image
+    int imgFlags = IMG_INIT_JPG; // or IMG_INIT_JPG, depending on the image format you want to support
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        std::cout << "SDL_image initialization failed: " << IMG_GetError() << std::endl;
+        SDL_DestroyRenderer(renderTarget);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
 
+	//WHY TF DOES THIS MESS UP THE CODE?????
+	
+	/* 
+	bool testing = false;
+	if(testing == true)
+	{
+		SDL_version compiled;
+		SDL_version linked;
+
+		SDL_VERSION(&compiled);
+		SDL_GetVersion(&linked);
+
+		std::cout << "Compiled SDL version: " << (int)compiled.major << "." << (int)compiled.minor << "." << (int)compiled.patch << std::endl;
+		std::cout << "Linked SDL version: " << (int)linked.major << "." << (int)linked.minor << "." << (int)linked.patch << std::endl;
+
+	}
+	*/
+	
 	// ================================ INIT GAME OBJECTS ================================
 	// ===================================================================================
 	
 	int seed_input = world_seed_generation(1); // 1 = testing/ 2 = normal
 	
 	uint32_t seed = generate_seed(seed_input);
-	std::cout << "Seed: " << seed << std::endl;
+	//std::cout << "Seed: " << seed << std::endl;
 
 	// random object
 	Random random(seed);
@@ -381,7 +429,7 @@ int main(int argc, char* argv[])
 					break;
 
 				case SDLK_1:
-					texture = LoadTexture("../wall.png", renderTarget);
+					texture = LoadTexture("../empty.png", renderTarget);
 					break;
 				case SDLK_u:
 					player_array[0].use_item();
@@ -428,6 +476,8 @@ int main(int argc, char* argv[])
 				case SDLK_l:
 					pause.out();
 					break;
+				case SDLK_0:
+					break;
 				}
 			}
 		}
@@ -437,7 +487,7 @@ int main(int argc, char* argv[])
 		// =================================== UPDATE GAME ===================================
 		// ===================================================================================
 
-		topography.update(delta);
+		//topography.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[2]);
 		for (int i = 1; i < player_amount; i++)

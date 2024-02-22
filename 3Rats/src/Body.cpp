@@ -1,5 +1,8 @@
 #include "Body.h"
 #include <memory>
+#include <filesystem>
+
+
 
 Body::Body() { }
 
@@ -29,25 +32,37 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 }
 
-void Body::set_texture(std::string name)
+void Body::set_texture(const std::string& filePath)
 {
-	file_path = name;
-
-	SDL_Surface* surface = IMG_Load(file_path.c_str());
-	if (surface == NULL)
-		std::cout << "Error Body Surface" << std::endl;
-	else
+	bool testing_textures = false;
+	if (testing_textures == true)
 	{
-		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
-		if (texture == NULL)
-			std::cout << "Error Body Texture" << std::endl;
+		std::cout << " " << std::endl;
+		std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
+		std::cout << "Current filepath: " << file_path << std::endl;
+		std::cout << "coordinates of body -> x:" <<get_origin_x()<<" y: "<< get_origin_y()<<std::endl;
 	}
-
+	
+	this->file_path = filePath;
+	SDL_Surface* surface = IMG_Load(file_path.c_str());
+	if (surface == nullptr) {
+        std::cerr << "Failed to load image: " << IMG_GetError() << std::endl;
+		//return false;
+    }
+	texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
+	
 	SDL_FreeSurface(surface);
 
-	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 
+	if (texture == nullptr) {
+        std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
+        //return false;
+    }
+	
+	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
+	//return true;
 }
+
 
 void Body::set_cords(int x, int y)
 {

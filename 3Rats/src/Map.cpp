@@ -9,6 +9,11 @@ Map::Map()
     item_id = 0;
 
     map_generation_try = 0;
+
+
+    //if (test_image()) std::cout<<"IMAGE ERROR"<<std::endl;
+    //else std::cout<<"no image error"<<std::endl;
+
 }
 
 Map::~Map()
@@ -22,6 +27,23 @@ void Map::Update(float delta)
 
 void Map::Draw(SDL_Renderer* renderTarget)
 {
+}
+
+int Map::test_image()
+{
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cout << "SDL initialization failed: " << SDL_GetError() << std::endl;
+        return 1;
+    }
+
+    // Initialize SDL_image
+    int imgFlags = IMG_INIT_PNG; // or IMG_INIT_JPG, depending on the image format you want to support
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        std::cout << "SDL_image initialization failed: " << IMG_GetError() << std::endl;
+        SDL_Quit();
+        return 1;
+    }
+    return 0;
 }
 
 void Map::set_type(int type)
@@ -210,16 +232,15 @@ void Map::set_textures()
                 inspected_tile.set_texture("../maze_textures/maze_hole.png");
                 break;
             case 14:
-                std::cout<<"drawn_woodn_floor"<<std::endl;
+                //std::cout<<"drawn_woodn_floor"<<std::endl;
                 inspected_tile.set_hight(0);
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("wooden_floor.png");
+                inspected_tile.set_texture("/Users/lukas/Documents/vscode_repo/projects/3Rats/3Rats/maze_textures/wooden_floor.png");
                 break;
 
             case 15:
-
                 inspected_tile.set_hight(0);
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;

@@ -78,6 +78,8 @@ public:
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 
+	int test_image();
+
 	void set_type(int type);
 	void set_textures();
 	void set_ptr(int* ptr);
