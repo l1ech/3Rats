@@ -19,6 +19,7 @@
 #include "Pause.h"
 #include "Chest.h"
 #include "Button.h"
+#include "Info.h"
 #include "Sound.h"
 
 int world_seed_generation(bool value)
@@ -104,6 +105,17 @@ void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button)
 	pause->set_cords(999, 999);
 	pause->set_button(button);
 }
+void init_info(SDL_Renderer* render_target, Info* info, Button* button)
+{
+	info->Text::set_renderer(render_target);
+	info->Text::init("fonts/sans.ttf", 12, { 255, 0, 0 }, 999, 999, 20, 45);
+
+	info->Body::set_renderer(render_target);
+	info->set_texture("ui_textures/fade.png");
+	info->set_cords(999, 999);
+	//info->toggle();
+
+}
 
 void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
 {
@@ -120,7 +132,7 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* 
 
 void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay, Sound* sound, Button* button)
 {
-	overlay->init(fade, sound, clock, button);
+	overlay->init(fade, sound, clock, button );
 }
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
@@ -360,6 +372,9 @@ int main(int argc, char* argv[])
 	Pause pause;
 	init_pause(renderTarget, &pause, &button);
 
+	Info info;
+	init_info(renderTarget, &info, &button);
+
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	
@@ -460,6 +475,10 @@ int main(int argc, char* argv[])
 					break;
 				case SDLK_ESCAPE:
 					pause.toggle();
+					break;
+				case SDLK_j:
+					info.toggle();
+					break;
 				}
 			}
 			button.handleEvent(ev);
@@ -481,6 +500,7 @@ int main(int argc, char* argv[])
 		entity[0].update(delta);
 		button.update("Music:");
 		pause.update("Pause.");
+		info.update("Hello. \n\n\n\nLet me tell you a story about\n\n \n\n3 rats\n\n\n\n. They lived their lives happily. One day, they found a hole inside the fancy...", delta);
 		clock.update(delta);
 		fade.update(std::to_string(clock.get_day()));
 		overlay.update(delta);
@@ -516,10 +536,13 @@ int main(int argc, char* argv[])
 		fade.draw(renderTarget);
 		chest.draw(renderTarget);
 		overlay.draw(renderTarget);
-		
+		info.draw(renderTarget);
+
 		pause.draw(renderTarget);
 		button.draw(renderTarget);
+
 		if (pause.is_on_screen()) button.render();
+		
 		SDL_RenderPresent(renderTarget);
 	}
 

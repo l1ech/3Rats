@@ -34,5 +34,6 @@ public:
 	void set_renderer(SDL_Renderer* renderTarget);
 	void init(std::string font_path, int font_size, SDL_Color colour, int x, int y, int w, int h);
 	void set_coords(int x, int y);
+	void set_width(int w);
 
 };

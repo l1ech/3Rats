@@ -1,5 +1,7 @@
 #include "Text.h"
 
+#include <vector>
+#include <sstream>
 Text::Text()
 {
 }
@@ -11,32 +13,68 @@ Text::~Text()
 	SDL_DestroyTexture(Message);
 }
 
-void Text::update(std::string text)
-{
-	// as TTF_RenderText_Solid could only be used on
-	// SDL_Surface then you have to create the surface first
-	surface_message = TTF_RenderText_Solid(font, text.c_str(), colour);
-
-
-	// now you can convert it into a texture
-	Message = SDL_CreateTextureFromSurface(render_target, surface_message);
-
+// Helper function to split a string by a delimiter
+std::vector<std::string> split(const std::string& s, char delimiter) {
+    std::vector<std::string> tokens;
+    std::string token;
+    std::istringstream tokenStream(s);
+    while (std::getline(tokenStream, token, delimiter)) {
+        tokens.push_back(token);
+    }
+    return tokens;
 }
 
-void Text::draw(SDL_Renderer* renderTarget)
-{
-	//std::cout << "draw!!!!!!" << std::endl;
+void Text::update(std::string text) {
+    // Split text into lines
+    std::vector<std::string> lines = split(text, '\n');
 
-	// Now since it's a texture, you have to put RenderCopy
-	// in your game loop area, the area where the whole code executes
+    // Free previous resources
+    if (surface_message) {
+        SDL_FreeSurface(surface_message);
+    }
+    if (Message) {
+        SDL_DestroyTexture(Message);
+    }
 
-	// you put the render_target's name first, the Message,
-	// the crop size (you can ignore this if you don't want
-	// to dabble with cropping), and the rect which is the size
-	// and coordinate of your texture
-	SDL_RenderCopy(renderTarget, Message, NULL, &message_rect);
+    // Create a new surface for each line and render each line as a separate texture
+    for (const auto& line : lines) {
+        surface_message = TTF_RenderText_Solid(font, line.c_str(), colour);
+        if (!surface_message) {
+            std::cerr << "Error creating surface: " << SDL_GetError() << std::endl;
+            return;
+        }
 
+        Message = SDL_CreateTextureFromSurface(render_target, surface_message);
+        if (!Message) {
+            std::cerr << "Error creating texture: " << SDL_GetError() << std::endl;
+            return;
+        }
+
+        // Adjust the rectangle for the next line (you may need to adjust the line height)
+        //message_rect.y += font_size;  // Assuming font_size as the line height
+    }
 }
+
+void Text::draw(SDL_Renderer* renderTarget) {
+    // Render each line of text at the appropriate coordinates
+    int originalY = message_rect.y;
+    std::vector<std::string> lines = split(display_text, '\n'); // Assuming you store the text in current_text
+
+    for (const auto& line : lines) {
+        // Render the texture for this line
+        surface_message = TTF_RenderText_Solid(font, line.c_str(), colour);
+        Message = SDL_CreateTextureFromSurface(render_target, surface_message);
+
+        SDL_RenderCopy(renderTarget, Message, NULL, &message_rect);
+
+        // Move the rectangle down for the next line
+        message_rect.y += font_size; // Assuming font_size as the line height
+    }
+
+    // Reset the y coordinate after rendering all lines
+    message_rect.y = originalY;
+}
+
 
 void Text::set_renderer(SDL_Renderer* renderTarget)
 {
@@ -49,7 +87,7 @@ void Text::init(std::string font_path, int font_size, SDL_Color colour, int x, i
 	this->font_size = font_size;
 	this->colour = colour;
 
-	font = TTF_OpenFont("fonts/sans.ttf", 24);
+	font = TTF_OpenFont("fonts/sans.ttf", font_size);
 	if (font == NULL)
 	{
 		std::cout << "Error Font" << std::endl;
@@ -73,4 +111,11 @@ void Text::set_coords(int x, int y)
 	message_rect.x = x;  //controls the rect's x coordinate 
 	message_rect.y = y; // controls the rect's y coordinte
 }
+
+void Text::set_width(int w)
+{
+	message_rect.w = w; // controls the width of the rect
+}
+
+
 
