@@ -5,7 +5,7 @@
 #include "Sound.h"
 #include "Pause.h"
 
-class Overlay
+class Curtain
 {
 private:
 	Fade* fade;
@@ -15,13 +15,13 @@ private:
 	Button* button_music;
 public:
 
-	Overlay();
-	~Overlay();
+	Curtain();
+	~Curtain();
 
 	void update(double delta);
 	void draw(SDL_Renderer* render_target);
 
-	void init(Fade* fade, Sound* sound, Clock* clock, Button* button);
+	void init(Fade* fade, Sound* sound, Clock* clock, Button* button, Pause* pause);
 
 	void pause_music();
 	void play_music();

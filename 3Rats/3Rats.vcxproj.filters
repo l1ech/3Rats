@@ -33,7 +33,7 @@
     <ClCompile Include="Random.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Topography.cpp">
+    <ClCompile Include="Stage.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Level_Structure.cpp">
@@ -57,7 +57,7 @@
     <ClCompile Include="Panel.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Overlay.cpp">
+    <ClCompile Include="Curtain.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Clock.cpp">
@@ -78,7 +78,10 @@
     <ClCompile Include="Sound.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Info.cpp">
+    <ClCompile Include="Intro.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Setup.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,7 +101,7 @@
     <ClInclude Include="Random.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Topography.h">
+    <ClInclude Include="Stage.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Level_Structure.h">
@@ -122,7 +125,7 @@
     <ClInclude Include="Panel.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Overlay.h">
+    <ClInclude Include="Curtain.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Clock.h">
@@ -144,6 +147,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Info.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Setup.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Topography.h"
+#include "Stage.h"
 #include "Random.h"
 
 class Controller {
@@ -39,7 +39,7 @@ protected:
 	Tile* tile_array;
 	int tile_array_size;
 
-	Topography* topography;
+	Stage* stage;
 
 	int controller_number;
 
@@ -62,7 +62,7 @@ protected:
 
 public:
 	void set_controller_number(int number);
-	void set_Topography(Topography* topography);
+	void set_Stage(Stage* topography);
 	void set_random_pointer(Random& random);
 
 	void set_has_goal(bool value);	// this is for debug 
@@ -72,5 +72,6 @@ public:
 	int GetDirection();
 	bool is_item_available_on_map();		//get available item on map
 	void make_goal();		// get new goal
+	int get_controller_number();
 
 };

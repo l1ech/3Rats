@@ -42,7 +42,7 @@ public:
 
 	void set_renderer(SDL_Renderer* render_target);
 
-	void init(std::string path, int x, int y, int h, int framesX, int framesY);
+	//void init(std::string path, int x, int y, int h, int framesX, int framesY);
 	void set_texture(std::string path);
 	void set_cords(int x, int y);
 	void set_hight(int h);

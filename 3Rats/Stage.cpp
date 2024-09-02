@@ -1,6 +1,6 @@
-#include "Topography.h"
+#include "Stage.h"
 
-Topography::Topography()
+Stage::Stage()
 {
 	number_items_on_map = 0;
 	width = 5;
@@ -8,18 +8,18 @@ Topography::Topography()
 	current_map_id = 0;
 }
 
-void Topography::set_map_array(Map* map, int map_size)
+void Stage::set_map_array(Map* map, int map_size)
 {
 	map_array = map;
 	map_array_size = map_size;
 }
 
-Map* Topography::get_map_array()
+Map* Stage::get_map_array()
 {
 	return map_array;
 }
 
-void Topography::set_up()
+void Stage::set_up()
 {
 	ptr = &number_items_on_map;
 
@@ -29,22 +29,22 @@ void Topography::set_up()
 	}
 }
 
-int Topography::get_current_map_id()
+int Stage::get_current_map_id()
 {
 	return current_map_id;
 }
 
-void Topography::set_current_map_id(int number)
+void Stage::set_current_map_id(int number)
 {
 	current_map_id = number;
 }
 
-void Topography::update(float delta)
+void Stage::update(float delta)
 {
 
 }
 
-void Topography::draw(SDL_Renderer* renderTarget)
+void Stage::draw(SDL_Renderer* renderTarget)
 {
 	for (int i = 0; i < map_array_size; i++)
 	{
@@ -52,22 +52,22 @@ void Topography::draw(SDL_Renderer* renderTarget)
 	}
 }
 
-void Topography::set_renderer(SDL_Renderer* renderTarget)
+void Stage::set_renderer(SDL_Renderer* renderTarget)
 {
 	this->renderTarget = renderTarget;
 }
 
-Map* Topography::get_map()
+Map* Stage::get_map()
 {
 	return map_array;
 }
 
-int Topography::get_map_size()
+int Stage::get_map_size()
 {
 	return map_array_size;
 }
 
-void Topography::make_maze()
+void Stage::make_maze()
 {
 	std::cout << "generating topology..."<<std::endl;
 
@@ -127,7 +127,7 @@ void Topography::make_maze()
 	
 }
 
-void Topography::make_points(int a_x, int a_y, int b_x, int b_y)
+void Stage::make_points(int a_x, int a_y, int b_x, int b_y)
 {
 	std::pair <int, int > point_a = { a_x, a_y };
 	std::pair <int, int > point_b = { b_x, b_y };
@@ -135,7 +135,7 @@ void Topography::make_points(int a_x, int a_y, int b_x, int b_y)
 	connections.push_back({ point_a, point_b });
 }
 
-void Topography::build_frame(std::vector<std::vector<std::pair<std::string, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit)
+void Stage::build_frame(std::vector<std::vector<std::pair<std::string, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit)
 {
 	for (int h = 0; h < height + 2; h++)
 	{
@@ -154,7 +154,7 @@ void Topography::build_frame(std::vector<std::vector<std::pair<std::string, int>
 	data[exit.second][exit.first].first = FINISH;
 }
 
-std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<std::pair<std::string, int>>>& map, std::string& prev_direction, int iterator)
+std::string Stage::find_empty_space(int x, int y, std::vector<std::vector<std::pair<std::string, int>>>& map, std::string& prev_direction, int iterator)
 {
 	iterator++;
 
@@ -227,7 +227,7 @@ std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<s
 }
 
 
-void Topography::trim_boarder(std::vector<std::vector<std::pair<std::string, int>>>& data, std::vector<std::vector<std::pair<std::string, int>>>& map_data)
+void Stage::trim_boarder(std::vector<std::vector<std::pair<std::string, int>>>& data, std::vector<std::vector<std::pair<std::string, int>>>& map_data)
 {
 	for (int h = 0; h < height; h++)
 	{
@@ -239,7 +239,7 @@ void Topography::trim_boarder(std::vector<std::vector<std::pair<std::string, int
 	}
 }
 
-void Topography::print_vector(std::vector<std::vector<std::pair<std::string, int>>>& arg, int size_x, int size_y)
+void Stage::print_vector(std::vector<std::vector<std::pair<std::string, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -254,7 +254,7 @@ void Topography::print_vector(std::vector<std::vector<std::pair<std::string, int
 	}
 }
 
-void Topography::print_vector_hidden(std::vector<std::vector<std::pair<std::string, int>>>& arg, int size_x, int size_y)
+void Stage::print_vector_hidden(std::vector<std::vector<std::pair<std::string, int>>>& arg, int size_x, int size_y)
 {
 	std::cout << "vector: " << std::endl;
 
@@ -269,7 +269,7 @@ void Topography::print_vector_hidden(std::vector<std::vector<std::pair<std::stri
 	}
 }
 
-std::string Topography::get_layout(int num)
+std::string Stage::get_layout(int num)
 {
 	for (int h = 0; h < height; h++)
 	{
@@ -283,5 +283,5 @@ std::string Topography::get_layout(int num)
 		}
 	}
 }
-void Topography::set_random_pointer(Random& random) { random_ptr = &random; }
+void Stage::set_random_pointer(Random& random) { random_ptr = &random; }
 

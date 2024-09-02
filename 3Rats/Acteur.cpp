@@ -59,13 +59,13 @@ std::vector<std::vector<bool>> Acteur::get_blocked_array(Tile* tile_array, int l
 }
 
 
-void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length)
+void Acteur::check_door(Stage* stage, Map* map_array, int map_amount, Tile* tile_array, int length)
 {
 	// make it that all acteurs spawn at the new door
 	// not at 0, 0 
 	// new door could be anywhere
 
-	int current_map_id = topography->get_current_map_id();
+	int current_map_id = stage->get_current_map_id();
 
 	for (int i = 0; i < length; i++)
 	{
@@ -81,7 +81,7 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 			if (tile_array[i].is_exit && !last_room)
 			{
 				current_map_id++;
-				topography->set_current_map_id(current_map_id);
+				stage->set_current_map_id(current_map_id);
 				map_array[current_map_id].set_textures();
 				Door entry = map_array[current_map_id].get_door(0);
 
@@ -96,7 +96,7 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 			else if (tile_array[i].is_entrance && !first_room)
 			{
 				current_map_id--;
-				topography->set_current_map_id(current_map_id);
+				stage->set_current_map_id(current_map_id);
 				map_array[current_map_id].set_textures();
 				Door exit = map_array[current_map_id].get_door(1);
 
@@ -106,7 +106,7 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 			else if (tile_array[i].is_hole && current_map_id != map_amount - 1)
 			{
 				current_map_id++;
-				topography->set_current_map_id(current_map_id);
+				stage->set_current_map_id(current_map_id);
 				map_array[current_map_id].set_textures();
 				Door entry = map_array[current_map_id].get_door(0);
 
@@ -155,6 +155,58 @@ void Acteur::make_acteur_move(controller_move move, block_direction direction, f
 	}
 }
 
+
+void Acteur::follow(int rat_x, int rat_y, int front_x, int front_y, block_direction direction, float delta, Acteur& p1)
+{
+	/*
+	std::cout	<< "up:" << direction.up
+				<< "down:" << direction.down
+				<< "left:" << direction.left
+				<< "right:" << direction.right
+				<< std::endl;
+
+	*/
+
+	if (rat_y > front_y && !direction.up)
+	{
+		position_rect.y -= moveSpeed * delta;
+		crop_rect.y = frame_height * 3;
+		current_direction = 0;
+	}
+	else if (rat_y < front_y && !direction.down)
+	{
+		position_rect.y += moveSpeed * delta;
+		crop_rect.y = 0;
+		current_direction = 1;
+	}
+	else if (rat_x > front_x && !direction.left)
+	{
+		position_rect.x -= moveSpeed * delta;
+		crop_rect.y = frame_height;
+		current_direction = 2;
+	}
+	else if (rat_x < front_x && !direction.right)
+	{
+		position_rect.x += moveSpeed * delta;
+		crop_rect.y = frame_height * 2;
+		current_direction = 3;
+	}
+	else
+	{
+		current_direction = p1.GetDirection();
+	}
+
+	/*
+		if (current_direction == 0) crop_rect.y = frame_height * 3;
+	if (current_direction == 1) crop_rect.y = 0;
+	if (current_direction == 2) crop_rect.y = frame_height;
+	if (current_direction == 3) crop_rect.y = frame_height * 2;
+	*/
+
+	
+}
+
+
 void Acteur::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Acteur& front_rat)
 {
 	if (rat_y > front_rat_y && !direction.up)
@@ -186,10 +238,13 @@ void Acteur::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 		current_direction = front_rat.GetDirection();
 	}
 
+	/*
 	if (current_direction == 0) crop_rect.y = frame_height * 3;
 	if (current_direction == 1) crop_rect.y = 0;
 	if (current_direction == 2) crop_rect.y = frame_height;
 	if (current_direction == 3) crop_rect.y = frame_height * 2;
+	*/
+	
 }
 
 void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item)
@@ -262,11 +317,11 @@ void Acteur::hold_item_in_mouth(Item& item)
 
 void Acteur::teleport_to_entrence()
 {
-	Map* map_ptr = topography->get_map_array();
+	Map* map_ptr = stage->get_map_array();
 
 	set_cords(
-		map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - crop_rect.w,
-		map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - crop_rect.h
+		map_ptr[stage->get_current_map_id()].get_door(0).get_x() * 64 - crop_rect.w,
+		map_ptr[stage->get_current_map_id()].get_door(0).get_y() * 64 - crop_rect.h
 	);
 }
 
@@ -303,11 +358,21 @@ Acteur::~Acteur()
 
 void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
 {
-	map_array = topography->get_map_array();
-	map_array_size = topography->get_map_size();
+	
+		std::cout << "update con: " << controller_number << std::endl;
+
+		std::cout << "x: " << get_origin_x()
+			<< "y: " << get_origin_y() << std::endl;
+
+		if (holds_item == true) std::cout << "player" << get_controller_number() << "holds item : true, effect: none" << std::endl;
+
+		
+
+	map_array = stage->get_map_array();
+	map_array_size = stage->get_map_size();
 
 	tile_array = map_array->get_tile_array();
-	tile_array_size = map_array->get_item_size();;
+	tile_array_size = map_array->get_item_size();
 
 	item_array = map_array->get_item_array();
 	item_array_size = map_array->get_item_size();
@@ -329,7 +394,7 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	// the cords to it to stand and hole items
 	int frontRatX = front_rat.get_origin_x();
 	int frontRatY = front_rat.get_origin_y();
-
+	
 	std::pair <int, int> offests = direction_to_offset(front_rat.GetDirection());
 
 	rat_x += offests.first;
@@ -347,7 +412,7 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	block_direction direction = { 0, 0, 0, 0 };
 
 	// colision with door check
-	check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
+	check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
 
 	collision_map = get_blocked_array(tile_array, tile_array_size);
 
@@ -365,7 +430,7 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 		make_acteur_move(move, direction, delta);
 	}
 	// acteur 2 & 3
-	else
+	else if(controller_number == 1 || controller_number == 2)
 	{
 		if (!wait)
 		{
@@ -386,14 +451,13 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 			}
 		}
 	}
-
 	// make item visible on a acteur
 	if (holds_item)
 	{
 		hold_item_in_mouth(item_array[item_hold_id]);
 	}
 
-	// make movement in texture for acteur
+	// add pauses so that the bots move more dynamicylly
 	if (is_moving)
 	{
 		frameCounter += delta;
@@ -429,7 +493,55 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	}
 }
 
-void Acteur::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); }
+void Acteur::Draw(SDL_Renderer* renderTarget) 
+{ 
+	std::cout << "draw con: " << controller_number << std::endl;
+	SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); 
+}
+
+void Acteur::update_entity(float delta, Acteur& p1)
+{
+	
+	std::cout << "update con: " << controller_number << std::endl;
+
+	std::cout << "x: " << get_origin_x()
+		<< "y: " << get_origin_y() << std::endl;
+
+	if (holds_item == true) std::cout << "player" << get_controller_number() << "holds item : true, effect: none" << std::endl;
+
+	int x = this->get_origin_x();
+	int y = this->get_origin_y();
+
+	// focus on player rat
+
+	int follow_x = p1.get_origin_x() - 1;
+	int follow_y = p1.get_origin_y() - 1;
+
+	std::vector<std::vector<bool>> collision_map;
+
+	init_colision_map(collision_map);
+	block_direction_counter collision_counter = { 0, 0, 0, 0 };
+	block_direction direction = { 0, 0, 0, 0 };
+
+	// colision with door check
+	check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
+
+	collision_map = get_blocked_array(tile_array, tile_array_size);
+
+	calculate_blocked_side(collision_counter, collision_map, tile_array_size);
+
+	get_direction_blocked(collision_counter, direction, tile_array_size);
+
+	// make acteurs move
+	
+
+	if (1 == 1) // add more options later 
+	{
+		follow(x, y, follow_x, follow_y, direction, delta, p1);
+	}
+
+	
+}
 
 
 bool Acteur::intersectsWithBody(Body& b)

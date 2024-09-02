@@ -117,5 +117,10 @@ void Text::set_width(int w)
 	message_rect.w = w; // controls the width of the rect
 }
 
+void Text::set_display_text(std::string t)
+{
+    display_text = t;
+}
+
 
 

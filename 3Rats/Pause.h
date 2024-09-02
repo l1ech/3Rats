@@ -15,4 +15,7 @@ public:
 	bool is_on_screen();
 	void toggle();
 
+	void out();
+	void in();
+
 };

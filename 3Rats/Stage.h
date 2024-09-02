@@ -4,7 +4,7 @@
 //#include "Acteur.h"
 
 
-class Topography
+class Stage
 {
 private:
 	Random* random_ptr;
@@ -42,7 +42,7 @@ private:
 	std::vector<std::vector <std::pair<std::string, int>>> map_data;//(std::pair<int, int>(height), std::vector<int>(width));
 
 public:
-	Topography();
+	Stage();
 
 	void set_map_array(Map* map, int size);
 	Map* get_map_array();

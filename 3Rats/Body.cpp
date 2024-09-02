@@ -28,10 +28,11 @@ void Body::set_renderer(SDL_Renderer* renderTarget)
 
 	SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
 }
-
+/*
 void Body::init(std::string path, int x, int y, int h, int framesX, int framesY)
 {
 }
+*/
 
 void Body::set_texture(std::string path)
 {

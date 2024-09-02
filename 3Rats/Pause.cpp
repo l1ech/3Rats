@@ -2,7 +2,7 @@
 
 void Pause::update(std::string update_text)
 {
-	this->display_text = update_text;
+	set_display_text(update_text);
 	Panel::update();
 }
 
@@ -20,12 +20,22 @@ void Pause::toggle()
 {
 	if (on_screen)
 	{
-		out();
-		button_music->set_coords(999, 999);
+		Pause::out();
+		Panel::out();
 	}
 	else
 	{
-		in();
-		button_music->set_coords(0, 90);
+		Pause::in();
+		Panel::in();
 	}
+}
+
+void Pause::out()
+{
+	button_music->set_cords(999, 999);
+}
+
+void Pause::in()
+{
+	button_music->set_cords(200, 100);
 }

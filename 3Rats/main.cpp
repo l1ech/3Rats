@@ -10,17 +10,18 @@
 #include "Map.h"
 #include "Tile.h"
 #include "Random.h"
-#include "Topography.h"
+#include "Stage.h"
 #include "Text.h"
 #include "Acteur.h"
 #include "Clock.h"
 #include "Fade.h"
-#include "Overlay.h"
+#include "Curtain.h"
 #include "Pause.h"
 #include "Chest.h"
 #include "Button.h"
-#include "Info.h"
+//#include "Info.h"
 #include "Sound.h"
+#include "Setup.h"
 
 int world_seed_generation(bool value)
 {
@@ -91,8 +92,8 @@ void init_fade(SDL_Renderer* render_target, Fade* fade)
 	fade->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
 	fade->Body::set_renderer(render_target);
-	fade->set_texture("ui_textures/fade.png");
-	fade->set_cords(999, 999);
+	fade->Body::set_texture("ui_textures/fade.png");
+	fade->Body::set_cords(999, 999);
 }
 
 void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button)
@@ -101,11 +102,13 @@ void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button)
 	pause->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
 	pause->Body::set_renderer(render_target);
-	pause->set_texture("ui_textures/fade.png");
-	pause->set_cords(999, 999);
+	pause->Body::set_texture("ui_textures/fade.png");
+	pause->Body::set_cords(999, 999);
+
 	pause->set_button(button);
 }
-void init_info(SDL_Renderer* render_target, Info* info, Button* button)
+/*
+* void init_info(SDL_Renderer* render_target, Info* info, Button* button)
 {
 	info->Text::set_renderer(render_target);
 	info->Text::init("fonts/sans.ttf", 12, { 255, 0, 0 }, 999, 999, 20, 45);
@@ -113,11 +116,13 @@ void init_info(SDL_Renderer* render_target, Info* info, Button* button)
 	info->Body::set_renderer(render_target);
 	info->set_texture("ui_textures/fade.png");
 	info->set_cords(999, 999);
-	//info->toggle();
+	info->toggle();
 
 }
+*/
 
-void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
+
+void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Curtain* curtain)
 {
 	clock->Text::set_renderer(render_target);
 	clock->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 400, 330, 200, 90);
@@ -126,13 +131,13 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* 
 	clock->set_texture("ui_textures/clock_frame.png");
 	clock->set_cords(400, 320);
 	//clock->set_fade(&fade);
-	//clock->set_overlay(overlay);
+	//clock->set_curtain(curtain);
 	clock->set_time(16, 30);
 }
 
-void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay* overlay, Sound* sound, Button* button)
+void init_curtain(SDL_Renderer* render_target, Fade* fade, Clock* clock, Curtain* curtain, Sound* sound, Button* button, Pause* pause)
 {
-	overlay->init(fade, sound, clock, button );
+	curtain->init(fade, sound, clock, button, pause );
 }
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
@@ -199,9 +204,9 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Topography* topography, Random& random )
+void init_stage(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Stage* stage, Random& random )
 {
-	topography->set_renderer(renderTarget);
+	stage->set_renderer(renderTarget);
 
 	Item* item_ptr = map_ptr[0].get_item_array();
 	int item_amount = map_ptr[0].get_item_size();
@@ -209,34 +214,35 @@ void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, T
 	Tile* tile_ptr = map_ptr[0].get_tile_array();
 	int tile_amount = map_ptr[0].get_tile_size();
 
-	topography->set_map_array(map_ptr, map_amount);
-	topography->set_random_pointer(random);
+	stage->set_map_array(map_ptr, map_amount);
+	stage->set_random_pointer(random);
 
-	topography->set_up();
-	topography->make_maze();
+	stage->set_up();
+	stage->make_maze();
 
 	map_ptr[0].set_type(2);
 
 	for (int i = 1; i < map_amount; i++)
 	{
-		if (topography->counter_maps == i)
+		if (stage->counter_maps == i)
 		{
 			std::cout << "END GENERATED!" << std::endl;
 			break;
 		}
-		map_ptr[i].set_layout(topography->get_layout(i));
+		map_ptr[i].set_layout(stage->get_layout(i));
 		map_ptr[i].set_type(random.flip_coin());
 	}
 	map_ptr[0].set_textures();
 }
 
-void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int player_amount, Topography& topography, Random& random)
+int init_player_array(SDL_Renderer* render_target, Acteur* player_array, int player_amount, Stage& stage, Random& random, int con_num)
 {
 	for (int i = 0; i < player_amount; i++)
 	{
 		Acteur player;
-		player.set_controller_number(i);
-		player.set_Topography(&topography);
+		player.set_controller_number(con_num);
+		con_num++;
+		player.set_Stage(&stage);
 		player.set_random_pointer(random);
 		player_array[i] = player;
 	}
@@ -252,22 +258,27 @@ void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int pl
 	player_array[2].set_renderer(render_target);
 	player_array[2].set_texture("rat_textures/remy.png");
 	player_array[2].set_cords_frames(400, 300, 3, 4);
+
+	return con_num;
 }
 
-void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount, Topography& topography, Random& random)
+int init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount, Stage& stage, Random& random, int con_num)
 {
 	for (int i = 0; i < entity_amount; i++)
 	{
 		Acteur entity;
-		entity.set_controller_number(3+i);
-		entity.set_Topography(&topography);
+		entity.set_controller_number(con_num);
+		con_num++;
+		entity.set_Stage(&stage);
 		entity.set_random_pointer(random);
 		entitys[i] = entity;
 	}
 
 	entitys[0].set_renderer(render_target);
 	entitys[0].set_texture("npc_textures/entity.png");
-	entitys[0].set_cords_frames(4000, 4000, 1, 1);
+	entitys[0].set_cords_frames(100, 100, 3, 4);
+
+	return con_num;
 }
 
 uint32_t generate_seed(int seed_generation)
@@ -325,6 +336,8 @@ int main(int argc, char* argv[])
 	const int player_amount = 3;
 	const int entity_amount = 1;
 
+	int controller_num = 0;
+
 	SDL_Init(SDL_INIT_VIDEO);
 
 	if (TTF_Init() < 0)
@@ -355,25 +368,26 @@ int main(int argc, char* argv[])
 	Sound sound;
 	init_sound(&sound);
 
-	Fade fade;
+	Fade fade;							//has no current use but can be a good tool to make tranitions
 	init_fade(renderTarget, &fade);
 	
 
 	Button button(renderTarget, 200, 100, 80, 80);
-	button.Text::set_renderer(renderTarget);
-	button.Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	//button.Text::set_renderer(renderTarget);										//why no init function
+	//button.Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
 
 	Clock clock;
-	Overlay overlay;
-	init_clock(renderTarget, &clock, &fade, &overlay);
-	init_overlay(renderTarget, &fade, &clock, &overlay, &sound, &button);
+	Curtain curtain;
+	init_clock(renderTarget, &clock, &fade, &curtain);
 
 	Pause pause;
 	init_pause(renderTarget, &pause, &button);
 
-	Info info;
-	init_info(renderTarget, &info, &button);
+	init_curtain(renderTarget, &fade, &clock, &curtain, &sound, &button, &pause);			//maybe like playerarry we need a buttonarray + co
+
+	//Info info;
+	//init_info(renderTarget, &info, &button);
 
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
@@ -390,16 +404,32 @@ int main(int argc, char* argv[])
 	Map map_array[map_amount];
 	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, random);
 
-	Topography topography;
-	init_topography(renderTarget, map_array, map_amount, &topography, random);
+	Stage stage;
+	init_stage(renderTarget, map_array, map_amount, &stage, random);
+
+	//Acteur player_array[player_amount];
+	//controller_num = init_player_array(renderTarget, player_array, player_amount, stage, random, controller_num);
+
+	//Acteur entity_array[entity_amount];		//chester
+	//controller_num = init_entity(renderTarget, entity_array, entity_amount, stage, random, controller_num);
+
+
+	Setup setup(renderTarget, stage, random);
+
+	if (!setup.Initialize()) {
+		return -1;
+	}
 
 	Acteur player_array[player_amount];
-	init_player_array(renderTarget, player_array, player_amount, topography, random);
+	setup.InitPlayerArray(player_array, player_amount, controller_num);
 
-	Acteur entity[entity_amount];		//chester
-	init_entity(renderTarget, entity, entity_amount, topography, random);
+	Acteur entity_array[entity_amount];
+	setup.InitEntityArray(entity_array, entity_amount, controller_num);
+
 
 	// ===================================================================================
+
+
 
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
@@ -410,6 +440,7 @@ int main(int argc, char* argv[])
 
 	while (isRunning)
 	{
+		std::cout << "controller-num: " << controller_num << std::endl;
 		prevTime = currentTime;
 		currentTime = SDL_GetTicks();
 		delta = (currentTime - prevTime) / 1000.0f;
@@ -446,7 +477,7 @@ int main(int argc, char* argv[])
 					player_array[2].set_enter(false);
 					break;
 				case SDLK_o:
-					entity[0].teleport_to_entrence();
+					entity_array[0].teleport_to_entrence();
 					break;
 
 				case SDLK_p:
@@ -477,7 +508,10 @@ int main(int argc, char* argv[])
 					pause.toggle();
 					break;
 				case SDLK_j:
-					info.toggle();
+					//info.toggle();
+					break;
+				case SDLK_q:
+					isRunning = false;		//add a quit button to menue/ save
 					break;
 				}
 			}
@@ -489,7 +523,7 @@ int main(int argc, char* argv[])
 		// =================================== UPDATE GAME ===================================
 		// ===================================================================================
 
-		topography.update(delta);
+		stage.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[2]);
 		for (int i = 1; i < player_amount; i++)
@@ -497,13 +531,18 @@ int main(int argc, char* argv[])
 			player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
 		}
 
-		entity[0].update(delta);
-		button.update("Music:");
-		pause.update("Pause.");
-		info.update("Hello. \n\n\n\nLet me tell you a story about\n\n \n\n3 rats\n\n\n\n. They lived their lives happily. One day, they found a hole inside the fancy...", delta);
-		clock.update(delta);
-		fade.update(std::to_string(clock.get_day()));
-		overlay.update(delta);
+		//entity_array[0].update(delta);
+		entity_array[0].update_entity(delta, player_array[0]);
+
+
+
+		//button.update("Music:");
+		//pause.update("Pause.");
+		//info.update("Hello. \n\n\n\nLet me tell you a story about\n\n \n\n3 rats\n\n\n\n. They lived their lives happily. One day, they found a hole inside the fancy...", delta);
+		//clock.update(delta);
+		//fade.update(std::to_string(clock.get_day()));
+		curtain.update(delta);
+
 		chest.update(delta);
 
 		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -515,7 +554,7 @@ int main(int argc, char* argv[])
 		// ==================================== DRAW GAME ====================================
 		// ===================================================================================
 
-		topography.draw(renderTarget);
+		stage.draw(renderTarget);
 
 		for (int i = 0; i < tile_amount; i++)
 		{
@@ -529,17 +568,20 @@ int main(int argc, char* argv[])
 
 		for (int i = 0; i < player_amount; i++)
 		{
-			player_array[i].Draw(renderTarget);
+			player_array[i].draw(renderTarget);
 		}
-		entity[0].draw(renderTarget);
-		clock.draw(renderTarget);
-		fade.draw(renderTarget);
-		chest.draw(renderTarget);
-		overlay.draw(renderTarget);
-		info.draw(renderTarget);
 
-		pause.draw(renderTarget);
-		button.draw(renderTarget);
+		entity_array[0].draw(renderTarget);
+
+		chest.draw(renderTarget);
+
+		//clock.draw(renderTarget);
+		//fade.draw(renderTarget);
+		curtain.draw(renderTarget);
+		//info.draw(renderTarget);
+
+		//pause.draw(renderTarget);
+		//button.draw(renderTarget);
 
 		if (pause.is_on_screen()) button.render();
 		

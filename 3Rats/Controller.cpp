@@ -85,9 +85,9 @@ void Controller::set_controller_number(int number)
 	controller_number = number;
 }
 
-void Controller::set_Topography(Topography* h)
+void Controller::set_Stage(Stage* h)
 {
-	topography = h;
+	stage = h;
 }
 
 void Controller::set_random_pointer(Random& random)
@@ -143,6 +143,11 @@ void Controller::make_goal()
 
 		if (random_item_number == item_array_size - 1) random_item_number = 0;
 	}
+}
+
+int Controller::get_controller_number()
+{
+	return controller_number;
 }
 
 void Controller::place_item()

@@ -22,7 +22,10 @@ void Info::update(std::string update_text, double delta)
 		}
 		else if (character >= 140) {
 			//set_fadeout(character - 122);
-			out();
+			set_texture("ui_textures/empty.png");
+			if (character >= 150) {
+				out();
+			}
 		}
 		
 	}

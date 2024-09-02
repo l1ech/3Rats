@@ -36,4 +36,6 @@ public:
 	void set_coords(int x, int y);
 	void set_width(int w);
 
+	void set_display_text(std::string t);
+
 };

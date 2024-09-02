@@ -3,6 +3,12 @@
 Button::Button(SDL_Renderer* renderer, int x, int y, int width, int height)
     : renderer(renderer), rect({ x, y, width, height }), clicked(false) {}
 
+void Button::set_cords(int x, int y)
+{
+    rect.x = x;
+    rect.y = y;
+}
+
 void Button::render() 
 {
     if (clicked) 
