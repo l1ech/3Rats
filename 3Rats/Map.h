@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Tile.h"
-#include "Item.h"
+#include "Prop.h"
 #include "Random.h"
 #include "Door.h"
 
@@ -15,8 +15,8 @@ private:
 
 	Random* random_ptr;
 
-	Item* item_array;	// implement to use instead of having maps do it
-	int item_array_size;
+	Prop* prop_array;	// implement to use instead of having maps do it
+	int prop_array_size;
 
 	Tile* tile_array;	// this 2
 	int tile_array_size;
@@ -39,8 +39,8 @@ private:
 	int entry_direction;
 	int exit_direction;
 
-	int item_id;
-	int* item_on_map;
+	int prop_id;
+	int* prop_on_map;
 	double time;
 
 	int width;
@@ -54,9 +54,9 @@ private:
 	std::pair<int, int> data[6][9];
 	
 	//types of generation
-	void generate_maze(bool item_generation, bool entity_generation);
-	void generate_garden(bool item_generations, bool entity_generation);
-	void generate_cage(bool item_generation, bool entity_generation);
+	void generate_maze(bool prop_generation, bool entity_generation);
+	void generate_garden(bool prop_generations, bool entity_generation);
+	void generate_cage(bool prop_generation, bool entity_generation);
 
 	// helper functions for generation
 	void generate_door(int direction, int index, int type, bool active);
@@ -70,10 +70,10 @@ private:
 	void print_doors();
 	void trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data);
 	//void set_corners(std::vector<std::vector <int>>& map_data);
-	void save_data(const std::vector<std::vector <int>>& map_data, const std::vector<std::vector <int>>& item_data);
+	void save_data(const std::vector<std::vector <int>>& map_data, const std::vector<std::vector <int>>& prop_data);
 	
 	void set_entity_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& entity_data, int height, int width, int propability);
-	void set_items_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& item_data, int height, int width, int propability);
+	void set_props_to_map(std::vector<std::vector <int>>& map_data, std::vector<std::vector <int>>& prop_data, int height, int width, int propability);
 
 	int get_id(int x, int y);
 
@@ -101,9 +101,9 @@ public:
 	Tile* get_tile_array();
 	int get_tile_size();
 
-	void set_item_array(Item* item, int item_size);
-	Item* get_item_array();
-	int get_item_size();
+	void set_prop_array(Prop* prop, int prop_size);
+	Prop* get_prop_array();
+	int get_prop_size();
 
 	void set_random_pointer(Random& random);
 };

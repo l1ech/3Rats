@@ -59,69 +59,6 @@ std::vector<std::vector<bool>> Acteur::get_blocked_array(Tile* tile_array, int l
 }
 
 
-void Acteur::check_door(Stage* stage, Map* map_array, int map_amount, Tile* tile_array, int length)
-{
-	// make it that all acteurs spawn at the new door
-	// not at 0, 0 
-	// new door could be anywhere
-
-	int current_map_id = stage->get_current_map_id();
-
-	for (int i = 0; i < length; i++)
-	{
-		bool last_room = (current_map_id == map_amount - 1);
-		bool first_room = (current_map_id == 0);
-
-		if (!wants_enter_door) break;
-		if (!(controller_number == 0)) break;
-
-		if (intersectsWithBody(tile_array[i]) && controller_number == 0)
-		{
-			wants_enter_door = false;
-			if (tile_array[i].is_exit && !last_room)
-			{
-				current_map_id++;
-				stage->set_current_map_id(current_map_id);
-				map_array[current_map_id].set_textures();
-				Door entry = map_array[current_map_id].get_door(0);
-
-				position_rect.x = entry.get_x() * 64 - crop_rect.w;
-				position_rect.y = entry.get_y() * 64 - crop_rect.h;
-
-				//std::cout << "acteur 1: " << this->controller_number << std::endl;
-				//std::cout << "acteur 2: " << (this->controller_number)++ << std::endl;
-				//std::cout << "acteur 3: " << ((this->crop_rect.w)++)++ << std::endl;
-
-			}
-			else if (tile_array[i].is_entrance && !first_room)
-			{
-				current_map_id--;
-				stage->set_current_map_id(current_map_id);
-				map_array[current_map_id].set_textures();
-				Door exit = map_array[current_map_id].get_door(1);
-
-				position_rect.x = exit.get_x() * 64 - crop_rect.w;
-				position_rect.y = exit.get_y() * 64 - crop_rect.h;
-			}
-			else if (tile_array[i].is_hole && current_map_id != map_amount - 1)
-			{
-				current_map_id++;
-				stage->set_current_map_id(current_map_id);
-				map_array[current_map_id].set_textures();
-				Door entry = map_array[current_map_id].get_door(0);
-
-				position_rect.x = entry.get_x() * 64 - crop_rect.w;
-				position_rect.y = entry.get_y() * 64 - crop_rect.h;
-
-				// for testing this is set to be linear map. which is wrong.
-				// it has to be 3d so a hole would move the map in z direction 
-				// also x and y should also have a directional influance on the map
-			}
-		}
-	}
-}
-
-
 
 void Acteur::make_acteur_move(controller_move move, block_direction direction, float delta)
 {
@@ -247,7 +184,7 @@ void Acteur::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 	
 }
 
-void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item)
+void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Prop& prop)
 {
 	if (rat_y > goal_y && !direction.up)
 	{
@@ -273,67 +210,57 @@ void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 		crop_rect.y = frame_height * 2;
 		current_direction = 3;
 	}
-	else if (rat_x == goal_x && rat_y == goal_y && !item.get_pick_up())
+	else if (rat_x == goal_x && rat_y == goal_y && !prop.get_pick_up())
 	{
-		std::cout << "found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
+		std::cout << "found!" << " p: " << controller_number << "prop number: " << prop_search_id << std::endl;;
 
-		item_hold_id = item_search_id;
-		holds_item = true;
-		item.set_pick_up(true);
+		prop_hold_id = prop_search_id;
+		holds_prop = true;
+		prop.set_pick_up(true);
 		has_goal = false;
 
-		item_type = 1;
+		prop_type = 1;
 
 	}
-	else if (rat_x == goal_x && rat_y == goal_y && item.get_pick_up())
+	else if (rat_x == goal_x && rat_y == goal_y && prop.get_pick_up())
 	{
-		std::cout << "did not found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
+		std::cout << "did not found!" << " p: " << controller_number << "prop number: " << prop_search_id << std::endl;;
 		has_goal = false;
 	}
 }
 
-void Acteur::hold_item_in_mouth(Item& item)
+void Acteur::hold_prop_in_mouth(Prop& prop)
 {
 	// add he offsets to make more sense. just for example i did it fo 14
 	int offset = 14;
 
 	if (current_direction == 0)
 	{
-		item.set_cords(get_origin_x() - 24, get_origin_y() - 32 - offset);
+		prop.set_cords(get_origin_x() - 24, get_origin_y() - 32 - offset);
 	}
 	else if (current_direction == 1)
 	{
-		item.set_cords(get_origin_x() - 24, get_origin_y() - 32 + offset);
+		prop.set_cords(get_origin_x() - 24, get_origin_y() - 32 + offset);
 	}
 	else if (current_direction == 2)
 	{
-		item.set_cords(get_origin_x() - 24 - offset, get_origin_y() - 32);
+		prop.set_cords(get_origin_x() - 24 - offset, get_origin_y() - 32);
 	}
 	else if (current_direction == 3)
 	{
-		item.set_cords(get_origin_x() - 24 + offset, get_origin_y() - 32);
+		prop.set_cords(get_origin_x() - 24 + offset, get_origin_y() - 32);
 	}
-}
-
-void Acteur::teleport_to_entrence()
-{
-	Map* map_ptr = stage->get_map_array();
-
-	set_cords(
-		map_ptr[stage->get_current_map_id()].get_door(0).get_x() * 64 - crop_rect.w,
-		map_ptr[stage->get_current_map_id()].get_door(0).get_y() * 64 - crop_rect.h
-	);
 }
 
 Acteur::Acteur()
 {
 	dead = false;
-	item_type = 0;
+	prop_type = 0;
 
 	saturation = 100;
 
 	texture_path = "meta_textures/place_holder.png";
-	item_search_id = 0;
+	prop_search_id = 0;
 	has_goal = false;
 
 	is_moving = false;
@@ -356,28 +283,29 @@ Acteur::~Acteur()
 	SDL_DestroyTexture(texture);
 }
 
-void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
+void Acteur::update(float delta, int mode, Acteur& front_rat)
 {
-	
-		std::cout << "update con: " << controller_number << std::endl;
+	/*
+	 	std::cout << "update con: " << controller_number << std::endl;
 
 		std::cout << "x: " << get_origin_x()
 			<< "y: " << get_origin_y() << std::endl;
 
-		if (holds_item == true) std::cout << "player" << get_controller_number() << "holds item : true, effect: none" << std::endl;
+		if (holds_prop == true) std::cout << "player" << get_controller_number() << "holds prop : true, effect: none" << std::endl;
 
-		
+	*/
+	
 
-	map_array = stage->get_map_array();
-	map_array_size = stage->get_map_size();
+	//map_array = stage->get_map_array();
+	//map_array_size = stage->get_map_size();
 
 	tile_array = map_array->get_tile_array();
-	tile_array_size = map_array->get_item_size();
+	tile_array_size = map_array->get_tile_size();
 
-	item_array = map_array->get_item_array();
-	item_array_size = map_array->get_item_size();
+	prop_array = map_array->get_prop_array();
+	prop_array_size = map_array->get_prop_size();
 
-	if (is_item_available_on_map())
+	if (is_prop_available_on_map())
 	{
 		make_goal();	// make it so: goal = make_goal();
 	}
@@ -391,7 +319,7 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 
 	// focus point of a non-acteur rat.
 	// maybe put this inside the function that makes 
-	// the cords to it to stand and hole items
+	// the cords to it to stand and hole props
 	int frontRatX = front_rat.get_origin_x();
 	int frontRatY = front_rat.get_origin_y();
 	
@@ -412,7 +340,7 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	block_direction direction = { 0, 0, 0, 0 };
 
 	// colision with door check
-	check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
+	//check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
 
 	collision_map = get_blocked_array(tile_array, tile_array_size);
 
@@ -420,27 +348,18 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 
 	get_direction_blocked(collision_counter, direction, tile_array_size);
 
-	// make acteurs move
-
-	controller_move move = { keyState[keys[0]], keyState[keys[1]], keyState[keys[2]], keyState[keys[3]] };
-
-	// acteur 1
-	if (controller_number == 0)//--------------------Acteur control
-	{
-		make_acteur_move(move, direction, delta);
-	}
-	// acteur 2 & 3
-	else if(controller_number == 1 || controller_number == 2)
+	
+	if(controller_number == 1 || controller_number == 2)
 	{
 		if (!wait)
 		{
-			//find item control
-			if (mode == 1 && !holds_item)
+			//find prop control
+			if (mode == 1 && !holds_prop)
 			{
-				follow_goal(rat_x, rat_y, goalX, goalY, direction, delta, item_array[item_search_id]);
+				follow_goal(rat_x, rat_y, goalX, goalY, direction, delta, prop_array[prop_search_id]);
 			}
 			// autopilot 
-			else if (mode == 1 && holds_item)
+			else if (mode == 1 && holds_prop)
 			{
 				follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
 
@@ -451,10 +370,10 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 			}
 		}
 	}
-	// make item visible on a acteur
-	if (holds_item)
+	// make prop visible on a acteur
+	if (holds_prop)
 	{
-		hold_item_in_mouth(item_array[item_hold_id]);
+		hold_prop_in_mouth(prop_array[prop_hold_id]);
 	}
 
 	// add pauses so that the bots move more dynamicylly
@@ -493,22 +412,84 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	}
 }
 
+void Acteur::update(float delta, const Uint8* keyState)
+{
+
+	//map_array = stage->get_map_array();
+	//map_array_size = stage->get_map_size();
+
+	tile_array = map_array->get_tile_array();
+	tile_array_size = map_array->get_tile_size();
+
+	prop_array = map_array->get_prop_array();
+	prop_array_size = map_array->get_prop_size();
+
+	int rat_x = this->get_origin_x();
+	int rat_y = this->get_origin_y();
+
+	std::vector<std::vector<bool>> collision_map;
+
+	init_colision_map(collision_map);
+	block_direction_counter collision_counter = { 0, 0, 0, 0 };
+	block_direction direction = { 0, 0, 0, 0 };
+
+	// colision with door check
+	//check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
+
+	collision_map = get_blocked_array(tile_array, tile_array_size);
+
+	calculate_blocked_side(collision_counter, collision_map, tile_array_size);
+
+	get_direction_blocked(collision_counter, direction, tile_array_size);
+
+	// make acteurs move
+
+	controller_move move = { keyState[keys[0]], keyState[keys[1]], keyState[keys[2]], keyState[keys[3]] };
+	/*
+	std::cout << "move: " << move.down << move.left << move.right << move.up << std::endl;
+	std::cout << "direction blocked: " << direction.down << direction.left << direction.right << direction.up << std::endl;
+	std::cout << "direction blocked count: " << collision_counter.down << collision_counter.left << collision_counter.right << collision_counter.up << std::endl;
+	*/
+	
+	// acteur 1
+	if (controller_number == 0)//--------------------Acteur control
+	{
+		make_acteur_move(move, direction, delta);
+	}
+
+	// make prop visible on a acteur
+	if (holds_prop)
+	{
+		hold_prop_in_mouth(prop_array[prop_hold_id]);
+	}
+
+}
+
 void Acteur::Draw(SDL_Renderer* renderTarget) 
 { 
 	std::cout << "draw con: " << controller_number << std::endl;
 	SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); 
 }
 
-void Acteur::update_entity(float delta, Acteur& p1)
+void Acteur::update(float delta, Acteur& p1)
 {
-	
+	/*
 	std::cout << "update con: " << controller_number << std::endl;
 
 	std::cout << "x: " << get_origin_x()
 		<< "y: " << get_origin_y() << std::endl;
 
-	if (holds_item == true) std::cout << "player" << get_controller_number() << "holds item : true, effect: none" << std::endl;
+	if (holds_prop == true) std::cout << "player" << get_controller_number() << "holds prop : true, effect: none" << std::endl;
 
+	*/
+
+	tile_array = map_array->get_tile_array();
+	tile_array_size = map_array->get_tile_size();
+
+	prop_array = map_array->get_prop_array();
+	prop_array_size = map_array->get_prop_size();
+
+	
 	int x = this->get_origin_x();
 	int y = this->get_origin_y();
 
@@ -524,7 +505,7 @@ void Acteur::update_entity(float delta, Acteur& p1)
 	block_direction direction = { 0, 0, 0, 0 };
 
 	// colision with door check
-	check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
+	//check_door(stage, map_array, map_array_size, tile_array, tile_array_size);
 
 	collision_map = get_blocked_array(tile_array, tile_array_size);
 
@@ -538,38 +519,55 @@ void Acteur::update_entity(float delta, Acteur& p1)
 	if (1 == 1) // add more options later 
 	{
 		follow(x, y, follow_x, follow_y, direction, delta, p1);
-	}
-
-	
+	}	
 }
-
 
 bool Acteur::intersectsWithBody(Body& b)
 {
-	if (sqrt(pow(get_origin_x() - b.get_origin_x(), 2) + pow(get_origin_y() - b.get_origin_y(), 2)) >= radius + b.get_radius())
+	if (
+		sqrt(
+			pow( get_origin_x() - b.get_origin_x(), 2) 
+			+ pow( get_origin_y() - b.get_origin_y(), 2)) 
+		>= radius + b.get_radius() )
 	{
 		return false;
 	}
 	return true;
 }
 
-
-void Acteur::use_item()
+void Acteur::set_role(int r)
 {
-	if (item_type == 0)
+	role = r;
+}
+
+void Acteur::set_map_array(Map* map, int map_size)
+{
+	map_array = map;
+	map_array_size = map_size;
+}
+
+
+void Acteur::use_prop()
+{
+	if (prop_type == 0)
 	{
 
 	}
-	else if (item_type == 1)
+	else if (prop_type == 1)
 	{
 		saturation = 100;
 
-		holds_item = false;
-		item_array[item_hold_id].set_cords(-100, -100);
-		item_array[item_hold_id].set_on_map(false);
+		holds_prop = false;
+		prop_array[prop_hold_id].set_cords(-100, -100);
+		prop_array[prop_hold_id].set_on_map(false);
 
 		std::cout << "yumm!" << std::endl;
-		item_type = 0;
+		prop_type = 0;
 
 	}
+}
+
+int Acteur::pick_option()
+{
+	return random_ptr->roll_custom_dice(4);
 }

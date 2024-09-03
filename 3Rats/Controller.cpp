@@ -80,15 +80,15 @@ void Controller::init_colision_map(std::vector<std::vector<bool>>& map)
 	}
 
 }
+Controller::Controller()
+{
+	wants_enter_door = false;
+}
 void Controller::set_controller_number(int number)
 {
 	controller_number = number;
 }
 
-void Controller::set_Stage(Stage* h)
-{
-	stage = h;
-}
 
 void Controller::set_random_pointer(Random& random)
 {
@@ -100,15 +100,15 @@ void Controller::SetNewGoal(int x, int y) { goalX = x; goalY = y; }
 
 int Controller::GetDirection() { return current_direction; }
 
-bool Controller::is_item_available_on_map()
+bool Controller::is_prop_available_on_map()
 {
 	bool available = false;
 
-	for (int i = 0; i < item_array_size; i++)
+	for (int i = 0; i < prop_array_size; i++)
 	{
-		if (!item_array[i].get_pick_up())
+		if (!prop_array[i].get_pick_up())
 		{
-			if (item_array[i].get_on_map())
+			if (prop_array[i].get_on_map())
 			{
 				available = true;
 			}
@@ -119,29 +119,29 @@ bool Controller::is_item_available_on_map()
 
 void Controller::make_goal()
 {
-	int random_item_number = 0;
+	int random_prop_number = 0;
 
 	while (!has_goal)
 	{
-		if (item_array[random_item_number].get_on_map() && random_ptr->flip_coin())
+		if (prop_array[random_prop_number].get_on_map() && random_ptr->flip_coin())
 		{
 			has_goal = true;
 
 			SetNewGoal
 			(
-				item_array[random_item_number].get_origin_x(),
-				item_array[random_item_number].get_origin_y()
+				prop_array[random_prop_number].get_origin_x(),
+				prop_array[random_prop_number].get_origin_y()
 			);
 
-			item_search_id = random_item_number;
+			prop_search_id = random_prop_number;
 
 			std::cout << "p: " << controller_number << "gx: " << goalX << " gy: " << goalY << std::endl;
 
 		}
 
-		random_item_number++;
+		random_prop_number++;
 
-		if (random_item_number == item_array_size - 1) random_item_number = 0;
+		if (random_prop_number == prop_array_size - 1) random_prop_number = 0;
 	}
 }
 
@@ -150,17 +150,27 @@ int Controller::get_controller_number()
 	return controller_number;
 }
 
-void Controller::place_item()
+bool Controller::get_wants_enter_door()
 {
-	if (item_type == 0)
+	return wants_enter_door;
+}
+
+void Controller::set_wants_enter_door(bool value)
+{
+	wants_enter_door = value;
+}
+
+void Controller::place_prop()
+{
+	if (prop_type == 0)
 	{
 
 	}
-	else if (item_type == 1)
+	else if (prop_type == 1)
 	{
-		holds_item = false;
+		holds_prop = false;
 		std::cout << "placed!" << std::endl;
-		item_type = 0;
+		prop_type = 0;
 
 	}
 }

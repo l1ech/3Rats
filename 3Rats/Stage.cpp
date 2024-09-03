@@ -8,12 +8,6 @@ Stage::Stage()
 	current_map_id = 0;
 }
 
-void Stage::set_map_array(Map* map, int map_size)
-{
-	map_array = map;
-	map_array_size = map_size;
-}
-
 Map* Stage::get_map_array()
 {
 	return map_array;
@@ -41,7 +35,118 @@ void Stage::set_current_map_id(int number)
 
 void Stage::update(float delta)
 {
+	check_acteur_script();
+	check_door();
+}
 
+void Stage::check_door()
+{	
+	Tile* tile_array = map_array[0].get_tile_array();
+	int length = map_array[0].get_tile_size();
+
+	// make it that all acteurs spawn at the new door
+	// not at 0, 0 
+	// new door could be anywhere
+
+	int current_map_id = get_current_map_id();
+
+	for (int i = 0; i < length; i++)
+	{
+		bool last_room = (current_map_id == map_array_size - 1);
+		bool first_room = (current_map_id == 0);
+
+		Acteur& player = player_array[0];
+
+		bool wants_enter_door = player.get_wants_enter_door();
+		int con_num = player.get_controller_number();
+
+		if (!wants_enter_door) break;
+		if (!(con_num == 0)) break;
+
+		if (player.intersectsWithBody(tile_array[i]) && con_num == 0)
+		{
+			//wants_enter_door = false;
+			player.set_wants_enter_door(false);
+			if (tile_array[i].is_exit && !last_room)
+			{
+				current_map_id++;
+				map_array[current_map_id].set_textures();
+				Door entry = map_array[current_map_id].get_door(0);
+
+				std::pair<int, int> value = player.get_crop_rect();
+
+				player.set_pos_rect
+				(
+					entry.get_x() * 64 - value.first, 
+					entry.get_y() * 64 - value.second
+				);
+
+				//position_rect.x = entry.get_x() * 64 - crop_rect.w;
+				//position_rect.y = entry.get_y() * 64 - crop_rect.h;
+
+				//std::cout << "acteur 1: " << this->controller_number << std::endl;
+				//std::cout << "acteur 2: " << (this->controller_number)++ << std::endl;
+				//std::cout << "acteur 3: " << ((this->crop_rect.w)++)++ << std::endl;
+
+			}
+			else if (tile_array[i].is_entrance && !first_room)
+			{
+				current_map_id--;
+				map_array[current_map_id].set_textures();
+				Door exit = map_array[current_map_id].get_door(1);
+
+				std::pair<int, int> value = player.get_crop_rect();
+
+				player.set_pos_rect
+				(
+					exit.get_x() * 64 - value.first,
+					exit.get_y() * 64 - value.second
+				);
+			}
+			else if (tile_array[i].is_hole && current_map_id != map_array_size - 1)
+			{
+				current_map_id++;
+				map_array[current_map_id].set_textures();
+				Door entry = map_array[current_map_id].get_door(0);
+
+				std::pair<int, int> value = player.get_crop_rect();
+
+				player.set_pos_rect
+				(
+					entry.get_x() * 64 - value.first,
+					entry.get_y() * 64 - value.second
+				);
+
+				set_current_map_id(current_map_id);
+
+				// for testing this is set to be linear map. which is wrong.
+				// it has to be 3d so a hole would move the map in z direction 
+				// also x and y should also have a directional influance on the map
+			}
+		}
+	}
+}
+
+void Stage::check_acteur_script()
+{
+	Acteur& entity = entity_array[0];
+
+	Acteur& player = player_array[0];
+
+	if (entity.intersectsWithBody(player))
+	{
+		//int entity_option = entity.pick_option();	// options 1: fight, 2: flee, 3: parle, 4: wait
+		//int player_option = player.pick_option();
+
+
+		int entity_option = 3;
+		int player_option = 3;
+
+		if (entity_option == 3 && player_option == 3)
+		{
+			//talk
+		}
+	}
 }
 
 void Stage::draw(SDL_Renderer* renderTarget)
@@ -65,6 +170,24 @@ Map* Stage::get_map()
 int Stage::get_map_size()
 {
 	return map_array_size;
+}
+
+void Stage::set_map_array(Map* map, int map_size)
+{
+	map_array = map;
+	map_array_size = map_size;
+}
+
+void Stage::set_player_array(Acteur* a, int size)
+{
+	player_array = a;
+	player_array_size = size;
+}
+
+void Stage::set_entity_array(Acteur* a, int size)
+{
+	entity_array = a;
+	entity_array_size = size;
 }
 
 void Stage::make_maze()
@@ -285,3 +408,14 @@ std::string Stage::get_layout(int num)
 }
 void Stage::set_random_pointer(Random& random) { random_ptr = &random; }
 
+void Stage::teleport_to_entrence(Acteur* a)
+{
+
+	Map* map_ptr = get_map_array();
+
+	a->set_cords(
+		map_ptr[get_current_map_id()].get_door(0).get_x() * 64 - a->get_crop_rect().first,
+		map_ptr[get_current_map_id()].get_door(0).get_y() * 64 - a->get_crop_rect().second
+	);
+
+}

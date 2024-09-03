@@ -1,22 +1,22 @@
 #pragma once
 
-#include "Item.h"
+#include "Prop.h"
 
 #include <vector>
 
-// normaly i should use some kind of array of items 
+// normaly i should use some kind of array of props 
 // but for testing lets do it with int
 
 class Inventory
 {
 protected:
-	Item empty_item;
-	std::vector<Item*> inventory;
+	Prop empty_prop;
+	std::vector<Prop*> inventory;
 	int max_size;
 public:
 	Inventory();
 
-	void push_item(Item* item);
-	Item* pop_item();
+	void push_prop(Prop* prop);
+	Prop* pop_prop();
 	void re_size(int newSize);
 };

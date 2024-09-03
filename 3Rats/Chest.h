@@ -13,5 +13,5 @@ public:
 
 	void update(double delta);
 
-	Item* get_item();
+	Prop* get_prop();
 };

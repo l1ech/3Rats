@@ -95,6 +95,21 @@ void Body::set_cords_frames(int x, int y, int framesX, int framesY)
 
 int Body::get_hight() { return this->hight; }
 
+//return (w, h)
+std::pair<int, int> Body::get_crop_rect()
+{
+	std::pair<int, int> value;
+	value.first = crop_rect.w;
+	value.second = crop_rect.h;
+	return value;
+}
+
+void Body::set_pos_rect(int x, int y)
+{
+	position_rect.x = x;
+	position_rect.y = y;
+}
+
 int Body::get_origin_x() { return position_rect.x + origin_x; }
 
 int Body::get_origin_y() { return position_rect.y + origin_y; }

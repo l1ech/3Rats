@@ -2,15 +2,15 @@
 
 #include "Body.h"
 
-class Item : public Body
+class Prop : public Body
 {
 private:
 	bool is_on_map;
 	bool is_picked_up;
 
 public:
-	Item();
-	~Item();
+	Prop();
+	~Prop();
 
 	//void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);

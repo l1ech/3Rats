@@ -13,12 +13,12 @@ void Chest::update(double delta)
 	chest_level = inventory.size();
 }
 
-Item* Chest::get_item()
+Prop* Chest::get_prop()
 {
 	if (chest_level != 0)
 	{
 		crop_rect.y += frame_height;
-		return pop_item();
+		return pop_prop();
 	}
 	else
 	{

@@ -10,15 +10,15 @@ Tile* Level_Structure::get_tile_array() { return tile_array; }
 
 int Level_Structure::get_tile_size() { return tile_array_size; }
 
-void Level_Structure::set_item_array(Item* item, int item_size)
+void Level_Structure::set_prop_array(Prop* prop, int prop_size)
 {
-	item_array = item;
-	item_array_size = item_size;
+	prop_array = prop;
+	prop_array_size = prop_size;
 }
 
-Item* Level_Structure::get_item_array() { return item_array; }
+Prop* Level_Structure::get_prop_array() { return prop_array; }
 
-int Level_Structure::get_item_size() { return item_array_size; }
+int Level_Structure::get_prop_size() { return prop_array_size; }
 
 void Level_Structure::set_random_pointer(Random& random) { random_ptr = &random; }
 

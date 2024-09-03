@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Stage.h"
+#include "map.h"
 #include "Random.h"
 
 class Controller {
@@ -33,13 +33,12 @@ protected:
 	int map_array_size;
 	int* map_number;
 
-	Item* item_array;
-	int item_array_size;
+	Prop* prop_array;
+	int prop_array_size;
 
 	Tile* tile_array;
 	int tile_array_size;
 
-	Stage* stage;
 
 	int controller_number;
 
@@ -47,9 +46,9 @@ protected:
 	Random* random_ptr;
 	int current_direction;
 	bool has_goal;
-	int item_search_id;
-	int item_type;
-	bool holds_item;
+	int prop_search_id;
+	int prop_type;
+	bool holds_prop;
 	bool wants_enter_door;
 
 
@@ -61,17 +60,22 @@ protected:
 	void init_colision_map(std::vector<std::vector<bool>>& map);
 
 public:
+
+	Controller();
+
 	void set_controller_number(int number);
-	void set_Stage(Stage* topography);
+	//void set_Stage(Stage* topography);
 	void set_random_pointer(Random& random);
 
 	void set_has_goal(bool value);	// this is for debug 
 	void set_enter(bool value);
-	void place_item();		//set_item
+	void place_prop();		//set_prop
 	void SetNewGoal(int x, int y);
 	int GetDirection();
-	bool is_item_available_on_map();		//get available item on map
+	bool is_prop_available_on_map();		//get available prop on map
 	void make_goal();		// get new goal
-	int get_controller_number();
 
+	int get_controller_number();
+	bool get_wants_enter_door();
+	void set_wants_enter_door(bool value);
 };

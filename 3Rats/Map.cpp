@@ -6,7 +6,7 @@ Map::Map()
     width = 9;
     height = 6;
 
-    item_id = 0;
+    prop_id = 0;
 
     map_generation_try = 0;
 }
@@ -17,6 +17,7 @@ Map::~Map()
 
 void Map::Update(float delta)
 {
+    
     
 }
 
@@ -30,7 +31,7 @@ void Map::set_type(int type)
     const int GARDEN_TYPE = 1;
     const int CAGE_TYPE = 2;
 
-    bool item_generatio = true;
+    bool prop_generatio = true;
 
     switch (type)
     {
@@ -38,20 +39,20 @@ void Map::set_type(int type)
     case MAZE_TYPE:
         std::cout << "===========================================" << std::endl;
         std::cout << "generating maze..." << std::endl;
-        std::cout << "items generation: " << item_generatio << std::endl;
+        std::cout << "props generation: " << prop_generatio << std::endl;
         generate_maze(true, false);
         break;
 
     case GARDEN_TYPE:
         std::cout << "===========================================" << std::endl;
         std::cout << "generating garden..." << std::endl;
-        std::cout << "items generation: " << item_generatio << std::endl;
+        std::cout << "props generation: " << prop_generatio << std::endl;
         generate_garden(true, true);
         break;
     case CAGE_TYPE:
         std::cout << "===========================================" << std::endl;
         std::cout << "generating cage..." << std::endl;
-        std::cout << "items generation: " << item_generatio << std::endl;
+        std::cout << "props generation: " << prop_generatio << std::endl;
         generate_cage(false, false);
         break;
 
@@ -82,7 +83,7 @@ void Map::set_textures()
         {
             Tile& inspected_tile = tile_array[get_id(w, h)];
 
-            Item& inspected_item = item_array[get_id(w, h)];
+            Prop& inspected_prop = prop_array[get_id(w, h)];
 
             switch (data[h][w].first)
             {
@@ -237,16 +238,16 @@ void Map::set_textures()
 
             if (data[h][w].second == 1)
             {
-                inspected_item.set_on_map(true);
-                inspected_item.set_cords(x_cord, y_cord);
-                inspected_item.set_texture("item_textures/mushroom.png");
-                item_id++;
+                inspected_prop.set_on_map(true);
+                inspected_prop.set_cords(x_cord, y_cord);
+                inspected_prop.set_texture("prop_textures/mushroom.png");
+                prop_id++;
             }
             else if (data[h][w].second == 0)
             {
-                inspected_item.set_on_map(false);
-                inspected_item.set_cords(-100, -100);
-                inspected_item.set_texture("item_textures/place_holder.png");
+                inspected_prop.set_on_map(false);
+                inspected_prop.set_cords(-100, -100);
+                inspected_prop.set_texture("prop_textures/place_holder.png");
             }
         }
     }
@@ -254,7 +255,7 @@ void Map::set_textures()
 
 void Map::set_ptr(int* ptr)
 {
-    item_on_map = ptr;
+    prop_on_map = ptr;
 }
 
 void Map::set_map_id(int numer) { map_id = numer; }
@@ -292,7 +293,7 @@ void Map::set_entity_to_map(std::vector<std::vector<int>>& map_data, std::vector
 
 }
 
-void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width, int probability)
+void Map::set_props_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& prop_data, int height, int width, int probability)
 {
     for (int i = 0; i < height; i++)
     {
@@ -300,12 +301,12 @@ void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<
         {
             if (map_data[i][j] == 0 || map_data[i][j] == 1 || map_data[i][j] == 2)
             {
-                item_data[i][j] = 0;
+                prop_data[i][j] = 0;
             }
-            else if (*item_on_map < item_array_size && random_ptr->roll_custom_dice(probability) == 1)
+            else if (*prop_on_map < prop_array_size && random_ptr->roll_custom_dice(probability) == 1)
             {
-                item_data[i][j] = 1;
-                (*item_on_map)++;
+                prop_data[i][j] = 1;
+                (*prop_on_map)++;
             }
         }
     }
@@ -320,7 +321,7 @@ int Map::get_hight() { return height; }
 int Map::get_width() { return width; }
 
 
-void Map::generate_maze(bool item_generation, bool entity_generation)
+void Map::generate_maze(bool prop_generation, bool entity_generation)
 {
     int start_x = 1;
     int start_y = 1;
@@ -334,7 +335,7 @@ void Map::generate_maze(bool item_generation, bool entity_generation)
 
     std::vector<std::vector <int>> raw_data(height + 2, std::vector<int>(width + 2));
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
-    std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> prop_data(height, std::vector<int>(width));
 
     build_frame(raw_data, 9, 1);
 
@@ -349,19 +350,19 @@ void Map::generate_maze(bool item_generation, bool entity_generation)
 
     //set_corners(map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width, 30); // 80 meaning 1/80  
+    if (prop_generation) set_props_to_map(map_data, prop_data, height, width, 30); // 80 meaning 1/80  
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
     std::cout << "saving raw_data..." << std::endl;
 
-    //std::cout << "item_data..." << std::endl;
+    //std::cout << "prop_data..." << std::endl;
 
-    //print_vector(item_data, width, height);
+    //print_vector(prop_data, width, height);
 
-    save_data(map_data, item_data);
+    save_data(map_data, prop_data);
 }
 
-void Map::generate_garden(bool item_generation, bool entity_generation)
+void Map::generate_garden(bool prop_generation, bool entity_generation)
 {
     width = 9;
     height = 6;
@@ -378,7 +379,7 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     std::vector<std::vector <int>> raw_data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
-    std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> prop_data(height, std::vector<int>(width));
     std::vector<std::vector <int>> entity_data(height, std::vector<int>(width));
 
     build_frame(raw_data, 1, 12);
@@ -387,7 +388,7 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     trim_boarder(raw_data, map_data);
 
-    if (item_generation) set_items_to_map(map_data, item_data, height, width, 10);  //20 meaning 1/20
+    if (prop_generation) set_props_to_map(map_data, prop_data, height, width, 10);  //20 meaning 1/20
 
     if (entity_generation) set_entity_to_map(map_data, entity_data, height, width, 70);
 
@@ -395,10 +396,10 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     std::cout << "saving raw_data..." << std::endl;
 
-    save_data(map_data, item_data);
+    save_data(map_data, prop_data);
 }
 
-void Map::generate_cage(bool item_generation, bool entity_generation)
+void Map::generate_cage(bool prop_generation, bool entity_generation)
 {
     width = 9;
     height = 6;
@@ -426,7 +427,7 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
 
     std::vector<std::vector <int>> raw_data(height + 2, std::vector<int>(width + 2));    //x11; 0    y8; 0 means back one node
     std::vector<std::vector <int>> map_data(height, std::vector<int>(width));
-    std::vector<std::vector <int>> item_data(height, std::vector<int>(width));
+    std::vector<std::vector <int>> prop_data(height, std::vector<int>(width));
 
     // in this case it has to generate a hole. maybe not ?
     // maybe it generates a hole only if the player does an action?
@@ -442,12 +443,12 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
 
     trim_boarder(raw_data, map_data);
 
-    //if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
+    //if (prop_generation) set_props_to_map(map_data, prop_data, height, width, 70);  //20 meaning 1/20
 
     std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
     std::cout << "saving raw_data..." << std::endl;
 
-    save_data(map_data, item_data);
+    save_data(map_data, prop_data);
 }
 
 void Map::generate_door(int direction, int index, int type, bool active)
@@ -673,14 +674,14 @@ void Map::set_corners(std::vector<std::vector<int>>& map_data)
 }
 */
 
-void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::vector<std::vector<int>>& item_data)
+void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::vector<std::vector<int>>& prop_data)
 {
     int i = 0;
     for (auto& row : data) {
         int j = 0;
         for (auto& cell : row) {
             cell.first = map_data[i][j];
-            cell.second = item_data[i][j];
+            cell.second = prop_data[i][j];
             j++;
         }
         i++;
@@ -699,15 +700,15 @@ Tile* Map::get_tile_array() { return tile_array; }
 
 int Map::get_tile_size() { return tile_array_size; }
 
-void Map::set_item_array(Item* item, int item_size)
+void Map::set_prop_array(Prop* prop, int prop_size)
 {
-    item_array = item;
-    item_array_size = item_size;
+    prop_array = prop;
+    prop_array_size = prop_size;
 }
 
-Item* Map::get_item_array() { return item_array; }
+Prop* Map::get_prop_array() { return prop_array; }
 
-int Map::get_item_size() { return item_array_size; }
+int Map::get_prop_size() { return prop_array_size; }
 
 void Map::set_random_pointer(Random& random) { random_ptr = &random; }
 

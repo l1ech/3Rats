@@ -52,4 +52,7 @@ public:
 	int get_origin_y();
 	int get_radius();
 	int get_hight();
+
+	void set_pos_rect(int x, int y);
+	std::pair<int, int> get_crop_rect();
 };

@@ -4,11 +4,11 @@ Inventory::Inventory()
 {
 }
 
-void Inventory::push_item(Item* item)
+void Inventory::push_prop(Prop* prop)
 {
     if (inventory.size() <= max_size)
     {
-        inventory.push_back(item);
+        inventory.push_back(prop);
     }
     else
     {
@@ -17,11 +17,11 @@ void Inventory::push_item(Item* item)
     
 }
 
-Item* Inventory::pop_item()
+Prop* Inventory::pop_prop()
 {
-    Item* item = inventory.back();
+    Prop* prop = inventory.back();
     inventory.pop_back();
-    return item;
+    return prop;
 }
 
 void Inventory::re_size(int newSize)

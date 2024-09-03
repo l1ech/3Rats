@@ -5,7 +5,7 @@
 #include <vector>
 #include <stdlib.h>     /* srand, rand */
 
-#include "Item.h"
+#include "Prop.h"
 #include "Body.h"
 #include "Map.h"
 #include "Tile.h"
@@ -15,13 +15,18 @@
 #include "Acteur.h"
 #include "Clock.h"
 #include "Fade.h"
-#include "Curtain.h"
+#include "Scene.h"
 #include "Pause.h"
 #include "Chest.h"
 #include "Button.h"
 //#include "Info.h"
 #include "Sound.h"
-#include "Setup.h"
+#include "Prologue.h"
+#include "EventManager.h"
+//#include "TextField.h"
+#include "Script.h"
+
+
 
 int world_seed_generation(bool value)
 {
@@ -74,6 +79,8 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 
 	return texture;
 }
+
+/*
 void init_sound(Sound* sound)
 {
 	sound->init();
@@ -82,7 +89,7 @@ void init_chest(SDL_Renderer* render_target, Chest* chest)
 {
 	chest->re_size(4);
 	chest->set_renderer(render_target);
-	chest->set_texture("item_textures/chest/chest.png");
+	chest->set_texture("prop_textures/chest/chest.png");
 	chest->set_cords_frames(64, 64, 1, 4);
 }
 
@@ -107,8 +114,8 @@ void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button)
 
 	pause->set_button(button);
 }
-/*
-* void init_info(SDL_Renderer* render_target, Info* info, Button* button)
+
+void init_info(SDL_Renderer* render_target, Info* info, Button* button)
 {
 	info->Text::set_renderer(render_target);
 	info->Text::init("fonts/sans.ttf", 12, { 255, 0, 0 }, 999, 999, 20, 45);
@@ -119,10 +126,10 @@ void init_pause(SDL_Renderer* render_target, Pause* pause, Button* button)
 	info->toggle();
 
 }
-*/
 
 
-void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Curtain* curtain)
+
+void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Scene* scene)
 {
 	clock->Text::set_renderer(render_target);
 	clock->Text::init("fonts/sans.ttf", 24, { 255, 0, 0 }, 400, 330, 200, 90);
@@ -131,25 +138,25 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Curtain* 
 	clock->set_texture("ui_textures/clock_frame.png");
 	clock->set_cords(400, 320);
 	//clock->set_fade(&fade);
-	//clock->set_curtain(curtain);
+	//clock->set_scene(scene);
 	clock->set_time(16, 30);
 }
 
-void init_curtain(SDL_Renderer* render_target, Fade* fade, Clock* clock, Curtain* curtain, Sound* sound, Button* button, Pause* pause)
+void init_scene(SDL_Renderer* render_target, Fade* fade, Clock* clock, Scene* scene, Sound* sound, Button* button, Pause* pause)
 {
-	curtain->init(fade, sound, clock, button, pause );
+	scene->init(fade, sound, clock, button, pause);
 }
 
-void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
+void init_prop_array(SDL_Renderer* render_target, Prop prop_array[], int prop_amount)
 {
-	Item item_templet;
-	item_templet.set_renderer(render_target);
-	item_templet.set_texture("meta_textures/place_holder.png");
-	item_templet.set_cords(-100, -100);
+	Prop prop_templet;
+	prop_templet.set_renderer(render_target);
+	prop_templet.set_texture("meta_textures/place_holder.png");
+	prop_templet.set_cords(-100, -100);
 
-	for (int i = 0; i < item_amount; i++)
+	for (int i = 0; i < prop_amount; i++)
 	{
-		item_array[i] = item_templet;
+		prop_array[i] = prop_templet;
 	}
 }
 
@@ -166,6 +173,7 @@ void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_am
 		tile_array[i] = tile_templet;
 	}
 }
+
 
 template<typename T>
 void init_grid_coords(T* array, int size, int height, int width)
@@ -187,14 +195,14 @@ void init_grid_coords(T* array, int size, int height, int width)
 	}
 }
 
-void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Random& random)
+void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Prop* prop_array, int prop_amount, Map* map_array, int map_amount, Random& random)
 {
 	Map map_templet;
 
 	map_templet.set_tile_array(tile_array, tile_amount);
 	init_grid_coords(tile_array, tile_amount, map_templet.get_hight(), map_templet.get_width());
-	map_templet.set_item_array(item_array, item_amount);
-	init_grid_coords(item_array, item_amount, map_templet.get_hight(), map_templet.get_width());
+	map_templet.set_prop_array(prop_array, prop_amount);
+	init_grid_coords(prop_array, prop_amount, map_templet.get_hight(), map_templet.get_width());
 	map_templet.set_random_pointer(random);
 
 	for (int i = 0; i < map_amount; i++)
@@ -204,36 +212,6 @@ void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amoun
 	}
 }
 
-void init_stage(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Stage* stage, Random& random )
-{
-	stage->set_renderer(renderTarget);
-
-	Item* item_ptr = map_ptr[0].get_item_array();
-	int item_amount = map_ptr[0].get_item_size();
-
-	Tile* tile_ptr = map_ptr[0].get_tile_array();
-	int tile_amount = map_ptr[0].get_tile_size();
-
-	stage->set_map_array(map_ptr, map_amount);
-	stage->set_random_pointer(random);
-
-	stage->set_up();
-	stage->make_maze();
-
-	map_ptr[0].set_type(2);
-
-	for (int i = 1; i < map_amount; i++)
-	{
-		if (stage->counter_maps == i)
-		{
-			std::cout << "END GENERATED!" << std::endl;
-			break;
-		}
-		map_ptr[i].set_layout(stage->get_layout(i));
-		map_ptr[i].set_type(random.flip_coin());
-	}
-	map_ptr[0].set_textures();
-}
 
 int init_player_array(SDL_Renderer* render_target, Acteur* player_array, int player_amount, Stage& stage, Random& random, int con_num)
 {
@@ -280,6 +258,7 @@ int init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount,
 
 	return con_num;
 }
+*/
 
 uint32_t generate_seed(int seed_generation)
 {
@@ -332,11 +311,9 @@ int main(int argc, char* argv[])
 
 	const int tile_amount = 54;
 	const int map_amount = 10;
-	const int item_amount = 54;
+	const int prop_amount = 54;
 	const int player_amount = 3;
 	const int entity_amount = 1;
-
-	int controller_num = 0;
 
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -351,8 +328,28 @@ int main(int argc, char* argv[])
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		std::cout << "Error: " << TTF_GetError() << std::endl;
 	}
-	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
+
+	window = SDL_CreateWindow("3Rats", 
+		SDL_WINDOWPOS_CENTERED, 
+		SDL_WINDOWPOS_CENTERED, 
+		screen_width, 
+		screen_hight, 
+		SDL_WINDOW_SHOWN);
+
 	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+	// Load font for TextField
+	TTF_Font* font = TTF_OpenFont("fonts/sans.ttf", 28); // Make sure the font file path is correct
+	if (font == NULL)
+	{
+		std::cout << "Failed to load font! SDL_ttf Error: " << TTF_GetError() << std::endl;
+		return -1;
+	}
+
+	// Initialize the TextField object
+	//TextField textField(renderTarget, font, 100, 300, 400, 50); // Example position and size
+
+	//Script script(renderTarget, font, 50, 50, 400, 200); // Adjust parameters as needed
 
 	// ================================ INIT GAME OBJECTS ================================
 	// ===================================================================================
@@ -362,9 +359,7 @@ int main(int argc, char* argv[])
 	uint32_t seed = generate_seed(seed_input);
 	std::cout << "Seed: " << seed << std::endl;
 
-	// random object
-	Random random(seed);
-
+	/*
 	Sound sound;
 	init_sound(&sound);
 
@@ -378,13 +373,13 @@ int main(int argc, char* argv[])
 
 
 	Clock clock;
-	Curtain curtain;
-	init_clock(renderTarget, &clock, &fade, &curtain);
+	Scene scene;
+	init_clock(renderTarget, &clock, &fade, &scene);
 
 	Pause pause;
 	init_pause(renderTarget, &pause, &button);
 
-	init_curtain(renderTarget, &fade, &clock, &curtain, &sound, &button, &pause);			//maybe like playerarry we need a buttonarray + co
+	init_scene(renderTarget, &fade, &clock, &scene, &sound, &button, &pause);			//maybe like playerarry we need a buttonarray + co
 
 	//Info info;
 	//init_info(renderTarget, &info, &button);
@@ -392,20 +387,20 @@ int main(int argc, char* argv[])
 
 	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
 	
-	Item item_array[item_amount];
-	init_item_array(renderTarget, item_array, item_amount);
+	//Prop prop_array[prop_amount];
+	//init_prop_array(renderTarget, prop_array, prop_amount);
 
 	Chest chest;
 	init_chest(renderTarget, &chest);
 
-	Tile tile_array[tile_amount];
-	init_tile_array(renderTarget, tile_array, tile_amount);
+	//Tile tile_array[tile_amount];
+	//init_tile_array(renderTarget, tile_array, tile_amount);
 
 	Map map_array[map_amount];
-	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, random);
+	init_map_array(renderTarget, tile_array, tile_amount, prop_array, prop_amount, map_array, map_amount, random);
 
 	Stage stage;
-	init_stage(renderTarget, map_array, map_amount, &stage, random);
+	//init_stage(renderTarget, map_array, map_amount, &stage, random);
 
 	//Acteur player_array[player_amount];
 	//controller_num = init_player_array(renderTarget, player_array, player_amount, stage, random, controller_num);
@@ -413,24 +408,54 @@ int main(int argc, char* argv[])
 	//Acteur entity_array[entity_amount];		//chester
 	//controller_num = init_entity(renderTarget, entity_array, entity_amount, stage, random, controller_num);
 
+	*/
 
-	Setup setup(renderTarget, stage, random);
+	Random random(seed);
+	Stage stage;
 
-	if (!setup.Initialize()) {
+	// Prologue class handles initialization
+	Prologue prologue(renderTarget, stage, random);
+	if (!prologue.Initialize()) {
+		std::cout << "Initialization failed." << std::endl;
 		return -1;
 	}
-
-	Acteur player_array[player_amount];
-	setup.InitPlayerArray(player_array, player_amount, controller_num);
-
+	
+	Prop prop_array[prop_amount];
+	Tile tile_array[tile_amount];
+	Map map_array[map_amount];
 	Acteur entity_array[entity_amount];
-	setup.InitEntityArray(entity_array, entity_amount, controller_num);
+	Acteur player_array[player_amount];
+	Chest chest;
 
+	prologue.init_game
+	(
+		tile_array, tile_amount, 
+		prop_array, prop_amount, 
+		map_array, map_amount, 
+		entity_array, entity_amount, 
+		player_array, player_amount, 
+		&chest
+	);
+
+	Inspector inspector;
+	Fade fade;
+	Sound sound;
+	Scene scene(renderTarget, font, &inspector, &stage);
+	Clock clock;
+	Pause pause;
+	Button button(renderTarget, 200, 100, 80, 80);
+
+	//inspector.show_scene(&scene);
+
+	prologue.InitGameObjects
+	(
+		&fade, &scene, 
+		&clock, &pause, 
+		&button, &sound,
+		player_array, player_amount
+	);
 
 	// ===================================================================================
-
-
-
 
 	SDL_Texture* texture = LoadTexture("backgound.png", renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
@@ -440,7 +465,6 @@ int main(int argc, char* argv[])
 
 	while (isRunning)
 	{
-		std::cout << "controller-num: " << controller_num << std::endl;
 		prevTime = currentTime;
 		currentTime = SDL_GetTicks();
 		delta = (currentTime - prevTime) / 1000.0f;
@@ -462,27 +486,27 @@ int main(int argc, char* argv[])
 					texture = LoadTexture("wall.png", renderTarget);
 					break;
 				case SDLK_u:
-					player_array[0].use_item();
-					player_array[1].use_item();
-					player_array[2].use_item();
+					player_array[0].use_prop();
+					player_array[1].use_prop();
+					player_array[2].use_prop();
 					player_array[0].set_enter(false);
 					break;
 
-				case SDLK_r:
-					player_array[0].teleport_to_entrence();
-					player_array[1].teleport_to_entrence();
-					player_array[2].teleport_to_entrence();
-					player_array[0].set_enter(false);
-					player_array[1].set_enter(false);
-					player_array[2].set_enter(false);
+				case SDLK_r: // /tps teleport - stuck ,tps to entrence door
+					//player_array[0].teleport_to_entrence();
+					//player_array[1].teleport_to_entrence();
+					//player_array[2].teleport_to_entrence();
+					//player_array[0].set_enter(false);
+					//player_array[1].set_enter(false);
+					//player_array[2].set_enter(false);
 					break;
 				case SDLK_o:
-					entity_array[0].teleport_to_entrence();
+					//entity_array[0].teleport_to_entrence();
 					break;
 
 				case SDLK_p:
-					player_array[1].place_item();
-					player_array[2].place_item();
+					player_array[1].place_prop();
+					player_array[2].place_prop();
 					player_array[0].set_enter(false);
 					break;
 
@@ -495,7 +519,7 @@ int main(int argc, char* argv[])
 					player_array[0].set_enter(true);
 					break;
 				case SDLK_t:
-					chest.get_item();
+					chest.get_prop();
 					break;
 				case SDLK_z:
 					std::cout << "tp prev room" << std::endl;
@@ -513,8 +537,16 @@ int main(int argc, char* argv[])
 				case SDLK_q:
 					isRunning = false;		//add a quit button to menue/ save
 					break;
+				case SDLK_c:
+					scene.toggleVisibilityChat(); // Toggle scene visibility
+					break;
 				}
 			}
+			// Pass events to the TextField object
+			//textField.handleEvent(&ev);
+			scene.handleEvent(ev); // Pass events to scene
+
+
 			button.handleEvent(ev);
 		}
 
@@ -525,23 +557,13 @@ int main(int argc, char* argv[])
 
 		stage.update(delta);
 
-		player_array[0].Update(delta, keyState, mode, player_array[2]);
-		for (int i = 1; i < player_amount; i++)
-		{
-			player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
-		}
+		player_array[0].update(delta, keyState);
 
-		//entity_array[0].update(delta);
-		entity_array[0].update_entity(delta, player_array[0]);
+		for (int i = 1; i < player_amount; i++) player_array[i].update(delta, mode, player_array[i - 1]);
+		for (int i = 0; i < entity_amount; i++) entity_array[i].update(delta, player_array[0]);
 
 
-
-		//button.update("Music:");
-		//pause.update("Pause.");
-		//info.update("Hello. \n\n\n\nLet me tell you a story about\n\n \n\n3 rats\n\n\n\n. They lived their lives happily. One day, they found a hole inside the fancy...", delta);
-		//clock.update(delta);
-		//fade.update(std::to_string(clock.get_day()));
-		curtain.update(delta);
+		scene.update(delta);
 
 		chest.update(delta);
 
@@ -556,35 +578,15 @@ int main(int argc, char* argv[])
 
 		stage.draw(renderTarget);
 
-		for (int i = 0; i < tile_amount; i++)
-		{
-			tile_array[i].draw(renderTarget);
-		}
-
-		for (int i = 0; i < item_amount; i++)
-		{
-			item_array[i].draw(renderTarget);
-		}
-
-		for (int i = 0; i < player_amount; i++)
-		{
-			player_array[i].draw(renderTarget);
-		}
-
-		entity_array[0].draw(renderTarget);
+		for (int i = 0; i < tile_amount; i++) tile_array[i].draw(renderTarget);
+		for (int i = 0; i < prop_amount; i++) prop_array[i].draw(renderTarget);
+		for (int i = 0; i < player_amount; i++) player_array[i].draw(renderTarget);
+		for (int i = 0; i < entity_amount; i++) entity_array[i].draw(renderTarget);
 
 		chest.draw(renderTarget);
 
-		//clock.draw(renderTarget);
-		//fade.draw(renderTarget);
-		curtain.draw(renderTarget);
-		//info.draw(renderTarget);
+		scene.draw(renderTarget);
 
-		//pause.draw(renderTarget);
-		//button.draw(renderTarget);
-
-		if (pause.is_on_screen()) button.render();
-		
 		SDL_RenderPresent(renderTarget);
 	}
 
@@ -592,6 +594,8 @@ int main(int argc, char* argv[])
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderTarget);
 	SDL_DestroyTexture(texture);
+	TTF_CloseFont(font); // Free the font
+
 
 	window = nullptr;
 	renderTarget = nullptr;

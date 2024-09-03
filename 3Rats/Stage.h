@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Map.h"
-//#include "Acteur.h"
+#include "Acteur.h"
 
 
 class Stage
@@ -13,8 +13,11 @@ private:
 	Map* map_array;
 	int map_array_size;
 
-	//Acteur* player_array;
-	//int player_array_size;
+	Acteur* player_array;
+	int player_array_size;
+
+	Acteur* entity_array;
+	int entity_array_size;
 
 	int current_map_id;
 
@@ -48,6 +51,10 @@ public:
 	Map* get_map_array();
 	int get_map_size();
 
+	void set_player_array(Acteur* a, int size);
+	void set_entity_array(Acteur* a, int size);
+
+
 	int get_current_map_id();
 	void set_current_map_id(int number);
 
@@ -73,5 +80,11 @@ public:
 	int counter_maps;
 
 	void set_random_pointer(Random& random);
+
+	void check_door();
+	void check_acteur_script();
+
+	void teleport_to_entrence(Acteur* a);
+
 
 };

@@ -7,10 +7,10 @@
 
 class Curtain
 {
-private:
+protected:
 	Fade* fade;
 	Clock* clock;
-	Sound* sound;
+	//Sound* sound;
 	Pause* pause;
 	Button* button_music;
 public:
@@ -18,11 +18,7 @@ public:
 	Curtain();
 	~Curtain();
 
-	void update(double delta);
 	void draw(SDL_Renderer* render_target);
 
-	void init(Fade* fade, Sound* sound, Clock* clock, Button* button, Pause* pause);
-
-	void pause_music();
-	void play_music();
+	void init(Fade* fade, Clock* clock, Button* button, Pause* pause);
 };
