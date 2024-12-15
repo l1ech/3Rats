@@ -1,21 +1,21 @@
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <iostream>
 #include <SDL_image.h>
 #include <vector>
 #include <stdlib.h>     /* srand, rand */
 
-#include "Item.h"
-#include "Body.h"
-#include "Map.h"
-#include "Tile.h"
-#include "Random.h"
-//#include "Topography.h"
-//#include "Text.h"
-#include "Acteur.h"
-#include "Clock.h"
-#include "Fade.h"
-#include "Overlay.h"
-#include "Pause.h"
+#include "game/Item.h"
+#include "game/Body.h"
+#include "game/Map.h"
+#include "game/Tile.h"
+#include "game/Acteur.h"
+
+#include "core/Clock.h"
+#include "core/Random.h"
+
+#include "ui/Fade.h"
+#include "ui/Overlay.h"
+#include "ui/Pause.h"
 
 int world_seed_generation(bool value)
 {

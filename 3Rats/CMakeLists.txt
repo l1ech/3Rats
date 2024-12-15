@@ -5,7 +5,14 @@ project(3Rats)
 set(CMAKE_CXX_STANDARD 11)
 
 # Add all .cpp files in the src directory
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB SOURCES
+    "src/*.cpp"               # All cpp files in the src folder
+    "src/input/*.cpp" # Explicitly add the Controller.cpp
+    "src/game/*.cpp"
+    "src/audio/*.cpp"
+    "src/core/*.cpp"
+    "src/ui/*.cpp"
+)
 
 # Add all .h files in the src directory
 file(GLOB HEADERS "src/*.h")
@@ -21,3 +28,9 @@ add_executable(3Rats ${SOURCES} ${HEADERS})
 
 # Link SDL2, SDL2_mixer, SDL2_ttf, and SDL2_image libraries
 target_link_libraries(3Rats PRIVATE SDL2::SDL2 SDL2_mixer::SDL2_mixer SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image)
+
+
+# Optionally specify output directories for binary files
+set_target_properties(3Rats PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)
