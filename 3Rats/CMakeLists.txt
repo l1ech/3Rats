@@ -7,8 +7,8 @@ set(CMAKE_BUILD_TYPE Debug)
 
 # Add all .cpp files in the src directory
 file(GLOB SOURCES
-    "src/*.cpp"               # All cpp files in the src folder
-    "src/input/*.cpp" # Explicitly add the Controller.cpp
+    "src/*.cpp"       
+    "src/input/*.cpp" 
     "src/game/*.cpp"
     "src/audio/*.cpp"
     "src/core/*.cpp"

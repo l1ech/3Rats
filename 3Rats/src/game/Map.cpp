@@ -99,10 +99,16 @@ void Map::set_textures()
 
    Collage collage;
 
+    int to_count = height * width - 1;
+    int count = 0;
+
     for (int h = 0; h < height; h++)
     {
         for (int w = 0; w < width; w++)
         {
+            std::cout << "Tiles loaded (" << count << "/" <<  to_count << ")" << std::endl;
+            count++;
+
             Tile& inspected_tile = tile_array[get_tile(w, h)];
             Item& inspected_item = item_array[get_tile(w, h)];
 
