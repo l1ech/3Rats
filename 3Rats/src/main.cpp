@@ -18,6 +18,8 @@
 #include "ui/Pause.h"
 #include "core/Collage.h"
 
+#include "game/Map_Factory.h"
+
 int world_seed_generation(bool value)
 {
 	if (value)
@@ -164,33 +166,46 @@ void init_grid_coords(T* array, int size, int height, int width)
 		}
 	}
 }
-
-void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, Map* map_array, int map_amount, Random& random)
+void init_map_array(SDL_Renderer* renderTarget, Tile* tile_array, int tile_amount, Item* item_array, int item_amount, std::unique_ptr<Map>* map_array, int map_amount, Random& random)
 {
-	Map map_templet;
+    for (int i = 0; i < map_amount; i++)
+    {
+        Map_Factory::Map_Type map_type;
 
-	map_templet.set_tile_array(tile_array, tile_amount);
-	init_grid_coords(tile_array, tile_amount, map_templet.get_hight(), map_templet.get_width());
-	map_templet.set_item_array(item_array, item_amount);
-	init_grid_coords(item_array, item_amount, map_templet.get_hight(), map_templet.get_width());
-	map_templet.set_random_pointer(random);
+        if (i == 0)
+        {
+            map_type = Map_Factory::Map_Type::Maze; // Default to Maze for the first map
+        }
+        else
+        {
+            map_type = random.flip_coin() ? Map_Factory::Map_Type::Cage : Map_Factory::Map_Type::Garden;
+        }
 
-	for (int i = 0; i < map_amount; i++)
-	{
-		map_array[i] = map_templet;
-		map_array[i].set_map_id(i);
-	}
+        // Create a new map using the factory
+        map_array[i] = Map_Factory::createMap(map_type);
+
+        // Initialize the map
+        map_array[i]->set_tile_array(tile_array, tile_amount);
+        map_array[i]->set_item_array(item_array, item_amount);
+        map_array[i]->set_random_pointer(random);
+        map_array[i]->set_map_id(i);
+
+        if (i == 0)
+        {
+            map_array[i]->set_textures(); // Set textures for the first map
+        }
+    }
 }
 
-void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, Topography* topography, Random& random )
+void init_topography(SDL_Renderer* renderTarget, std::unique_ptr<Map>* map_ptr, int map_amount, Topography* topography, Random& random )
 {
 	topography->set_renderer(renderTarget);
 
-	Item* item_ptr = map_ptr[0].get_item_array();
-	int item_amount = map_ptr[0].get_item_size();
+	Item* item_ptr = map_ptr[0]->get_item_array();
+	int item_amount = map_ptr[0]->get_item_size();
 
-	Tile* tile_ptr = map_ptr[0].get_tile_array();
-	int tile_amount = map_ptr[0].get_tile_size();
+	Tile* tile_ptr = map_ptr[0]->get_tile_array();
+	int tile_amount = map_ptr[0]->get_tile_size();
 
 	topography->set_map_array(map_ptr, map_amount);
 	topography->set_item_array(item_ptr, item_amount);
@@ -200,8 +215,6 @@ void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, T
 	topography->set_up();
 	topography->make_maze();
 
-	map_ptr[0].set_type(2);
-
 	for (int i = 1; i < map_amount; i++)
 	{
 		if (topography->counter_maps == i)
@@ -209,10 +222,9 @@ void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, T
 			std::cout << "END GENERATED!" << std::endl;
 			break;
 		}
-		map_ptr[i].set_layout(topography->get_layout(i));
-		map_ptr[i].set_type(random.flip_coin());
+		map_ptr[i]->set_layout(topography->get_layout(i));
 	}
-	map_ptr[0].set_textures();
+	map_ptr[0]->set_textures();
 }
 
 void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int player_amount, Topography& topography, Random& random)
@@ -408,7 +420,7 @@ int main(int argc, char* argv[])
 	Tile tile_array[tile_amount];
 	init_tile_array(renderTarget, tile_array, tile_amount);
 
-	Map map_array[map_amount];
+	std::unique_ptr<Map> map_array[map_amount];  
 	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, random);
 
 	Topography topography;

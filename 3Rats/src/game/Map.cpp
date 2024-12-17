@@ -1,4 +1,6 @@
 #include "Map.h"
+#include "Map_Factory.h"  // Include the Map_Factory header
+
 
 Map::Map()
 {
@@ -14,10 +16,6 @@ Map::Map()
     //if (test_image()) std::cout<<"IMAGE ERROR"<<std::endl;
     //else std::cout<<"no image error"<<std::endl;
 
-}
-
-Map::~Map()
-{
 }
 
 void Map::Update(float delta)
@@ -46,243 +44,38 @@ int Map::test_image()
     return 0;
 }
 
-void Map::set_type(int type)
-{
-    const int MAZE_TYPE = 0;
-    const int GARDEN_TYPE = 1;
-    const int CAGE_TYPE = 2;
+void Map::set_type(int type) {
+    const bool item_generation = true;
+    const bool entity_generation = (type == 1);  // Example: GardenMap has entity generation
 
-    bool item_generatio = true;
+    // Your code using Map_Factory
+    std::unique_ptr<Map> new_map = Map_Factory::createMap(static_cast<Map_Factory::Map_Type>(type));
 
-    switch (type)
-    {
 
-    case MAZE_TYPE:
+    if (new_map) {
         std::cout << "===========================================" << std::endl;
-        std::cout << "generating maze..." << std::endl;
-        std::cout << "items generation: " << item_generatio << std::endl;
-        generate_maze(true, false);
-        break;
 
-    case GARDEN_TYPE:
-        std::cout << "===========================================" << std::endl;
-        std::cout << "generating garden..." << std::endl;
-        std::cout << "items generation: " << item_generatio << std::endl;
-        generate_garden(true, true);
-        break;
-    case CAGE_TYPE:
-        std::cout << "===========================================" << std::endl;
-        std::cout << "generating cage..." << std::endl;
-        std::cout << "items generation: " << item_generatio << std::endl;
-        generate_cage(false, false);
-        break;
-
-    default:
-        break;
-    }
-}
-/*
-
-void Map::set_textures()
-{
-   Collage collage;
-
-    int to_count = height * width - 1;
-    int count = 0;
-
-    for (int h = 0; h < height; h++)
-    {
-        for (int w = 0; w < width; w++)
-        {
-            std::cout << "Tiles loaded (" << count << "/" <<  to_count << ")" << std::endl;
-            count++;
-
-            Tile& inspected_tile = tile_array[get_tile(w, h)];
-            Item& inspected_item = item_array[get_tile(w, h)];
-
-            switch (data[h][w].first)
-            {
-                //maybe i should define some kind of object that
-                // so that you could use this as a copy for the others 
-                // less code more readable
-
-                // make that next!
-
-            case 0: //end_door
-                inspected_tile.set_texture(collage.get_path(10));
-                inspected_tile.is_exit = true;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(0);
-                std::cout<<1<<std::endl;
-                break;
-
-            case 1: //wall
-
-                inspected_tile.set_texture(collage.get_path(11));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(1);
-
-                //inspected_tile = wall;
-                std::cout<<1<<std::endl;
-
-                break;
-
-            case 2: //start_door
-                inspected_tile.set_texture(collage.get_path(10));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = true;
-                inspected_tile.set_hight(0);
-                std::cout<<1<<std::endl;
-                break;
-
-            case 3: //right (horizontal)
-            case 4: //left (horizontal)
-                inspected_tile.set_texture(collage.get_path(12));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(0);
-                std::cout<<1<<std::endl;
-                break;
-
-            case 5: //up (vertical)
-            case 6: //down (vertical)
-                //inspected_tile.set_texture("maze_textures/ground.png");
-                inspected_tile.set_texture(collage.get_path(13));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(0);
-                break;
-
-            case 7: //left-up
-                //inspected_tile.set_texture("maze_textures/walk_way_shadow_left_up.png");
-                inspected_tile.set_texture(collage.get_path(14));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(0);
-
-                break;
-
-            case 8: //right-up 
-                //inspected_tile.set_texture("maze_textures/walk_way_shadow_right_down.png");
-                inspected_tile.set_texture(collage.get_path(14));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(0);
-
-                break;
-
-            case 9: //left-down
-                //inspected_tile.set_texture("maze_textures/walk_way_shadow_left_down.png");
-                inspected_tile.set_texture(collage.get_path(14));
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_hight(0);
-
-                break;
-
-            case 10: //right-down
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_texture(collage.get_path(14));
-                //inspected_tile.set_texture("maze_textures/walk_way_shadow_right_down.png");
-
-                break;
-
-            case 11: //hard-wall 
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_texture(collage.get_path(14));
-                //inspected_tile.set_texture("maze_textures/maze_wall.png");
-
-                break;
-
-            case 12:
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.set_texture(collage.get_path(14));
-                //inspected_tile.set_texture("place_holder.png");
-
-                break;
-            case 13:
-
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.is_hole = true;
-                inspected_tile.set_texture(collage.get_path(15));
-                break;
-            case 14:
-                //std::cout<<"drawn_woodn_floor"<<std::endl;
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.set_texture(collage.get_path(16));
-                break;
-
-            case 15:
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.set_texture(collage.get_path(17));
-                break;
-
-            case 16:
-
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.set_texture(collage.get_path(17));
-                break;
-
-            default:
-
-                inspected_tile.set_hight(0);
-                inspected_tile.is_exit = false;
-                inspected_tile.is_entrance = false;
-                inspected_tile.is_hole = false;
-                inspected_tile.set_texture(collage.get_path(2));
-                break;
-            }
-
-            int x_cord = w * 64;
-            int y_cord = h * 64;
-
-            if (data[h][w].second == 1)
-            {
-                inspected_item.set_on_map(true);
-                inspected_item.set_cords(x_cord, y_cord);
-                inspected_item.set_texture(collage.get_path(18));
-                item_id++;
-            }
-            else if (data[h][w].second == 0)
-            {
-                inspected_item.set_on_map(false);
-                inspected_item.set_cords(-100, -100);
-                inspected_item.set_texture(collage.get_path(18));
-            }
+        switch (type) {
+        case 0:
+            std::cout << "Generating maze..." << std::endl;
+            break;
+        case 1:
+            std::cout << "Generating garden..." << std::endl;
+            break;
+        case 2:
+            std::cout << "Generating cage..." << std::endl;
+            break;
+        default:
+            std::cout << "Invalid map type!" << std::endl;
+            return;
         }
+
+        std::cout << "Items generation: " << item_generation << std::endl;
+        new_map->generate(item_generation, entity_generation);
+        
+        // `new_map` will automatically be cleaned up when it goes out of scope
     }
 }
-
-*/
 
 void Map::set_textures() {
     Collage collage;
@@ -385,7 +178,6 @@ Door Map::get_door(int index) { return door_array[index]; }
 int Map::get_hight() { return height; }
 
 int Map::get_width() { return width; }
-
 
 void Map::generate_maze(bool item_generation, bool entity_generation)
 {
@@ -751,3 +543,4 @@ void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::ve
 }
 
 int Map::get_tile(int x, int y) { return y * width + x; }
+

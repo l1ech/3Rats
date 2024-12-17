@@ -32,7 +32,7 @@ protected:
 	};
 
 
-	Map* map_array;
+	std::unique_ptr<Map>* map_array;
 	int map_array_size;
 	int* map_number;
 

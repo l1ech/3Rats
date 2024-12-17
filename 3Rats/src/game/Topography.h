@@ -26,7 +26,7 @@ private:
 
 	double time;
 
-	Map* map_array;
+	std::unique_ptr<Map>* map_array;
 	int map_array_size;
 
 	int number_items_on_map;
@@ -38,8 +38,8 @@ private:
 public:
 	Topography();
 
-	void set_map_array(Map* map, int size);
-	Map* get_map_array();
+	void set_map_array(std::unique_ptr<Map>* map, int size);
+	std::unique_ptr<Map>* get_map_array();
 	int get_map_size();
 
 	int get_current_map_id();
@@ -64,7 +64,7 @@ public:
 
 	void set_renderer(SDL_Renderer* renderTarget);
 
-	Map* get_map();
+	std::unique_ptr<Map>* get_map();
 
 	int counter_maps;
 

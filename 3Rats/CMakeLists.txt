@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(3Rats)
 
 # Set C++ standard (optional)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
 # Add all .cpp files in the src directory
@@ -18,18 +19,21 @@ file(GLOB SOURCES
 # Add all .h files in the src directory
 file(GLOB HEADERS "src/*.h")
 
-# Find SDL2, SDL2_mixer, and SDL2_ttf
+# Find SDL2, SDL2_mixer, SDL2_ttf, and SDL2_image
 find_package(SDL2 REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
+
+# If find_package fails, manually specify paths (uncomment and replace with actual paths)
+# find_package(SDL2 REQUIRED PATHS /path/to/SDL2)
+# find_package(SDL2_image REQUIRED PATHS /path/to/SDL2_image)
 
 # Add executable target
 add_executable(3Rats ${SOURCES} ${HEADERS})
 
 # Link SDL2, SDL2_mixer, SDL2_ttf, and SDL2_image libraries
 target_link_libraries(3Rats PRIVATE SDL2::SDL2 SDL2_mixer::SDL2_mixer SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image)
-
 
 # Optionally specify output directories for binary files
 set_target_properties(3Rats PROPERTIES

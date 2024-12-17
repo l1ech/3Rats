@@ -387,6 +387,8 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cmath \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/numeric \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Manager.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Type.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/Controller.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../game/Topography.h \
@@ -403,4 +405,8 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/../core/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.h
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map_Factory.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Maze_Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Garden_Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Cage_Map.h

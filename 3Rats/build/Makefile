@@ -417,6 +417,30 @@ src/game/Map.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Map.cpp.s
 .PHONY : src/game/Map.cpp.s
 
+src/game/Map_Factory.o: src/game/Map_Factory.cpp.o
+.PHONY : src/game/Map_Factory.o
+
+# target to build an object file
+src/game/Map_Factory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o
+.PHONY : src/game/Map_Factory.cpp.o
+
+src/game/Map_Factory.i: src/game/Map_Factory.cpp.i
+.PHONY : src/game/Map_Factory.i
+
+# target to preprocess a source file
+src/game/Map_Factory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.i
+.PHONY : src/game/Map_Factory.cpp.i
+
+src/game/Map_Factory.s: src/game/Map_Factory.cpp.s
+.PHONY : src/game/Map_Factory.s
+
+# target to generate assembly for a file
+src/game/Map_Factory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.s
+.PHONY : src/game/Map_Factory.cpp.s
+
 src/game/Tile.o: src/game/Tile.cpp.o
 .PHONY : src/game/Tile.o
 
@@ -440,6 +464,54 @@ src/game/Tile.s: src/game/Tile.cpp.s
 src/game/Tile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile.cpp.s
 .PHONY : src/game/Tile.cpp.s
+
+src/game/Tile_Manager.o: src/game/Tile_Manager.cpp.o
+.PHONY : src/game/Tile_Manager.o
+
+# target to build an object file
+src/game/Tile_Manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o
+.PHONY : src/game/Tile_Manager.cpp.o
+
+src/game/Tile_Manager.i: src/game/Tile_Manager.cpp.i
+.PHONY : src/game/Tile_Manager.i
+
+# target to preprocess a source file
+src/game/Tile_Manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.i
+.PHONY : src/game/Tile_Manager.cpp.i
+
+src/game/Tile_Manager.s: src/game/Tile_Manager.cpp.s
+.PHONY : src/game/Tile_Manager.s
+
+# target to generate assembly for a file
+src/game/Tile_Manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.s
+.PHONY : src/game/Tile_Manager.cpp.s
+
+src/game/Tile_Type.o: src/game/Tile_Type.cpp.o
+.PHONY : src/game/Tile_Type.o
+
+# target to build an object file
+src/game/Tile_Type.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o
+.PHONY : src/game/Tile_Type.cpp.o
+
+src/game/Tile_Type.i: src/game/Tile_Type.cpp.i
+.PHONY : src/game/Tile_Type.i
+
+# target to preprocess a source file
+src/game/Tile_Type.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.i
+.PHONY : src/game/Tile_Type.cpp.i
+
+src/game/Tile_Type.s: src/game/Tile_Type.cpp.s
+.PHONY : src/game/Tile_Type.s
+
+# target to generate assembly for a file
+src/game/Tile_Type.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.s
+.PHONY : src/game/Tile_Type.cpp.s
 
 src/game/Topography.o: src/game/Topography.cpp.o
 .PHONY : src/game/Topography.o
@@ -702,9 +774,18 @@ help:
 	@echo "... src/game/Map.o"
 	@echo "... src/game/Map.i"
 	@echo "... src/game/Map.s"
+	@echo "... src/game/Map_Factory.o"
+	@echo "... src/game/Map_Factory.i"
+	@echo "... src/game/Map_Factory.s"
 	@echo "... src/game/Tile.o"
 	@echo "... src/game/Tile.i"
 	@echo "... src/game/Tile.s"
+	@echo "... src/game/Tile_Manager.o"
+	@echo "... src/game/Tile_Manager.i"
+	@echo "... src/game/Tile_Manager.s"
+	@echo "... src/game/Tile_Type.o"
+	@echo "... src/game/Tile_Type.i"
+	@echo "... src/game/Tile_Type.s"
 	@echo "... src/game/Topography.o"
 	@echo "... src/game/Topography.i"
 	@echo "... src/game/Topography.s"

@@ -51,11 +51,6 @@ private:
 
 	std::pair<int, int> data[6][9];
 	
-	//types of generation
-	void generate_maze(bool item_generation, bool entity_generation);
-	void generate_garden(bool item_generations, bool entity_generation);
-	void generate_cage(bool item_generation, bool entity_generation);
-
 	// helper functions for generation
 	void generate_door(int direction, int index, int type, bool active);
 	void generate_doors(int entry_direction, int exit_direction, int type_generation);
@@ -76,9 +71,17 @@ private:
 	int get_tile(int x, int y);
 
 public:
-	Map();
-	~Map();
 
+	//types of generation
+	void generate_maze(bool item_generation, bool entity_generation);
+	void generate_garden(bool item_generations, bool entity_generation);
+	void generate_cage(bool item_generation, bool entity_generation);
+
+	// Virtual function to generate the map
+    virtual void generate(bool item_generation, bool entity_generation) = 0; // Pure virtual function	
+	Map();	
+	virtual ~Map() = default;
+	
 	void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 

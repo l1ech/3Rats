@@ -59,7 +59,7 @@ std::vector<std::vector<bool>> Acteur::get_blocked_array(Tile* tile_array, int l
 }
 
 
-void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length)
+void Acteur::check_door(Topography* topography, std::unique_ptr<Map>* map_array, int map_amount, Tile* tile_array, int length)
 {
 	// make it that all acteurs spawn at the new door
 	// not at 0, 0 
@@ -82,8 +82,8 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 			{
 				current_map_id++;
 				topography->set_current_map_id(current_map_id);
-				map_array[current_map_id].set_textures();
-				Door entry = map_array[current_map_id].get_door(0);
+				map_array[current_map_id]->set_textures();
+				Door entry = map_array[current_map_id]->get_door(0);
 
 				position_rect.x = entry.get_x() * 64 - crop_rect.w;
 				position_rect.y = entry.get_y() * 64 - crop_rect.h;
@@ -97,8 +97,8 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 			{
 				current_map_id--;
 				topography->set_current_map_id(current_map_id);
-				map_array[current_map_id].set_textures();
-				Door exit = map_array[current_map_id].get_door(1);
+				map_array[current_map_id]->set_textures();
+				Door exit = map_array[current_map_id]->get_door(1);
 
 				position_rect.x = exit.get_x() * 64 - crop_rect.w;
 				position_rect.y = exit.get_y() * 64 - crop_rect.h;
@@ -107,8 +107,8 @@ void Acteur::check_door(Topography* topography, Map* map_array, int map_amount, 
 			{
 				current_map_id++;
 				topography->set_current_map_id(current_map_id);
-				map_array[current_map_id].set_textures();
-				Door entry = map_array[current_map_id].get_door(0);
+				map_array[current_map_id]->set_textures();
+				Door entry = map_array[current_map_id]->get_door(0);
 
 				position_rect.x = entry.get_x() * 64 - crop_rect.w;
 				position_rect.y = entry.get_y() * 64 - crop_rect.h;
@@ -262,11 +262,11 @@ void Acteur::hold_item_in_mouth(Item& item)
 
 void Acteur::teleport_to_entrence()
 {
-	Map* map_ptr = topography->get_map_array();
+	std::unique_ptr<Map>* map_ptr = topography->get_map_array();
 
 	set_cords(
-		map_ptr[topography->get_current_map_id()].get_door(0).get_x() * 64 - crop_rect.w,
-		map_ptr[topography->get_current_map_id()].get_door(0).get_y() * 64 - crop_rect.h
+		map_ptr[topography->get_current_map_id()]->get_door(0).get_x() * 64 - crop_rect.w,
+		map_ptr[topography->get_current_map_id()]->get_door(0).get_y() * 64 - crop_rect.h
 	);
 }
 

@@ -43,7 +43,7 @@ protected:
 
 // for update fuction
 	std::vector<std::vector<bool>> get_blocked_array(Tile* tile_array, int length);
-	void check_door(Topography* topography, Map* map_array, int map_amount, Tile* tile_array, int length);
+	void check_door(Topography* topography, std::unique_ptr<Map>* map_array, int map_amount, Tile* tile_array, int length);
 	void make_acteur_move(controller_move move, block_direction direction, float delta);
 	void follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Acteur& front_rat);
 	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item);

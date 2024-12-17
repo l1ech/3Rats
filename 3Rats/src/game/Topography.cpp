@@ -8,13 +8,13 @@ Topography::Topography()
 	current_map_id = 0;
 }
 
-void Topography::set_map_array(Map* map, int map_size)
+void Topography::set_map_array(std::unique_ptr<Map>* map, int map_size)
 {
 	map_array = map;
 	map_array_size = map_size;
 }
 
-Map* Topography::get_map_array()
+std::unique_ptr<Map>* Topography::get_map_array()
 {
 	return map_array;
 }
@@ -25,7 +25,7 @@ void Topography::set_up()
 
 	for (int i = 0; i < map_array_size; i++)
 	{
-		map_array[i].set_ptr(ptr);
+		map_array[i]->set_ptr(ptr);
 	}
 }
 
@@ -76,7 +76,7 @@ void Topography::set_renderer(SDL_Renderer* renderTarget)
 	this->renderTarget = renderTarget;
 }
 
-Map* Topography::get_map()
+std::unique_ptr<Map>* Topography::get_map()
 {
 	return map_array;
 }

@@ -388,6 +388,8 @@ CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cmath \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/numeric \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Manager.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Type.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/Controller.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../game/Topography.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../core/Random.h
