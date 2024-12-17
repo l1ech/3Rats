@@ -14,7 +14,7 @@ Collage::Collage()
     paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/empty.png");
     paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/ui_textures/clock_frame.png");
     paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/maze_door.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_wall.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/maze_wall.png");
     paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/walk_way_shadow_horizontal.png");
     paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/walk_way_shadow_vertical.png");
     paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/ground.png");
