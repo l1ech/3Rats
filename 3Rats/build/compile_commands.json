@@ -1,0 +1,134 @@
+[
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/audio/Sound.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/audio/Sound.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/core/Clock.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Clock.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Clock.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/core/Collage.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/core/Random.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/core/Random.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Body.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Body.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Door.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Door.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Food.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Food.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Food.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Food.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Inventory.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Inventory.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Item.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Item.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Item.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Item.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Map.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Tile.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Tile.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/game/Topography.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/game/Topography.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/input/Controller.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/input/Controller.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/main.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/ui/Button.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Button.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Button.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/ui/Button.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Panel.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Panel.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o"
+},
+{
+  "directory": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build",
+  "command": "/usr/bin/clang++ -isystem /usr/local/Cellar/sdl2/2.30.10/include/SDL2 -isystem /usr/local/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2 -isystem /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.7 -o CMakeFiles/3Rats.dir/src/ui/Text.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.cpp",
+  "file": "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.cpp",
+  "output": "CMakeFiles/3Rats.dir/src/ui/Text.cpp.o"
+}
+]

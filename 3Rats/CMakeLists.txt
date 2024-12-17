@@ -3,6 +3,7 @@ project(3Rats)
 
 # Set C++ standard (optional)
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_BUILD_TYPE Debug)
 
 # Add all .cpp files in the src directory
 file(GLOB SOURCES

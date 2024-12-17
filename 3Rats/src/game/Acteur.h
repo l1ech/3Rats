@@ -9,6 +9,7 @@
 #include "Tile.h"
 #include "Door.h"
 #include "../input/Controller.h"
+#include "../core/Collage.h"
 
 class Acteur : public Body, public Controller
 {

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o.d"
   "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o"
   "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o.d"
+  "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o"
+  "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o.d"
   "CMakeFiles/3Rats.dir/src/core/Random.cpp.o"
   "CMakeFiles/3Rats.dir/src/core/Random.cpp.o.d"
   "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o"

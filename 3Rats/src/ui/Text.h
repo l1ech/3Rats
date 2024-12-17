@@ -3,6 +3,8 @@
 #include <SDL_ttf.h>
 #include <iostream>
 
+#include "../core/Collage.h"
+
 class Text {
 private:
 	SDL_Rect Message_rect;

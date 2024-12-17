@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "../ui/Panel.h"
 
 class Clock : public Panel

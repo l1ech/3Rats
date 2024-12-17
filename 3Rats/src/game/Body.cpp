@@ -10,7 +10,8 @@ void Body::draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, textu
 
 void Body::set_surface(SDL_Renderer* renderTarget)
 {
-	file_path = "../meta_textures/place_holder.png";
+	Collage collage;
+	file_path = collage.get_path(2);
 	ptr_renderer = renderTarget;
 
 	SDL_Surface* surface = IMG_Load(file_path.c_str());

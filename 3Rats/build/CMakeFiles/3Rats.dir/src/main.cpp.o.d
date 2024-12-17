@@ -378,6 +378,7 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stack \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/deque \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/Collage.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.h \
@@ -395,9 +396,11 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2/SDL_ttf.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/../game/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/Text.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/../core/Collage.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/../ui/../core/Clock.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.h

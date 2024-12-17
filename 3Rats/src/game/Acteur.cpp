@@ -272,12 +272,13 @@ void Acteur::teleport_to_entrence()
 
 Acteur::Acteur()
 {
+	Collage collage;
 	dead = false;
 	item_type = 0;
 
 	saturation = 100;
 
-	file_path = "../meta_textures/place_holder.png";
+	file_path = collage.get_path(2);
 	item_search_id = 0;
 	has_goal = false;
 

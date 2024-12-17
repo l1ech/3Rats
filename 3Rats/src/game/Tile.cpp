@@ -1,14 +1,17 @@
 #include "Body.h"
 #include <memory>
 #include "Tile.h"
+#include "../core/Collage.h"
 
 Tile::Tile()
 {
+	Collage collage;
+
 	is_entrance = false;
 	is_exit = false;
 	is_hole = false;
 
-	file_path = "../meta_textures/place_holder.png";
+	file_path = collage.get_path(2);
 }
 
 Tile::Tile(const Tile& other)

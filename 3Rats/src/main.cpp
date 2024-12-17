@@ -16,6 +16,7 @@
 #include "ui/Fade.h"
 #include "ui/Overlay.h"
 #include "ui/Pause.h"
+#include "core/Collage.h"
 
 int world_seed_generation(bool value)
 {
@@ -71,32 +72,38 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 
 void init_fade(SDL_Renderer* render_target, Fade* fade)
 {
+	Collage collage;
+
 	fade->Text::set_renderer(render_target);
-	fade->init_text("../fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	fade->init_text(collage.get_path(0), 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
 	fade->Body::set_surface(render_target);
-	fade->set_texture("../ui_textures/fade.png");
+	fade->set_texture(collage.get_path(1));
 	fade->set_cords(999, 999);
 	//clock->set_fade(&fade);
 }
 
 void init_pause(SDL_Renderer* render_target, Pause* pause)
 {
+	Collage collage;
+
 	pause->Text::set_renderer(render_target);
-	pause->init_text("../fonts/sans.ttf", 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	pause->init_text(collage.get_path(0), 24, { 255, 0, 0 }, 999, 999, 200, 90);
 
 	pause->Body::set_surface(render_target);
-	pause->set_texture("../ui_textures/fade.png");
+	pause->set_texture(collage.get_path(1));
 	pause->set_cords(999, 999);
 }
 
 void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
 {
+	Collage collage;
+
 	clock->Text::set_renderer(render_target);
-	clock->init_text("../fonts/sans.ttf", 24, { 255, 0, 0 }, 400, 330, 200, 90);
+	clock->init_text(collage.get_path(0), 24, { 255, 0, 0 }, 400, 330, 200, 90);
 
 	clock->Body::set_surface(render_target);
-	clock->set_texture("../ui_textures/clock_frame.png");
+	clock->set_texture(collage.get_path(9));
 	clock->set_cords(400, 320);
 	//clock->set_fade(&fade);
 	//clock->set_overlay(overlay);
@@ -110,9 +117,11 @@ void init_overlay(SDL_Renderer* render_target, Fade* fade, Clock* clock, Overlay
 
 void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_amount)
 {
+	Collage collage;
+
 	Item item_templet;
 	item_templet.set_surface(render_target);
-	item_templet.set_texture("../meta_textures/place_holder.png");
+	item_templet.set_texture(collage.get_path(2));
 	item_templet.set_cords(-100, -100);
 
 	for (int i = 0; i < item_amount; i++)
@@ -123,9 +132,11 @@ void init_item_array(SDL_Renderer* render_target, Item item_array[], int item_am
 
 void init_tile_array(SDL_Renderer* render_target, Tile tile_array[], int tile_amount)
 {
+	Collage collage;
+
 	Tile tile_templet;
 	tile_templet.set_surface(render_target);
-	tile_templet.set_texture("../meta_textures/place_holder.png");
+	tile_templet.set_texture(collage.get_path(2));
 	tile_templet.set_cords(-100, -100);
 
 	for (int i = 0; i < tile_amount; i++)
@@ -206,6 +217,8 @@ void init_topography(SDL_Renderer* renderTarget, Map* map_ptr, int map_amount, T
 
 void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int player_amount, Topography& topography, Random& random)
 {
+	Collage collage;
+
 	for (int i = 0; i < player_amount; i++)
 	{
 		Acteur player;
@@ -216,20 +229,22 @@ void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int pl
 	}
 
 	player_array[0].set_surface(render_target);
-	player_array[0].set_texture("../rat_textures/mango.png");
+	player_array[0].set_texture(collage.get_path(3));
 	player_array[0].set_cords_frames(32, 32, 3, 4);
 
 	player_array[1].set_surface(render_target);
-	player_array[1].set_texture("../rat_textures/fridolin.png");
+	player_array[1].set_texture(collage.get_path(4));
 	player_array[1].set_cords_frames(32, 32, 3, 4);
 
 	player_array[2].set_surface(render_target);
-	player_array[2].set_texture("../rat_textures/remy.png");
+	player_array[2].set_texture(collage.get_path(5));
 	player_array[2].set_cords_frames(400, 300, 3, 4);
 }
 
 void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount, Topography& topography, Random& random)
 {
+	Collage collage;
+
 	for (int i = 0; i < entity_amount; i++)
 	{
 		Acteur entity;
@@ -240,7 +255,7 @@ void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount
 	}
 
 	entitys[0].set_surface(render_target);
-	entitys[0].set_texture("../npc_textures/entity.png");
+	entitys[0].set_texture(collage.get_path(6));
 	entitys[0].set_cords_frames(4000, 4000, 1, 1);
 }
 
@@ -372,6 +387,11 @@ int main(int argc, char* argv[])
 	Fade fade;
 	init_fade(renderTarget, &fade);
 
+	if (renderTarget == nullptr) 
+		std::cout<<"error"<<std::endl;
+	else 
+		std::cout<< "asda"<<std::endl;
+
 	Pause pause;
 	init_pause(renderTarget, &pause);
 
@@ -402,8 +422,9 @@ int main(int argc, char* argv[])
 
 	// ===================================================================================
 
+	Collage collage;
 
-	SDL_Texture* texture = LoadTexture("../backgound.png", renderTarget);
+	SDL_Texture* texture = LoadTexture(collage.get_path(7), renderTarget);
 	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 	
 	bool isRunning = true;
@@ -429,7 +450,7 @@ int main(int argc, char* argv[])
 					break;
 
 				case SDLK_1:
-					texture = LoadTexture("../empty.png", renderTarget);
+					texture = LoadTexture(collage.get_path(8), renderTarget);
 					break;
 				case SDLK_u:
 					player_array[0].use_item();

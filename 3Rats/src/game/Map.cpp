@@ -95,8 +95,9 @@ void Map::set_textures()
     Tile wall;
     wall.set_surface(render_target, "meta_textures/place_holder.png");
     wall.set_cords(-100, -100);
-
     */
+
+   Collage collage;
 
     for (int h = 0; h < height; h++)
     {
@@ -114,7 +115,7 @@ void Map::set_textures()
                 // make that next!
 
             case 0: //end_door
-                inspected_tile.set_texture("../maze_textures/maze_door.png");
+                inspected_tile.set_texture(collage.get_path(10));
                 inspected_tile.is_exit = true;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -124,7 +125,7 @@ void Map::set_textures()
 
             case 1: //wall
 
-                inspected_tile.set_texture("../maze_textures/maze_wall.png");
+                inspected_tile.set_texture(collage.get_path(11));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -136,7 +137,7 @@ void Map::set_textures()
                 break;
 
             case 2: //start_door
-                inspected_tile.set_texture("../maze_textures/maze_door.png");
+                inspected_tile.set_texture(collage.get_path(10));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = true;
@@ -146,7 +147,7 @@ void Map::set_textures()
 
             case 3: //right (horizontal)
             case 4: //left (horizontal)
-                inspected_tile.set_texture("../maze_textures/walk_way_shadow_horizontal.png");
+                inspected_tile.set_texture(collage.get_path(12));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -157,7 +158,7 @@ void Map::set_textures()
             case 5: //up (vertical)
             case 6: //down (vertical)
                 //inspected_tile.set_texture("maze_textures/ground.png");
-                inspected_tile.set_texture("../maze_textures/walk_way_shadow_vertical.png");
+                inspected_tile.set_texture(collage.get_path(13));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -166,7 +167,7 @@ void Map::set_textures()
 
             case 7: //left-up
                 //inspected_tile.set_texture("maze_textures/walk_way_shadow_left_up.png");
-                inspected_tile.set_texture("../maze_textures/ground.png");
+                inspected_tile.set_texture(collage.get_path(14));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -176,7 +177,7 @@ void Map::set_textures()
 
             case 8: //right-up 
                 //inspected_tile.set_texture("maze_textures/walk_way_shadow_right_down.png");
-                inspected_tile.set_texture("../maze_textures/ground.png");
+                inspected_tile.set_texture(collage.get_path(14));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -186,7 +187,7 @@ void Map::set_textures()
 
             case 9: //left-down
                 //inspected_tile.set_texture("maze_textures/walk_way_shadow_left_down.png");
-                inspected_tile.set_texture("../maze_textures/ground.png");
+                inspected_tile.set_texture(collage.get_path(14));
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
@@ -199,7 +200,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
-                inspected_tile.set_texture("../maze_textures/ground.png");
+                inspected_tile.set_texture(collage.get_path(14));
                 //inspected_tile.set_texture("maze_textures/walk_way_shadow_right_down.png");
 
                 break;
@@ -209,7 +210,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
-                inspected_tile.set_texture("../maze_textures/ground.png");
+                inspected_tile.set_texture(collage.get_path(14));
                 //inspected_tile.set_texture("maze_textures/maze_wall.png");
 
                 break;
@@ -219,7 +220,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_hole = false;
                 inspected_tile.is_entrance = false;
-                inspected_tile.set_texture("../maze_textures/ground.png");
+                inspected_tile.set_texture(collage.get_path(14));
                 //inspected_tile.set_texture("place_holder.png");
 
                 break;
@@ -229,7 +230,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = true;
-                inspected_tile.set_texture("../maze_textures/maze_hole.png");
+                inspected_tile.set_texture(collage.get_path(15));
                 break;
             case 14:
                 //std::cout<<"drawn_woodn_floor"<<std::endl;
@@ -237,7 +238,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("/Users/lukas/Documents/vscode_repo/projects/3Rats/3Rats/maze_textures/wooden_floor.png");
+                inspected_tile.set_texture(collage.get_path(16));
                 break;
 
             case 15:
@@ -245,7 +246,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("../textures/interactable/test.png");
+                inspected_tile.set_texture(collage.get_path(17));
                 break;
 
             case 16:
@@ -254,7 +255,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("../textures/interactable/test.png");
+                inspected_tile.set_texture(collage.get_path(17));
                 break;
 
             default:
@@ -263,7 +264,7 @@ void Map::set_textures()
                 inspected_tile.is_exit = false;
                 inspected_tile.is_entrance = false;
                 inspected_tile.is_hole = false;
-                inspected_tile.set_texture("../maze_textures/place_holder.png");
+                inspected_tile.set_texture(collage.get_path(2));
                 break;
             }
 
@@ -274,14 +275,14 @@ void Map::set_textures()
             {
                 inspected_item.set_on_map(true);
                 inspected_item.set_cords(x_cord, y_cord);
-                inspected_item.set_texture("../item_textures/mushroom.png");
+                inspected_item.set_texture(collage.get_path(18));
                 item_id++;
             }
             else if (data[h][w].second == 0)
             {
                 inspected_item.set_on_map(false);
                 inspected_item.set_cords(-100, -100);
-                inspected_item.set_texture("../item_textures/place_holder.png");
+                inspected_item.set_texture(collage.get_path(18));
             }
         }
     }

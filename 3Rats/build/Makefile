@@ -177,6 +177,30 @@ src/core/Clock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/core/Clock.cpp.s
 .PHONY : src/core/Clock.cpp.s
 
+src/core/Collage.o: src/core/Collage.cpp.o
+.PHONY : src/core/Collage.o
+
+# target to build an object file
+src/core/Collage.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/core/Collage.cpp.o
+.PHONY : src/core/Collage.cpp.o
+
+src/core/Collage.i: src/core/Collage.cpp.i
+.PHONY : src/core/Collage.i
+
+# target to preprocess a source file
+src/core/Collage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/core/Collage.cpp.i
+.PHONY : src/core/Collage.cpp.i
+
+src/core/Collage.s: src/core/Collage.cpp.s
+.PHONY : src/core/Collage.s
+
+# target to generate assembly for a file
+src/core/Collage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/core/Collage.cpp.s
+.PHONY : src/core/Collage.cpp.s
+
 src/core/Random.o: src/core/Random.cpp.o
 .PHONY : src/core/Random.o
 
@@ -648,6 +672,9 @@ help:
 	@echo "... src/core/Clock.o"
 	@echo "... src/core/Clock.i"
 	@echo "... src/core/Clock.s"
+	@echo "... src/core/Collage.o"
+	@echo "... src/core/Collage.i"
+	@echo "... src/core/Collage.s"
 	@echo "... src/core/Random.o"
 	@echo "... src/core/Random.i"
 	@echo "... src/core/Random.s"

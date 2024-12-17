@@ -8,6 +8,8 @@
 #include <memory>
 #include <filesystem>
 
+#include "../core/Collage.h"
+
 class Body
 {
 protected:

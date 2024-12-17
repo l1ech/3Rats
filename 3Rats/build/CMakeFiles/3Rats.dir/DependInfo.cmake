@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/audio/Sound.cpp" "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Clock.cpp" "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o.d"
+  "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.cpp" "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.cpp" "CMakeFiles/3Rats.dir/src/core/Random.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/core/Random.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.cpp" "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.cpp" "CMakeFiles/3Rats.dir/src/game/Body.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/Body.cpp.o.d"

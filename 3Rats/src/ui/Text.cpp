@@ -45,11 +45,12 @@ void Text::set_renderer(SDL_Renderer* renderTarget)
 
 void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int x, int y, int w, int h)
 {
+	Collage collage;
 	this->font_path = font_path;
 	this->font_size = font_size;
 	this->colour = colour;
 
-	font = TTF_OpenFont("../fonts/sans.ttf", 24);
+	font = TTF_OpenFont(collage.get_path(0).c_str(), 24);
 	if (font == NULL)
 	{
 		std::cout << "Error Font" << std::endl;
