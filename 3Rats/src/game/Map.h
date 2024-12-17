@@ -11,6 +11,8 @@
 #include "Level_Structure.h"
 #include "Door.h"
 
+#include "Tile_Manager.h"
+
 #include "../core/Collage.h"
 
 class Map : public Level_Structure

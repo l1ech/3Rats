@@ -81,22 +81,10 @@ void Map::set_type(int type)
         break;
     }
 }
+/*
 
 void Map::set_textures()
 {
-    /*Tile end_door(true, false, false, "maze_textures/maze_door.png", 0);
-    Tile start_door(false, true, false, "maze_textures/maze_door.png", 0);
-    Tile horizontal(false, false, false, "maze_textures/walk_way_shadow_horizontal.png", 0);
-    Tile vertical(false, false, false, "maze_textures/walk_way_shadow_vertical.png", 0);
-    Tile ground(false, false, false, "maze_textures/ground.png", 0);
-    Tile maze_hole(false, false, true, "maze_textures/maze_hole.png", 0);
-    */
-    /*
-    Tile wall;
-    wall.set_surface(render_target, "meta_textures/place_holder.png");
-    wall.set_cords(-100, -100);
-    */
-
    Collage collage;
 
     int to_count = height * width - 1;
@@ -293,6 +281,43 @@ void Map::set_textures()
         }
     }
 }
+
+*/
+
+void Map::set_textures() {
+    Collage collage;
+    TileManager tile_manager;  // Create a TileManager instance to handle tiles
+    int to_count = height * width - 1;
+    int count = 0;
+
+    for (int h = 0; h < height; h++) {
+        for (int w = 0; w < width; w++) {
+            std::cout << "Tiles loaded (" << count << "/" << to_count << ")" << std::endl;
+            count++;
+
+            Tile& inspected_tile = tile_array[get_tile(w, h)];
+            Item& inspected_item = item_array[get_tile(w, h)];
+
+            // Set tile texture based on the tile data (tile_code is now directly passed)
+            tile_manager.set_tile_texture(data[h][w].first, inspected_tile);
+
+            int x_cord = w * 64;
+            int y_cord = h * 64;
+
+            if (data[h][w].second == 1) {
+                inspected_item.set_on_map(true);
+                inspected_item.set_cords(x_cord, y_cord);
+                inspected_item.set_texture(collage.get_path(18));
+                item_id++;
+            } else if (data[h][w].second == 0) {
+                inspected_item.set_on_map(false);
+                inspected_item.set_cords(-100, -100);
+                inspected_item.set_texture(collage.get_path(18));
+            }
+        }
+    }
+}
+
 
 void Map::set_ptr(int* ptr)
 {
