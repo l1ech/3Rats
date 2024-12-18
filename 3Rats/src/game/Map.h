@@ -81,11 +81,6 @@ public:
     virtual void generate(bool item_generation, bool entity_generation) = 0; // Pure virtual function	
 	Map();	
 	virtual ~Map() = default;
-	
-	void Update(float delta);
-	void Draw(SDL_Renderer* renderTarget);
-
-	int test_image();
 
 	void set_type(int type);
 	void set_textures();

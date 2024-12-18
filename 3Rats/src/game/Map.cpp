@@ -7,38 +7,11 @@ Map::Map()
     rec_iter = 0;
     width = 9;
     height = 6;
-
     item_id = 0;
-
     map_generation_try = 0;
-
 }
 
-void Map::Update(float delta)
-{
-    
-}
 
-void Map::Draw(SDL_Renderer* renderTarget)
-{
-}
-
-int Map::test_image()
-{
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cout << "SDL initialization failed: " << SDL_GetError() << std::endl;
-        return 1;
-    }
-
-    // Initialize SDL_image
-    int imgFlags = IMG_INIT_PNG; // or IMG_INIT_JPG, depending on the image format you want to support
-    if (!(IMG_Init(imgFlags) & imgFlags)) {
-        std::cout << "SDL_image initialization failed: " << IMG_GetError() << std::endl;
-        SDL_Quit();
-        return 1;
-    }
-    return 0;
-}
 
 void Map::set_type(int type) {
     const bool item_generation = true;
