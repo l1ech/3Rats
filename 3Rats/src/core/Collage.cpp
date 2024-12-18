@@ -54,9 +54,12 @@ Collage::~Collage()
 std::string Collage::get_path(int i)
 {
     if (i >= 0 && i < paths.size()) {
+        // Debug: Confirm the path retrieval was successful
+        std::cout << "Debug: Successfully fetched path at index " << i << ": " << paths.at(i) << std::endl;
         return paths.at(i);
     } else {
+        // Debug: Report if the index is invalid
+        std::cout << "Debug: Index " << i << " is out of range, returning empty string." << std::endl;
         return "";
     }
-
 }

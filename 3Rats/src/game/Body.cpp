@@ -1,6 +1,9 @@
 #include "Body.h"
 
-Body::Body() { }
+Body::Body() { 
+	index = current_index++; 
+	std::cout<< "CONSTRUCTOR BODY: " << index <<std::endl;
+}
 
 Body::~Body() { SDL_DestroyTexture(texture); }
 
@@ -16,12 +19,12 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 
 	SDL_Surface* surface = IMG_Load(file_path.c_str());
 	if (surface == NULL)
-		std::cout << "Error Body Surface" << std::endl;
+		std::cout << "Error Body <" << index << "> Surface" << std::endl;
 	else
 	{
 		texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
 		if (texture == NULL)
-			std::cout << "Error Body Texture" << std::endl;
+			std::cout << "Error Body <" << index << "> Texture" << std::endl;
 	}
 
 	SDL_FreeSurface(surface);
@@ -31,13 +34,13 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 
 void Body::set_texture(const std::string& filePath)
 {
-	bool testing_textures = false;
+	bool testing_textures = true;
 	if (testing_textures == true)
 	{
-		std::cout << " " << std::endl;
-		std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
-		std::cout << "Current filepath: " << file_path << std::endl;
-		std::cout << "coordinates of body -> x:" <<get_origin_x()<<" y: "<< get_origin_y()<<std::endl;
+		//std::cout << " " << std::endl;
+		//std::cout << "Current working directory: " << std::__fs::filesystem::current_path() << std::endl;
+		//std::cout << "Current filepath: " << file_path << std::endl;
+		std::cout << "coordinates of body x:" <<get_origin_x()<<" y: "<< get_origin_y()<<std::endl;
 	}
 	
 	this->file_path = filePath;
@@ -81,6 +84,8 @@ void Body::set_hight(int value) { this->hight = value; }
 
 
 int Body::get_hight() { return this->hight; }
+
+int Body::get_index(){ return index; }
 
 int Body::get_origin_x() { return position_rect.x + origin_x; }
 

@@ -28,9 +28,11 @@ protected:
 	int radius;
 
 	int hight;
-
 public:
 
+	int index;
+	static int current_index;
+	
 	Body();
 	~Body();
 
@@ -46,4 +48,5 @@ public:
 	int get_origin_y();
 	int get_radius();
 	int get_hight();
+	int get_index();
 };

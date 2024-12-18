@@ -1,7 +1,6 @@
 #include "Map.h"
 #include "Map_Factory.h"  // Include the Map_Factory header
 
-
 Map::Map()
 {
     rec_iter = 0;
@@ -10,8 +9,6 @@ Map::Map()
     item_id = 0;
     map_generation_try = 0;
 }
-
-
 
 void Map::set_type(int type) {
     const bool item_generation = true;
@@ -22,8 +19,6 @@ void Map::set_type(int type) {
 
 
     if (new_map) {
-        std::cout << "===========================================" << std::endl;
-
         switch (type) {
         case 0:
             std::cout << "Generating maze..." << std::endl;
@@ -41,43 +36,53 @@ void Map::set_type(int type) {
 
         std::cout << "Items generation: " << item_generation << std::endl;
         new_map->generate(item_generation, entity_generation);
-        
-        // `new_map` will automatically be cleaned up when it goes out of scope
     }
 }
 
 void Map::set_textures() {
-    Collage collage;
-    TileManager tile_manager;  // Create a TileManager instance to handle tiles
-    int to_count = height * width - 1;
+    Collage collage;                  // Collage to manage texture paths
+    TileManager tile_manager;         // TileManager instance
+    const int TILE_SIZE = 64;         // Replace magic number with a constant
+    int total_tiles = height * width; // Total tiles to process
+
+    // Progress tracking variables
     int count = 0;
 
     for (int h = 0; h < height; h++) {
         for (int w = 0; w < width; w++) {
-            std::cout << "Tiles loaded (" << count << "/" << to_count << ")" << std::endl;
+            // Display progress for every 10% of tiles processed
+            if (count % (total_tiles / 10) == 0) {
+                std::cout << "Tiles loaded (" << count << "/" << total_tiles << ")" << std::endl;
+            }
             count++;
 
+            // Get references to the current tile and item
             Tile& inspected_tile = tile_array[get_tile(w, h)];
             Item& inspected_item = item_array[get_tile(w, h)];
 
-            // Set tile texture based on the tile data (tile_code is now directly passed)
+            // Apply tile texture and properties using TileManager
             tile_manager.set_tile_texture(data[h][w].first, inspected_tile);
 
-            int x_cord = w * 64;
-            int y_cord = h * 64;
+            // Compute coordinates for the tile
+            int x_cord = w * TILE_SIZE;
+            int y_cord = h * TILE_SIZE;
 
+            // Apply item settings based on the second value in data
             if (data[h][w].second == 1) {
                 inspected_item.set_on_map(true);
                 inspected_item.set_cords(x_cord, y_cord);
-                inspected_item.set_texture(collage.get_path(18));
+                inspected_item.set_texture(collage.get_path(18)); // Mushroom texture
                 item_id++;
-            } else if (data[h][w].second == 0) {
+            } else {
                 inspected_item.set_on_map(false);
-                inspected_item.set_cords(-100, -100);
-                inspected_item.set_texture(collage.get_path(18));
+                inspected_item.set_cords(-100, -100); // Move off-map
+                inspected_item.set_texture("");      // Clear texture
             }
         }
     }
+
+    // Final progress output
+    std::cout << "All tiles loaded (" << count << "/" << total_tiles << ")" << std::endl;
 }
 
 

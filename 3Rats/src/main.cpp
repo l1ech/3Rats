@@ -1,10 +1,6 @@
 #include "../src/init.h"
 
 // Constants
-const int MAX_HEALTH = 999;
-const int TILE_SIZE = 64;
-const int MAP_WIDTH = 100;
-const int MAP_HEIGHT = 100;
 
 const int SCREEN_WIDTH = 600;
 const int SCREEN_HEIGHT = 420;
@@ -14,43 +10,9 @@ const int MAP_AMOUNT = 10;
 const int PLAYER_AMOUNT = 3;
 const int ENTITY_AMOUNT = 1;
 
-const int FADE_X = 999;
-const int FADE_Y = 999;
-const int FADE_WIDTH = 200;
-const int FADE_HEIGHT = 90;
-
-const int PAUSE_X = 999;
-const int PAUSE_Y = 999;
-const int PAUSE_WIDTH = 200;
-const int PAUSE_HEIGHT = 90;
-
-const int CLOCK_X = 400;
-const int CLOCK_Y = 320;
-const int CLOCK_WIDTH = 200;
-const int CLOCK_HEIGHT = 90;
-
-const int PLAYER1_X = 32;
-const int PLAYER1_Y = 32;
-const int PLAYER1_FRAME_WIDTH = 3;
-const int PLAYER1_FRAME_HEIGHT = 4;
-
-const int PLAYER2_X = 32;
-const int PLAYER2_Y = 32;
-const int PLAYER2_FRAME_WIDTH = 3;
-const int PLAYER2_FRAME_HEIGHT = 4;
-
-const int PLAYER3_X = 400;
-const int PLAYER3_Y = 300;
-const int PLAYER3_FRAME_WIDTH = 3;
-const int PLAYER3_FRAME_HEIGHT = 4;
-
-const int ENTITY_X = 4000;
-const int ENTITY_Y = 4000;
-const int ENTITY_FRAME_WIDTH = 1;
-const int ENTITY_FRAME_HEIGHT = 1;
-
 const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
 
+int Body::current_index = 0; 
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
@@ -72,7 +34,7 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 
 int main(int argc, char* argv[])
 {
-	// Initialize SDL and create a window and renderer
+    // Initialize SDL and create a window and renderer
     SDL_Window* window = nullptr;
     SDL_Renderer* renderTarget = nullptr;
     int levelWidth = 0, levelHeight = 0;
@@ -81,6 +43,8 @@ int main(int argc, char* argv[])
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "SDL initialization failed: " << SDL_GetError() << std::endl;
         return 1;
+    } else {
+        std::cout << "SDL initialized successfully." << std::endl;
     }
 
     // Create a window
@@ -89,6 +53,8 @@ int main(int argc, char* argv[])
         std::cout << "Failed to create window: " << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
+    } else {
+        std::cout << "Window created successfully." << std::endl;
     }
 
     // Create a renderer
@@ -98,26 +64,37 @@ int main(int argc, char* argv[])
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
+    } else {
+        std::cout << "Renderer created successfully." << std::endl;
     }
 
     // Initialize SDL_ttf
     if (TTF_Init() < 0) {
-        std::cout << "Error: " << TTF_GetError() << std::endl;
+        std::cout << "SDL_ttf initialization failed: " << TTF_GetError() << std::endl;
         SDL_DestroyRenderer(renderTarget);
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
+    } else {
+        std::cout << "SDL_ttf initialized successfully." << std::endl;
     }
 
     // Initialize SDL_image
-    int imgFlags = IMG_INIT_JPG; // or IMG_INIT_PNG depending on the image format
+    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
     if (!(IMG_Init(imgFlags) & imgFlags)) {
         std::cout << "SDL_image initialization failed: " << IMG_GetError() << std::endl;
         SDL_DestroyRenderer(renderTarget);
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
+    } else {
+        std::cout << "SDL_image initialized successfully." << std::endl;
     }
+
+    // Additional debug for resolution
+    SDL_GetRendererOutputSize(renderTarget, &levelWidth, &levelHeight);
+    std::cout << "Renderer output size: " << levelWidth << "x" << levelHeight << std::endl;
+
 
 	// Initialize game objects using Init class
     Seed_manager seed_manager;
