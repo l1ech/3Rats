@@ -1,24 +1,56 @@
-#include <SDL.h>
-#include <iostream>
-#include <SDL_image.h>
-#include <vector>
-#include <stdlib.h>     /* srand, rand */
+#include "../src/init.h"
 
-#include "game/Item.h"
-#include "game/Body.h"
-#include "game/Map.h"
-#include "game/Tile.h"
-#include "game/Acteur.h"
+// Constants
+const int MAX_HEALTH = 999;
+const int TILE_SIZE = 64;
+const int MAP_WIDTH = 100;
+const int MAP_HEIGHT = 100;
 
-#include "core/Clock.h"
-#include "core/Random.h"
+const int SCREEN_WIDTH = 600;
+const int SCREEN_HEIGHT = 420;
+const int ITEM_AMOUNT = 54;
+const int TILE_AMOUNT = 54;
+const int MAP_AMOUNT = 10;
+const int PLAYER_AMOUNT = 3;
+const int ENTITY_AMOUNT = 1;
 
-#include "ui/Fade.h"
-#include "ui/Overlay.h"
-#include "ui/Pause.h"
-#include "core/Collage.h"
+const int FADE_X = 999;
+const int FADE_Y = 999;
+const int FADE_WIDTH = 200;
+const int FADE_HEIGHT = 90;
 
-#include "game/Map_Factory.h"
+const int PAUSE_X = 999;
+const int PAUSE_Y = 999;
+const int PAUSE_WIDTH = 200;
+const int PAUSE_HEIGHT = 90;
+
+const int CLOCK_X = 400;
+const int CLOCK_Y = 320;
+const int CLOCK_WIDTH = 200;
+const int CLOCK_HEIGHT = 90;
+
+const int PLAYER1_X = 32;
+const int PLAYER1_Y = 32;
+const int PLAYER1_FRAME_WIDTH = 3;
+const int PLAYER1_FRAME_HEIGHT = 4;
+
+const int PLAYER2_X = 32;
+const int PLAYER2_Y = 32;
+const int PLAYER2_FRAME_WIDTH = 3;
+const int PLAYER2_FRAME_HEIGHT = 4;
+
+const int PLAYER3_X = 400;
+const int PLAYER3_Y = 300;
+const int PLAYER3_FRAME_WIDTH = 3;
+const int PLAYER3_FRAME_HEIGHT = 4;
+
+const int ENTITY_X = 4000;
+const int ENTITY_Y = 4000;
+const int ENTITY_FRAME_WIDTH = 1;
+const int ENTITY_FRAME_HEIGHT = 1;
+
+const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
+
 
 int world_seed_generation(bool value)
 {
@@ -77,11 +109,11 @@ void init_fade(SDL_Renderer* render_target, Fade* fade)
 	Collage collage;
 
 	fade->Text::set_renderer(render_target);
-	fade->init_text(collage.get_path(0), 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	fade->init_text(collage.get_path(0), 24, { 255, 0, 0 }, FADE_X, FADE_Y, FADE_WIDTH, FADE_HEIGHT);
 
 	fade->Body::set_surface(render_target);
 	fade->set_texture(collage.get_path(1));
-	fade->set_cords(999, 999);
+	fade->set_cords(FADE_X, FADE_Y);
 	//clock->set_fade(&fade);
 }
 
@@ -90,11 +122,11 @@ void init_pause(SDL_Renderer* render_target, Pause* pause)
 	Collage collage;
 
 	pause->Text::set_renderer(render_target);
-	pause->init_text(collage.get_path(0), 24, { 255, 0, 0 }, 999, 999, 200, 90);
+	pause->init_text(collage.get_path(0), 24, { 255, 0, 0 }, PAUSE_X, PAUSE_Y, PAUSE_WIDTH, PAUSE_HEIGHT);
 
 	pause->Body::set_surface(render_target);
 	pause->set_texture(collage.get_path(1));
-	pause->set_cords(999, 999);
+	pause->set_cords(PAUSE_X, PAUSE_Y);
 }
 
 void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* overlay)
@@ -102,11 +134,11 @@ void init_clock(SDL_Renderer* render_target, Clock* clock, Fade* fade, Overlay* 
 	Collage collage;
 
 	clock->Text::set_renderer(render_target);
-	clock->init_text(collage.get_path(0), 24, { 255, 0, 0 }, 400, 330, 200, 90);
+	clock->init_text(collage.get_path(0), 24, { 255, 0, 0 }, CLOCK_X, CLOCK_Y, CLOCK_WIDTH, CLOCK_HEIGHT);
 
 	clock->Body::set_surface(render_target);
 	clock->set_texture(collage.get_path(9));
-	clock->set_cords(400, 320);
+	clock->set_cords(CLOCK_X, CLOCK_Y);
 	//clock->set_fade(&fade);
 	//clock->set_overlay(overlay);
 	clock->set_time(16, 30);
@@ -242,15 +274,15 @@ void init_player_array(SDL_Renderer* render_target, Acteur* player_array, int pl
 
 	player_array[0].set_surface(render_target);
 	player_array[0].set_texture(collage.get_path(3));
-	player_array[0].set_cords_frames(32, 32, 3, 4);
+	player_array[0].set_cords_frames(PLAYER1_X, PLAYER1_Y, PLAYER1_FRAME_WIDTH, PLAYER1_FRAME_HEIGHT);
 
 	player_array[1].set_surface(render_target);
 	player_array[1].set_texture(collage.get_path(4));
-	player_array[1].set_cords_frames(32, 32, 3, 4);
+	player_array[1].set_cords_frames(PLAYER2_X, PLAYER2_Y, PLAYER2_FRAME_WIDTH, PLAYER2_FRAME_HEIGHT);
 
 	player_array[2].set_surface(render_target);
 	player_array[2].set_texture(collage.get_path(5));
-	player_array[2].set_cords_frames(400, 300, 3, 4);
+	player_array[2].set_cords_frames(PLAYER3_X, PLAYER3_Y, PLAYER3_FRAME_WIDTH, PLAYER3_FRAME_HEIGHT);
 }
 
 void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount, Topography& topography, Random& random)
@@ -268,7 +300,7 @@ void init_entity(SDL_Renderer* render_target, Acteur* entitys, int entity_amount
 
 	entitys[0].set_surface(render_target);
 	entitys[0].set_texture(collage.get_path(6));
-	entitys[0].set_cords_frames(4000, 4000, 1, 1);
+	entitys[0].set_cords_frames(ENTITY_X, ENTITY_Y, ENTITY_FRAME_WIDTH, ENTITY_FRAME_HEIGHT);
 }
 
 uint32_t generate_seed(int seed_generation)
@@ -300,65 +332,45 @@ uint32_t generate_seed(int seed_generation)
 
 int main(int argc, char* argv[])
 {
-	// Initiallaizing and loading variables
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderTarget = nullptr;
-	int currentTime = 0;
-	int prevTime = 0;
-	float delta = 0.0f;
-	const Uint8* keyState; 
-	int levelWidth, levelHeight;
-	int mode = 0;
-	bool menuOn = false;
-	int bananAmount = 0;
-	int hunger = 3;
+	// Initialize SDL and create a window and renderer
+    SDL_Window* window = nullptr;
+    SDL_Renderer* renderTarget = nullptr;
+    int levelWidth = 0, levelHeight = 0;
 
-	int wait = 12.0f;	//12.0f
-
-	int time = 0;
-
-	const int screen_width = 600;
-	const int screen_hight = 420;
-
-	const int tile_amount = 54;
-	const int map_amount = 10;
-	const int item_amount = 54;
-	const int player_amount = 3;
-	const int entity_amount = 1;
-
-	//SDL_Init(SDL_INIT_VIDEO);
-
-	// Initialize SDL
+    // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "SDL initialization failed: " << SDL_GetError() << std::endl;
         return 1;
     }
 
     // Create a window
-	window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_hight, SDL_WINDOW_SHOWN);
-	if (window == nullptr) {
+    window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == nullptr) {
         std::cout << "Failed to create window: " << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
     }
 
-	// Create a renderer
-	renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (renderTarget == nullptr) {
+    // Create a renderer
+    renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderTarget == nullptr) {
         std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
     }
 
-	// Initialize SDL_ttf
-	if (TTF_Init() < 0)
-	{
-		std::cout << "Error: " << TTF_GetError() << std::endl;
-	}
+    // Initialize SDL_ttf
+    if (TTF_Init() < 0) {
+        std::cout << "Error: " << TTF_GetError() << std::endl;
+        SDL_DestroyRenderer(renderTarget);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
 
-	// Initialize SDL_image
-    int imgFlags = IMG_INIT_JPG; // or IMG_INIT_JPG, depending on the image format you want to support
+    // Initialize SDL_image
+    int imgFlags = IMG_INIT_JPG; // or IMG_INIT_PNG depending on the image format
     if (!(IMG_Init(imgFlags) & imgFlags)) {
         std::cout << "SDL_image initialization failed: " << IMG_GetError() << std::endl;
         SDL_DestroyRenderer(renderTarget);
@@ -367,80 +379,66 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-	//WHY TF DOES THIS MESS UP THE CODE?????
-	
-	/* 
-	bool testing = false;
-	if(testing == true)
-	{
-		SDL_version compiled;
-		SDL_version linked;
+    // Random seed generation
+    int seed_input = world_seed_generation(1); // 1 = testing/ 2 = normal
+    uint32_t seed = generate_seed(seed_input);
+    Random random(seed);
 
-		SDL_VERSION(&compiled);
-		SDL_GetVersion(&linked);
+    // Initialize game objects using Init class
+    Init gameInit(renderTarget, random, seed, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-		std::cout << "Compiled SDL version: " << (int)compiled.major << "." << (int)compiled.minor << "." << (int)compiled.patch << std::endl;
-		std::cout << "Linked SDL version: " << (int)linked.major << "." << (int)linked.minor << "." << (int)linked.patch << std::endl;
+    Fade fade;
+    gameInit.init_fade(&fade);
 
-	}
-	*/
-	
-	// ================================ INIT GAME OBJECTS ================================
-	// ===================================================================================
-	
-	int seed_input = world_seed_generation(1); // 1 = testing/ 2 = normal
-	
-	uint32_t seed = generate_seed(seed_input);
-	//std::cout << "Seed: " << seed << std::endl;
+    Pause pause;
+    gameInit.init_pause(&pause);
 
-	// random object
-	Random random(seed);
+    Clock clock;
+    Overlay overlay;
+    gameInit.init_clock(&clock, &fade, &overlay);
+    gameInit.init_overlay(&fade, &clock, &overlay);
 
-	Fade fade;
-	init_fade(renderTarget, &fade);
+    const int item_amount = 54;
+    const int tile_amount = 54;
+    const int map_amount = 10;
+    const int player_amount = 3;
+    const int entity_amount = 1;
 
-	if (renderTarget == nullptr) 
-		std::cout<<"error"<<std::endl;
-	else 
-		std::cout<< "asda"<<std::endl;
+    // Initialize game entities and maps
+    Item item_array[ITEM_AMOUNT];
+    gameInit.init_item_array(item_array, ITEM_AMOUNT);
 
-	Pause pause;
-	init_pause(renderTarget, &pause);
+    Tile tile_array[TILE_AMOUNT];
+    gameInit.init_tile_array(tile_array, TILE_AMOUNT);
 
-	Clock clock;
-	Overlay overlay;
-	init_clock(renderTarget, &clock, &fade, &overlay);
-	init_overlay(renderTarget, &fade, &clock, &overlay);
+    std::unique_ptr<Map> map_array[MAP_AMOUNT];
+    gameInit.init_map_array(tile_array, TILE_AMOUNT, item_array, ITEM_AMOUNT, map_array, MAP_AMOUNT);
 
-	// Body* clock_frame_ptr = &clock_frame; // ahhhhh! thats how pointers work
-	
-	Item item_array[item_amount];
-	init_item_array(renderTarget, item_array, item_amount);
+    Topography topography;
+    gameInit.init_topography(map_array, MAP_AMOUNT, &topography);
 
-	Tile tile_array[tile_amount];
-	init_tile_array(renderTarget, tile_array, tile_amount);
+    Acteur player_array[PLAYER_AMOUNT];
+    gameInit.init_player_array(player_array, PLAYER_AMOUNT, topography);
 
-	std::unique_ptr<Map> map_array[map_amount];  
-	init_map_array(renderTarget, tile_array, tile_amount, item_array, item_amount, map_array, map_amount, random);
+    Acteur entity[ENTITY_AMOUNT];
+    gameInit.init_entity(entity, ENTITY_AMOUNT, topography);
 
-	Topography topography;
-	init_topography(renderTarget, map_array, map_amount, &topography, random);
+    // Collage and texture loading
+    Collage collage;
+    SDL_Texture* texture = LoadTexture(collage.get_path(7), renderTarget);
+    SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
-	Acteur player_array[player_amount];
-	init_player_array(renderTarget, player_array, player_amount, topography, random);
-
-	Acteur entity[entity_amount];
-	init_entity(renderTarget, entity, entity_amount, topography, random);
-
-	// ===================================================================================
-
-	Collage collage;
-
-	SDL_Texture* texture = LoadTexture(collage.get_path(7), renderTarget);
-	SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
-	
-	bool isRunning = true;
-	SDL_Event ev;
+    // Game loop variables
+    bool isRunning = true;
+    SDL_Event ev;
+    int currentTime = 0, prevTime = 0;
+    float delta = 0.0f;
+    const Uint8* keyState;
+    int mode = 0;
+    bool menuOn = false;
+    int bananAmount = 0;
+    int hunger = 3;
+    int wait = TELEPORT_WAIT_TIME; // Adjust wait time
 
 	while (isRunning)
 	{

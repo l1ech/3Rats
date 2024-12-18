@@ -1,6 +1,6 @@
-CMakeFiles/3Rats.dir/src/main.cpp.o: \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/../src/init.h \
+CMakeFiles/3Rats.dir/src/init.cpp.o: \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_main.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_stdinc.h \

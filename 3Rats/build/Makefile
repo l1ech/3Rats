@@ -537,6 +537,30 @@ src/game/Topography.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Topography.cpp.s
 .PHONY : src/game/Topography.cpp.s
 
+src/init.o: src/init.cpp.o
+.PHONY : src/init.o
+
+# target to build an object file
+src/init.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/init.cpp.o
+.PHONY : src/init.cpp.o
+
+src/init.i: src/init.cpp.i
+.PHONY : src/init.i
+
+# target to preprocess a source file
+src/init.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/init.cpp.i
+.PHONY : src/init.cpp.i
+
+src/init.s: src/init.cpp.s
+.PHONY : src/init.s
+
+# target to generate assembly for a file
+src/init.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/init.cpp.s
+.PHONY : src/init.cpp.s
+
 src/input/Controller.o: src/input/Controller.cpp.o
 .PHONY : src/input/Controller.o
 
@@ -789,6 +813,9 @@ help:
 	@echo "... src/game/Topography.o"
 	@echo "... src/game/Topography.i"
 	@echo "... src/game/Topography.s"
+	@echo "... src/init.o"
+	@echo "... src/init.i"
+	@echo "... src/init.s"
 	@echo "... src/input/Controller.o"
 	@echo "... src/input/Controller.i"
 	@echo "... src/input/Controller.s"

@@ -310,10 +310,24 @@ CMakeFiles/3Rats.dir/src/game/Topography.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Topography.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.cpp -o CMakeFiles/3Rats.dir/src/game/Topography.cpp.s
 
+CMakeFiles/3Rats.dir/src/init.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/init.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp
+CMakeFiles/3Rats.dir/src/init.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/3Rats.dir/src/init.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/init.cpp.o -MF CMakeFiles/3Rats.dir/src/init.cpp.o.d -o CMakeFiles/3Rats.dir/src/init.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp
+
+CMakeFiles/3Rats.dir/src/init.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/init.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp > CMakeFiles/3Rats.dir/src/init.cpp.i
+
+CMakeFiles/3Rats.dir/src/init.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/init.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp -o CMakeFiles/3Rats.dir/src/init.cpp.s
+
 CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp
 CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/3Rats.dir/src/input/Controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/3Rats.dir/src/input/Controller.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/input/Controller.cpp.o -MF CMakeFiles/3Rats.dir/src/input/Controller.cpp.o.d -o CMakeFiles/3Rats.dir/src/input/Controller.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp
 
 CMakeFiles/3Rats.dir/src/input/Controller.cpp.i: cmake_force
@@ -327,7 +341,7 @@ CMakeFiles/3Rats.dir/src/input/Controller.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/main.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/main.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp
 CMakeFiles/3Rats.dir/src/main.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/3Rats.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/3Rats.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/main.cpp.o -MF CMakeFiles/3Rats.dir/src/main.cpp.o.d -o CMakeFiles/3Rats.dir/src/main.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp
 
 CMakeFiles/3Rats.dir/src/main.cpp.i: cmake_force
@@ -341,7 +355,7 @@ CMakeFiles/3Rats.dir/src/main.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Button.cpp
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Button.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Button.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Button.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Button.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Button.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.i: cmake_force
@@ -355,7 +369,7 @@ CMakeFiles/3Rats.dir/src/ui/Button.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.cpp
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.i: cmake_force
@@ -369,7 +383,7 @@ CMakeFiles/3Rats.dir/src/ui/Fade.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.cpp
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.i: cmake_force
@@ -383,7 +397,7 @@ CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Panel.cpp
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Panel.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.i: cmake_force
@@ -397,7 +411,7 @@ CMakeFiles/3Rats.dir/src/ui/Panel.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.cpp
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.i: cmake_force
@@ -411,7 +425,7 @@ CMakeFiles/3Rats.dir/src/ui/Pause.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.o: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.cpp
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Text.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Text.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Text.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Text.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Text.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.i: cmake_force
@@ -441,6 +455,7 @@ CMakeFiles/3Rats.dir/src/ui/Text.cpp.s: cmake_force
 "CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o" \
 "CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o" \
 "CMakeFiles/3Rats.dir/src/game/Topography.cpp.o" \
+"CMakeFiles/3Rats.dir/src/init.cpp.o" \
 "CMakeFiles/3Rats.dir/src/input/Controller.cpp.o" \
 "CMakeFiles/3Rats.dir/src/main.cpp.o" \
 "CMakeFiles/3Rats.dir/src/ui/Button.cpp.o" \
@@ -470,6 +485,7 @@ bin/3Rats: CMakeFiles/3Rats.dir/src/game/Tile.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/game/Topography.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/init.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/input/Controller.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/main.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/ui/Button.cpp.o
@@ -484,7 +500,7 @@ bin/3Rats: /usr/local/Cellar/sdl2_mixer/2.8.0/lib/libSDL2_mixer.dylib
 bin/3Rats: /usr/local/Cellar/sdl2_ttf/2.22.0/lib/libSDL2_ttf.dylib
 bin/3Rats: /usr/local/Cellar/sdl2_image/2.8.2_2/lib/libSDL2_image.dylib
 bin/3Rats: CMakeFiles/3Rats.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable bin/3Rats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX executable bin/3Rats"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/3Rats.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

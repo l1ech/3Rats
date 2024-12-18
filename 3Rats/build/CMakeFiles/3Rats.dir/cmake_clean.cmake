@@ -33,6 +33,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o.d"
   "CMakeFiles/3Rats.dir/src/game/Topography.cpp.o"
   "CMakeFiles/3Rats.dir/src/game/Topography.cpp.o.d"
+  "CMakeFiles/3Rats.dir/src/init.cpp.o"
+  "CMakeFiles/3Rats.dir/src/init.cpp.o.d"
   "CMakeFiles/3Rats.dir/src/input/Controller.cpp.o"
   "CMakeFiles/3Rats.dir/src/input/Controller.cpp.o.d"
   "CMakeFiles/3Rats.dir/src/main.cpp.o"
