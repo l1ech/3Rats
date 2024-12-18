@@ -1,0 +1,25 @@
+# Ignore build and generated files
+/build/
+**/build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled binaries
+/bin/
+**/bin/
+
+# Ignore user-specific files
+*.user
+*.log
