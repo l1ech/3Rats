@@ -52,40 +52,6 @@ const int ENTITY_FRAME_HEIGHT = 1;
 const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
 
 
-int world_seed_generation(bool value)
-{
-	if (value)
-	{
-		return 0;
-	}
-	else
-	{
-		int type_generation;
-		int seed_input;
-
-		std::cout << "What type of generation?" << std::endl;
-		std::cout << "random seed: 0" << std::endl;
-		std::cout << "user input: 1" << std::endl;
-		std::cout << "fix seed (testing): 2" << std::endl;
-		std::cin >> type_generation;
-
-		switch (type_generation)
-		{
-		case 0:
-			seed_input = 0;
-			break;
-		case 1:
-			std::cin >> seed_input;
-			break;
-		case 2:
-			seed_input = 0;
-			break;
-		default:
-			break;
-		}
-		return seed_input;
-	}
-}
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
 	SDL_Texture* texture = nullptr;
@@ -102,33 +68,6 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 	SDL_FreeSurface(surface);
 
 	return texture;
-}
-
-uint32_t generate_seed(int seed_generation)
-{
-	Random key_generator;
-
-	uint32_t seed = 1;
-
-	std::cout << "Seed: ";
-
-	switch (seed_generation)
-	{
-	case 0:
-		seed = key_generator.roll_custom_dice(999 * 999);
-		break;
-	case 1:
-		std::cin >> seed;
-		break;
-	case 2:
-		seed = 1;
-		break;
-	default:
-		break;
-	}
-
-	std::cout << seed << std::endl;
-	return seed;
 }
 
 int main(int argc, char* argv[])
@@ -180,12 +119,13 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    // Random seed generation
-    int seed_input = world_seed_generation(1); // 1 = testing/ 2 = normal
-    uint32_t seed = generate_seed(seed_input);
+	// Initialize game objects using Init class
+    Seed_manager seed_manager;
+    int seedInput = seed_manager.worldSeedGeneration(false); // false = normal generation
+	uint32_t seed = seed_manager.generateSeed(seedInput);
     Random random(seed);
-
-    // Initialize game objects using Init class
+    
+	// Initialize game objects using Init class
     Init gameInit(renderTarget, random, seed, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     Fade fade;
@@ -253,64 +193,7 @@ int main(int argc, char* argv[])
 			if (ev.type == SDL_QUIT)
 				isRunning = false;
 			else if (ev.type == SDL_KEYDOWN) {
-				switch (ev.key.keysym.sym)
-				{
-				case SDLK_SPACE:
-					mode++;
-					if (mode == 2) mode = 0;
-					break;
-
-				case SDLK_1:
-					texture = LoadTexture(collage.get_path(8), renderTarget);
-					break;
-				case SDLK_u:
-					player_array[0].use_item();
-					player_array[1].use_item();
-					player_array[2].use_item();
-					player_array[0].set_enter(false);
-					break;
-
-				case SDLK_r:
-					player_array[0].teleport_to_entrence();
-					player_array[1].teleport_to_entrence();
-					player_array[2].teleport_to_entrence();
-					player_array[0].set_enter(false);
-					player_array[1].set_enter(false);
-					player_array[2].set_enter(false);
-					break;
-				case SDLK_o:
-					entity[0].teleport_to_entrence();
-					break;
-
-				case SDLK_p:
-					player_array[1].place_item();
-					player_array[2].place_item();
-					player_array[0].set_enter(false);
-					break;
-
-				case SDLK_n:
-					player_array[1].set_has_goal(false);
-					player_array[2].set_has_goal(false);
-					player_array[0].set_enter(false);
-					break;
-				case SDLK_e:
-					player_array[0].set_enter(true);
-					break;
-				case SDLK_t:
-					std::cout << "tp next room" << std::endl;
-					break;
-				case SDLK_z:
-					std::cout << "tp prev room" << std::endl;
-					break;
-				case SDLK_m:
-					pause.in();
-					break;
-				case SDLK_l:
-					pause.out();
-					break;
-				case SDLK_0:
-					break;
-				}
+				handle_key_event(ev, player_array, entity, mode, fade, pause, PLAYER_AMOUNT);
 			}
 		}
 
@@ -319,7 +202,7 @@ int main(int argc, char* argv[])
 		// =================================== UPDATE GAME ===================================
 		// ===================================================================================
 
-		//topography.update(delta);
+		topography.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[2]);
 		for (int i = 1; i < player_amount; i++)

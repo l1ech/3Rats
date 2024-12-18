@@ -411,4 +411,6 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Maze_Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Garden_Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Cage_Map.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.h
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input_handler.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/seed_manager.h

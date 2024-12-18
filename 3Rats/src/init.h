@@ -16,6 +16,8 @@
 #include "core/Collage.h"
 #include "game/Map_Factory.h"
 #include "game/Topography.h"
+#include "input_handler.h"  
+#include "seed_manager.h"
 
 class Init {
 private:

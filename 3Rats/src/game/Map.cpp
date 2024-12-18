@@ -12,10 +12,6 @@ Map::Map()
 
     map_generation_try = 0;
 
-
-    //if (test_image()) std::cout<<"IMAGE ERROR"<<std::endl;
-    //else std::cout<<"no image error"<<std::endl;
-
 }
 
 void Map::Update(float delta)

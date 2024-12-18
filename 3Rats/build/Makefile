@@ -585,6 +585,30 @@ src/input/Controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/input/Controller.cpp.s
 .PHONY : src/input/Controller.cpp.s
 
+src/input_handler.o: src/input_handler.cpp.o
+.PHONY : src/input_handler.o
+
+# target to build an object file
+src/input_handler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/input_handler.cpp.o
+.PHONY : src/input_handler.cpp.o
+
+src/input_handler.i: src/input_handler.cpp.i
+.PHONY : src/input_handler.i
+
+# target to preprocess a source file
+src/input_handler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/input_handler.cpp.i
+.PHONY : src/input_handler.cpp.i
+
+src/input_handler.s: src/input_handler.cpp.s
+.PHONY : src/input_handler.s
+
+# target to generate assembly for a file
+src/input_handler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/input_handler.cpp.s
+.PHONY : src/input_handler.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -608,6 +632,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/seed_manager.o: src/seed_manager.cpp.o
+.PHONY : src/seed_manager.o
+
+# target to build an object file
+src/seed_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/seed_manager.cpp.o
+.PHONY : src/seed_manager.cpp.o
+
+src/seed_manager.i: src/seed_manager.cpp.i
+.PHONY : src/seed_manager.i
+
+# target to preprocess a source file
+src/seed_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/seed_manager.cpp.i
+.PHONY : src/seed_manager.cpp.i
+
+src/seed_manager.s: src/seed_manager.cpp.s
+.PHONY : src/seed_manager.s
+
+# target to generate assembly for a file
+src/seed_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/seed_manager.cpp.s
+.PHONY : src/seed_manager.cpp.s
 
 src/ui/Button.o: src/ui/Button.cpp.o
 .PHONY : src/ui/Button.o
@@ -819,9 +867,15 @@ help:
 	@echo "... src/input/Controller.o"
 	@echo "... src/input/Controller.i"
 	@echo "... src/input/Controller.s"
+	@echo "... src/input_handler.o"
+	@echo "... src/input_handler.i"
+	@echo "... src/input_handler.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/seed_manager.o"
+	@echo "... src/seed_manager.i"
+	@echo "... src/seed_manager.s"
 	@echo "... src/ui/Button.o"
 	@echo "... src/ui/Button.i"
 	@echo "... src/ui/Button.s"
