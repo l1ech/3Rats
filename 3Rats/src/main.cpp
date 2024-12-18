@@ -10,6 +10,7 @@ const int MAP_AMOUNT = 10;
 const int PLAYER_AMOUNT = 3;
 const int ENTITY_AMOUNT = 1;
 
+
 const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
 
 int Body::current_index = 0; 
@@ -116,12 +117,6 @@ int main(int argc, char* argv[])
     gameInit.init_clock(&clock, &fade, &overlay);
     gameInit.init_overlay(&fade, &clock, &overlay);
 
-    const int item_amount = 54;
-    const int tile_amount = 54;
-    const int map_amount = 10;
-    const int player_amount = 3;
-    const int entity_amount = 1;
-
     // Initialize game entities and maps
     Item item_array[ITEM_AMOUNT];
     gameInit.init_item_array(item_array, ITEM_AMOUNT);
@@ -182,7 +177,7 @@ int main(int argc, char* argv[])
 		topography.update(delta);
 
 		player_array[0].Update(delta, keyState, mode, player_array[2]);
-		for (int i = 1; i < player_amount; i++)
+		for (int i = 1; i < PLAYER_AMOUNT; i++)
 		{
 			player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
 		}
@@ -205,7 +200,7 @@ int main(int argc, char* argv[])
 
 		topography.draw(renderTarget);
 
-		for (int i = 0; i < player_amount; i++)
+		for (int i = 0; i < PLAYER_AMOUNT; i++)
 		{
 			player_array[i].Draw(renderTarget);
 		}
