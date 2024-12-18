@@ -62,6 +62,7 @@ void Init::init_fade(Fade* fade) {
     fade->Body::set_surface(renderTarget);
     fade->set_texture(collage.get_path(1));
     fade->set_cords(FADE_X, FADE_Y);
+    fade->set_name("fade");
     std::cout << "Fade initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
@@ -73,6 +74,7 @@ void Init::init_pause(Pause* pause) {
     pause->Body::set_surface(renderTarget);
     pause->set_texture(collage.get_path(1));
     pause->set_cords(FADE_X, FADE_Y);
+    pause->set_name("pause");
     std::cout << "Pause initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
@@ -84,6 +86,7 @@ void Init::init_clock(Clock* clock, Fade* fade, Overlay* overlay) {
     clock->Body::set_surface(renderTarget);
     clock->set_texture(collage.get_path(9));
     clock->set_cords(CLOCK_X, CLOCK_Y);
+    clock->set_name("clock");
     std::cout << "Clock initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
@@ -100,6 +103,7 @@ void Init::init_item_array(Item itemArray[], int itemAmount) {
     itemTemplate.set_surface(renderTarget);
     itemTemplate.set_texture(collage.get_path(2));
     itemTemplate.set_cords(ITEM_INITIAL_X, ITEM_INITIAL_Y);
+    itemTemplate.set_name("item");
 
     for (int i = 0; i < itemAmount; i++) {
         itemArray[i] = itemTemplate;
@@ -114,6 +118,7 @@ void Init::init_tile_array(Tile tileArray[], int tileAmount) {
     tileTemplate.set_surface(renderTarget);
     tileTemplate.set_texture(collage.get_path(2));
     tileTemplate.set_cords(TILE_INITIAL_X, TILE_INITIAL_Y);
+    tileTemplate.set_name("tile");
 
     for (int i = 0; i < tileAmount; i++) {
         tileArray[i] = tileTemplate;
@@ -126,6 +131,7 @@ void Init::init_map_array(Tile* tileArray, int tileAmount, Item* itemArray, int 
     for (int i = 0; i < mapAmount; i++) {
         Map_Factory::Map_Type mapType = (i == 0) ? Map_Factory::Map_Type::Maze : (random.flip_coin() ? Map_Factory::Map_Type::Cage : Map_Factory::Map_Type::Garden);
         mapArray[i] = Map_Factory::createMap(mapType);
+        
         mapArray[i]->set_tile_array(tileArray, tileAmount);
         mapArray[i]->set_item_array(itemArray, itemAmount);
         mapArray[i]->set_random_pointer(random);
@@ -172,6 +178,8 @@ void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography&
         player.set_controller_number(i);
         player.set_Topography(&topography);
         player.set_random_pointer(random);
+        player.set_name("player");
+        player.set_texture(collage.get_path(2));
         playerArray[i] = player;
     }
 
@@ -199,6 +207,8 @@ void Init::init_entity(Acteur entityArray[], int entityAmount, Topography& topog
         entity.set_controller_number(3 + i);
         entity.set_Topography(&topography);
         entity.set_random_pointer(random);
+        entity.set_name("entity");
+        entity.set_texture(collage.get_path(2));
         entityArray[i] = entity;
     }
 

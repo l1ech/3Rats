@@ -251,6 +251,7 @@ std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<s
 	else {  // Finish or path or Wall
 		return point_value;
 	}
+	return NULL;
 }
 
 
@@ -309,4 +310,5 @@ std::string Topography::get_layout(int num)
 			}
 		}
 	}
+	return NULL;
 }

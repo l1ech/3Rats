@@ -9,6 +9,8 @@ private:
 	Fade* fade;
 	Clock* clock;
 
+	bool flip = false;
+
 public:
 
 	void update(double delta);

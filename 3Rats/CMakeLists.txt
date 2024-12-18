@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(3Rats)
 
-# Set C++ standard (optional)
+# Set C++ standard (optional, consider changing to C++20 or C++17 if there are issues with C++23)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
@@ -24,10 +24,6 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
-
-# If find_package fails, manually specify paths (uncomment and replace with actual paths)
-# find_package(SDL2 REQUIRED PATHS /path/to/SDL2)
-# find_package(SDL2_image REQUIRED PATHS /path/to/SDL2_image)
 
 # Add executable target
 add_executable(3Rats ${SOURCES} ${HEADERS})

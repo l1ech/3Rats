@@ -2,14 +2,12 @@
 
 Inventory::Inventory()
 {
-	inventory_slots[3];
+	//inventory_slots[3];
 }
 
 Inventory::Inventory(int player_amount)
 {
-
-	inventory_slots[player_amount];
-
+	//inventory_slots[player_amount];
 }
 
 void Inventory::init_inventory(int player_amount)

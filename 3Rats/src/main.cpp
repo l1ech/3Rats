@@ -17,20 +17,22 @@ int Body::current_index = 0;
 
 SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
 {
-	SDL_Texture* texture = nullptr;
-	SDL_Surface* surface = IMG_Load(filePath.c_str());
-	if (surface == NULL)
-		std::cout << "Error Surface1" << std::endl;
-	else
-	{
-		texture = SDL_CreateTextureFromSurface(renderTarget, surface);
-		if (texture == NULL)
-			std::cout << "Error Texture" << std::endl;
-	}
+    SDL_Texture* texture = nullptr;
+    SDL_Surface* surface = IMG_Load(filePath.c_str());
+    if (surface == NULL) {
+        std::cout << "Error loading surface: " << IMG_GetError() << std::endl;
+    } else {
+        texture = SDL_CreateTextureFromSurface(renderTarget, surface);
+        if (texture == NULL) {
+            std::cout << "Error creating texture from surface: " << SDL_GetError() << std::endl;
+        } else {
+            std::cout << "Texture loaded successfully from: " << filePath << std::endl;
+        }
+    }
 
-	SDL_FreeSurface(surface);
+    SDL_FreeSurface(surface);
 
-	return texture;
+    return texture;
 }
 
 int main(int argc, char* argv[])
@@ -39,15 +41,7 @@ int main(int argc, char* argv[])
     SDL_Window* window = nullptr;
     SDL_Renderer* renderTarget = nullptr;
     int levelWidth = 0, levelHeight = 0;
-
-    // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cout << "SDL initialization failed: " << SDL_GetError() << std::endl;
-        return 1;
-    } else {
-        std::cout << "SDL initialized successfully." << std::endl;
-    }
-
+    
     // Create a window
     window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
@@ -69,17 +63,6 @@ int main(int argc, char* argv[])
         std::cout << "Renderer created successfully." << std::endl;
     }
 
-    // Initialize SDL_ttf
-    if (TTF_Init() < 0) {
-        std::cout << "SDL_ttf initialization failed: " << TTF_GetError() << std::endl;
-        SDL_DestroyRenderer(renderTarget);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    } else {
-        std::cout << "SDL_ttf initialized successfully." << std::endl;
-    }
-
     // Initialize SDL_image
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
     if (!(IMG_Init(imgFlags) & imgFlags)) {
@@ -97,13 +80,13 @@ int main(int argc, char* argv[])
     std::cout << "Renderer output size: " << levelWidth << "x" << levelHeight << std::endl;
 
 
-	// Initialize game objects using Init class
+    // Initialize game objects using Init class
     Seed_manager seed_manager;
     int seedInput = seed_manager.worldSeedGeneration(false); // false = normal generation
-	uint32_t seed = seed_manager.generateSeed(seedInput);
+    uint32_t seed = seed_manager.generateSeed(seedInput);
     Random random(seed);
     
-	// Initialize game objects using Init class
+    // Initialize game objects using Init class
     Init gameInit(renderTarget, random, seed, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     Fade fade;
@@ -139,6 +122,11 @@ int main(int argc, char* argv[])
     // Collage and texture loading
     Collage collage;
     SDL_Texture* texture = LoadTexture(collage.get_path(7), renderTarget);
+    if (!texture) {
+        std::cout << "Failed to load texture." << std::endl;
+        SDL_Quit();
+        return 1;
+    }
     SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
     // Game loop variables
@@ -153,78 +141,74 @@ int main(int argc, char* argv[])
     int hunger = 3;
     int wait = TELEPORT_WAIT_TIME; // Adjust wait time
 
-	while (isRunning)
-	{
-		prevTime = currentTime;
-		currentTime = SDL_GetTicks();
-		delta = (currentTime - prevTime) / 1000.0f;
+    std::cout << "----------------------------------------------------------------- Entering game loop..." << std::endl;
+    int a;
+    std::cin >> a;
+    while (isRunning)
+    {
+        prevTime = currentTime;
+        currentTime = SDL_GetTicks();
+        delta = (currentTime - prevTime) / 1000.0f;
 
-		while (SDL_PollEvent(&ev) != 0)		// ------------- key-events
-		{
-			// Getting the quit and keyboard events
-			if (ev.type == SDL_QUIT)
-				isRunning = false;
-			else if (ev.type == SDL_KEYDOWN) {
-				handle_key_event(ev, player_array, entity, mode, fade, pause, PLAYER_AMOUNT);
-			}
-		}
+        while (SDL_PollEvent(&ev) != 0)        // ------------- key-events
+        {
+            // Getting the quit and keyboard events
+            if (ev.type == SDL_QUIT)
+                isRunning = false;
+            else if (ev.type == SDL_KEYDOWN) {
+                handle_key_event(ev, player_array, entity, mode, fade, pause, PLAYER_AMOUNT);
+            }
+        }
 
-		keyState = SDL_GetKeyboardState(NULL);
+        keyState = SDL_GetKeyboardState(NULL);
+        topography.update(delta);
 
-		// =================================== UPDATE GAME ===================================
-		// ===================================================================================
+        player_array[0].Update(delta, keyState, mode, player_array[2]);
+        for (int i = 1; i < PLAYER_AMOUNT; i++)
+        {
+            player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
+        }
 
-		topography.update(delta);
+        entity[0].update(delta);
+        std::string pause_message = "Pause.";
+        pause.update(pause_message);
+        clock.update(delta);
+        fade.update(std::to_string(clock.get_day()));
+        overlay.update(delta);
 
-		player_array[0].Update(delta, keyState, mode, player_array[2]);
-		for (int i = 1; i < PLAYER_AMOUNT; i++)
-		{
-			player_array[i].Update(delta, keyState, mode, player_array[i - 1]);
-		}
+        SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
 
-		entity[0].update(delta);
-		std::string pause_message = "Pause.";
-		pause.update(pause_message);
-		clock.update(delta);
-		fade.update(std::to_string(clock.get_day()));
-		overlay.update(delta);
+        // Drawing the curent image to the window
+        SDL_RenderClear(renderTarget);
+        SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
-		SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
+        topography.draw(renderTarget);
 
-		// Drawing the curent image to the window
-		SDL_RenderClear(renderTarget);
-		SDL_RenderCopy(renderTarget, texture, NULL, NULL);
+        for (int i = 0; i < PLAYER_AMOUNT; i++)
+        {
+            player_array[i].Draw(renderTarget);
+        }
+        entity[0].draw(renderTarget);
+        clock.draw(renderTarget);
+        fade.draw(renderTarget);
+        pause.draw(renderTarget);
+        overlay.draw(renderTarget);
 
-		// ==================================== DRAW GAME ====================================
-		// ===================================================================================
+        SDL_RenderPresent(renderTarget);
+    }
 
-		topography.draw(renderTarget);
+    // Freeing the memory
+    std::cout << "----------------------------------------------------------------- Cleaning up resources..." << std::endl;
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderTarget);
+    SDL_DestroyTexture(texture);
 
-		for (int i = 0; i < PLAYER_AMOUNT; i++)
-		{
-			player_array[i].Draw(renderTarget);
-		}
-		entity[0].draw(renderTarget);
-		clock.draw(renderTarget);
-		fade.draw(renderTarget);
-		pause.draw(renderTarget);
-		overlay.draw(renderTarget);
+    window = nullptr;
+    renderTarget = nullptr;
+    texture = nullptr;
 
-		SDL_RenderPresent(renderTarget);
-	}
+    IMG_Quit();
+    SDL_Quit();
 
-	// Freeing the memory
-	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderTarget);
-	SDL_DestroyTexture(texture);
-
-	window = nullptr;
-	renderTarget = nullptr;
-	texture = nullptr;
-
-	IMG_Quit();
-	SDL_Quit();
-
-	return 0;
-
+    return 0;
 }

@@ -3,6 +3,6 @@
 
 class Maze_Map : public Map {
 public:
-    void generate(bool item_generation, bool entity_generation) override {
-    }
+    Maze_Map();
+    void generate(bool item_generation, bool entity_generation) override;
 };

@@ -14,6 +14,9 @@
 #include "Tile_Manager.h"
 
 #include "../core/Collage.h"
+//#include "Door_Manager.h"
+//#include "Map_Factory.h"  // Include the Map_Factory header
+
 
 class Map : public Level_Structure
 {
@@ -52,8 +55,8 @@ private:
 	std::pair<int, int> data[6][9];
 	
 	// helper functions for generation
-	void generate_door(int direction, int index, int type, bool active);
-	void generate_doors(int entry_direction, int exit_direction, int type_generation);
+	//void generate_door(int direction, int index, int type, bool active, Door* door_array, int width, int height, Random* random_ptr);
+	//void generate_doors(int entry_direction, int exit_direction, int type_generation);
 
 	//functions for generation
 	int rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction);

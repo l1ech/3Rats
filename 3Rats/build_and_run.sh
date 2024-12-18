@@ -21,11 +21,13 @@ make clean || echo "No make clean step needed. Skipping."
 cmake ..
 
 # Compile the program
-#make
+make
 
-# Navigate to the build directory
-cd "../bin"
+pwd
 
+cd "bin"
+
+pwd
 
 EXECUTABLE="./3Rats"
 

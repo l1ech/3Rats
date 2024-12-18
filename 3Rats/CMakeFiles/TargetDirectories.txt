@@ -1,0 +1,3 @@
+/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles/3Rats.dir
+/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles/edit_cache.dir
+/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles/rebuild_cache.dir

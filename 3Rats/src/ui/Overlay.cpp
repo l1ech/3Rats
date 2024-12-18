@@ -2,14 +2,17 @@
 
 void Overlay::update(double delta)
 {
-	if (!clock->day_time())
+	if (clock->day_time() && flip == true)
 	{
-		fade->in();
-	}
-	else if (clock->day_time())
-	{
+		flip = false;
 		fade->out();
+
 	}
+	else if(!clock->day_time() && flip == false)
+	{
+		flip = true;
+		fade->in();
+	} 
 }
 
 void Overlay::draw(SDL_Renderer* render_target)

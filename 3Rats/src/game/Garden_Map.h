@@ -3,7 +3,6 @@
 
 class Garden_Map : public Map {
 public:
-    void generate(bool item_generation, bool entity_generation) override {
-
-    }
+    Garden_Map();
+    void generate(bool item_generation, bool entity_generation) override;
 };

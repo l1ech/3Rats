@@ -5,7 +5,7 @@
 #include <memory>
 #include "game/Item.h"
 #include "game/Body.h"
-#include "game/Map.h"
+//#include "game/Map.h"
 #include "game/Tile.h"
 #include "game/Acteur.h"
 #include "core/Clock.h"
@@ -14,7 +14,9 @@
 #include "ui/Overlay.h"
 #include "ui/Pause.h"
 #include "core/Collage.h"
+
 #include "game/Map_Factory.h"
+
 #include "game/Topography.h"
 #include "input_handler.h"  
 #include "seed_manager.h"

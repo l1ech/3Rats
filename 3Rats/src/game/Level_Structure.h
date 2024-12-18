@@ -4,7 +4,6 @@
 #include"Item.h"
 #include "../core/Random.h"
 
-
 class Level_Structure
 {
 protected:

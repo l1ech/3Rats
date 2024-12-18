@@ -28,10 +28,12 @@ protected:
 	int radius;
 
 	int hight;
-public:
 
+public:
 	int index;
 	static int current_index;
+	std::string name;
+
 	
 	Body();
 	~Body();
@@ -43,10 +45,12 @@ public:
 	void set_texture(const std::string& filePath);
 	void set_cords(int x, int y);
 	void set_hight(int value);
+	void set_name(std::string name);
 
 	int get_origin_x();
 	int get_origin_y();
 	int get_radius();
 	int get_hight();
 	int get_index();
+	std::string get_name();
 };

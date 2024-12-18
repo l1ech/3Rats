@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/local/Cellar/sdl2/2.30.10/include/SDL2"
+                "/usr/local/Cellar/sdl2/2.30.10/include/SDL2",
+                "/usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2"
             ],
             "defines": [],
             "macFrameworkPath": [

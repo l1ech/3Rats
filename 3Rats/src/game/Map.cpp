@@ -1,5 +1,4 @@
 #include "Map.h"
-#include "Map_Factory.h"  // Include the Map_Factory header
 
 Map::Map()
 {
@@ -15,29 +14,28 @@ void Map::set_type(int type) {
     const bool entity_generation = (type == 1);  // Example: GardenMap has entity generation
 
     // Your code using Map_Factory
-    std::unique_ptr<Map> new_map = Map_Factory::createMap(static_cast<Map_Factory::Map_Type>(type));
+    //std::unique_ptr<Map> new_map = Map_Factory::createMap(static_cast<Map_Factory::Map_Type>(type));
 
 
-    if (new_map) {
-        switch (type) {
-        case 0:
-            std::cout << "Generating maze..." << std::endl;
-            break;
-        case 1:
-            std::cout << "Generating garden..." << std::endl;
-            break;
-        case 2:
-            std::cout << "Generating cage..." << std::endl;
-            break;
-        default:
-            std::cout << "Invalid map type!" << std::endl;
-            return;
-        }
-
-        std::cout << "Items generation: " << item_generation << std::endl;
-        new_map->generate(item_generation, entity_generation);
+    switch (type) {
+    case 0:
+        std::cout << "Generating maze..." << std::endl;
+        break;
+    case 1:
+        std::cout << "Generating garden..." << std::endl;
+        break;
+    case 2:
+        std::cout << "Generating cage..." << std::endl;
+        break;
+    default:
+        std::cout << "Invalid map type!" << std::endl;
+        return;
     }
+
+    std::cout << "Items generation: " << item_generation << std::endl;
+    //new_map->generate(item_generation, entity_generation);
 }
+
 
 void Map::set_textures() {
     Collage collage;                  // Collage to manage texture paths
@@ -155,13 +153,15 @@ int Map::get_width() { return width; }
 
 void Map::generate_maze(bool item_generation, bool entity_generation)
 {
+    //Door_Manager door_manager(width, height, random_ptr);
+
     int start_x = 1;
     int start_y = 1;
 
     int end_x = width;
     int end_y = height;
 
-    generate_doors(entry_direction, exit_direction, 0);
+    //door_manager.generate_doors(entry_direction, exit_direction, 0);
 
     print_doors();
 
@@ -192,7 +192,8 @@ void Map::generate_maze(bool item_generation, bool entity_generation)
 
 void Map::generate_garden(bool item_generation, bool entity_generation)
 {
-    width = 9;
+    //Door_Manager door_manager(width, height, random_ptr);    width = 9;
+
     height = 6;
 
     int start_x = 1;
@@ -201,7 +202,7 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
     int end_x = width;
     int end_y = height;
 
-    generate_doors(entry_direction, exit_direction, 1);
+    //door_manager.generate_doors(entry_direction, exit_direction, 1);
 
     print_doors();
 
@@ -229,6 +230,7 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
 void Map::generate_cage(bool item_generation, bool entity_generation)
 {
+    //Door_Manager door_manager(width, height, random_ptr);    
     width = 9;
     height = 6;
 
@@ -238,7 +240,7 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
     int end_x = width;
     int end_y = height;
 
-    generate_doors(entry_direction, exit_direction, 2);
+    //door_manager.generate_doors(entry_direction, exit_direction, 2);
 
     print_doors();
     
@@ -277,94 +279,6 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
     std::cout << "saving data..." << std::endl;
 
     save_data(map_data, item_data);
-}
-
-void Map::generate_door(int direction, int index, int type, bool active)
-{
-    //direction => 0 = north, 1 = east, 2 = south, 3 = west
-    if (direction == 5)
-    {
-        if (active)
-        {
-            door_array[index].init_door
-            (
-                random_ptr->roll_custom_dice(width), 
-                random_ptr->roll_custom_dice(height),
-                type, 
-                active
-            );
-        }
-        else
-        {
-            door_array[index].init_door(-100, -100, type, active);
-        }
-    }
-    else
-    {
-        switch (direction)
-        {
-        case 0:
-            door_array[index].init_door(random_ptr->roll_custom_dice(9), 1, type, active);
-            break;
-        case 1:
-            door_array[index].init_door(9, random_ptr->roll_custom_dice(6), type, active);
-            break;
-        case 2:
-            door_array[index].init_door(random_ptr->roll_custom_dice(9), 6, type, active);
-            break;
-        case 3:
-            door_array[index].init_door(1, random_ptr->roll_custom_dice(6), type, active);
-            break;
-        default:
-            std::cout << "error" << std::endl;
-            break;
-        }
-    }    
-}
-
-void Map::generate_doors(int entry_direction, int exit_direction, int type_generation)
-{
-    const int MAZE_TYPE = 0;
-    const int GARDEN_TYPE = 1;
-    const int CAGE_TYPE = 2;
-
-    const int INVALID_DIRECTION = 5;
-
-    const int DOOR_TYPE_AMOUNT = 3;
-    const int DOOR_AMOUNT = 3;
-
-    int direction[DOOR_AMOUNT] = 
-    { 
-        entry_direction, 
-        exit_direction, 
-        INVALID_DIRECTION 
-    };
-
-    bool active[DOOR_TYPE_AMOUNT][DOOR_AMOUNT] =
-    {
-        {true, true, false},    // maze
-        {true, true, true},     // garden
-        {false, false, true}    // cage
-    };
-
-    switch (type_generation)
-    {
-    case MAZE_TYPE:
-        for (int i = 0; i < 3; i++) 
-            generate_door(direction[i], i, i + 1, active[MAZE_TYPE][i]);
-        break;
-    case GARDEN_TYPE:
-        for (int i = 0; i < 3; i++) 
-            generate_door(direction[i], i, i + 1, active[GARDEN_TYPE][i]);
-        break;
-    case CAGE_TYPE:
-        for (int i = 0; i< 3; i++)
-            generate_door(direction[i], i, i + 1, active[CAGE_TYPE][i]);
-        break;
-    default:
-        std::cout << "ERROR: generating doors!";
-        break;
-    }    
 }
 
 int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_direction)
@@ -437,6 +351,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
     {
         return point_value;
     }
+    return -1;
 }
 
 void Map::build_frame(std::vector<std::vector<int>>& data, int wall, int space)

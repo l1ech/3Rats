@@ -19,13 +19,13 @@ void Body::draw(SDL_Renderer* renderTarget) {
         SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect);
         //std::cout << "Body <" << index << "> draw at position x: " << position_rect.x << ", y: " << position_rect.y << ", width: " << position_rect.w << ", height: " << position_rect.h << std::endl;
     } else {
-        std::cerr << "Error Body <" << index << "> Attempted to draw without texture." << std::endl;
+        std::cerr << "Error Body <"<< name << ">;<" << index << "> Attempted to draw without texture." << std::endl;
     }
 }
 
 void Body::set_surface(SDL_Renderer* renderTarget)
 {
-    std::cout << "Body <" << index << "> set_surface called for file: " << file_path << std::endl;
+    std::cout << "Body <"<< name << ">;<" << index << "> set_surface called for file: " << file_path << std::endl;
     
     Collage collage;
     file_path = collage.get_path(2);
@@ -33,11 +33,11 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 
     SDL_Surface* surface = IMG_Load(file_path.c_str());
     if (surface == NULL) {
-        std::cerr << "Error Body <" << index << "> Surface: " << file_path << " - " << IMG_GetError() << std::endl;
+        std::cerr << "Error Body <"<< name << ">;<" << index << "> Surface: " << file_path << " - " << IMG_GetError() << std::endl;
     } else {
         texture = SDL_CreateTextureFromSurface(ptr_renderer, surface);
         if (texture == NULL) {
-            std::cerr << "Error Body <" << index << "> Texture: " << file_path << " - " << SDL_GetError() << std::endl;
+            std::cerr << "Error Body <"<< name << ">;<" << index << "> Texture: " << file_path << " - " << SDL_GetError() << std::endl;
         } else {
             SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
         }
@@ -48,7 +48,7 @@ void Body::set_surface(SDL_Renderer* renderTarget)
 
 void Body::set_texture(const std::string& filePath)
 {
-    std::cout << "Body <" << index << "> set_texture called for file: " << filePath << std::endl;
+    std::cout << "Body <"<< name << ">;<" << index << "> set_texture called for file: " << filePath << std::endl;
     
     this->file_path = filePath;
     SDL_Surface* surface = IMG_Load(file_path.c_str());
@@ -59,7 +59,7 @@ void Body::set_texture(const std::string& filePath)
         SDL_FreeSurface(surface);
 
         if (texture == nullptr) {
-            std::cerr << "Failed to create texture for Body <" << index << ">: " << SDL_GetError() << std::endl;
+            std::cerr << "Failed to create texture for Body <"<< name << ">;<" << index << ">: " << SDL_GetError() << std::endl;
         } else {
             SDL_QueryTexture(texture, NULL, NULL, &crop_rect.w, &crop_rect.h);
         }
@@ -81,12 +81,17 @@ void Body::set_cords(int x, int y)
 
     radius = frame_width / 2;
 
-    std::cout << "Body <" << index << "> set_cords to x: " << x << ", y: " << y << std::endl;
+    std::cout << "Body <"<< name << ">;<" << index << "> set_cords to x: " << x << ", y: " << y << std::endl;
 }
 
 void Body::set_hight(int value) { 
     this->hight = value;
-    std::cout << "Body <" << index << "> set height to: " << value << std::endl;
+    std::cout << "Body <"<< name << ">;<" << index << "> set height to: " << value << std::endl;
+}
+
+void Body::set_name(std::string name)
+{
+	this->name = name;
 }
 
 int Body::get_hight() { 
@@ -95,6 +100,11 @@ int Body::get_hight() {
 
 int Body::get_index() { 
     return index; 
+}
+
+std::string Body::get_name()
+{
+    return name;
 }
 
 int Body::get_origin_x() { 

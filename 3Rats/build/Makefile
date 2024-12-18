@@ -273,6 +273,30 @@ src/game/Body.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Body.cpp.s
 .PHONY : src/game/Body.cpp.s
 
+src/game/Cage_Map.o: src/game/Cage_Map.cpp.o
+.PHONY : src/game/Cage_Map.o
+
+# target to build an object file
+src/game/Cage_Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o
+.PHONY : src/game/Cage_Map.cpp.o
+
+src/game/Cage_Map.i: src/game/Cage_Map.cpp.i
+.PHONY : src/game/Cage_Map.i
+
+# target to preprocess a source file
+src/game/Cage_Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.i
+.PHONY : src/game/Cage_Map.cpp.i
+
+src/game/Cage_Map.s: src/game/Cage_Map.cpp.s
+.PHONY : src/game/Cage_Map.s
+
+# target to generate assembly for a file
+src/game/Cage_Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.s
+.PHONY : src/game/Cage_Map.cpp.s
+
 src/game/Door.o: src/game/Door.cpp.o
 .PHONY : src/game/Door.o
 
@@ -297,6 +321,30 @@ src/game/Door.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Door.cpp.s
 .PHONY : src/game/Door.cpp.s
 
+src/game/Door_Manager.o: src/game/Door_Manager.cpp.o
+.PHONY : src/game/Door_Manager.o
+
+# target to build an object file
+src/game/Door_Manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o
+.PHONY : src/game/Door_Manager.cpp.o
+
+src/game/Door_Manager.i: src/game/Door_Manager.cpp.i
+.PHONY : src/game/Door_Manager.i
+
+# target to preprocess a source file
+src/game/Door_Manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.i
+.PHONY : src/game/Door_Manager.cpp.i
+
+src/game/Door_Manager.s: src/game/Door_Manager.cpp.s
+.PHONY : src/game/Door_Manager.s
+
+# target to generate assembly for a file
+src/game/Door_Manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.s
+.PHONY : src/game/Door_Manager.cpp.s
+
 src/game/Food.o: src/game/Food.cpp.o
 .PHONY : src/game/Food.o
 
@@ -320,6 +368,30 @@ src/game/Food.s: src/game/Food.cpp.s
 src/game/Food.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Food.cpp.s
 .PHONY : src/game/Food.cpp.s
+
+src/game/Garden_Map.o: src/game/Garden_Map.cpp.o
+.PHONY : src/game/Garden_Map.o
+
+# target to build an object file
+src/game/Garden_Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o
+.PHONY : src/game/Garden_Map.cpp.o
+
+src/game/Garden_Map.i: src/game/Garden_Map.cpp.i
+.PHONY : src/game/Garden_Map.i
+
+# target to preprocess a source file
+src/game/Garden_Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.i
+.PHONY : src/game/Garden_Map.cpp.i
+
+src/game/Garden_Map.s: src/game/Garden_Map.cpp.s
+.PHONY : src/game/Garden_Map.s
+
+# target to generate assembly for a file
+src/game/Garden_Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.s
+.PHONY : src/game/Garden_Map.cpp.s
 
 src/game/Inventory.o: src/game/Inventory.cpp.o
 .PHONY : src/game/Inventory.o
@@ -440,6 +512,30 @@ src/game/Map_Factory.s: src/game/Map_Factory.cpp.s
 src/game/Map_Factory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.s
 .PHONY : src/game/Map_Factory.cpp.s
+
+src/game/Maze_Map.o: src/game/Maze_Map.cpp.o
+.PHONY : src/game/Maze_Map.o
+
+# target to build an object file
+src/game/Maze_Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o
+.PHONY : src/game/Maze_Map.cpp.o
+
+src/game/Maze_Map.i: src/game/Maze_Map.cpp.i
+.PHONY : src/game/Maze_Map.i
+
+# target to preprocess a source file
+src/game/Maze_Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.i
+.PHONY : src/game/Maze_Map.cpp.i
+
+src/game/Maze_Map.s: src/game/Maze_Map.cpp.s
+.PHONY : src/game/Maze_Map.s
+
+# target to generate assembly for a file
+src/game/Maze_Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3Rats.dir/build.make CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.s
+.PHONY : src/game/Maze_Map.cpp.s
 
 src/game/Tile.o: src/game/Tile.cpp.o
 .PHONY : src/game/Tile.o
@@ -828,12 +924,21 @@ help:
 	@echo "... src/game/Body.o"
 	@echo "... src/game/Body.i"
 	@echo "... src/game/Body.s"
+	@echo "... src/game/Cage_Map.o"
+	@echo "... src/game/Cage_Map.i"
+	@echo "... src/game/Cage_Map.s"
 	@echo "... src/game/Door.o"
 	@echo "... src/game/Door.i"
 	@echo "... src/game/Door.s"
+	@echo "... src/game/Door_Manager.o"
+	@echo "... src/game/Door_Manager.i"
+	@echo "... src/game/Door_Manager.s"
 	@echo "... src/game/Food.o"
 	@echo "... src/game/Food.i"
 	@echo "... src/game/Food.s"
+	@echo "... src/game/Garden_Map.o"
+	@echo "... src/game/Garden_Map.i"
+	@echo "... src/game/Garden_Map.s"
 	@echo "... src/game/Inventory.o"
 	@echo "... src/game/Inventory.i"
 	@echo "... src/game/Inventory.s"
@@ -849,6 +954,9 @@ help:
 	@echo "... src/game/Map_Factory.o"
 	@echo "... src/game/Map_Factory.i"
 	@echo "... src/game/Map_Factory.s"
+	@echo "... src/game/Maze_Map.o"
+	@echo "... src/game/Maze_Map.i"
+	@echo "... src/game/Maze_Map.s"
 	@echo "... src/game/Tile.o"
 	@echo "... src/game/Tile.i"
 	@echo "... src/game/Tile.s"

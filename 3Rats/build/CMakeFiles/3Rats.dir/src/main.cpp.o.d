@@ -380,8 +380,9 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/Collage.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/vector \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/Random.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/random \
@@ -390,7 +391,6 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Manager.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Type.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/Controller.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../game/Topography.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../core/Random.h \
