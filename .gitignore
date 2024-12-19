@@ -1,10 +1,16 @@
 # Ignore build and generated files
 /build/
-**/build/
+/**/build/
 CMakeCache.txt
 CMakeFiles/
 Makefile
 cmake_install.cmake
+build.ninja
+compile_commands.json
+
+# Ignore compiled binaries
+/bin/
+/**/bin/
 
 # Ignore IDE or editor-specific files
 .vscode/
@@ -16,10 +22,19 @@ cmake_install.cmake
 .DS_Store
 Thumbs.db
 
-# Ignore compiled binaries
-/bin/
-**/bin/
-
-# Ignore user-specific files
-*.user
+# Ignore logs and user-specific files
 *.log
+*.user
+
+# Ignore temporary and backup files
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Include specific directories
+!src/
+!fonts/
+!music/
+!textures/
+
