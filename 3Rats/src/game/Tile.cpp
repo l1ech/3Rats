@@ -13,12 +13,12 @@ Tile::Tile()
 
     file_path = collage.get_path(2);
 
-    std::cout << "Tile constructor: Created tile with path: " << file_path << std::endl;
+    //std::cout << "[tile]: Tile constructor: Created tile with path: " << file_path << std::endl;
 }
 
 Tile::Tile(const Tile& other)
 {
-    std::cout << "Tile copy constructor: Copying tile with file_path: " << other.file_path << std::endl;
+    std::cout << "[tile]: Tile copy constructor: Copying tile with file_path: " << other.file_path << std::endl;
     
     is_exit = other.is_exit;
     is_entrance = other.is_entrance;
@@ -28,7 +28,7 @@ Tile::Tile(const Tile& other)
     this->file_path = other.file_path;
     this->ptr_renderer = other.ptr_renderer;
 
-    std::cout << "Tile <Copy>: Set hight: " << this->hight << ", Entrance: " << this->is_entrance 
+    std::cout << "[tile]: Tile <Copy>: Set hight: " << this->hight << ", Entrance: " << this->is_entrance 
               << ", Exit: " << this->is_exit << ", Hole: " << this->is_hole << std::endl;
 
     // Call the methods to set surface, texture, and coordinates
@@ -40,6 +40,6 @@ Tile::Tile(const Tile& other)
 Tile::~Tile()
 {
     // Log when the destructor is called, can help track if the object is being destroyed properly
-    std::cout << "Tile destructor: Destroying tile with file_path: " << file_path << std::endl;
+    std::cout << "[tile]: Tile destructor: Destroying tile with file_path: " << file_path << std::endl;
 }
 

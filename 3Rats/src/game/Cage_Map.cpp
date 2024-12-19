@@ -7,5 +7,5 @@ Cage_Map::Cage_Map() {
 }
 
 void Cage_Map::generate(bool item_generation, bool entity_generation) {
-    std::cout << "test" << std::endl;
+    generate_cage(item_generation, entity_generation);
 }

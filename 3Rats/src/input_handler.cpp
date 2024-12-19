@@ -41,10 +41,10 @@ void handle_key_event(SDL_Event& ev, Acteur* player_array, Acteur* entity_array,
             player_array[0].set_enter(true);
             break;
         case SDLK_t:
-            std::cout << "tp next room" << std::endl;
+            std::cout << "[input_handler]: tp next room" << std::endl;
             break;
         case SDLK_z:
-            std::cout << "tp prev room" << std::endl;
+            std::cout << "[input_handler]: tp prev room" << std::endl;
             break;
         case SDLK_m:
             pause.in();

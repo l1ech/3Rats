@@ -45,7 +45,7 @@ void Topography::update(float delta)
 
 	for (int i = 0; i < map_array_size; i++)
 	{
-		//map_array[i].Update(delta);
+		//map_array[i].update(delta);
 	}
 }
 
@@ -53,22 +53,19 @@ void Topography::draw(SDL_Renderer* renderTarget)
 {
 	for (int i = 0; i < map_array_size; i++)
 	{
-		//map_array[i].Draw(renderTarget);
+		//map_array[i].draw(renderTarget);
 	}
 	for (int i = 0; i < tile_array_size; i++)
 	{
+		//std::cout << "[Topography]: atemting to draw tile <"<<i<<">"<<std::endl;
 		tile_array[i].draw(renderTarget);
 	}
 
 	for (int i = 0; i < item_array_size; i++)
 	{
+		//std::cout << "[Topography]: atemting to draw item <"<<i<<">"<<std::endl;
 		item_array[i].draw(renderTarget);
 	}
-}
-
-void Topography::print_connections(std::vector<std::pair<std::pair<int, int>, std::pair<int, int>>>)
-{
-	std::cout << "print points..." << std::endl;
 }
 
 void Topography::set_renderer(SDL_Renderer* renderTarget)
@@ -88,7 +85,7 @@ int Topography::get_map_size()
 
 void Topography::make_maze()
 {
-	std::cout << "generating topology..."<<std::endl;
+	std::cout << "[Topography]: generating ..."<<std::endl;
 
 	int start_x = 1;
 	int start_y = 1;
@@ -103,8 +100,6 @@ void Topography::make_maze()
 	*/
 
 	make_points(start_x, start_y, end_x, end_y);
-
-	print_connections(connections);
 	
 	data.resize(height + 2);
 	for (int i = 0; i < data.size(); i++) {
@@ -133,21 +128,23 @@ void Topography::make_maze()
 		end_char = find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0);
 	}
 
-	
-	std::cout << "___________ topology data - walkway__" << std::endl;
+	std::cout << "[Topography]: data.first" << std::endl;
 	print_vector(data, data[0].size(), data.size());
+	std::cout << std::endl;
 
-	std::cout << "___________ second layer  ___________" << std::endl;
+	std::cout << "[Topography]: data.second" << std::endl;
 	print_vector_hidden(data, data[0].size(), data.size());
-
+	std::cout << std::endl;
 	
 	trim_boarder(data, map_data);
 
-	std::cout << "___________ topology data ___________" << std::endl;
+	std::cout << "[Topography]: data.first" << std::endl;
 	print_vector(map_data, map_data[0].size(), map_data.size());
+	std::cout << std::endl;
 
-	std::cout << "___________ second layer  ___________" << std::endl;
+	std::cout << "[Topography]: data.second" << std::endl;
 	print_vector_hidden(map_data, map_data[0].size(), map_data.size());
+	std::cout << std::endl;
 
 
 	//save_data(map_data);

@@ -55,8 +55,6 @@ public:
 	void print_vector(std::vector<std::vector <std::pair<std::string, int>>>& arg, int size_x, int size_y);
 	void print_vector_hidden(std::vector<std::vector <std::pair<std::string, int>>>& arg, int size_x, int size_y);
 
-	void print_connections(std::vector<std::pair<std::pair<int, int >, std::pair<int, int >>>connections);
-
 	std::string get_layout(int num);
 
 	void update(float delta);

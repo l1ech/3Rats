@@ -23,6 +23,13 @@ public:
 	Item();
 	~Item();
 
+	// Copy constructor
+    Item(const Item& other);
+
+    // Copy assignment operator
+    Item& operator=(const Item& other);
+
+
 	//void Update(float delta);
 	void Draw(SDL_Renderer* renderTarget);
 

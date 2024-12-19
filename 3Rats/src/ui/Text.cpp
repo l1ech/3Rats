@@ -11,11 +11,12 @@ Text::~Text()
 	SDL_DestroyTexture(Message);
 }
 
-void Text::update(std::string time)
+void Text::update(std::string text)
 {
+	message_string = text;
 	// as TTF_RenderText_Solid could only be used on
 	// SDL_Surface then you have to create the surface first
-	surfaceMessage = TTF_RenderText_Solid(font, time.c_str(), colour);
+	surfaceMessage = TTF_RenderText_Solid(font, text.c_str(), colour);
 
 
 	// now you can convert it into a texture
@@ -25,6 +26,20 @@ void Text::update(std::string time)
 
 void Text::draw(SDL_Renderer* renderTarget)
 {
+	std::cout << "[Text]: Drawing at x: " << Message_rect.x 
+				<< ", y: " << Message_rect.y 
+				<< ", width: " << Message_rect.w 
+				<< ", height: " << Message_rect.h 
+				<< ", message: " << message_string
+				<< std::endl;
+
+	if (Message && renderer) {
+		if (SDL_RenderCopy(renderer, Message, NULL, &Message_rect) != 0) {
+			std::cerr << "[Text]: Error rendering texture: " << SDL_GetError() << std::endl;
+		}
+	} else {
+		std::cerr << "[Text]: Cannot draw. Renderer or Message is null." << std::endl;
+	}
 	//std::cout << "draw!!!!!!" << std::endl;
 
 	// Now since it's a texture, you have to put RenderCopy

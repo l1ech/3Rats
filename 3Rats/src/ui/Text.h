@@ -18,6 +18,8 @@ private:
 	int font_size;
 	SDL_Color colour;
 
+	std::string message_string;
+
 
 public:
 	Text();

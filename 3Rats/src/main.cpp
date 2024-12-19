@@ -20,13 +20,13 @@ SDL_Texture* LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
     SDL_Texture* texture = nullptr;
     SDL_Surface* surface = IMG_Load(filePath.c_str());
     if (surface == NULL) {
-        std::cout << "Error loading surface: " << IMG_GetError() << std::endl;
+        std::cout << "[Main]: Error loading surface: " << IMG_GetError() << std::endl;
     } else {
         texture = SDL_CreateTextureFromSurface(renderTarget, surface);
         if (texture == NULL) {
-            std::cout << "Error creating texture from surface: " << SDL_GetError() << std::endl;
+            std::cout << "[Main]: Error creating texture from surface: " << SDL_GetError() << std::endl;
         } else {
-            std::cout << "Texture loaded successfully from: " << filePath << std::endl;
+            std::cout << "[Main]: Texture loaded successfully from: " << filePath << std::endl;
         }
     }
 
@@ -45,39 +45,39 @@ int main(int argc, char* argv[])
     // Create a window
     window = SDL_CreateWindow("3Rats", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
-        std::cout << "Failed to create window: " << SDL_GetError() << std::endl;
+        std::cout << "[Main]: Failed to create window: " << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
     } else {
-        std::cout << "Window created successfully." << std::endl;
+        std::cout << "[Main]: Window created successfully." << std::endl;
     }
 
     // Create a renderer
     renderTarget = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderTarget == nullptr) {
-        std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
+        std::cout << "[Main]: Failed to create renderer: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
     } else {
-        std::cout << "Renderer created successfully." << std::endl;
+        std::cout << "[Main]: Renderer created successfully." << std::endl;
     }
 
     // Initialize SDL_image
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
     if (!(IMG_Init(imgFlags) & imgFlags)) {
-        std::cout << "SDL_image initialization failed: " << IMG_GetError() << std::endl;
+        std::cout << "[Main]: SDL_image initialization failed: " << IMG_GetError() << std::endl;
         SDL_DestroyRenderer(renderTarget);
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
     } else {
-        std::cout << "SDL_image initialized successfully." << std::endl;
+        std::cout << "[Main]: SDL_image initialized successfully." << std::endl;
     }
 
     // Additional debug for resolution
     SDL_GetRendererOutputSize(renderTarget, &levelWidth, &levelHeight);
-    std::cout << "Renderer output size: " << levelWidth << "x" << levelHeight << std::endl;
+    std::cout << "[Main]: Renderer output size: " << levelWidth << "x" << levelHeight << std::endl;
 
 
     // Initialize game objects using Init class
@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
     Collage collage;
     SDL_Texture* texture = LoadTexture(collage.get_path(7), renderTarget);
     if (!texture) {
-        std::cout << "Failed to load texture." << std::endl;
+        std::cout << "[Main]: Failed to load texture." << std::endl;
         SDL_Quit();
         return 1;
     }
@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
     int hunger = 3;
     int wait = TELEPORT_WAIT_TIME; // Adjust wait time
 
-    std::cout << "----------------------------------------------------------------- Entering game loop..." << std::endl;
+    std::cout << "[Main]: Entering game loop..." << std::endl;
     int a;
     std::cin >> a;
     while (isRunning)
@@ -186,7 +186,7 @@ int main(int argc, char* argv[])
 
         for (int i = 0; i < PLAYER_AMOUNT; i++)
         {
-            player_array[i].Draw(renderTarget);
+            player_array[i].draw(renderTarget);
         }
         entity[0].draw(renderTarget);
         clock.draw(renderTarget);
@@ -198,7 +198,7 @@ int main(int argc, char* argv[])
     }
 
     // Freeing the memory
-    std::cout << "----------------------------------------------------------------- Cleaning up resources..." << std::endl;
+    std::cout << "[Main]: Cleaning up resources..." << std::endl;
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderTarget);
     SDL_DestroyTexture(texture);

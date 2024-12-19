@@ -220,7 +220,7 @@ void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 	}
 	else if (rat_x == goal_x && rat_y == goal_y && !item.get_pick_up())
 	{
-		std::cout << "found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
+		std::cout << "[Acteur<"<< index <<">]: found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
 
 		item_hold_id = item_search_id;
 		holds_item = true;
@@ -232,7 +232,7 @@ void Acteur::follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_dir
 	}
 	else if (rat_x == goal_x && rat_y == goal_y && item.get_pick_up())
 	{
-		std::cout << "did not found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
+		std::cout << "[Acteur<"<< index <<">]: did not found!" << " p: " << controller_number << "item number: " << item_search_id << std::endl;;
 		has_goal = false;
 	}
 }
@@ -456,9 +456,6 @@ void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_
 	}
 }
 
-void Acteur::Draw(SDL_Renderer* renderTarget) { SDL_RenderCopy(renderTarget, texture, &crop_rect, &position_rect); }
-
-
 bool Acteur::intersectsWithBody(Body& b)
 {
 	if (sqrt(pow(get_origin_x() - b.get_origin_x(), 2) + pow(get_origin_y() - b.get_origin_y(), 2)) >= radius + b.get_radius())
@@ -483,7 +480,7 @@ void Acteur::use_item()
 		item_array[item_hold_id].set_cords(-100, -100);
 		item_array[item_hold_id].set_on_map(false);
 
-		std::cout << "yumm!" << std::endl;
+		std::cout << "[Acteur<"<< index <<">]: yumm!" << std::endl;
 		item_type = 0;
 
 	}

@@ -19,20 +19,20 @@ void Map::set_type(int type) {
 
     switch (type) {
     case 0:
-        std::cout << "Generating maze..." << std::endl;
+        std::cout << "[Map]: generating maze..." << std::endl;
         break;
     case 1:
-        std::cout << "Generating garden..." << std::endl;
+        std::cout << "[Map]: generating garden..." << std::endl;
         break;
     case 2:
-        std::cout << "Generating cage..." << std::endl;
+        std::cout << "[Map]: generating cage..." << std::endl;
         break;
     default:
-        std::cout << "Invalid map type!" << std::endl;
+        std::cout << "[Map]: invalid map type!" << std::endl;
         return;
     }
 
-    std::cout << "Items generation: " << item_generation << std::endl;
+    std::cout << "[Map]: item generation is " << item_generation << "." <<std::endl;
     //new_map->generate(item_generation, entity_generation);
 }
 
@@ -50,7 +50,9 @@ void Map::set_textures() {
         for (int w = 0; w < width; w++) {
             // Display progress for every 10% of tiles processed
             if (count % (total_tiles / 10) == 0) {
-                std::cout << "Tiles loaded (" << count << "/" << total_tiles << ")" << std::endl;
+                std::cout << std::endl;
+                std::cout << "[Map]: Tiles loaded (" << count << "/" << total_tiles << ")" << std::endl;
+                std::cout << std::endl;
             }
             count++;
 
@@ -65,6 +67,8 @@ void Map::set_textures() {
             int x_cord = w * TILE_SIZE;
             int y_cord = h * TILE_SIZE;
 
+            inspected_tile.set_cords(x_cord, y_cord);
+
             // Apply item settings based on the second value in data
             if (data[h][w].second == 1) {
                 inspected_item.set_on_map(true);
@@ -74,13 +78,14 @@ void Map::set_textures() {
             } else {
                 inspected_item.set_on_map(false);
                 inspected_item.set_cords(-100, -100); // Move off-map
-                inspected_item.set_texture("");      // Clear texture
+                inspected_item.set_texture(collage.get_path(18));      // Clear texture
             }
         }
     }
 
     // Final progress output
-    std::cout << "All tiles loaded (" << count << "/" << total_tiles << ")" << std::endl;
+    std::cout << "[Map]: All tiles loaded (" << count << "/" << total_tiles << ")" << std::endl;
+    std::cout << std::endl;
 }
 
 
@@ -115,7 +120,7 @@ void Map::set_layout(std::string layout)
     }
     else
     {
-        std::cout << "error! the value is: " << layout << std::endl;
+        std::cout << "[Map]: error! the value is: " << layout << std::endl;
     }
 }
 
@@ -184,8 +189,8 @@ void Map::generate_maze(bool item_generation, bool entity_generation)
 
     if (item_generation) set_items_to_map(map_data, item_data, height, width, 30); // 80 meaning 1/80  
 
-    std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
-    std::cout << "saving data..." << std::endl;
+    std::cout << "[Map]: Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
+    std::cout << "[Map]: saving data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -221,9 +226,9 @@ void Map::generate_garden(bool item_generation, bool entity_generation)
 
     if (entity_generation) set_entity_to_map(map_data, entity_data, height, width, 70);
 
-    std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
+    std::cout << "[Map]: Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
 
-    std::cout << "saving data..." << std::endl;
+    std::cout << "[Map]: saving data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -275,8 +280,8 @@ void Map::generate_cage(bool item_generation, bool entity_generation)
 
     //if (item_generation) set_items_to_map(map_data, item_data, height, width, 70);  //20 meaning 1/20
 
-    std::cout << "Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
-    std::cout << "saving data..." << std::endl;
+    std::cout << "[Map]: Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
+    std::cout << "[Map]: saving data..." << std::endl;
 
     save_data(map_data, item_data);
 }
@@ -313,7 +318,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector <int>>& arg, int& prev_di
 
     default:
         direction = ERROR_DIRECTION;
-        std::cout << "ERROR: Direction is wrong." << std::endl;
+        std::cout << "[Map]: ERROR: Direction is wrong." << std::endl;
         break;
     }
 
@@ -383,7 +388,7 @@ void Map::place_doors(std::vector<std::vector<int>>& data, Door* door_array)
 
 void Map::print_vector(const std::vector<std::vector<int>>& arg, const int& size_x, const int& size_y)
 {
-    std::cout << "Vector: " << std::endl;
+    std::cout << "[Map]: vector " << std::endl;
 
     for (const auto& row : arg) {
         for (const auto& element : row) {
@@ -395,9 +400,9 @@ void Map::print_vector(const std::vector<std::vector<int>>& arg, const int& size
 
 void Map::print_doors()
 {
-    std::cout << "Entry: [" << door_array[0].get_x() << ";" << door_array[0].get_y() << "]" << std::endl;
-    std::cout << "Exit: [" << door_array[1].get_x() << ";" << door_array[1].get_y() << "]" << std::endl;
-    std::cout << "Hole: [" << door_array[2].get_x() << ";" << door_array[2].get_y() << "]" << std::endl;
+    std::cout << "[Map]: Entry [" << door_array[0].get_x() << ";" << door_array[0].get_y() << "]" << std::endl;
+    std::cout << "[Map]: Exit [" << door_array[1].get_x() << ";" << door_array[1].get_y() << "]" << std::endl;
+    std::cout << "[Map]: Hole [" << door_array[2].get_x() << ";" << door_array[2].get_y() << "]" << std::endl;
 }
 
 void Map::trim_boarder(std::vector<std::vector <int>>& data, std::vector<std::vector <int>>& map_data)   //trim boarder

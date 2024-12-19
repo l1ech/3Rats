@@ -18,8 +18,6 @@ void TileManager::set_tile_texture(int tile_code, Tile& inspected_tile) {
     if (tile_code >= 0 && tile_code < tile_types.size()) {
         tile_types[tile_code].applyToTile(inspected_tile);
     } else {
-        // Default texture if tile_code is not found
-        tile_types[0].applyToTile(inspected_tile);  // Applying the first tile as a default
-        // Optionally log or handle the invalid tile_code here
+        tile_types[0].applyToTile(inspected_tile);  // Standardtextur
     }
 }

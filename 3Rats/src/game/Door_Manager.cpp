@@ -6,7 +6,7 @@ Door_Manager::Door_Manager(int width, int height, Random* random_ptr)
     // Optionally initialize the doors vector with the desired number of doors
     doors.resize(3);  // Resize to accommodate 3 doors (or whatever number is needed)
 
-    std::cout << "Door_Manager initialized with width: " << width
+    std::cout << "[Door_Manager]: initialized with width: " << width
               << ", height: " << height << std::endl;
 }
 
@@ -51,7 +51,7 @@ void Door_Manager::generate_door(int direction, int index, int type, bool active
             doors[index].init_door(1, random_ptr->roll_custom_dice(6), type, active);
             break;
         default:
-            std::cout << "error" << std::endl;
+            std::cout << "[Door_Manager]: error" << std::endl;
             break;
         }
     }    
@@ -97,7 +97,7 @@ void Door_Manager::generate_doors(int entry_direction, int exit_direction, int t
             generate_door(direction[i], i, i + 1, active[CAGE_TYPE][i]);
         break;
     default:
-        std::cout << "ERROR: generating doors!";
+        std::cout << "[Door_Manager]: error generating doors!";
         break;
     }    
 }

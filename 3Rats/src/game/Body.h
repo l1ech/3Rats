@@ -45,12 +45,14 @@ public:
 	void set_texture(const std::string& filePath);
 	void set_cords(int x, int y);
 	void set_hight(int value);
-	void set_name(std::string name);
+	void set_name(const std::string& name);
 
-	int get_origin_x();
-	int get_origin_y();
-	int get_radius();
-	int get_hight();
-	int get_index();
-	std::string get_name();
+	int get_origin_x() const;
+	int get_origin_y() const;
+	int get_radius() const;
+	int get_hight() const;
+	int get_index() const;
+	std::string get_name() const;
+
+	SDL_Texture* LoadTexture(const std::string& filePath, SDL_Renderer* renderTarget);
 };

@@ -33,3 +33,23 @@ bool Item::get_pick_up()
 }
 
 
+// Copy constructor
+Item::Item(const Item& other) : Body(other) // Call the base class copy constructor
+{
+    is_on_map = other.is_on_map;
+    is_picked_up = other.is_picked_up;
+    weight = other.weight;
+}
+
+// Copy assignment operator
+Item& Item::operator=(const Item& other)
+{
+    if (this != &other) {
+        Body::operator=(other); // Call the base class assignment operator
+        is_on_map = other.is_on_map;
+        is_picked_up = other.is_picked_up;
+        weight = other.weight;
+    }
+    return *this;
+}
+

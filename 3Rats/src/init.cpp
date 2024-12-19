@@ -34,24 +34,25 @@ namespace {
 Init::Init(SDL_Renderer* renderTarget, Random& random, uint32_t seed, int screenWidth, int screenHeight)
     : renderTarget(renderTarget), random(random), seed(seed), screenWidth(screenWidth), screenHeight(screenHeight)
 {
+
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "SDL Initialization failed: " << SDL_GetError() << std::endl;
+        std::cerr << "[init]: SDL Initialization failed: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
     if (TTF_Init() < 0) {
-        std::cerr << "SDL_ttf initialization failed: " << TTF_GetError() << std::endl;
+        std::cerr << "[init]: SDL_ttf initialization failed: " << TTF_GetError() << std::endl;
         SDL_Quit();
         exit(1);
     }
 
     if (renderTarget == nullptr) {
-        std::cerr << "Failed to create render target." << std::endl;
+        std::cerr << "[init]: Failed to create render target." << std::endl;
         SDL_Quit();
         exit(1);
     }
 
-    std::cout << "Initialization of Init class completed." << std::endl;
+    std::cout << "[init]: Initialization of Init class completed." << std::endl;
     std::cout << std::endl;
 }
 
@@ -59,11 +60,12 @@ void Init::init_fade(Fade* fade) {
     Collage collage;
     fade->Text::set_renderer(renderTarget);
     fade->init_text(collage.get_path(0), TEXT_SIZE, TEXT_COLOR, FADE_X, FADE_Y, FADE_WIDTH, FADE_HEIGHT);
-    fade->Body::set_surface(renderTarget);
+        fade->Body::set_surface(renderTarget);
+
     fade->set_texture(collage.get_path(1));
-    fade->set_cords(FADE_X, FADE_Y);
+    fade->set_cords(100, 100);
     fade->set_name("fade");
-    std::cout << "Fade initialized with texture and coordinates." << std::endl;
+    std::cout << "[init]: Fade initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
 
@@ -75,7 +77,7 @@ void Init::init_pause(Pause* pause) {
     pause->set_texture(collage.get_path(1));
     pause->set_cords(FADE_X, FADE_Y);
     pause->set_name("pause");
-    std::cout << "Pause initialized with texture and coordinates." << std::endl;
+    std::cout << "[init]: Pause initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
 
@@ -83,48 +85,46 @@ void Init::init_clock(Clock* clock, Fade* fade, Overlay* overlay) {
     Collage collage;
     clock->Text::set_renderer(renderTarget);
     clock->init_text(collage.get_path(0), TEXT_SIZE, TEXT_COLOR, CLOCK_X, CLOCK_Y, CLOCK_WIDTH, CLOCK_HEIGHT);
-    clock->Body::set_surface(renderTarget);
+        clock->Body::set_surface(renderTarget);
     clock->set_texture(collage.get_path(9));
     clock->set_cords(CLOCK_X, CLOCK_Y);
     clock->set_name("clock");
-    std::cout << "Clock initialized with texture and coordinates." << std::endl;
+    std::cout << "[init]: Clock initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_overlay(Fade* fade, Clock* clock, Overlay* overlay) {
     overlay->init(fade, clock);
-    std::cout << "Overlay initialized with fade and clock." << std::endl;
+    std::cout << "[init]: Overlay initialized with fade and clock." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_item_array(Item itemArray[], int itemAmount) {
     Collage collage;
-    Item itemTemplate;
-    itemTemplate.set_surface(renderTarget);
-    itemTemplate.set_texture(collage.get_path(2));
-    itemTemplate.set_cords(ITEM_INITIAL_X, ITEM_INITIAL_Y);
-    itemTemplate.set_name("item");
 
     for (int i = 0; i < itemAmount; i++) {
+        Item itemTemplate;
+        itemTemplate.set_surface(renderTarget);
+        itemTemplate.set_texture(collage.get_path(2));
+        itemTemplate.set_cords(ITEM_INITIAL_X, ITEM_INITIAL_Y);
+        itemTemplate.set_name("item");
         itemArray[i] = itemTemplate;
     }
-    std::cout << "Item array initialized with " << itemAmount << " items." << std::endl;
+    std::cout << "[init]: Item array initialized with " << itemAmount << "[init]:  items." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_tile_array(Tile tileArray[], int tileAmount) {
     Collage collage;
-    Tile tileTemplate;
-    tileTemplate.set_surface(renderTarget);
-    tileTemplate.set_texture(collage.get_path(2));
-    tileTemplate.set_cords(TILE_INITIAL_X, TILE_INITIAL_Y);
-    tileTemplate.set_name("tile");
-
     for (int i = 0; i < tileAmount; i++) {
+        Tile tileTemplate;
+        tileTemplate.set_surface(renderTarget);
+        tileTemplate.set_texture(collage.get_path(2));
+        tileTemplate.set_cords(TILE_INITIAL_X, TILE_INITIAL_Y);
+        tileTemplate.set_name("tile");
         tileArray[i] = tileTemplate;
     }
-    std::cout << "Tile array initialized with " << tileAmount << " tiles." << std::endl;
-    std::cout << std::endl;
+    std::cout << "[init]: Tile array initialized with " << tileAmount << " tiles." << std::endl;
 }
 
 void Init::init_map_array(Tile* tileArray, int tileAmount, Item* itemArray, int itemAmount, std::unique_ptr<Map>* mapArray, int mapAmount) {
@@ -140,7 +140,7 @@ void Init::init_map_array(Tile* tileArray, int tileAmount, Item* itemArray, int 
             mapArray[i]->set_textures();
         }
     }
-    std::cout << "Map array initialized with " << mapAmount << " maps." << std::endl;
+    std::cout << "[init]: Map array initialized with " << mapAmount << "[init]:  maps." << std::endl;
     std::cout << std::endl;
 }
 
@@ -161,13 +161,13 @@ void Init::init_topography(std::unique_ptr<Map>* mapArray, int mapAmount, Topogr
 
     for (int i = 1; i < mapAmount; i++) {
         if (topography->counter_maps == i) {
-            std::cout << "END GENERATED!" << std::endl;
+            std::cout << "[init]: END GENERATED!" << std::endl;
             break;
         }
         mapArray[i]->set_layout(topography->get_layout(i));
     }
-    mapArray[0]->set_textures();
-    std::cout << "Topography initialized and maze generated." << std::endl;
+    //mapArray[0]->set_textures();
+    std::cout << "[init]: Topography initialized and maze generated." << std::endl;
     std::cout << std::endl;
 }
 
@@ -179,13 +179,15 @@ void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography&
         player.set_Topography(&topography);
         player.set_random_pointer(random);
         player.set_name("player");
+        player.set_surface(renderTarget);
         player.set_texture(collage.get_path(2));
         playerArray[i] = player;
     }
 
-    playerArray[0].set_cords_frames(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT, PLAYER_FRAME_ROWS, PLAYER_FRAME_COLUMNS);
-    playerArray[0].set_surface(renderTarget);
+    playerArray[0].set_surface(renderTarget);  //redundnant?
     playerArray[0].set_texture(collage.get_path(3));
+    playerArray[0].set_cords_frames(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT, PLAYER_FRAME_ROWS, PLAYER_FRAME_COLUMNS);
+
 
     playerArray[1].set_surface(renderTarget);
     playerArray[1].set_texture(collage.get_path(4));
@@ -195,7 +197,7 @@ void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography&
     playerArray[2].set_texture(collage.get_path(5));
     playerArray[2].set_cords_frames(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT, PLAYER_FRAME_ROWS, PLAYER_FRAME_COLUMNS);
 
-    std::cout << "Player array initialized with " << playerAmount << " players." << std::endl;
+    std::cout << "[init]: Player array initialized with " << playerAmount << "[init]:  players." << std::endl;
     std::cout << std::endl;
 }
 
@@ -208,6 +210,7 @@ void Init::init_entity(Acteur entityArray[], int entityAmount, Topography& topog
         entity.set_Topography(&topography);
         entity.set_random_pointer(random);
         entity.set_name("entity");
+        entity.set_surface(renderTarget);
         entity.set_texture(collage.get_path(2));
         entityArray[i] = entity;
     }
@@ -216,6 +219,6 @@ void Init::init_entity(Acteur entityArray[], int entityAmount, Topography& topog
     entityArray[0].set_texture(collage.get_path(6));
     entityArray[0].set_cords_frames(ENTITY_INITIAL_X, ENTITY_INITIAL_Y, ENTITY_FRAME_ROWS, ENTITY_FRAME_COLUMNS);
 
-    std::cout << "Entity array initialized with " << entityAmount << " entities." << std::endl;
+    std::cout << "[init]: Entity array initialized with " << entityAmount << "[init]:  entities." << std::endl;
     std::cout << std::endl;
 }

@@ -50,9 +50,6 @@ protected:
 	void hold_item_in_mouth(Item& item);
 
 public:
-
-	void Draw(SDL_Renderer* renderTarget);
-
 	//need body
 	Acteur();
 
