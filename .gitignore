@@ -15,6 +15,7 @@ compile_commands.json
 # Ignore IDE or editor-specific files
 .vscode/
 .vscode_copy/
+.vs/
 .idea/
 *.swp
 *.swo
