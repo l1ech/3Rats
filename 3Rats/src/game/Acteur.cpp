@@ -82,7 +82,8 @@ void Acteur::check_door(Topography* topography, std::unique_ptr<Map>* map_array,
 			{
 				current_map_id++;
 				topography->set_current_map_id(current_map_id);
-				map_array[current_map_id]->set_textures();
+				//map_array[current_map_id]->set_textures(); 
+				// this used to be the heartessence of map generation
 				Door entry = map_array[current_map_id]->get_door(0);
 
 				position_rect.x = entry.get_x() * 64 - crop_rect.w;
@@ -97,7 +98,7 @@ void Acteur::check_door(Topography* topography, std::unique_ptr<Map>* map_array,
 			{
 				current_map_id--;
 				topography->set_current_map_id(current_map_id);
-				map_array[current_map_id]->set_textures();
+				//map_array[current_map_id]->set_textures();
 				Door exit = map_array[current_map_id]->get_door(1);
 
 				position_rect.x = exit.get_x() * 64 - crop_rect.w;
@@ -107,7 +108,7 @@ void Acteur::check_door(Topography* topography, std::unique_ptr<Map>* map_array,
 			{
 				current_map_id++;
 				topography->set_current_map_id(current_map_id);
-				map_array[current_map_id]->set_textures();
+				//map_array[current_map_id]->set_textures();
 				Door entry = map_array[current_map_id]->get_door(0);
 
 				position_rect.x = entry.get_x() * 64 - crop_rect.w;
@@ -322,8 +323,12 @@ void Acteur::set_cords_frames(int x, int y, int framesX, int framesY)
 	radius = frame_width / 2;
 }
 
+void Acteur::draw(SDL_Renderer *renderTarget)
+{
+	Body::draw(renderTarget);
+}
 
-void Acteur::Update(float delta, const Uint8* keyState, int mode, Acteur& front_rat)
+void Acteur::Update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat)
 {
 	map_array = topography->get_map_array();
 	map_array_size = topography->get_map_size();

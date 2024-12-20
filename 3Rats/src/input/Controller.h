@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../game/Topography.h"
+#include "../game/stage/Topography.h"
 #include "../core/Random.h"
 
 class Controller {

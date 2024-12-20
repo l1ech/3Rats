@@ -156,80 +156,10 @@ CMakeFiles/3Rats.dir/src/game/Body.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Body.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.cpp -o CMakeFiles/3Rats.dir/src/game/Body.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o: src/game/Cage_Map.cpp
-CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Cage_Map.cpp
-
-CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Cage_Map.cpp > CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.i
-
-CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Cage_Map.cpp -o CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.s
-
-CMakeFiles/3Rats.dir/src/game/Door.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Door.cpp.o: src/game/Door.cpp
-CMakeFiles/3Rats.dir/src/game/Door.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/3Rats.dir/src/game/Door.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Door.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Door.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Door.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.cpp
-
-CMakeFiles/3Rats.dir/src/game/Door.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Door.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.cpp > CMakeFiles/3Rats.dir/src/game/Door.cpp.i
-
-CMakeFiles/3Rats.dir/src/game/Door.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Door.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door.cpp -o CMakeFiles/3Rats.dir/src/game/Door.cpp.s
-
-CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o: src/game/Door_Manager.cpp
-CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door_Manager.cpp
-
-CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door_Manager.cpp > CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.i
-
-CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Door_Manager.cpp -o CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.s
-
-CMakeFiles/3Rats.dir/src/game/Food.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Food.cpp.o: src/game/Food.cpp
-CMakeFiles/3Rats.dir/src/game/Food.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/3Rats.dir/src/game/Food.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Food.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Food.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Food.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Food.cpp
-
-CMakeFiles/3Rats.dir/src/game/Food.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Food.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Food.cpp > CMakeFiles/3Rats.dir/src/game/Food.cpp.i
-
-CMakeFiles/3Rats.dir/src/game/Food.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Food.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Food.cpp -o CMakeFiles/3Rats.dir/src/game/Food.cpp.s
-
-CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o: src/game/Garden_Map.cpp
-CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Garden_Map.cpp
-
-CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Garden_Map.cpp > CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.i
-
-CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Garden_Map.cpp -o CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.s
-
 CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o: src/game/Inventory.cpp
 CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Inventory.cpp
 
 CMakeFiles/3Rats.dir/src/game/Inventory.cpp.i: cmake_force
@@ -240,131 +170,201 @@ CMakeFiles/3Rats.dir/src/game/Inventory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Inventory.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Inventory.cpp -o CMakeFiles/3Rats.dir/src/game/Inventory.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Item.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Item.cpp.o: src/game/Item.cpp
-CMakeFiles/3Rats.dir/src/game/Item.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/3Rats.dir/src/game/Item.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Item.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Item.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Item.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Item.cpp
+CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o: src/game/stage/Topography.cpp
+CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/Topography.cpp
 
-CMakeFiles/3Rats.dir/src/game/Item.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Item.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Item.cpp > CMakeFiles/3Rats.dir/src/game/Item.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/Topography.cpp > CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Item.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Item.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Item.cpp -o CMakeFiles/3Rats.dir/src/game/Item.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/Topography.cpp -o CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o: src/game/Level_Structure.cpp
-CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o: src/game/stage/factory/map_factory/Level_Structure.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Level_Structure.cpp
 
-CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.cpp > CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Level_Structure.cpp > CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Level_Structure.cpp -o CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Level_Structure.cpp -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Map.cpp.o: src/game/Map.cpp
-CMakeFiles/3Rats.dir/src/game/Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/3Rats.dir/src/game/Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o: src/game/stage/factory/map_factory/Map.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map.cpp
 
-CMakeFiles/3Rats.dir/src/game/Map.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.cpp > CMakeFiles/3Rats.dir/src/game/Map.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map.cpp > CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Map.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map.cpp -o CMakeFiles/3Rats.dir/src/game/Map.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map.cpp -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o: src/game/Map_Factory.cpp
-CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map_Factory.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o: src/game/stage/factory/map_factory/Map_Factory.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map_Factory.cpp
 
-CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map_Factory.cpp > CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map_Factory.cpp > CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Map_Factory.cpp -o CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map_Factory.cpp -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o: src/game/Maze_Map.cpp
-CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Maze_Map.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o: src/game/stage/factory/map_factory/map_types/Cage_Map.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp
 
-CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Maze_Map.cpp > CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp > CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Maze_Map.cpp -o CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Tile.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Tile.cpp.o: src/game/Tile.cpp
-CMakeFiles/3Rats.dir/src/game/Tile.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/3Rats.dir/src/game/Tile.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Tile.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Tile.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Tile.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o: src/game/stage/factory/map_factory/map_types/Garden_Map.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp
 
-CMakeFiles/3Rats.dir/src/game/Tile.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Tile.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.cpp > CMakeFiles/3Rats.dir/src/game/Tile.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp > CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Tile.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Tile.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile.cpp -o CMakeFiles/3Rats.dir/src/game/Tile.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o: src/game/Tile_Manager.cpp
-CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Manager.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o: src/game/stage/factory/map_factory/map_types/Maze_Map.cpp
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp
 
-CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Manager.cpp > CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp > CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Manager.cpp -o CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp -o CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o: src/game/Tile_Type.cpp
-CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Type.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o: src/game/stage/manager/door_manager/Door.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door.cpp
 
-CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Type.cpp > CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Tile_Type.cpp -o CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.s
 
-CMakeFiles/3Rats.dir/src/game/Topography.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/game/Topography.cpp.o: src/game/Topography.cpp
-CMakeFiles/3Rats.dir/src/game/Topography.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/3Rats.dir/src/game/Topography.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/Topography.cpp.o -MF CMakeFiles/3Rats.dir/src/game/Topography.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/Topography.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o: src/game/stage/manager/door_manager/Door_Manager.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door_Manager.cpp
 
-CMakeFiles/3Rats.dir/src/game/Topography.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/Topography.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.cpp > CMakeFiles/3Rats.dir/src/game/Topography.cpp.i
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door_Manager.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.i
 
-CMakeFiles/3Rats.dir/src/game/Topography.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/Topography.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Topography.cpp -o CMakeFiles/3Rats.dir/src/game/Topography.cpp.s
+CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door_Manager.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.s
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o: src/game/stage/manager/item_manager/Food.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Food.cpp
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Food.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.i
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Food.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.s
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o: src/game/stage/manager/item_manager/Item.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Item.cpp
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Item.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.i
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Item.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.s
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o: src/game/stage/manager/tile_manager/Tile.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile.cpp
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.i
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.s
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o: src/game/stage/manager/tile_manager/Tile_Manager.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Manager.cpp
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Manager.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.i
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Manager.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.s
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o: src/game/stage/manager/tile_manager/Tile_Type.cpp
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o -MF CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o.d -o CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Type.cpp
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Type.cpp > CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.i
+
+CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Type.cpp -o CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.s
 
 CMakeFiles/3Rats.dir/src/init.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/init.cpp.o: src/init.cpp
@@ -528,21 +528,21 @@ CMakeFiles/3Rats.dir/src/ui/Text.cpp.s: cmake_force
 "CMakeFiles/3Rats.dir/src/core/Random.cpp.o" \
 "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o" \
 "CMakeFiles/3Rats.dir/src/game/Body.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Door.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Food.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o" \
 "CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Item.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Map.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Tile.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o" \
-"CMakeFiles/3Rats.dir/src/game/Topography.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o" \
+"CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o" \
 "CMakeFiles/3Rats.dir/src/init.cpp.o" \
 "CMakeFiles/3Rats.dir/src/input/Controller.cpp.o" \
 "CMakeFiles/3Rats.dir/src/input_handler.cpp.o" \
@@ -564,21 +564,21 @@ bin/3Rats: CMakeFiles/3Rats.dir/src/core/Collage.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/core/Random.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/game/Body.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Cage_Map.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Door.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Door_Manager.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Food.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Garden_Map.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Item.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Level_Structure.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Map.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Map_Factory.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Maze_Map.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Tile.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Tile_Manager.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Tile_Type.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/game/Topography.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/Topography.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Level_Structure.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/Map_Factory.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Cage_Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Garden_Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/init.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/input/Controller.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/input_handler.cpp.o

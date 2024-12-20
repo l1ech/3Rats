@@ -15,9 +15,6 @@ void Overlay::update(double delta)
 	} 
 }
 
-void Overlay::draw(SDL_Renderer* render_target)
-{
-}
 
 void Overlay::init(Fade* fade, Clock* clock)
 {

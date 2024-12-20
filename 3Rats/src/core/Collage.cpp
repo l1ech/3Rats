@@ -3,26 +3,27 @@
 
 Collage::Collage()
 {
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/fonts/sans/sans.ttf");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/ui_textures/fade.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/meta_textures/place_holder.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/rat_textures/mango.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/rat_textures/fridolin.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/rat_textures/remy.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/npc_textures/entity.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/backgound.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/empty.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/ui_textures/clock_frame.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/maze_door.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/maze_wall.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/walk_way_shadow_horizontal.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/walk_way_shadow_vertical.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/ground.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/maze_hole.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/maze_textures/wooden_floor.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/interactable/test.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/item_textures/mushroom.png");
-    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/textures/item_textures/place_holder.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/fonts/sans/sans.ttf");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/fade.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/mango.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/fridolin.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/remy.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/npc_textures/entity.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/images/backgound.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/empty.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/clock_frame.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/maze_door.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/maze_wall.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/walk_way_shadow_horizontal.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/walk_way_shadow_vertical.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/ground.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/maze_hole.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/wooden_floor.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/interactable/test.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/item_textures/mushroom.png");
+    paths.push_back("/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/item_textures/place_holder.png");
+
 }
 
 Collage::~Collage()

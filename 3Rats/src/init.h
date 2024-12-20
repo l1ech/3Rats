@@ -3,10 +3,10 @@
 
 #include <SDL.h>
 #include <memory>
-#include "game/Item.h"
+#include "game/stage/manager/item_manager/Item.h"
 #include "game/Body.h"
 //#include "game/Map.h"
-#include "game/Tile.h"
+#include "game/stage/manager/tile_manager/Tile.h"
 #include "game/Acteur.h"
 #include "core/Clock.h"
 #include "core/Random.h"
@@ -15,9 +15,9 @@
 #include "ui/Pause.h"
 #include "core/Collage.h"
 
-#include "game/Map_Factory.h"
+#include "game/stage/factory/map_factory/Map_Factory.h"
 
-#include "game/Topography.h"
+#include "game/stage/Topography.h"
 #include "input_handler.h"  
 #include "seed_manager.h"
 

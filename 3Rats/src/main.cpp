@@ -63,18 +63,6 @@ int main(int argc, char* argv[])
         std::cout << "[Main]: Renderer created successfully." << std::endl;
     }
 
-    // Initialize SDL_image
-    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
-    if (!(IMG_Init(imgFlags) & imgFlags)) {
-        std::cout << "[Main]: SDL_image initialization failed: " << IMG_GetError() << std::endl;
-        SDL_DestroyRenderer(renderTarget);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return 1;
-    } else {
-        std::cout << "[Main]: SDL_image initialized successfully." << std::endl;
-    }
-
     // Additional debug for resolution
     SDL_GetRendererOutputSize(renderTarget, &levelWidth, &levelHeight);
     std::cout << "[Main]: Renderer output size: " << levelWidth << "x" << levelHeight << std::endl;
@@ -92,32 +80,70 @@ int main(int argc, char* argv[])
     Fade fade;
     gameInit.init_fade(&fade);
 
+
+    int a;
+    std::cin >> a;
+
     Pause pause;
     gameInit.init_pause(&pause);
+
+    a;
+    std::cin >> a;
 
     Clock clock;
     Overlay overlay;
     gameInit.init_clock(&clock, &fade, &overlay);
+
+    a;
+    std::cin >> a;
+
     gameInit.init_overlay(&fade, &clock, &overlay);
+
+
+    a;
+    std::cin >> a;
 
     // Initialize game entities and maps
     Item item_array[ITEM_AMOUNT];
     gameInit.init_item_array(item_array, ITEM_AMOUNT);
 
+
+    a;
+    std::cin >> a;
+
     Tile tile_array[TILE_AMOUNT];
     gameInit.init_tile_array(tile_array, TILE_AMOUNT);
+
+
+    a;
+    std::cin >> a;
 
     std::unique_ptr<Map> map_array[MAP_AMOUNT];
     gameInit.init_map_array(tile_array, TILE_AMOUNT, item_array, ITEM_AMOUNT, map_array, MAP_AMOUNT);
 
+
+    a;
+    std::cin >> a;
+
     Topography topography;
     gameInit.init_topography(map_array, MAP_AMOUNT, &topography);
+
+
+    a;
+    std::cin >> a;
 
     Acteur player_array[PLAYER_AMOUNT];
     gameInit.init_player_array(player_array, PLAYER_AMOUNT, topography);
 
+
+    a;
+    std::cin >> a;
+
     Acteur entity[ENTITY_AMOUNT];
     gameInit.init_entity(entity, ENTITY_AMOUNT, topography);
+
+    a;
+    std::cin >> a;
 
     // Collage and texture loading
     Collage collage;
@@ -142,15 +168,24 @@ int main(int argc, char* argv[])
     int wait = TELEPORT_WAIT_TIME; // Adjust wait time
 
     std::cout << "[Main]: Entering game loop..." << std::endl;
-    int a;
+
+    a;
     std::cin >> a;
+
+    map_array[0]->set_random_ptr(&random);
+    map_array[0]->generate(false, false); 
+
+    a;
+    std::cin >> a;
+
+
     while (isRunning)
     {
         prevTime = currentTime;
         currentTime = SDL_GetTicks();
         delta = (currentTime - prevTime) / 1000.0f;
 
-        while (SDL_PollEvent(&ev) != 0)        // ------------- key-events
+        while (SDL_PollEvent(&ev) != 0)
         {
             // Getting the quit and keyboard events
             if (ev.type == SDL_QUIT)
@@ -182,7 +217,13 @@ int main(int argc, char* argv[])
         SDL_RenderClear(renderTarget);
         SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
-        topography.draw(renderTarget);
+        for (int i = 0; i < ITEM_AMOUNT; i++) {
+            item_array[i].draw(renderTarget);
+        }
+
+        for (int i = 0; i < TILE_AMOUNT; i++) {
+            tile_array[i].draw(renderTarget);
+        }
 
         for (int i = 0; i < PLAYER_AMOUNT; i++)
         {
@@ -190,15 +231,18 @@ int main(int argc, char* argv[])
         }
         entity[0].draw(renderTarget);
         clock.draw(renderTarget);
-        fade.draw(renderTarget);
+        fade.Fade::draw(renderTarget);
         pause.draw(renderTarget);
-        overlay.draw(renderTarget);
-
+        
         SDL_RenderPresent(renderTarget);
     }
 
     // Freeing the memory
     std::cout << "[Main]: Cleaning up resources..." << std::endl;
+
+    a;
+    std::cin >> a;
+
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderTarget);
     SDL_DestroyTexture(texture);

@@ -1,7 +1,7 @@
 CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Inventory.cpp \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Inventory.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Item.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Item.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/pthread.h \
@@ -231,7 +231,7 @@ CMakeFiles/3Rats.dir/src/game/Inventory.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/bitset \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__bit_reference \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../Body.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_main.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_stdinc.h \
