@@ -371,7 +371,7 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/bitset \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__bit_reference \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../core/Body.h \
   /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2/SDL_image.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/filesystem \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stack \
@@ -379,48 +379,49 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__split_buffer \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../Constants.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/../../../Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/../../../../core/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/../../../../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/Game.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../core/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../Acteur.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/manager/item_manager/Item.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/manager/item_manager/Item.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/Map.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/vector \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/Level_Structure.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../manager/tile_manager/Tile.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../manager/item_manager/Item.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../../../core/Random.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/Level_Structure.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../manager/tile_manager/Tile.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../manager/item_manager/Item.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../../../core/Random.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/random \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cmath \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/numeric \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../../Body.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../manager/tile_manager/Tile_Manager.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../../../core/Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../manager/tile_manager/Tile_Manager.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Type.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../manager/door_manager/Door.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../manager/door_manager/Door_Manager.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../manager/door_manager/../../../../core/Random.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/manager/tile_manager/Tile.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/manager/door_manager/Door.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../input/Controller.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../input/../game/stage/Topography.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../input/../game/stage/factory/map_factory/Map.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../input/../game/stage/factory/map_factory/Level_Structure.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../input/../core/Random.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../manager/door_manager/Door.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../manager/door_manager/Door_Manager.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/../../manager/door_manager/../../../../core/Random.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/manager/tile_manager/Tile.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/manager/door_manager/Door.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../input/Controller.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../input/../game/stage/Topography.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../input/../game/stage/factory/map_factory/Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../input/../game/stage/factory/map_factory/Level_Structure.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../input/../core/Random.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../item_manager/Item.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/Pause.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/Panel.h \
   /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2/SDL_ttf.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/../game/Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/../core/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/Text.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/Overlay.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/../core/Clock.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/../../../../core/../ui/Panel.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../core/../ui/Panel.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../core/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Clock.h \
@@ -429,11 +430,11 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map_Factory.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/map_types/Maze_Map.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/map_types/../Map.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/map_types/../../../manager/door_manager/Door_Manager.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/map_types/Garden_Map.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../stage/factory/map_factory/map_types/Cage_Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/map_types/Maze_Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/map_types/../Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/map_types/../../../manager/door_manager/Door_Manager.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/map_types/Garden_Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../stage/factory/map_factory/map_types/Cage_Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/Topography.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input_handler.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/seed_manager.h \

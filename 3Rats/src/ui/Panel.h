@@ -2,7 +2,7 @@
 
 #include <SDL_ttf.h>
 
-#include "../game/Body.h"
+#include "../core/Body.h"
 #include "Text.h"
 
 class Panel : public Body, public Text

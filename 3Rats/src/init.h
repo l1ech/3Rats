@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "game/stage/manager/item_manager/Item.h"
-#include "game/Body.h"
+#include "core/Body.h"
 //#include "game/Map.h"
 #include "game/stage/manager/tile_manager/Tile.h"
 #include "game/stage/manager/game_manager/Game.h"

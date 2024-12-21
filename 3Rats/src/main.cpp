@@ -44,7 +44,11 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> renderTarget(SDL_CreateRenderer(window.get(), -1, SDL_RENDERER_ACCELERATED), SDL_DestroyRenderer);
+    std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> renderTarget(
+        SDL_CreateRenderer (window.get(), -1, SDL_RENDERER_ACCELERATED), 
+        SDL_DestroyRenderer
+    );
+    
     if (renderTarget == nullptr) {
         std::cerr << "[Main]: Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         return -1;

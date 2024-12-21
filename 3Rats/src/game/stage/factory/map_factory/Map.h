@@ -6,7 +6,7 @@
 #include <utility>
 
 #include "Level_Structure.h"
-#include "../../../Body.h"
+#include "../../../../core/Body.h"
 //#include "../../../../core/Texture_Manager.h"
 
 #include "../../manager/item_manager/Item.h"

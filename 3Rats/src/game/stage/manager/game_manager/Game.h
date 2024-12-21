@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Body.h"
+#include "../../../../core/Body.h"
 #include "../../../Acteur.h"
 
 #include "../tile_manager/Tile.h"

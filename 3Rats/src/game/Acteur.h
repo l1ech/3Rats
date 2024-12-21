@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "Body.h"
+#include "../core/Body.h"
 #include "stage/manager/item_manager/Item.h"
 #include "stage/factory/map_factory/Map.h"
 #include "stage/manager/tile_manager/Tile.h"
