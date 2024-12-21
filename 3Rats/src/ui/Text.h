@@ -3,7 +3,7 @@
 #include <SDL_ttf.h>
 #include <iostream>
 
-#include "../Constants.h"
+#include "../core/Constants.h"
 
 //#include "../core/Texture_Manager.h"
 

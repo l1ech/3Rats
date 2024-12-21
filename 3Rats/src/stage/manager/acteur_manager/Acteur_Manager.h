@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "Acteur.h"
-#include "../../../init.h"
+#include "../../../core/init.h"
 
 class Init;  // Forward declaration of Init
 

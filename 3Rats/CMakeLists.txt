@@ -16,7 +16,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 file(GLOB SOURCES
     "src/*.cpp"       
     "src/input/*.cpp" 
-    "src/*.cpp"
     "src/stage/*.cpp"
     "src/stage/factory/map_factory/*.cpp"
     "src/stage/factory/map_factory/map_types/*.cpp"

@@ -381,6 +381,6 @@ CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__split_buffer \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../core/Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../core/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../core/../ui/Panel.h

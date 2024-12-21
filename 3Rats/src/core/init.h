@@ -3,24 +3,23 @@
 #include <SDL.h>
 #include <memory>
 
-#include "stage/manager/item_manager/Item.h"
-#include "stage/manager/tile_manager/Tile.h"
-#include "stage/manager/game_manager/Game.h"
-#include "stage/manager/acteur_manager/Acteur.h"
-#include "stage/manager/acteur_manager/Acteur_Manager.h"
-#include "stage/manager/map_manager/Topography.h"
-#include "stage/factory/map_factory/Map_Factory.h"
+#include "../stage/manager/item_manager/Item.h"
+#include "../stage/manager/tile_manager/Tile.h"
+#include "../stage/manager/game_manager/Game.h"
+#include "../stage/manager/acteur_manager/Acteur.h"
+#include "../stage/manager/acteur_manager/Acteur_Manager.h"
+#include "../stage/manager/map_manager/Topography.h"
+#include "../stage/factory/map_factory/Map_Factory.h"
 
-#include "core/Body.h"
-#include "core/Clock.h"
-#include "core/Random.h"
-
-#include "ui/Fade.h"
-#include "ui/Overlay.h"
-#include "ui/Pause.h"
-
+#include "Body.h"
+#include "Clock.h"
+#include "Random.h"
 #include "input_handler.h"  
 #include "seed_manager.h"
+
+#include "../ui/Fade.h"
+#include "../ui/Overlay.h"
+#include "../ui/Pause.h"
 
 #include "Constants.h"
 

@@ -1,4 +1,4 @@
-#include "../src/init.h"
+#include "core/init.h"
 
 int Body::current_index = 0; 
     

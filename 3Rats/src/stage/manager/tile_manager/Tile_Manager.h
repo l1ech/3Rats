@@ -4,7 +4,7 @@
 #include <string>
 //#include "../../../../core/Texture_Manager.h"
 #include "Tile_Type.h"
-#include "../../../Constants.h"
+#include "../../../core/Constants.h"
 
 class Tile_Manager {
 private:
