@@ -1,20 +1,33 @@
-TODO: 
-1. Alpha-version-update
-   1. Refactoring
-       1. Clock 
-          1. add Time Class in /core (functionality taken from Clock)
-          3. add Time to Clock
-          4. add Clock_Manager
-       2. Acteur
-          1. add Acteur_Manager
-          2. move Body to /core
-          3. move update function to Body from Acteur
-       3. Map 
-          1. overlay a couple of paths to greata maze::type 
-          2. map grave-yard
-    2. Bugfix
-       1. textures not drawing correctly
+# TODO List - Alpha Version Update
 
-2. feature
-   1. if you clip out of a romm you tp go to it
-   2. add a stunn class that can be executetd from anywhere in the game and can halt the players movement so to say let him sleep
+## 1. Alpha Version Update
+
+### 1.1 Refactoring
+
+#### Clock
+- Add `Time` class in `/core` (functionality taken from `Clock`).
+- Add `Time` to `Clock`.
+- Add `Clock_Manager`.
+
+#### Acteur
+- Add `Acteur_Manager`.
+- Move `Body` to `/core`.
+- Move `update` function to `Body` from `Acteur`.
+
+#### Map
+- Overlay a couple of paths to create `maze::type`.
+- Add map grave-yard.
+
+### 1.2 Bugfix
+- Fix issue with textures not drawing correctly.
+
+---
+
+## 2. Feature
+
+### 2.1 Teleport Feature
+- Implement teleportation if the player clips out of a room.
+
+### 2.2 Stun Class
+- Add `Stun` class that can be executed from anywhere in the game.
+- Make it halt the player's movement (effectively making them "sleep").
