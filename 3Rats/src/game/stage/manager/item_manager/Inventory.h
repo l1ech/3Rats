@@ -1,6 +1,6 @@
 #pragma once
 
-#include "stage/manager/item_manager/Item.h"
+#include "Item.h"
 
 // normaly i should use some kind of array of items 
 // but for testing lets do it with int

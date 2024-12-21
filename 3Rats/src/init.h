@@ -8,6 +8,7 @@
 #include "game/stage/manager/tile_manager/Tile.h"
 #include "game/stage/manager/game_manager/Game.h"
 #include "game/stage/manager/acteur_manager/Acteur.h"
+//#include "game/stage/manager/acteur_manager/Acteur_Manager.h"
 #include "game/stage/Topography.h"
 
 #include "game/stage/factory/map_factory/Map_Factory.h"

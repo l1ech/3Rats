@@ -223,6 +223,7 @@ void Init::init_topography(std::unique_ptr<Map>* mapArray, int mapAmount, Topogr
 }
 
 void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography& topography) {
+
     for (int i = 0; i < playerAmount; i++) {
         Acteur player;
         player.set_name("player");
