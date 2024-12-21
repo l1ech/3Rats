@@ -28,6 +28,7 @@ protected:
 	int radius;
 
 	int hight;
+	int width;
 
 public:
 	int index;
@@ -45,6 +46,7 @@ public:
 	void set_texture(const std::string& filePath);
 	void set_cords(int x, int y);
 	void set_hight(int value);
+	void set_width(int value);
 	void set_name(const std::string& name);
 
 	int get_origin_x() const;

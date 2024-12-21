@@ -94,6 +94,7 @@ void Body::set_hight(int value) {
     std::cout << "[Body" << index << "]: "<< name << " set height to: " << value << std::endl;
 }
 
+
 void Body::set_name(const std::string& name) { 
     this->name = name; 
     std::cout << "[Body" << index << "]: "<< name << " set name to: " << name << std::endl;

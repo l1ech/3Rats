@@ -76,6 +76,9 @@ void Init::init_pause(Pause* pause) {
         Init_Constants::FADE_TEXT_Y
     );
 
+    //pause->set_hight(Init_Constants::FADE_HEIGHT);
+    //pause->set_width(Init_Constants::FADE_WIDTH);
+
     std::cout << "[init]: Pause initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }

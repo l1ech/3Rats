@@ -28,6 +28,7 @@ Game::~Game()
 }
 void Game::update(float delta, const Uint8 *keyState, int mode)
 {
+    std::cout << "[Game]: Update called ..." << std::endl;
     fade.update(std::to_string(clock.get_day()));
     clock.update(delta);
 
@@ -45,6 +46,7 @@ void Game::update(float delta, const Uint8 *keyState, int mode)
 }
 
 void Game::render() {
+    std::cout << "[Game]: draw called ..." << std::endl;
     SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
     SDL_RenderClear(renderTarget);
     SDL_RenderCopy(renderTarget, texture, NULL, NULL);
