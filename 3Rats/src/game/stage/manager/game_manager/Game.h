@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../../../../core/Body.h"
-#include "../../../Acteur.h"
 
+#include "../acteur_manager/Acteur.h"
 #include "../tile_manager/Tile.h"
 #include "../item_manager/Item.h"
 

@@ -11,7 +11,7 @@
 
 #### Acteur
 - Add `Acteur_Manager`.
-- Move `Body` to `/core`.
+- ~~Move `Body` to `/core`. ~~
 - Move `update` function to `Body` from `Acteur`.
 
 #### Map

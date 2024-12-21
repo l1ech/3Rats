@@ -24,6 +24,7 @@ file(GLOB SOURCES
     "src/game/stage/manager/item_manager/*.cpp"
     "src/game/stage/manager/tile_manager/*.cpp"
     "src/game/stage/manager/game_manager/*.cpp"
+    "src/game/stage/manager/acteur_manager/*.cpp"
     "src/audio/*.cpp"
     "src/core/*.cpp"
     "src/ui/*.cpp"

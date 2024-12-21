@@ -3,14 +3,15 @@
 #include <iostream>
 #include <string>
 
-#include "../core/Body.h"
-#include "stage/manager/item_manager/Item.h"
-#include "stage/factory/map_factory/Map.h"
-#include "stage/manager/tile_manager/Tile.h"
-#include "stage/manager/door_manager/Door.h"
-#include "../input/Controller.h"
-//#include "../core/Texture_Manager.h"
-#include "../Constants.h"
+#include "../../../../Constants.h"
+
+#include "../../../../core/Body.h"
+#include "../../../../input/Controller.h"
+
+#include "../item_manager/Item.h"
+#include "../../factory/map_factory/Map.h"
+#include "../tile_manager/Tile.h"
+#include "../door_manager/Door.h"
 
 class Acteur : public Controller
 {
