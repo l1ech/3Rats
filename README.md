@@ -1,4 +1,4 @@
-# TODO List - Alpha Version Update
+# TODO List
 
 ## 1. Alpha Version Update
 
