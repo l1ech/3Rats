@@ -134,7 +134,6 @@ int main(int argc, char* argv[])
     ActeurManager acteurManager;
     Acteur player_array[Main_Constants::PLAYER_AMOUNT];
     Acteur entity_array[Main_Constants::ENTITY_AMOUNT];
-
     acteurManager.init(init, &topography, player_array, entity_array);
 
     a;

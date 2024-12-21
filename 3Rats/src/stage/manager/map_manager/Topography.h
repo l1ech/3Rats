@@ -1,7 +1,7 @@
 #pragma once
 
-#include "factory/map_factory/Map.h"
-#include "factory/map_factory/Level_Structure.h"
+#include "../../factory/map_factory/Map.h"
+#include "../../factory/map_factory/Level_Structure.h"
 
 class Topography : public Level_Structure
 {

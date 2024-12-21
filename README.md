@@ -17,6 +17,7 @@
 #### Map
 - Overlay a couple of paths to create `maze::type`.
 - Add map grave-yard.
+- make topology new map_manager
 
 ### 1.2 Bugfix
 - Fix issue with textures not drawing correctly.

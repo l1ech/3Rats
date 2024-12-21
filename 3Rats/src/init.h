@@ -3,14 +3,13 @@
 #include <SDL.h>
 #include <memory>
 
-#include "game/stage/manager/item_manager/Item.h"
-#include "game/stage/manager/tile_manager/Tile.h"
-#include "game/stage/manager/game_manager/Game.h"
-#include "game/stage/manager/acteur_manager/Acteur.h"
-#include "game/stage/manager/acteur_manager/Acteur_Manager.h"
-#include "game/stage/Topography.h"
-
-#include "game/stage/factory/map_factory/Map_Factory.h"
+#include "stage/manager/item_manager/Item.h"
+#include "stage/manager/tile_manager/Tile.h"
+#include "stage/manager/game_manager/Game.h"
+#include "stage/manager/acteur_manager/Acteur.h"
+#include "stage/manager/acteur_manager/Acteur_Manager.h"
+#include "stage/manager/map_manager/Topography.h"
+#include "stage/factory/map_factory/Map_Factory.h"
 
 #include "core/Body.h"
 #include "core/Clock.h"

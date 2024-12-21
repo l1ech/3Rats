@@ -2,7 +2,7 @@
 
 #include"../../manager/tile_manager/Tile.h"
 #include"../../manager/item_manager/Item.h"
-#include "../../../../core/Random.h"
+#include "../../../core/Random.h"
 
 class Level_Structure
 {

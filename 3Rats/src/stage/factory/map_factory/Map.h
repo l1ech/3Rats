@@ -6,7 +6,7 @@
 #include <utility>
 
 #include "Level_Structure.h"
-#include "../../../../core/Body.h"
+#include "../../../core/Body.h"
 //#include "../../../../core/Texture_Manager.h"
 
 #include "../../manager/item_manager/Item.h"
@@ -35,7 +35,6 @@ private:
     //int get_tile(int x, int y);
 
 public:
-
     Tile_Manager tile_manager;
     Door_Manager door_manager;
 

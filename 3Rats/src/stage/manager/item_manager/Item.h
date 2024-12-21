@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 
-#include "../../../../core/Body.h"
-#include "../../../../Constants.h"
+#include "../../../core/Body.h"
+#include "../../../Constants.h"
 
 class Item : public Body
 {

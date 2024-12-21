@@ -1,5 +1,4 @@
-#ifndef SEEDMANAGER_H
-#define SEEDMANAGER_H
+#pragma once
 
 #include <iostream>
 #include <cstdlib>
@@ -26,4 +25,3 @@ private:
     uint32_t getUserInputSeed();
 };
 
-#endif

@@ -3,13 +3,15 @@
 #include <iostream>
 #include <string>
 
-#include "../../../../Constants.h"
+#include "../../../Constants.h"
 
-#include "../../../../core/Body.h"
-#include "../../../../input/Controller.h"
+#include "../../../core/Body.h"
+#include "../../../input/Controller.h"
+
+#include "../../factory/map_factory/Map.h"
+
 
 #include "../item_manager/Item.h"
-#include "../../factory/map_factory/Map.h"
 #include "../tile_manager/Tile.h"
 #include "../door_manager/Door.h"
 

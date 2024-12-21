@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../../core/Body.h"
-#include "../../../../Constants.h"
+#include "../../../core/Body.h"
+#include "../../../Constants.h"
 
 
 class Tile : public Body

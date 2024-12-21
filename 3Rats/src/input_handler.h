@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 
-#include "game/stage/manager/acteur_manager/Acteur.h"  // Make sure to include any necessary classes
+#include "stage/manager/acteur_manager/Acteur.h"  // Make sure to include any necessary classes
 
 #include "ui/Fade.h"
 #include "ui/Pause.h"
