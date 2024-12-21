@@ -325,10 +325,7 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/sched.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cassert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/assert.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Item.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iostream \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/ios \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__locale \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/Clock.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/string_view \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__string \
@@ -343,6 +340,9 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/wctype.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/wctype.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/_types/_wctrans_t.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iostream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/ios \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__locale \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/mutex \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__mutex_base \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/system_error \
@@ -371,21 +371,28 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/bitset \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__bit_reference \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/../../../core/Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../ui/Panel.h \
+  /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2/SDL_ttf.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../ui/../core/Body.h \
   /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2/SDL_image.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/filesystem \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stack \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/deque \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__split_buffer \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/../../../Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../ui/Text.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../ui/../core/Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../core/Time.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Item.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/../../../core/Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/../../../core/Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/../../../core/Body.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/../../../Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/../../../core/Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/Game.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../core/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/Acteur.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../core/Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../core/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../input/Controller.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/vector \
@@ -413,17 +420,12 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../init.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../item_manager/Item.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../clock_manager/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/Pause.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/Panel.h \
-  /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2/SDL_ttf.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/../core/Body.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/Text.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/Overlay.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../ui/../core/Clock.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/../../../core/../ui/Panel.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../../../core/Clock.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../ui/Fade.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/../../../ui/../stage/manager/clock_manager/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur_Manager.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/map_manager/Topography.h \
@@ -433,12 +435,14 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../input/../stage/manager/map_manager/../../factory/map_factory/map_types/../../../manager/door_manager/Door_Manager.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../input/../stage/manager/map_manager/../../factory/map_factory/map_types/Garden_Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/../acteur_manager/../../../input/../stage/manager/map_manager/../../factory/map_factory/map_types/Cage_Map.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/seed_manager/seed_manager.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Body.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/input_handler/input_handler.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/input_handler/../../manager/acteur_manager/Acteur.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/input_handler/../../../ui/Fade.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/input_handler/../../../ui/Pause.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input_handler.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/seed_manager.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/Constants.h
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h

@@ -3,25 +3,27 @@
 #include <SDL.h>
 #include <memory>
 
-#include "../stage/manager/item_manager/Item.h"
-#include "../stage/manager/tile_manager/Tile.h"
-#include "../stage/manager/game_manager/Game.h"
-#include "../stage/manager/acteur_manager/Acteur.h"
-#include "../stage/manager/acteur_manager/Acteur_Manager.h"
-#include "../stage/manager/map_manager/Topography.h"
-#include "../stage/factory/map_factory/Map_Factory.h"
+#include "stage/manager/clock_manager/Clock.h"
+#include "stage/manager/item_manager/Item.h"
+#include "stage/manager/tile_manager/Tile.h"
+#include "stage/manager/game_manager/Game.h"
+#include "stage/manager/acteur_manager/Acteur.h"
+#include "stage/manager/acteur_manager/Acteur_Manager.h"
+#include "stage/manager/map_manager/Topography.h"
+#include "stage/factory/map_factory/Map_Factory.h"
+#include "stage/manager/seed_manager/seed_manager.h"
 
-#include "Body.h"
-#include "Clock.h"
-#include "Random.h"
-#include "input_handler.h"  
-#include "seed_manager.h"
 
-#include "../ui/Fade.h"
-#include "../ui/Overlay.h"
-#include "../ui/Pause.h"
+#include "core/Body.h"
+#include "core/Random.h"
+#include "core/Constants.h"
 
-#include "Constants.h"
+#include "stage/handler/input_handler/input_handler.h"  
+
+#include "ui/Fade.h"
+#include "ui/Overlay.h"
+#include "ui/Pause.h"
+
 
 class Init {
 private:

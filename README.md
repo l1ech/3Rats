@@ -22,6 +22,9 @@
 ### 1.2 Bugfix
 - Fix issue with textures not drawing correctly.
 
+### 1.3 
+- add optional debug for every file
+
 ---
 
 ## 2. Feature
