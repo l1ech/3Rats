@@ -51,7 +51,6 @@ void Game::render() {
     pause.draw(renderTarget);
     clock.draw(renderTarget);
 
-
     for (int i = 0; i < item_count; ++i) {
         item_array[i].draw(renderTarget);
     }

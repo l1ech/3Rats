@@ -67,39 +67,40 @@ int main(int argc, char* argv[])
     Random random(seed);
     
     // Initialize game objects using Init class
-    Init gameInit(
+    Init init(
         renderTarget.get(), 
         random, seed, 
         Main_Constants::SCREEN_WIDTH, 
-        Main_Constants::SCREEN_HEIGHT);
+        Main_Constants::SCREEN_HEIGHT
+    );
 
     Fade fade;
-    gameInit.init_fade(&fade);
+    init.init_fade(&fade);
 
     int a;
     std::cin >> a;
 
     Pause pause;
-    gameInit.init_pause(&pause);
+    init.init_pause(&pause);
 
     a;
     std::cin >> a;
 
     Clock clock;
     Overlay overlay;
-    gameInit.init_clock(&clock, &fade, &overlay);
+    init.init_clock(&clock, &fade, &overlay);
 
     a;
     std::cin >> a;
 
-    gameInit.init_overlay(&fade, &clock, &overlay);
+    init.init_overlay(&fade, &clock, &overlay);
 
     a;
     std::cin >> a;
 
     // Initialize game entities and maps
     Item item_array[Main_Constants::ITEM_AMOUNT];
-    gameInit.init_item_array(
+    init.init_item_array(
         item_array, Main_Constants::ITEM_AMOUNT
     );
 
@@ -107,7 +108,7 @@ int main(int argc, char* argv[])
     std::cin >> a;
 
     Tile tile_array[Main_Constants::TILE_AMOUNT];
-    gameInit.init_tile_array(
+    init.init_tile_array(
         tile_array, Main_Constants::TILE_AMOUNT
     );
 
@@ -115,7 +116,7 @@ int main(int argc, char* argv[])
     std::cin >> a;
 
     std::unique_ptr<Map> map_array[Main_Constants::MAP_AMOUNT];
-    gameInit.init_map_array(
+    init.init_map_array(
         tile_array, Main_Constants::TILE_AMOUNT, 
         item_array, Main_Constants::ITEM_AMOUNT, 
         map_array, Main_Constants::MAP_AMOUNT
@@ -125,19 +126,21 @@ int main(int argc, char* argv[])
     std::cin >> a;
 
     Topography topography;
-    gameInit.init_topography(map_array, Main_Constants::MAP_AMOUNT, &topography);
+    init.init_topography(map_array, Main_Constants::MAP_AMOUNT, &topography);
 
     a;
     std::cin >> a;
 
+    ActeurManager acteurManager;
     Acteur player_array[Main_Constants::PLAYER_AMOUNT];
-    gameInit.init_player_array(player_array, Main_Constants::PLAYER_AMOUNT, topography);
+    Acteur entity_array[Main_Constants::ENTITY_AMOUNT];
+
+    acteurManager.init(init, &topography, player_array, entity_array);
 
     a;
     std::cin >> a;
 
-    Acteur entity[Main_Constants::ENTITY_AMOUNT];
-    gameInit.init_entity(entity, Main_Constants::ENTITY_AMOUNT, topography);
+    init.init_entity(acteurManager.get_entities(), Main_Constants::ENTITY_AMOUNT, topography);
 
     a;
     std::cin >> a;
@@ -159,8 +162,8 @@ int main(int argc, char* argv[])
     Game game(
         renderTarget.get(), texture.get(), 
         topography, 
-        player_array, Main_Constants::PLAYER_AMOUNT,
-        entity, Main_Constants::ENTITY_AMOUNT, 
+        acteurManager.get_players(), Main_Constants::PLAYER_AMOUNT,
+        acteurManager.get_entities(), Main_Constants::ENTITY_AMOUNT, 
         item_array, Main_Constants::ITEM_AMOUNT, 
         tile_array, Main_Constants::TILE_AMOUNT, 
         levelWidth, levelHeight, 
@@ -192,8 +195,8 @@ int main(int argc, char* argv[])
             else if (ev.type == SDL_KEYDOWN) {
                 handle_key_event(
                     ev, 
-                    player_array, Main_Constants::PLAYER_AMOUNT,
-                    entity, 
+                    acteurManager.get_players(), Main_Constants::PLAYER_AMOUNT,
+                    acteurManager.get_entities(),
                     mode,
                     fade, 
                     pause

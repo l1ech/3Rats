@@ -410,6 +410,7 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../acteur_manager/../tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../acteur_manager/../door_manager/Door.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../acteur_manager/Acteur_Manager.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../acteur_manager/../../../../init.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../item_manager/Item.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../ui/Pause.h \
@@ -424,6 +425,7 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../core/../ui/Panel.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../../../../core/Clock.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/acteur_manager/Acteur.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/acteur_manager/Acteur_Manager.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/Topography.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map_Factory.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/../acteur_manager/../../../../input/../game/stage/factory/map_factory/map_types/Maze_Map.h \

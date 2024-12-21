@@ -4626,7 +4626,32 @@ CMakeFiles/3Rats.dir/src/game/stage/manager/acteur_manager/Acteur_Manager.cpp.o:
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/xsavesintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/xtestintrin.h \
   src/Constants.h \
+  src/ui/Panel.h \
   src/core/Body.h \
+  src/core/Clock.h \
+  src/core/Random.h \
+  src/game/stage/Topography.h \
+  src/game/stage/factory/map_factory/Map_Factory.h \
+  src/game/stage/manager/acteur_manager/Acteur.h \
+  src/game/stage/manager/acteur_manager/Acteur_Manager.h \
+  src/core/Body.h \
+  src/core/Clock.h \
+  src/Constants.h \
+  src/core/Body.h \
+  src/core/Clock.h \
+  src/ui/Fade.h \
+  src/ui/Overlay.h \
+  src/ui/Panel.h \
+  src/ui/Pause.h \
+  src/ui/Text.h \
+  src/game/stage/manager/acteur_manager/Acteur.h \
+  src/game/stage/manager/acteur_manager/Acteur_Manager.h \
+  src/game/stage/manager/item_manager/Item.h \
+  src/game/stage/manager/tile_manager/Tile.h \
+  src/game/stage/manager/game_manager/Game.h \
+  src/game/stage/manager/item_manager/Item.h \
+  src/game/stage/manager/tile_manager/Tile.h \
+  src/init.h \
   src/core/Random.h \
   src/game/stage/Topography.h \
   src/core/Body.h \
@@ -4644,7 +4669,17 @@ CMakeFiles/3Rats.dir/src/game/stage/manager/acteur_manager/Acteur_Manager.cpp.o:
   src/game/stage/manager/tile_manager/Tile_Type.h \
   src/game/stage/factory/map_factory/Level_Structure.h \
   src/game/stage/factory/map_factory/Map.h \
+  src/game/stage/manager/door_manager/Door_Manager.h \
+  src/game/stage/factory/map_factory/Map.h \
+  src/game/stage/factory/map_factory/map_types/Cage_Map.h \
+  src/game/stage/factory/map_factory/map_types/Garden_Map.h \
+  src/game/stage/factory/map_factory/map_types/Maze_Map.h \
   src/input/Controller.h \
+  src/input_handler.h \
+  src/seed_manager.h \
+  src/ui/Fade.h \
+  src/ui/Overlay.h \
+  src/ui/Pause.h \
   src/game/stage/factory/map_factory/Map.h \
   src/game/stage/manager/door_manager/Door.h \
   src/game/stage/manager/item_manager/Item.h \
@@ -4701,7 +4736,8 @@ CMakeFiles/3Rats.dir/src/game/stage/manager/acteur_manager/Acteur_Manager.cpp.o:
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_video.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/begin_code.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/close_code.h \
-  /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2/SDL_image.h
+  /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2/SDL_image.h \
+  /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2/SDL_ttf.h
 
 CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o: src/game/stage/manager/door_manager/Door.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/Availability.h \
@@ -5358,19 +5394,29 @@ CMakeFiles/3Rats.dir/src/game/stage/manager/game_manager/Game.cpp.o: src/game/st
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/xsaveoptintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/xsavesintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/xtestintrin.h \
-  src/ui/Panel.h \
-  src/core/Body.h \
-  src/core/Clock.h \
   src/Constants.h \
   src/core/Body.h \
   src/core/Clock.h \
   src/ui/Fade.h \
-  src/ui/Overlay.h \
   src/ui/Panel.h \
-  src/ui/Pause.h \
   src/ui/Text.h \
+  src/core/Body.h \
+  src/core/Clock.h \
+  src/ui/Fade.h \
+  src/ui/Overlay.h \
+  src/ui/Pause.h \
   src/Constants.h \
   src/core/Body.h \
+  src/core/Clock.h \
+  src/core/Random.h \
+  src/game/stage/Topography.h \
+  src/game/stage/factory/map_factory/Map_Factory.h \
+  src/game/stage/manager/acteur_manager/Acteur.h \
+  src/game/stage/manager/acteur_manager/Acteur_Manager.h \
+  src/game/stage/manager/game_manager/Game.h \
+  src/game/stage/manager/item_manager/Item.h \
+  src/game/stage/manager/tile_manager/Tile.h \
+  src/init.h \
   src/core/Random.h \
   src/game/stage/Topography.h \
   src/core/Body.h \
@@ -5388,7 +5434,17 @@ CMakeFiles/3Rats.dir/src/game/stage/manager/game_manager/Game.cpp.o: src/game/st
   src/game/stage/manager/tile_manager/Tile_Type.h \
   src/game/stage/factory/map_factory/Level_Structure.h \
   src/game/stage/factory/map_factory/Map.h \
+  src/game/stage/manager/door_manager/Door_Manager.h \
+  src/game/stage/factory/map_factory/Map.h \
+  src/game/stage/factory/map_factory/map_types/Cage_Map.h \
+  src/game/stage/factory/map_factory/map_types/Garden_Map.h \
+  src/game/stage/factory/map_factory/map_types/Maze_Map.h \
   src/input/Controller.h \
+  src/input_handler.h \
+  src/seed_manager.h \
+  src/ui/Fade.h \
+  src/ui/Overlay.h \
+  src/ui/Pause.h \
   src/game/stage/factory/map_factory/Map.h \
   src/game/stage/manager/door_manager/Door.h \
   src/game/stage/manager/item_manager/Item.h \
@@ -8460,6 +8516,7 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: src/init.cpp \
   src/game/stage/Topography.h \
   src/game/stage/factory/map_factory/Map_Factory.h \
   src/game/stage/manager/acteur_manager/Acteur.h \
+  src/game/stage/manager/acteur_manager/Acteur_Manager.h \
   src/core/Body.h \
   src/core/Clock.h \
   src/Constants.h \
@@ -8472,6 +8529,7 @@ CMakeFiles/3Rats.dir/src/init.cpp.o: src/init.cpp \
   src/ui/Text.h \
   src/Constants.h \
   src/core/Body.h \
+  src/init.h \
   src/core/Random.h \
   src/game/stage/Topography.h \
   src/core/Body.h \
@@ -9716,6 +9774,7 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: src/main.cpp \
   src/game/stage/Topography.h \
   src/game/stage/factory/map_factory/Map_Factory.h \
   src/game/stage/manager/acteur_manager/Acteur.h \
+  src/game/stage/manager/acteur_manager/Acteur_Manager.h \
   src/core/Body.h \
   src/core/Clock.h \
   src/Constants.h \
@@ -9728,6 +9787,7 @@ CMakeFiles/3Rats.dir/src/main.cpp.o: src/main.cpp \
   src/ui/Text.h \
   src/Constants.h \
   src/core/Body.h \
+  src/init.h \
   src/core/Random.h \
   src/game/stage/Topography.h \
   src/core/Body.h \
@@ -12351,8 +12411,6 @@ src/main.cpp:
 
 src/input_handler.cpp:
 
-src/init.h:
-
 src/game/stage/manager/tile_manager/Tile.cpp:
 
 src/game/stage/manager/item_manager/ItemManager.h:
@@ -12365,9 +12423,11 @@ src/game/stage/manager/item_manager/Inventory.h:
 
 src/game/stage/manager/item_manager/Food.cpp:
 
-src/ui/Pause.h:
-
 src/game/stage/manager/game_manager/Game.cpp:
+
+src/init.h:
+
+src/ui/Pause.h:
 
 src/game/stage/manager/acteur_manager/Acteur_Manager.h:
 

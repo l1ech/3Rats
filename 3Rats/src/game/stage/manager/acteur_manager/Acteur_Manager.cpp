@@ -1,5 +1,6 @@
 #include "Acteur_Manager.h"
 
+
 ActeurManager::ActeurManager()
 {
 }
@@ -27,4 +28,13 @@ void ActeurManager::draw(SDL_Renderer *renderTarget, Acteur* acteurs, int max_ac
     }
 
     entitys[0].draw(renderTarget);
+}
+
+void ActeurManager::init(Init init, Topography* topography, Acteur* player_array, Acteur* entity_array)
+{
+    players = player_array;
+    entities = entity_array;
+    
+    init.init_player_array(player_array, Main_Constants::PLAYER_AMOUNT, *topography);
+    init.init_entity(entity_array, Main_Constants::ENTITY_AMOUNT, *topography);
 }

@@ -1,5 +1,4 @@
-#ifndef INIT_H
-#define INIT_H
+#pragma once
 
 #include <SDL.h>
 #include <memory>
@@ -8,7 +7,7 @@
 #include "game/stage/manager/tile_manager/Tile.h"
 #include "game/stage/manager/game_manager/Game.h"
 #include "game/stage/manager/acteur_manager/Acteur.h"
-//#include "game/stage/manager/acteur_manager/Acteur_Manager.h"
+#include "game/stage/manager/acteur_manager/Acteur_Manager.h"
 #include "game/stage/Topography.h"
 
 #include "game/stage/factory/map_factory/Map_Factory.h"
@@ -50,5 +49,3 @@ public:
     void init_player_array(Acteur playerArray[], int playerAmount, Topography& topography);
     void init_entity(Acteur entityArray[], int entityAmount, Topography& topography);
 };
-
-#endif // INIT_H
