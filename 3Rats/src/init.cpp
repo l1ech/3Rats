@@ -1,111 +1,105 @@
 #include "init.h"
 
-namespace {
-    const int TEXT_SIZE = 24;
-    const SDL_Color TEXT_COLOR = {255, 0, 0};
-
-    const int FADE_X = 999;
-    const int FADE_Y = 999;
-    const int FADE_WIDTH = 200;
-    const int FADE_HEIGHT = 90;
-
-    const int CLOCK_X = 400;
-    const int CLOCK_Y = 320;
-    const int CLOCK_WIDTH = 200;
-    const int CLOCK_HEIGHT = 90;
-
-    const int ITEM_INITIAL_X = 100;
-    const int ITEM_INITIAL_Y = 100;
-
-    const int TILE_INITIAL_X = 100;
-    const int TILE_INITIAL_Y = 100;
-
-    const int PLAYER_FRAME_WIDTH = 32;
-    const int PLAYER_FRAME_HEIGHT = 32;
-    const int PLAYER_FRAME_ROWS = 3;
-    const int PLAYER_FRAME_COLUMNS = 4;
-
-    const int ENTITY_INITIAL_X = 100;
-    const int ENTITY_INITIAL_Y = 100;
-    const int ENTITY_FRAME_ROWS = 1;
-    const int ENTITY_FRAME_COLUMNS = 1;
-}
-
 Init::Init(SDL_Renderer* renderTarget, Random& random, uint32_t seed, int screenWidth, int screenHeight)
     : renderTarget(renderTarget), random(random), seed(seed), screenWidth(screenWidth), screenHeight(screenHeight)
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "[init]: SDL Initialization failed: " << SDL_GetError() << std::endl;
-        exit(1);
+        std::cerr << "[Init]: SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
     } else {
-        std::cout << "[init]: SDL initialized successfully." << std::endl;
+        std::cout << "[Init]: SDL initialized successfully." << std::endl;
     }
 
     if (TTF_Init() < 0) {
-        std::cerr << "[init]: SDL_ttf initialization failed: " << TTF_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
+        std::cerr << "[Init]: SDL_ttf could not initialize! SDL_ttf Error: " << TTF_GetError() << std::endl;
     } else {
-        std::cout << "[init]: SDL_ttf initialized successfully." << std::endl;
+        std::cout << "[Init]: SDL_ttf initialized successfully." << std::endl;
     }
 
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
     if (!(IMG_Init(imgFlags) & imgFlags)) {
-        std::cerr << "[init]: SDL_image initialization failed: " << IMG_GetError() << std::endl;
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
+        std::cerr << "[Init]: SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << std::endl;
     } else {
-        std::cout << "[init]: SDL_image initialized successfully." << std::endl;
+        std::cout << "[Init]: SDL_image initialized successfully." << std::endl;
     }
 
     if (renderTarget == nullptr) {
-        std::cerr << "[init]: Failed to create render target." << std::endl;
-        IMG_Quit();
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
+        std::cerr << "[Init]: Renderer is null!" << std::endl;
     } else {
-        std::cout << "[init]: Render target created successfully." << std::endl;
+        std::cout << "[Init]: Renderer initialized successfully." << std::endl;
     }
 
     std::cout << "[init]: Initialization of Init class completed." << std::endl;
 }
 
 void Init::init_fade(Fade* fade) {
-    Collage collage;
+    //Texture_Manager texture_manager;
     fade->set_name("fade");
     fade->Text::set_renderer(renderTarget);
     fade->Body::set_surface(renderTarget);
 
-    fade->init_text(collage.get_path(0), TEXT_SIZE, TEXT_COLOR, FADE_X, FADE_Y, FADE_WIDTH, FADE_HEIGHT);
-    fade->set_texture(collage.get_path(1));
-    fade->set_cords(100, 100);
+    fade->init_text (
+            Texture_Constants::FONT, 
+            Init_Constants::TEXT_SIZE, 
+            Init_Constants::TEXT_COLOR, 
+            Init_Constants::FADE_TEXT_X, 
+            Init_Constants::FADE_TEXT_Y, 
+            Init_Constants::FADE_WIDTH, 
+            Init_Constants::FADE_HEIGHT
+        );
+    fade->set_texture(Texture_Constants::UI_TEXTURE);
+    fade->set_cords(
+        Init_Constants::FADE_X, 
+        Init_Constants::FADE_Y
+    );
     
     std::cout << "[init]: Fade initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_pause(Pause* pause) {
-    Collage collage;
-    pause->set_name("fade");
+    //Texture_Manager texture_manager;
+    pause->set_name("pause");
     pause->Text::set_renderer(renderTarget);
-    pause->init_text(collage.get_path(0), TEXT_SIZE, TEXT_COLOR, FADE_X, FADE_Y, FADE_WIDTH, FADE_HEIGHT);
+    pause->init_text(
+        Texture_Constants::FONT, 
+        Init_Constants::TEXT_SIZE, 
+        Init_Constants::TEXT_COLOR, 
+        Init_Constants::FADE_TEXT_X, 
+        Init_Constants::FADE_TEXT_Y, 
+        Init_Constants::FADE_WIDTH, 
+        Init_Constants::FADE_HEIGHT
+    );
     pause->Body::set_surface(renderTarget);
-    pause->set_texture(collage.get_path(1));
-    pause->set_cords(FADE_X, FADE_Y);
+    pause->set_texture(Texture_Constants::UI_TEXTURE);
+    pause->set_cords(
+        Init_Constants::FADE_TEXT_X, 
+        Init_Constants::FADE_TEXT_Y
+    );
+
     std::cout << "[init]: Pause initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_clock(Clock* clock, Fade* fade, Overlay* overlay) {
-    Collage collage;
+    //Texture_Manager texture_manager;
     clock->set_name("clock");
     clock->Text::set_renderer(renderTarget);
-    clock->init_text(collage.get_path(0), TEXT_SIZE, TEXT_COLOR, CLOCK_X, CLOCK_Y, CLOCK_WIDTH, CLOCK_HEIGHT);
-        clock->Body::set_surface(renderTarget);
-    clock->set_texture(collage.get_path(9));
-    clock->set_cords(CLOCK_X, CLOCK_Y);
+    clock->init_text(
+        Texture_Constants::FONT, 
+        Init_Constants::TEXT_SIZE, 
+        Init_Constants::TEXT_COLOR, 
+        Init_Constants::CLOCK_X, 
+        Init_Constants::CLOCK_Y, 
+        Init_Constants::CLOCK_WIDTH, 
+        Init_Constants::CLOCK_HEIGHT
+    );
+    clock->Body::set_surface(renderTarget);
+    clock->set_texture(Texture_Constants::CLOCK_FRAME);
+    clock->set_cords(
+        Init_Constants::CLOCK_X, 
+        Init_Constants::CLOCK_Y
+    );
+
     std::cout << "[init]: Clock initialized with texture and coordinates." << std::endl;
     std::cout << std::endl;
 }
@@ -115,33 +109,62 @@ void Init::init_overlay(Fade* fade, Clock* clock, Overlay* overlay) {
     std::cout << "[init]: Overlay initialized with fade and clock." << std::endl;
     std::cout << std::endl;
 }
+void Init::init_item_array(Item* itemArray, int itemAmount) {
+    if (itemArray == nullptr) {
+        std::cerr << "[init]: Error - itemArray is null!" << std::endl;
+        return;
+    }
 
-void Init::init_item_array(Item itemArray[], int itemAmount) {
-    Collage collage;
+    if (itemAmount > Init_Constants::MAX_ITEMS) {
+        std::cerr << "[init]: Warning - itemAmount exceeds maximum (" << Init_Constants::MAX_ITEMS << ")." << std::endl;
+        itemAmount = Init_Constants::MAX_ITEMS;
+    }
 
     for (int i = 0; i < itemAmount; i++) {
         Item itemTemplate;
-        itemTemplate.set_name("item");
-        itemTemplate.set_surface(renderTarget);
-        itemTemplate.set_texture(collage.get_path(2));
-        itemTemplate.set_cords(ITEM_INITIAL_X, ITEM_INITIAL_Y);
+        itemTemplate.set_name("item<" + std::to_string(i) + ">");
+        itemTemplate.set_surface(renderTarget); // Set renderer
+
+        //itemTemplate.set_texture(texture_manager.get_path(i % Init_Constants::NUM_TEXTURES)); // Varied texture
+
+        switch (i % Init_Constants::NUM_TEXTURES) {
+            case 0:
+                itemTemplate.set_texture(Texture_Constants::META_TEXTURE);
+                break;
+            case 1:
+                itemTemplate.set_texture(Texture_Constants::META_TEXTURE);
+                break;
+            case 2:
+                itemTemplate.set_texture(Texture_Constants::META_TEXTURE);
+                break;
+        }
+        
+        itemTemplate.set_cords(Init_Constants::ITEM_INITIAL_X + (i * Init_Constants::OFFSET_X), Init_Constants::ITEM_INITIAL_Y + (i * Init_Constants::OFFSET_Y));
         itemArray[i] = itemTemplate;
+
+        std::cout << "[init]: Initialized item " << i << " with texture and coordinates." << std::endl;
     }
-    std::cout << "[init]: Item array initialized with " << itemAmount << "[init]:  items." << std::endl;
+    std::cout << "[init]: Item array initialized with " << itemAmount << " items." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_tile_array(Tile tileArray[], int tileAmount) {
-    Collage collage;
+    if (tileArray == nullptr) {
+        std::cerr << "[init]: Error - tileArray is null!" << std::endl;
+        return;
+    }
+
     for (int i = 0; i < tileAmount; i++) {
         Tile tileTemplate;
         tileTemplate.set_name("tile");
-        tileTemplate.set_surface(renderTarget);
-        tileTemplate.set_texture(collage.get_path(2));
-        tileTemplate.set_cords(TILE_INITIAL_X, TILE_INITIAL_Y);
-        tileArray[i] = tileTemplate;
+        tileTemplate.set_surface(renderTarget); // Set renderer
+        tileTemplate.set_texture(Texture_Constants::META_TEXTURE); // Set texture
+        tileTemplate.set_cords(Init_Constants::TILE_INITIAL_X, Init_Constants::TILE_INITIAL_Y);
+        tileArray[i] =  tileTemplate;
+        std::cout << "[init]: Initialized tile " << i << " with texture and coordinates." << std::endl;
     }
     std::cout << "[init]: Tile array initialized with " << tileAmount << " tiles." << std::endl;
+    std::cout << std::endl;
 }
 
 void Init::init_map_array(Tile* tileArray, int tileAmount, Item* itemArray, int itemAmount, std::unique_ptr<Map>* mapArray, int mapAmount) {
@@ -177,7 +200,11 @@ void Init::init_topography(std::unique_ptr<Map>* mapArray, int mapAmount, Topogr
     topography->set_tile_array(tilePtr, tileAmount);
     topography->set_random_pointer(random);
 
-    topography->set_up();
+    for (int i = 0; i < mapAmount; i++) 
+    {
+        topography->set_up(mapArray[i].get());
+    }
+    
     topography->make_maze();
 
     for (int i = 0; i < mapAmount; i++) {
@@ -193,7 +220,6 @@ void Init::init_topography(std::unique_ptr<Map>* mapArray, int mapAmount, Topogr
 }
 
 void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography& topography) {
-    Collage collage;
     for (int i = 0; i < playerAmount; i++) {
         Acteur player;
         player.set_name("player");
@@ -201,27 +227,40 @@ void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography&
         player.set_Topography(&topography);
         player.set_random_pointer(random);
         player.set_surface(renderTarget);
-        player.set_texture(collage.get_path(2));
+        player.set_texture(Texture_Constants::META_TEXTURE);
         playerArray[i] = player;
     }
 
-    playerArray[0].set_texture(collage.get_path(3));
-    playerArray[0].set_cords_frames(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT, PLAYER_FRAME_ROWS, PLAYER_FRAME_COLUMNS);
+    playerArray[0].set_texture(Texture_Constants::RAT_TEXTURE_MANGO);
+    playerArray[0].set_cords_frames(
+        Init_Constants::PLAYER_FRAME_WIDTH, 
+        Init_Constants::PLAYER_FRAME_HEIGHT, 
+        Init_Constants::PLAYER_FRAME_ROWS, 
+        Init_Constants::PLAYER_FRAME_COLUMNS
+    );
 
 
-    playerArray[1].set_texture(collage.get_path(4));
-    playerArray[1].set_cords_frames(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT, PLAYER_FRAME_ROWS, PLAYER_FRAME_COLUMNS);
+    playerArray[1].set_texture(Texture_Constants::RAT_TEXTURE_FRIDOLIN);
+    playerArray[1].set_cords_frames(
+        Init_Constants::PLAYER_FRAME_WIDTH, 
+        Init_Constants::PLAYER_FRAME_HEIGHT, 
+        Init_Constants::PLAYER_FRAME_ROWS, 
+        Init_Constants::PLAYER_FRAME_COLUMNS
+    );
 
-    playerArray[2].set_texture(collage.get_path(5));
-    playerArray[2].set_cords_frames(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT, PLAYER_FRAME_ROWS, PLAYER_FRAME_COLUMNS);
+    playerArray[2].set_texture(Texture_Constants::RAT_TEXTURE_REMY);
+    playerArray[2].set_cords_frames(
+        Init_Constants::PLAYER_FRAME_WIDTH, 
+        Init_Constants::PLAYER_FRAME_HEIGHT, 
+        Init_Constants::PLAYER_FRAME_ROWS, 
+        Init_Constants::PLAYER_FRAME_COLUMNS
+    );
 
     std::cout << "[init]: Player array initialized with " << playerAmount << "[init]:  players." << std::endl;
     std::cout << std::endl;
 }
 
 void Init::init_entity(Acteur entityArray[], int entityAmount, Topography& topography) {
-    Collage collage;
-
     for (int i = 0; i < entityAmount; i++) {
         Acteur entity;
         entity.set_controller_number(3 + i);
@@ -229,14 +268,14 @@ void Init::init_entity(Acteur entityArray[], int entityAmount, Topography& topog
         entity.set_random_pointer(random);
         entity.set_name("entity");
         entity.set_surface(renderTarget);
-        entity.set_texture(collage.get_path(2));
+        entity.set_texture(Texture_Constants::META_TEXTURE);
         entityArray[i] = entity;
     }
 
     entityArray[0].set_surface(renderTarget);
-    entityArray[0].set_texture(collage.get_path(6));
-    entityArray[0].set_cords_frames(ENTITY_INITIAL_X, ENTITY_INITIAL_Y, ENTITY_FRAME_ROWS, ENTITY_FRAME_COLUMNS);
+    entityArray[0].set_texture(Texture_Constants::NPC_TEXTURE);
+    entityArray[0].set_cords_frames(Init_Constants::ENTITY_INITIAL_X, Init_Constants::ENTITY_INITIAL_Y, Init_Constants::ENTITY_FRAME_ROWS, Init_Constants::ENTITY_FRAME_COLUMNS);
 
-    std::cout << "[init]: Entity array initialized with " << entityAmount << "[init]:  entities." << std::endl;
+    std::cout << "[init]: Entity array initialized with " << entityAmount << " entities." << std::endl;
     std::cout << std::endl;
 }

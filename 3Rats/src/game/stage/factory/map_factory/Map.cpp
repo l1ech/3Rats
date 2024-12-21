@@ -1,5 +1,6 @@
 #include "Map.h"
 #include <iostream> // Include for debugging messages
+#include "../../../../Constants.h"
 
 Map::Map()
 {
@@ -93,7 +94,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector<int>>& arg, int& prev_dir
 {
     std::cout << "[Map]: rec_pos called with x=" << x << ", y=" << y << std::endl;
     rec_iter++;
-    if (rec_iter > MAX_RECURSION_DEPTH) {
+    if (rec_iter > Map_Constans::MAX_RECURSION_DEPTH) {
         std::cerr << "[Map]: Maximum recursion depth reached. Backtracking." << std::endl;
         return -1;
     }
@@ -102,7 +103,7 @@ int Map::rec_pos(int x, int y, std::vector<std::vector<int>>& arg, int& prev_dir
               << ", x=" << x << ", y=" << y << ", prev_direction=" << prev_direction << std::endl;
 
     // Shuffle directions to ensure varied attempts
-    std::vector<int> directions = {RIGHT, LEFT, UP, DOWN};
+    std::vector<int> directions = {Map_Constans::RIGHT, Map_Constans::LEFT, Map_Constans::UP, Map_Constans::DOWN};
     std::shuffle(directions.begin(), directions.end(), std::default_random_engine(random_ptr->roll_custom_dice(4)));
 
     for (int dir : directions) {
@@ -110,10 +111,10 @@ int Map::rec_pos(int x, int y, std::vector<std::vector<int>>& arg, int& prev_dir
 
         // Update coordinates based on direction
         switch (dir) {
-        case RIGHT: new_x++; break;
-        case LEFT:  new_x--; break;
-        case UP:    new_y--; break;
-        case DOWN:  new_y++; break;
+        case Map_Constans::RIGHT: new_x++; break;
+        case Map_Constans::LEFT:  new_x--; break;
+        case Map_Constans::UP:    new_y--; break;
+        case Map_Constans::DOWN:  new_y++; break;
         default:
             std::cerr << "[Map]: Invalid direction chosen. Skipping." << std::endl;
             continue;

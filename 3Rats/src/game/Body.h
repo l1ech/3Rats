@@ -8,7 +8,7 @@
 #include <memory>
 #include <filesystem>
 
-#include "../core/Collage.h"
+//#include "../core/Texture_Manager.h"
 
 class Body
 {
@@ -32,14 +32,14 @@ protected:
 public:
 	int index;
 	static int current_index;
-	std::string name;
+	std::string name = "NULL";
 
 	
 	Body();
 	~Body();
 
 	void update(float delta);
-	void draw(SDL_Renderer* render_target);
+	void draw(SDL_Renderer* render_target) const;
 
 	void set_surface(SDL_Renderer* render_target);
 	void set_texture(const std::string& filePath);

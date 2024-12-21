@@ -19,14 +19,12 @@ std::unique_ptr<Map>* Topography::get_map_array()
 	return map_array;
 }
 
-void Topography::set_up()
+void Topography::set_up(Map* map)
 {
-	ptr = &number_items_on_map;
-
+	map->set_ptr(&number_items_on_map);
+	
 	for (int i = 0; i < map_array_size; i++)
-	{
-		map_array[i]->set_ptr(ptr);
-	}
+	{}
 }
 
 int Topography::get_current_map_id()
@@ -37,16 +35,6 @@ int Topography::get_current_map_id()
 void Topography::set_current_map_id(int number)
 {
 	current_map_id = number;
-}
-
-void Topography::update(float delta)
-{
-	//time += delta;
-
-	for (int i = 0; i < map_array_size; i++)
-	{
-		//map_array[i].update(delta);
-	}
 }
 
 void Topography::set_renderer(SDL_Renderer* renderTarget)
@@ -73,12 +61,6 @@ void Topography::make_maze()
 
 	int end_x = width;
 	int end_y = height;
-
-	/*
-	make_doors_entry(3);
-	make_doors_exit(1);
-	make_doors_hole(-100, -100);
-	*/
 
 	make_points(start_x, start_y, end_x, end_y);
 	
@@ -126,9 +108,6 @@ void Topography::make_maze()
 	std::cout << "[Topography]: data.second" << std::endl;
 	print_vector_hidden(map_data, map_data[0].size(), map_data.size());
 	std::cout << std::endl;
-
-
-	//save_data(map_data);
 	
 }
 

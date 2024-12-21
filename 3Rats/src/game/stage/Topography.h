@@ -45,7 +45,7 @@ public:
 	int get_current_map_id();
 	void set_current_map_id(int number);
 
-	void set_up();
+	void set_up(Map* map);
 
 	void make_maze();
 	void make_points(int a_x, int a_y, int b_x, int b_y);
@@ -57,8 +57,6 @@ public:
 
 	std::string get_layout(int num);
 
-	void update(float delta);
-	void draw(SDL_Renderer* renderTarget);
 
 	void set_renderer(SDL_Renderer* renderTarget);
 

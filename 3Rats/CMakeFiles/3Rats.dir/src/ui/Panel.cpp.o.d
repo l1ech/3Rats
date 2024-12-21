@@ -378,7 +378,5 @@ CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/deque \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__split_buffer \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../game/../core/Collage.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/vector \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../core/Collage.h
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../Constants.h

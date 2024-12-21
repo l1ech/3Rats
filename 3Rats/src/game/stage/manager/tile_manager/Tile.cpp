@@ -1,19 +1,20 @@
 #include "../../../Body.h"
 #include <memory>
 #include "Tile.h"
-#include "../../../../core/Collage.h"
+//#include "../../../../core/Texture_Manager.h"
 
 Tile::Tile()
 {
-    Collage collage;
+    //Texture_Manager texture_manager;
 
     is_entrance = false;
     is_exit = false;
     is_hole = false;
 
-    file_path = collage.get_path(2);
+    //file_path = texture_manager.get_path(2);
+    file_path = Texture_Constants::META_TEXTURE;
 
-    //std::cout << "[tile]: Tile constructor: Created tile with path: " << file_path << std::endl;
+    std::cout << "[tile]: Tile constructor: Created tile with path: " << file_path << std::endl;
 }
 
 Tile::Tile(const Tile& other)
@@ -24,6 +25,7 @@ Tile::Tile(const Tile& other)
     is_entrance = other.is_entrance;
     is_hole = other.is_hole;
     this->hight = other.hight;
+    this->name = other.name;
 
     this->file_path = other.file_path;
     this->ptr_renderer = other.ptr_renderer;
@@ -43,9 +45,11 @@ Tile::~Tile()
     std::cout << "[tile]: Tile destructor: Destroying tile with file_path: " << file_path << std::endl;
 }
 
-void Tile::draw(SDL_Renderer* render_tatget)
+
+void Tile::draw(SDL_Renderer* render_tatget) const
 {
-    Body::draw(ptr_renderer);
+    std::cout << "[tile]: Tile draw called" << std::endl;
+    Body::draw(render_tatget);
 }
 
 Tile& Tile::operator=(const Tile& other)

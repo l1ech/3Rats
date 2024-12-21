@@ -7,21 +7,22 @@ Tile_Manager::Tile_Manager()
 
 Tile_Manager::Tile_Manager(int width, int height)
 {
-
     this->width = width;
     this->height = height;
 
+        
+
     std::cout << "[Tile_Manager]: Constructor called" << std::endl;
     // Initialize the tile types with their respective properties and textures
-    tile_types.push_back(TileType(collage.get_path(10), true, false, false, 0));  // end_door (maze_door.png)
-    tile_types.push_back(TileType(collage.get_path(12), false, false, false, 0));  // horizontal (walk_way_shadow_horizontal.png)
-    tile_types.push_back(TileType(collage.get_path(11), false, false, false, 1));  // wall (maze_wall.png)
-    tile_types.push_back(TileType(collage.get_path(14), false, false, false, 0));  // ground (ground.png)
-    tile_types.push_back(TileType(collage.get_path(13), false, false, false, 0));  // vertical (walk_way_shadow_vertical.png)
-    tile_types.push_back(TileType(collage.get_path(15), false, false, false, 0));  // hole (maze_hole.png)
-    tile_types.push_back(TileType(collage.get_path(16), false, false, false, 0));  // wooden floor (wooden_floor.png)
-    tile_types.push_back(TileType(collage.get_path(18), false, false, false, 0));  // mushroom (mushroom.png)
-    tile_types.push_back(TileType(collage.get_path(17), false, false, false, 0));  // test (test.png)
+    tile_types.push_back(TileType(Texture_Constants::MAZE_DOOR, true, false, false, 0));  // end_door (maze_door.png)
+    tile_types.push_back(TileType(Texture_Constants::WALK_WAY_SHADOW_HORIZONTAL, false, false, false, 0));  // horizontal (walk_way_shadow_horizontal.png)
+    tile_types.push_back(TileType(Texture_Constants::MAZE_WALL, false, false, false, 1));  // wall (maze_wall.png)
+    tile_types.push_back(TileType(Texture_Constants::GROUND, false, false, false, 0));  // ground (ground.png)
+    tile_types.push_back(TileType(Texture_Constants::WALK_WAY_SHADOW_VERTICAL, false, false, false, 0));  // vertical (walk_way_shadow_vertical.png)
+    tile_types.push_back(TileType(Texture_Constants::MAZE_HOLE, false, false, false, 0));  // hole (maze_hole.png)
+    tile_types.push_back(TileType(Texture_Constants::WOODEN_FLOOR, false, false, false, 0));  // wooden floor (wooden_floor.png)
+    tile_types.push_back(TileType(Texture_Constants::MUSHROOM, false, false, false, 0));  // mushroom (mushroom.png)
+    tile_types.push_back(TileType(Texture_Constants::INTERACTABLE, false, false, false, 0));  // test (test.png)
 }
 
 void Tile_Manager::set_width(int width)
@@ -66,7 +67,7 @@ void Tile_Manager::trim_boarder(std::vector<std::vector<int>>& data, std::vector
 }
 
 void Tile_Manager::set_textures(Tile* tile_array, std::vector<std::vector<std::pair<int, int>>> data, int TILE_SIZE, SDL_Renderer* render_target) {    std::cout << "[Map]: set_textures called" << std::endl;
-    Collage collage;
+    //Texture_Manager texture_manager;
     int total_tiles = height * width;
     int count = 0;
 

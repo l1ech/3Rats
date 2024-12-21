@@ -378,23 +378,22 @@ CMakeFiles/3Rats.dir/src/input_handler.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/deque \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__split_buffer \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iomanip \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../core/Collage.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/vector \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Item.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/../../../../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Map.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/vector \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/Level_Structure.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/tile_manager/../../../Body.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/tile_manager/../../../../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/item_manager/Item.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../../../core/Random.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/random \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cmath \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/numeric \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../../Body.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../../../core/Collage.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/tile_manager/Tile_Manager.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/tile_manager/../../../../core/Collage.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/tile_manager/Tile_Type.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/door_manager/Door.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/../../manager/door_manager/Door_Manager.h \
@@ -406,11 +405,11 @@ CMakeFiles/3Rats.dir/src/input_handler.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../game/stage/factory/map_factory/Map.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../game/stage/factory/map_factory/Level_Structure.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../input/../core/Random.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/../Constants.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Panel.h \
   /usr/local/Cellar/sdl2_ttf/2.22.0/include/SDL2/SDL_ttf.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../game/Body.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../core/Collage.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h \
-  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.h
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../Constants.h \
+  /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.h

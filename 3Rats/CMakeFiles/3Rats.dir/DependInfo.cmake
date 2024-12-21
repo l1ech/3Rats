@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/audio/Sound.cpp" "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Clock.cpp" "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/core/Clock.cpp.o.d"
-  "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Collage.cpp" "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/core/Collage.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.cpp" "CMakeFiles/3Rats.dir/src/core/Random.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/core/Random.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Acteur.cpp" "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/Acteur.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/Body.cpp" "CMakeFiles/3Rats.dir/src/game/Body.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/Body.cpp.o.d"
@@ -24,8 +23,10 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp" "CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/factory/map_factory/map_types/Maze_Map.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/door_manager/Door_Manager.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/door_manager/Door_Manager.cpp.o.d"
+  "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/game_manager/Game.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/game_manager/Game.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/game_manager/Game.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Food.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Food.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/Item.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/Item.cpp.o.d"
+  "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/item_manager/ItemManager.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/ItemManager.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/item_manager/ItemManager.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Manager.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Manager.cpp.o.d"
   "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/game/stage/manager/tile_manager/Tile_Type.cpp" "CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o" "gcc" "CMakeFiles/3Rats.dir/src/game/stage/manager/tile_manager/Tile_Type.cpp.o.d"

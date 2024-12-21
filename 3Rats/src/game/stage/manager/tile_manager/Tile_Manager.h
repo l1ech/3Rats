@@ -2,8 +2,9 @@
 
 #include <vector>
 #include <string>
-#include "../../../../core/Collage.h"
+//#include "../../../../core/Texture_Manager.h"
 #include "Tile_Type.h"
+#include "../../../../Constants.h"
 
 class Tile_Manager {
 private:
@@ -12,7 +13,7 @@ private:
     int height;
 
     std::vector<TileType> tile_types;
-    Collage collage;  // Add Collage instance to access texture paths
+    //Texture_Manager texture_manager;  // Add texture_manager instance to access texture paths
 
 public:
     Tile_Manager();

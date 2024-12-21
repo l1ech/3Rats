@@ -7,10 +7,7 @@
 
 #include "ui/Fade.h"
 #include "ui/Pause.h"
-#include "core/Collage.h"
-
-
-
+//#include "core/Texture_Manager.h"
 
 void handle_key_event(SDL_Event& ev, Acteur* player_array, Acteur* entity_array, int& mode, Fade& fade, Pause& pause, int player_amount);
 

@@ -3,7 +3,9 @@
 #include <SDL_ttf.h>
 #include <iostream>
 
-#include "../core/Collage.h"
+#include "../Constants.h"
+
+//#include "../core/Texture_Manager.h"
 
 class Text {
 private:

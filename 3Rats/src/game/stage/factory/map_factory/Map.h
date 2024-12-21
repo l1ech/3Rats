@@ -7,7 +7,7 @@
 
 #include "Level_Structure.h"
 #include "../../../Body.h"
-#include "../../../../core/Collage.h"
+//#include "../../../../core/Texture_Manager.h"
 
 #include "../../manager/item_manager/Item.h"
 #include "../../manager/tile_manager/Tile.h"
@@ -19,18 +19,7 @@ class Map : public Level_Structure
 {
 private:
     // Constants for recursion and directions
-    const int MAX_RECURSION_DEPTH = 10000000;
-    const int TILE_SIZE = 64; // Tile size constant    
-
-    enum Direction
-    {
-        RIGHT = 3,
-        LEFT = 4,
-        UP = 5,
-        DOWN = 6,
-        ERROR_DIRECTION = 20
-    };
-
+    
     // Member variables
     //int item_id;
     int* item_on_map;

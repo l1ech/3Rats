@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../../../Body.h"
+#include "../../../../Constants.h"
 
 class Item : public Body
 {
@@ -31,7 +32,7 @@ public:
 
 
 	//void Update(float delta);
-	void Draw(SDL_Renderer* renderTarget);
+	void Draw(SDL_Renderer* renderTarget) const;
 
 	bool get_on_map();
 	void set_on_map(bool value);

@@ -2,19 +2,21 @@
 
 void Overlay::update(double delta)
 {
-	if (clock->day_time() && flip == true)
-	{
-		flip = false;
-		fade->out();
+    std::cout << "[Overlay]: update called with delta: " << delta << std::endl;
 
-	}
-	else if(!clock->day_time() && flip == false)
-	{
-		flip = true;
-		fade->in();
-	} 
+    if (clock->day_time() && flip == true)
+    {
+        std::cout << "[Overlay]: Day time detected, calling fade->out()" << std::endl;
+        flip = false;
+        fade->out();
+    }
+    else if (!clock->day_time() && flip == false)
+    {
+        std::cout << "[Overlay]: Night time detected, calling fade->in()" << std::endl;
+        flip = true;
+        fade->in();
+    }
 }
-
 
 void Overlay::init(Fade* fade, Clock* clock)
 {

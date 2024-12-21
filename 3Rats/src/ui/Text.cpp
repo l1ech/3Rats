@@ -60,15 +60,16 @@ void Text::set_renderer(SDL_Renderer* renderTarget)
 
 void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int x, int y, int w, int h)
 {
-	Collage collage;
+	//Texture_Manager texture_manager;
 	this->font_path = font_path;
 	this->font_size = font_size;
 	this->colour = colour;
 
-	font = TTF_OpenFont(collage.get_path(0).c_str(), 24);
+	font = TTF_OpenFont(Texture_Constants::FONT.c_str(), 24);
+	
 	if (font == NULL)
 	{
-		std::cout << "Error Font" << std::endl;
+		std::cout << "[Text]Error Font" << std::endl;
 	}
 
 	surfaceMessage = TTF_RenderText_Solid(font, "99:99", colour);

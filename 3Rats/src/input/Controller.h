@@ -6,7 +6,8 @@
 #include "../game/stage/Topography.h"
 #include "../core/Random.h"
 
-class Controller {
+class Controller : public Body
+{
 protected:
 
 	struct block_direction_counter {
@@ -64,6 +65,19 @@ protected:
 	void init_colision_map(std::vector<std::vector<bool>>& map);
 
 public:
+	bool intersectsWithBody(Body& b);
+	void check_door(Topography* topography, std::unique_ptr<Map>* map_array, int map_amount, Tile* tile_array, int length);
+	void make_acteur_move(controller_move move, block_direction direction, float delta);
+	void follow_goal(int rat_x, int rat_y, int goal_x, int goal_y, block_direction direction, float delta, Item& item);
+
+	float moveSpeed;
+
+	bool is_moving;
+
+
+
+
+
 	void set_controller_number(int number);
 	void set_Topography(Topography* topography);
 	void set_random_pointer(Random& random);
@@ -75,5 +89,8 @@ public:
 	int GetDirection();
 	bool is_item_available_on_map();		//get available item on map
 	void make_goal();		// get new goal
+
+
+	void teleport_to_entrence();	// change to set_pos(entrence);
 
 };

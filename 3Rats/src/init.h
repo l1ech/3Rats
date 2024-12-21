@@ -7,19 +7,24 @@
 #include "game/Body.h"
 //#include "game/Map.h"
 #include "game/stage/manager/tile_manager/Tile.h"
+#include "game/stage/manager/game_manager/Game.h"
+
 #include "game/Acteur.h"
 #include "core/Clock.h"
 #include "core/Random.h"
 #include "ui/Fade.h"
 #include "ui/Overlay.h"
 #include "ui/Pause.h"
-#include "core/Collage.h"
+//#include "core/Texture_Manager.h"
 
 #include "game/stage/factory/map_factory/Map_Factory.h"
 
 #include "game/stage/Topography.h"
 #include "input_handler.h"  
 #include "seed_manager.h"
+
+#include "Constants.h"
+
 
 class Init {
 private:
