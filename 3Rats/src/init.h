@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <memory>
+
 #include "game/stage/manager/item_manager/Item.h"
 #include "game/Body.h"
 //#include "game/Map.h"
@@ -24,7 +25,6 @@
 #include "seed_manager.h"
 
 #include "Constants.h"
-
 
 class Init {
 private:

@@ -88,3 +88,15 @@ namespace Texture_Constants {
     const std::string MUSHROOM = "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/item_textures/mushroom.png";
     const std::string PLACE_HOLDER = "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/item_textures/place_holder.png";
 }
+
+namespace Main_Constants {
+    const int SCREEN_WIDTH = 600;
+    const int SCREEN_HEIGHT = 420;
+    const int ITEM_AMOUNT = 54;
+    const int TILE_AMOUNT = 54;
+    const int MAP_AMOUNT = 10;
+    const int PLAYER_AMOUNT = 3;
+    const int ENTITY_AMOUNT = 1;
+
+    const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
+}

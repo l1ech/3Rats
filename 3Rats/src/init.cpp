@@ -187,7 +187,7 @@ void Init::init_map_array(Tile* tileArray, int tileAmount, Item* itemArray, int 
             // now we need a new aproach
         }
     }
-    std::cout << "[init]: Map array initialized with " << mapAmount << "[init]:  maps." << std::endl;
+    std::cout << "[init]: Map array initialized with " << mapAmount << "  maps." << std::endl;
     std::cout << std::endl;
 }
 
@@ -259,7 +259,7 @@ void Init::init_player_array(Acteur playerArray[], int playerAmount, Topography&
         Init_Constants::PLAYER_FRAME_COLUMNS
     );
 
-    std::cout << "[init]: Player array initialized with " << playerAmount << "[init]:  players." << std::endl;
+    std::cout << "[init]: Player array initialized with " << playerAmount << "  players." << std::endl;
     std::cout << std::endl;
 }
 

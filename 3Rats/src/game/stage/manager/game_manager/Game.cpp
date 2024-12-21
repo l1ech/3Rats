@@ -30,6 +30,7 @@ void Game::update(float delta, const Uint8 *keyState, int mode)
 {
     std::cout << "[Game]: Update called ..." << std::endl;
     fade.update(std::to_string(clock.get_day()));
+    pause.update("Pause.");
     clock.update(delta);
 
     player_array[0].Update(delta, keyState, mode, player_array[2]);
@@ -40,9 +41,6 @@ void Game::update(float delta, const Uint8 *keyState, int mode)
 
     entity[0].update(delta);
 
-    std::string pause_message = "Pause.";
-    pause.update(pause_message);
-    overlay.update(delta);
 }
 
 void Game::render() {
@@ -52,6 +50,7 @@ void Game::render() {
     SDL_RenderCopy(renderTarget, texture, NULL, NULL);
 
     fade.Fade::draw(renderTarget);
+    pause.draw(renderTarget);
     clock.draw(renderTarget);
 
 
@@ -66,5 +65,4 @@ void Game::render() {
     }
 
     entity[0].draw(renderTarget);
-    pause.draw(renderTarget);
 }

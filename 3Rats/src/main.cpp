@@ -1,18 +1,4 @@
 #include "../src/init.h"
-#include "game/stage/manager/game_manager/Game.h"
-#include <memory>
-
-// Constants
-
-const int SCREEN_WIDTH = 600;
-const int SCREEN_HEIGHT = 420;
-const int ITEM_AMOUNT = 54;
-const int TILE_AMOUNT = 54;
-const int MAP_AMOUNT = 10;
-const int PLAYER_AMOUNT = 3;
-const int ENTITY_AMOUNT = 1;
-
-const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
 
 int Body::current_index = 0; 
     
@@ -43,7 +29,16 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> window(SDL_CreateWindow("3Rats", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN), SDL_DestroyWindow);
+    std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> window
+    (
+        SDL_CreateWindow(
+            "3Rats", 
+            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
+            Main_Constants::SCREEN_WIDTH, 
+            Main_Constants::SCREEN_HEIGHT, 
+            SDL_WINDOW_SHOWN), SDL_DestroyWindow
+        );
+
     if (window == nullptr) {
         std::cerr << "[Main]: Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         return -1;
@@ -68,7 +63,11 @@ int main(int argc, char* argv[])
     Random random(seed);
     
     // Initialize game objects using Init class
-    Init gameInit(renderTarget.get(), random, seed, SCREEN_WIDTH, SCREEN_HEIGHT);
+    Init gameInit(
+        renderTarget.get(), 
+        random, seed, 
+        Main_Constants::SCREEN_WIDTH, 
+        Main_Constants::SCREEN_HEIGHT);
 
     Fade fade;
     gameInit.init_fade(&fade);
@@ -95,38 +94,46 @@ int main(int argc, char* argv[])
     std::cin >> a;
 
     // Initialize game entities and maps
-    Item item_array[ITEM_AMOUNT];
-    gameInit.init_item_array(item_array, ITEM_AMOUNT);
+    Item item_array[Main_Constants::ITEM_AMOUNT];
+    gameInit.init_item_array(
+        item_array, Main_Constants::ITEM_AMOUNT
+    );
 
     a;
     std::cin >> a;
 
-    Tile tile_array[TILE_AMOUNT];
-    gameInit.init_tile_array(tile_array, TILE_AMOUNT);
+    Tile tile_array[Main_Constants::TILE_AMOUNT];
+    gameInit.init_tile_array(
+        tile_array, Main_Constants::TILE_AMOUNT
+    );
 
     a;
     std::cin >> a;
 
-    std::unique_ptr<Map> map_array[MAP_AMOUNT];
-    gameInit.init_map_array(tile_array, TILE_AMOUNT, item_array, ITEM_AMOUNT, map_array, MAP_AMOUNT);
+    std::unique_ptr<Map> map_array[Main_Constants::MAP_AMOUNT];
+    gameInit.init_map_array(
+        tile_array, Main_Constants::TILE_AMOUNT, 
+        item_array, Main_Constants::ITEM_AMOUNT, 
+        map_array, Main_Constants::MAP_AMOUNT
+    );
 
     a;
     std::cin >> a;
 
     Topography topography;
-    gameInit.init_topography(map_array, MAP_AMOUNT, &topography);
+    gameInit.init_topography(map_array, Main_Constants::MAP_AMOUNT, &topography);
 
     a;
     std::cin >> a;
 
-    Acteur player_array[PLAYER_AMOUNT];
-    gameInit.init_player_array(player_array, PLAYER_AMOUNT, topography);
+    Acteur player_array[Main_Constants::PLAYER_AMOUNT];
+    gameInit.init_player_array(player_array, Main_Constants::PLAYER_AMOUNT, topography);
 
     a;
     std::cin >> a;
 
-    Acteur entity[ENTITY_AMOUNT];
-    gameInit.init_entity(entity, ENTITY_AMOUNT, topography);
+    Acteur entity[Main_Constants::ENTITY_AMOUNT];
+    gameInit.init_entity(entity, Main_Constants::ENTITY_AMOUNT, topography);
 
     a;
     std::cin >> a;
@@ -145,7 +152,17 @@ int main(int argc, char* argv[])
     }
     SDL_QueryTexture(texture.get(), NULL, NULL, &levelWidth, &levelHeight);
 
-    Game game(renderTarget.get(), texture.get(), topography, player_array, PLAYER_AMOUNT, entity, ENTITY_AMOUNT, item_array, ITEM_AMOUNT, tile_array, TILE_AMOUNT, levelWidth, levelHeight, pause, clock, fade, overlay);
+    Game game(
+        renderTarget.get(), texture.get(), 
+        topography, 
+        player_array, Main_Constants::PLAYER_AMOUNT,
+        entity, Main_Constants::ENTITY_AMOUNT, 
+        item_array, Main_Constants::ITEM_AMOUNT, 
+        tile_array, Main_Constants::TILE_AMOUNT, 
+        levelWidth, levelHeight, 
+        pause, clock, 
+        fade, overlay
+);
     
     // Game loop variables
     bool isRunning = true;
@@ -169,7 +186,14 @@ int main(int argc, char* argv[])
             if (ev.type == SDL_QUIT)
                 isRunning = false;
             else if (ev.type == SDL_KEYDOWN) {
-                handle_key_event(ev, player_array, entity, mode, fade, pause, PLAYER_AMOUNT);
+                handle_key_event(
+                    ev, 
+                    player_array, Main_Constants::PLAYER_AMOUNT,
+                    entity, 
+                    mode,
+                    fade, 
+                    pause
+                );
             }
         }
 
@@ -180,6 +204,9 @@ int main(int argc, char* argv[])
         game.render();
 
         SDL_RenderPresent(renderTarget.get());
+
+        //int a;
+        //std::cin >> a;
     }
 
     // Freeing the memory
