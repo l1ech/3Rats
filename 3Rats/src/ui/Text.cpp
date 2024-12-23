@@ -2,6 +2,7 @@
 
 Text::Text()
 {
+	set_text_name("Text");
 }
 
 Text::~Text()
@@ -89,4 +90,9 @@ void Text::set_coords(int x, int y)
 {
 	Message_rect.x = x;  //controls the rect's x coordinate 
 	Message_rect.y = y; // controls the rect's y coordinte
+}
+
+void Text::set_text_name(std::string name)
+{
+	this->text_name = name;
 }

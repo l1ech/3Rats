@@ -14,8 +14,9 @@
 #include "../../../ui/Overlay.h"
 
 
-#include "SDL.h"
+#include "SDL2/SDL.h"
 
+class ActeurManager;
 
 class Game {
 private:
@@ -25,17 +26,17 @@ private:
 
     Topography& topography;
 
-    Acteur* player_array;
-    int player_count;
+    //Player* players;
+    //int player_count;
 
-    Acteur* entity;
-    int entity_count;
+    //Player* entity;
+    //int entity_count;
 
     Item* item_array;
-    int item_count;
+    //int item_count;
 
     Tile* tile_array;
-    int tile_count;
+    //int tile_count;
     
     Pause& pause;
     Clock& clock;
@@ -43,14 +44,14 @@ private:
     Overlay& overlay;
 
 public:  
+
+    ActeurManager* acteur_manager;
+
     Game(
         SDL_Renderer* renderer,
         SDL_Texture* tex, 
         Topography& topo, 
-        Acteur* players,
-        int playerCount,
-        Acteur* entities,
-        int entityCount,
+        ActeurManager& acteur_manager,
         Item* items, 
         int itemCount,
         Tile* tiles,
@@ -62,6 +63,7 @@ public:
         Fade& fadeObj, 
         Overlay& overlayObj
     );
+
     ~Game(); // Add destructor
     void update(float delta, const Uint8 *keyState, int mode);
     void render();

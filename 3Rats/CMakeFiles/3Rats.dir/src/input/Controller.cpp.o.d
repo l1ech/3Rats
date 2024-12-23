@@ -377,7 +377,7 @@ CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/../stage/manager/map_manager/../../factory/map_factory/Level_Structure.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/../stage/manager/map_manager/../../factory/map_factory/../../manager/tile_manager/Tile.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/../stage/manager/map_manager/../../factory/map_factory/../../manager/tile_manager/../../../core/Body.h \
-  /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2/SDL_image.h \
+  /usr/local/Cellar/sdl2_image/2.8.3/include/SDL2/SDL_image.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/filesystem \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stack \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/deque \

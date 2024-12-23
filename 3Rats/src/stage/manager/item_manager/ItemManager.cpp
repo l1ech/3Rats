@@ -34,7 +34,7 @@ Item* ItemManager::getItem(size_t index) const {
     return nullptr;
 }
 
-void ItemManager::draw(SDL_Renderer* renderTarget) const {
+void ItemManager::draw_all(SDL_Renderer* renderTarget) const {
     for (Item* item : items) {
         item->Draw(renderTarget);
     }

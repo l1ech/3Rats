@@ -283,7 +283,7 @@ CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_locale.h \
   /usr/local/Cellar/sdl2/2.30.10/include/SDL2/SDL_misc.h \
   /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/../core/Body.h \
-  /usr/local/Cellar/sdl2_image/2.8.2_2/include/SDL2/SDL_image.h \
+  /usr/local/Cellar/sdl2_image/2.8.3/include/SDL2/SDL_image.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/string \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/string_view \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__string \

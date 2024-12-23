@@ -1,5 +1,9 @@
 #include "init.h"
 
+
+//union SDL_Event;
+
+
 int Body::current_index = 0; 
     
 std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
@@ -24,11 +28,24 @@ std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> LoadTexture(std::string file
 
 int main(int argc, char* argv[])
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cerr << "[Main]: SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
-        return -1;
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cerr << "[Init]: SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+    } else {
+        std::cout << "[Init]: SDL initialized successfully." << std::endl;
     }
 
+    if (TTF_Init() < 0) {
+        std::cerr << "[Init]: SDL_ttf could not initialize! SDL_ttf Error: " << TTF_GetError() << std::endl;
+    } else {
+        std::cout << "[Init]: SDL_ttf initialized successfully." << std::endl;
+    }
+
+    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        std::cerr << "[Init]: SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << std::endl;
+    } else {
+        std::cout << "[Init]: SDL_image initialized successfully." << std::endl;
+    }
     std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> window
     (
         SDL_CreateWindow(
@@ -86,14 +103,16 @@ int main(int argc, char* argv[])
     a;
     std::cin >> a;
 
+    Clock_Manager clock_manager;
+    Time world_time;
     Clock clock;
     Overlay overlay;
-    init.init_clock(&clock, &fade, &overlay);
+    clock_manager.init(init, &clock, &fade, &overlay, &world_time);
 
     a;
     std::cin >> a;
 
-    init.init_overlay(&fade, &clock, &overlay);
+    init.init_overlay(&fade, clock_manager.get_clocks(), &overlay);
 
     a;
     std::cin >> a;
@@ -101,15 +120,15 @@ int main(int argc, char* argv[])
     // Initialize game entities and maps
     Item item_array[Main_Constants::ITEM_AMOUNT];
     init.init_item_array(
-        item_array, Main_Constants::ITEM_AMOUNT
-    );
+        item_array
+        );
 
     a;
     std::cin >> a;
 
     Tile tile_array[Main_Constants::TILE_AMOUNT];
     init.init_tile_array(
-        tile_array, Main_Constants::TILE_AMOUNT
+        tile_array
     );
 
     a;
@@ -117,29 +136,29 @@ int main(int argc, char* argv[])
 
     std::unique_ptr<Map> map_array[Main_Constants::MAP_AMOUNT];
     init.init_map_array(
-        tile_array, Main_Constants::TILE_AMOUNT, 
-        item_array, Main_Constants::ITEM_AMOUNT, 
-        map_array, Main_Constants::MAP_AMOUNT
+        tile_array,
+        item_array,
+        map_array
     );
 
     a;
     std::cin >> a;
 
     Topography topography;
-    init.init_topography(map_array, Main_Constants::MAP_AMOUNT, &topography);
+    init.init_topography(map_array, &topography);
 
     a;
     std::cin >> a;
 
     ActeurManager acteurManager;
-    Acteur player_array[Main_Constants::PLAYER_AMOUNT];
-    Acteur entity_array[Main_Constants::ENTITY_AMOUNT];
+    Player player_array[Main_Constants::PLAYER_AMOUNT];
+    Player entity_array[Main_Constants::ENTITY_AMOUNT];
     acteurManager.init(init, &topography, player_array, entity_array);
 
     a;
     std::cin >> a;
 
-    init.init_entity(acteurManager.get_entities(), Main_Constants::ENTITY_AMOUNT, topography);
+    init.init_entity(acteurManager.get_entities(), topography);
 
     a;
     std::cin >> a;
@@ -161,15 +180,14 @@ int main(int argc, char* argv[])
     Game game(
         renderTarget.get(), texture.get(), 
         topography, 
-        acteurManager.get_players(), Main_Constants::PLAYER_AMOUNT,
-        acteurManager.get_entities(), Main_Constants::ENTITY_AMOUNT, 
+        acteurManager, 
         item_array, Main_Constants::ITEM_AMOUNT, 
         tile_array, Main_Constants::TILE_AMOUNT, 
         levelWidth, levelHeight, 
-        pause, clock, 
+        pause, *clock_manager.get_clocks(), 
         fade, overlay
-);
-    
+    );
+
     // Game loop variables
     bool isRunning = true;
     SDL_Event ev;

@@ -1,8 +1,9 @@
 #pragma once
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include <vector>
 
+//#include "../stage/manager/acteur_manager/Acteur.h"
 #include "../stage/manager/map_manager/Topography.h"
 #include "../core/Random.h"
 
@@ -75,8 +76,7 @@ public:
 	bool is_moving;
 
 
-
-
+	//void Update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat);
 
 	void set_controller_number(int number);
 	void set_Topography(Topography* topography);

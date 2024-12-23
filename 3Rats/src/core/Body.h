@@ -1,6 +1,6 @@
 #pragma once	
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <SDL_image.h>
 
 #include <string>
@@ -32,9 +32,8 @@ protected:
 
 public:
 	int index;
-	static int current_index;
-	std::string name = "NULL";
-
+	static int current_index;	
+	std::string name;
 	
 	Body();
 	~Body();
@@ -46,7 +45,7 @@ public:
 	void set_texture(const std::string& filePath);
 	void set_cords(int x, int y);
 	void set_hight(int value);
-	void set_width(int value);
+	//void set_width(int value);
 	void set_name(const std::string& name);
 
 	int get_origin_x() const;

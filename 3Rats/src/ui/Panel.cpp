@@ -6,6 +6,7 @@
 
 Panel::Panel()
 {
+	set_name("Panel");
 }
 
 Panel::~Panel()

@@ -6,9 +6,10 @@
 
 #include "../../../core/Time.h"  // Include the Time header
 
-class Clock : public Panel {
+class Clock : public Panel
+{
 private:
-    Time time;  // Private Time object
+    Time* time;  // Private Time object
 
 public:
     Clock();
@@ -17,4 +18,6 @@ public:
     void set_time(int hour, int min);
     int get_day();
     bool day_time();
+    void set_timer(Time& world_time);
+    void set_renderer(SDL_Renderer* render_target);
 };

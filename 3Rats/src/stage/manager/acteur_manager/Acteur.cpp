@@ -147,12 +147,6 @@ Acteur::Acteur()
     searchCounter /= 100.0f;
 }
 
-Acteur::~Acteur()
-{
-    std::cout << "[Acteur<" << index << ">]: Destructor called" << std::endl;
-    SDL_DestroyTexture(texture);
-}
-
 void Acteur::set_cords_frames(int x, int y, int framesX, int framesY)
 {
     std::cout << "[Acteur<" << index << ">]: set_cords_frames called with x: " << x << ", y: " << y << std::endl;
@@ -180,6 +174,8 @@ void Acteur::draw(SDL_Renderer *renderTarget) const
     std::cout << "[Acteur<" << index << ">]: draw called" << std::endl;
     Body::draw(renderTarget);
 }
+
+/*
 
 void Acteur::Update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat)
 {
@@ -296,6 +292,8 @@ void Acteur::Update(float delta, const Uint8 *keyState, int mode, Acteur &front_
         crop_rect.x = frame_width;
     }
 }
+
+*/
 
 void Acteur::use_item()
 {

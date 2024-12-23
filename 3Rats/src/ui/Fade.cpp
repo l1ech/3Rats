@@ -28,3 +28,9 @@ void Fade::draw(SDL_Renderer* renderTarget)
         SDL_SetRenderDrawBlendMode(renderTarget, SDL_BLENDMODE_NONE);
     }
 }
+
+void Fade::set_surface(SDL_Renderer *render_target)
+{
+    Body::set_surface(render_target);
+    Text::set_renderer(render_target);
+}

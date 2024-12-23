@@ -9,32 +9,35 @@ ActeurManager::~ActeurManager()
 {
 }
 
-void ActeurManager::update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat, Acteur *acteurs, int max_acteurs, Acteur *entitys, int max_entity)
+void ActeurManager::update_all(float delta, const Uint8 *keyState, int mode, Player &front_rat)
 {
-    acteurs[0].Update(delta, keyState, mode, acteurs[2]);
+    players[0].Update(delta, keyState, mode, players[2]);
 
-    for (int i = 1; i < max_acteurs; i++) {
-        acteurs[i].Update(delta, keyState, mode, acteurs[i - 1]);
+    for (int i = 1; i < Main_Constants::PLAYER_AMOUNT; i++) {
+        players[i].Update(delta, keyState, mode, players[i - 1]);
     }
 
-    entitys[0].update(delta);
-
+    for (int i = 0; i < Main_Constants::ENTITY_AMOUNT; i++) {
+        entities[i].update(delta);
+    }
 }
 
-void ActeurManager::draw(SDL_Renderer *renderTarget, Acteur* acteurs, int max_acteurs, Acteur* entitys, int max_entitys)
+void ActeurManager::draw_all(SDL_Renderer *renderTarget)
 {
-    for (int i = 0; i < max_acteurs; ++i) {
-        acteurs[i].draw(renderTarget);
+    for (int i = 0; i < Main_Constants::PLAYER_AMOUNT; ++i) {
+        players[i].draw(renderTarget);
     }
 
-    entitys[0].draw(renderTarget);
+    for (int i = 0; i < Main_Constants::ENTITY_AMOUNT; ++i) {
+        entities[i].draw(renderTarget);
+    }
 }
 
-void ActeurManager::init(Init init, Topography* topography, Acteur* player_array, Acteur* entity_array)
+void ActeurManager::init(Init init, Topography* topography, Player p[], Player e[])
 {
-    players = player_array;
-    entities = entity_array;
-    
-    init.init_player_array(player_array, Main_Constants::PLAYER_AMOUNT, *topography);
-    init.init_entity(entity_array, Main_Constants::ENTITY_AMOUNT, *topography);
+    players = p;
+    entities = e;
+
+    init.init_player_array(p, *topography);
+    init.init_entity(e, *topography);
 }

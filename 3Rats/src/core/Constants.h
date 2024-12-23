@@ -21,7 +21,7 @@ namespace Init_Constants {
     const int CLOCK_WIDTH = 200;
     const int CLOCK_HEIGHT = 90;
 
-    const int MAX_ITEMS = 100;
+    //const int MAX_ITEMS = 100;
     const int NUM_TEXTURES = 10;
     const int ITEM_INITIAL_X = 0;
     const int ITEM_INITIAL_Y = 0;
@@ -92,7 +92,8 @@ namespace Texture_Constants {
 namespace Main_Constants {
     const int SCREEN_WIDTH = 600;
     const int SCREEN_HEIGHT = 420;
-    const int ITEM_AMOUNT = 54;
+
+    const int ITEM_AMOUNT = 3;
     const int TILE_AMOUNT = 54;
     const int MAP_AMOUNT = 10;
     const int PLAYER_AMOUNT = 3;

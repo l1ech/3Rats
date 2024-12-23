@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Acteur.h"
+#include "Player.h"
 #include "../../../init.h"
 
 class Init;  // Forward declaration of Init
@@ -11,16 +12,19 @@ public:
     ActeurManager();
     ~ActeurManager();
 
-    void update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat, Acteur *acteurs, int max_acteurs, Acteur *entity, int max_entity);
+    void update_all(float delta, const Uint8 *keyState, int mode, Player &front_rat);
 
-    void draw(SDL_Renderer *renderTarget, Acteur* acteurs, int max_acteurs, Acteur* entitys, int max_entitys);
+    void draw_all(SDL_Renderer *renderTarget);
 
-    void init(Init init, Topography* topography, Acteur* player_array, Acteur* entity_array);
+    void init(Init init, Topography* topography, Player p[], Player e[]);
 
-    Acteur* get_players() { return players; }
-    Acteur* get_entities() { return entities; }
+    Player* get_players() { return players; }
+    Player* get_entities() { return entities; }
+
+    int get_player_count() { return Main_Constants::PLAYER_AMOUNT; }
+    int get_entity_count() { return Main_Constants::ENTITY_AMOUNT; }
 
 private:
-    Acteur* players;
-    Acteur* entities;
+    Player* players;
+    Player* entities;
 };

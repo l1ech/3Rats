@@ -13,7 +13,7 @@ Item::Item()
 
 Item::~Item()
 {
-    // Bereinigungscode
+    std::cout << "[item]: Item destructor " << std::endl;
 }
 	
 //void Item::Update(float delta) { }
