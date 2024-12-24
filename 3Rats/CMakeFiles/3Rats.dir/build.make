@@ -100,10 +100,24 @@ CMakeFiles/3Rats.dir/src/core/Body.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/core/Body.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Body.cpp -o CMakeFiles/3Rats.dir/src/core/Body.cpp.s
 
+CMakeFiles/3Rats.dir/src/core/Logger.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/core/Logger.cpp.o: src/core/Logger.cpp
+CMakeFiles/3Rats.dir/src/core/Logger.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/3Rats.dir/src/core/Logger.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/core/Logger.cpp.o -MF CMakeFiles/3Rats.dir/src/core/Logger.cpp.o.d -o CMakeFiles/3Rats.dir/src/core/Logger.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Logger.cpp
+
+CMakeFiles/3Rats.dir/src/core/Logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/core/Logger.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Logger.cpp > CMakeFiles/3Rats.dir/src/core/Logger.cpp.i
+
+CMakeFiles/3Rats.dir/src/core/Logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/core/Logger.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Logger.cpp -o CMakeFiles/3Rats.dir/src/core/Logger.cpp.s
+
 CMakeFiles/3Rats.dir/src/core/Random.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/core/Random.cpp.o: src/core/Random.cpp
 CMakeFiles/3Rats.dir/src/core/Random.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/3Rats.dir/src/core/Random.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/3Rats.dir/src/core/Random.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/core/Random.cpp.o -MF CMakeFiles/3Rats.dir/src/core/Random.cpp.o.d -o CMakeFiles/3Rats.dir/src/core/Random.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Random.cpp
 
 CMakeFiles/3Rats.dir/src/core/Random.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/3Rats.dir/src/core/Random.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/core/Time.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/core/Time.cpp.o: src/core/Time.cpp
 CMakeFiles/3Rats.dir/src/core/Time.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/3Rats.dir/src/core/Time.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/3Rats.dir/src/core/Time.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/core/Time.cpp.o -MF CMakeFiles/3Rats.dir/src/core/Time.cpp.o.d -o CMakeFiles/3Rats.dir/src/core/Time.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Time.cpp
 
 CMakeFiles/3Rats.dir/src/core/Time.cpp.i: cmake_force
@@ -128,38 +142,38 @@ CMakeFiles/3Rats.dir/src/core/Time.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/core/Time.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/Time.cpp -o CMakeFiles/3Rats.dir/src/core/Time.cpp.s
 
-CMakeFiles/3Rats.dir/src/init.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/init.cpp.o: src/init.cpp
-CMakeFiles/3Rats.dir/src/init.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/3Rats.dir/src/init.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/init.cpp.o -MF CMakeFiles/3Rats.dir/src/init.cpp.o.d -o CMakeFiles/3Rats.dir/src/init.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp
+CMakeFiles/3Rats.dir/src/core/init.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/core/init.cpp.o: src/core/init.cpp
+CMakeFiles/3Rats.dir/src/core/init.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/3Rats.dir/src/core/init.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/core/init.cpp.o -MF CMakeFiles/3Rats.dir/src/core/init.cpp.o.d -o CMakeFiles/3Rats.dir/src/core/init.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/init.cpp
 
-CMakeFiles/3Rats.dir/src/init.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/init.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp > CMakeFiles/3Rats.dir/src/init.cpp.i
+CMakeFiles/3Rats.dir/src/core/init.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/core/init.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/init.cpp > CMakeFiles/3Rats.dir/src/core/init.cpp.i
 
-CMakeFiles/3Rats.dir/src/init.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/init.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/init.cpp -o CMakeFiles/3Rats.dir/src/init.cpp.s
+CMakeFiles/3Rats.dir/src/core/init.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/core/init.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/init.cpp -o CMakeFiles/3Rats.dir/src/core/init.cpp.s
 
-CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: src/input/Controller.cpp
-CMakeFiles/3Rats.dir/src/input/Controller.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/3Rats.dir/src/input/Controller.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/input/Controller.cpp.o -MF CMakeFiles/3Rats.dir/src/input/Controller.cpp.o.d -o CMakeFiles/3Rats.dir/src/input/Controller.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp
+CMakeFiles/3Rats.dir/src/core/utils.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/core/utils.cpp.o: src/core/utils.cpp
+CMakeFiles/3Rats.dir/src/core/utils.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/3Rats.dir/src/core/utils.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/core/utils.cpp.o -MF CMakeFiles/3Rats.dir/src/core/utils.cpp.o.d -o CMakeFiles/3Rats.dir/src/core/utils.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/utils.cpp
 
-CMakeFiles/3Rats.dir/src/input/Controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/input/Controller.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp > CMakeFiles/3Rats.dir/src/input/Controller.cpp.i
+CMakeFiles/3Rats.dir/src/core/utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/core/utils.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/utils.cpp > CMakeFiles/3Rats.dir/src/core/utils.cpp.i
 
-CMakeFiles/3Rats.dir/src/input/Controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/input/Controller.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/input/Controller.cpp -o CMakeFiles/3Rats.dir/src/input/Controller.cpp.s
+CMakeFiles/3Rats.dir/src/core/utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/core/utils.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/core/utils.cpp -o CMakeFiles/3Rats.dir/src/core/utils.cpp.s
 
 CMakeFiles/3Rats.dir/src/main.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/3Rats.dir/src/main.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/3Rats.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/3Rats.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/main.cpp.o -MF CMakeFiles/3Rats.dir/src/main.cpp.o.d -o CMakeFiles/3Rats.dir/src/main.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp
 
 CMakeFiles/3Rats.dir/src/main.cpp.i: cmake_force
@@ -170,38 +184,164 @@ CMakeFiles/3Rats.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/main.cpp -o CMakeFiles/3Rats.dir/src/main.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o: src/stage/factory/map_factory/Level_Structure.cpp
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Level_Structure.cpp
+CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o: src/stage/Acteur.cpp
+CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Acteur.cpp
 
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Level_Structure.cpp > CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.i
+CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Acteur.cpp > CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.i
 
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Level_Structure.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.s
+CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Acteur.cpp -o CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o: src/stage/factory/map_factory/Map.cpp
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Map.cpp
+CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o: src/stage/Clock.cpp
+CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Clock.cpp
 
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Map.cpp > CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.i
+CMakeFiles/3Rats.dir/src/stage/Clock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Clock.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Clock.cpp > CMakeFiles/3Rats.dir/src/stage/Clock.cpp.i
 
-CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Map.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.s
+CMakeFiles/3Rats.dir/src/stage/Clock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Clock.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Clock.cpp -o CMakeFiles/3Rats.dir/src/stage/Clock.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/Door.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Door.cpp.o: src/stage/Door.cpp
+CMakeFiles/3Rats.dir/src/stage/Door.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Door.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Door.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Door.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Door.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Door.cpp
+
+CMakeFiles/3Rats.dir/src/stage/Door.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Door.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Door.cpp > CMakeFiles/3Rats.dir/src/stage/Door.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/Door.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Door.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Door.cpp -o CMakeFiles/3Rats.dir/src/stage/Door.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/Game.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Game.cpp.o: src/stage/Game.cpp
+CMakeFiles/3Rats.dir/src/stage/Game.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Game.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Game.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Game.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Game.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Game.cpp
+
+CMakeFiles/3Rats.dir/src/stage/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Game.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Game.cpp > CMakeFiles/3Rats.dir/src/stage/Game.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Game.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Game.cpp -o CMakeFiles/3Rats.dir/src/stage/Game.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/Item.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Item.cpp.o: src/stage/Item.cpp
+CMakeFiles/3Rats.dir/src/stage/Item.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Item.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Item.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Item.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Item.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Item.cpp
+
+CMakeFiles/3Rats.dir/src/stage/Item.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Item.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Item.cpp > CMakeFiles/3Rats.dir/src/stage/Item.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/Item.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Item.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Item.cpp -o CMakeFiles/3Rats.dir/src/stage/Item.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Map.cpp.o: src/stage/Map.cpp
+CMakeFiles/3Rats.dir/src/stage/Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Map.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Map.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Map.cpp
+
+CMakeFiles/3Rats.dir/src/stage/Map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Map.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Map.cpp > CMakeFiles/3Rats.dir/src/stage/Map.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/Map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Map.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Map.cpp -o CMakeFiles/3Rats.dir/src/stage/Map.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o: src/stage/Tile.cpp
+CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Tile.cpp
+
+CMakeFiles/3Rats.dir/src/stage/Tile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/Tile.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Tile.cpp > CMakeFiles/3Rats.dir/src/stage/Tile.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/Tile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/Tile.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/Tile.cpp -o CMakeFiles/3Rats.dir/src/stage/Tile.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o: src/stage/factory/acteur_factory/acteur_type/Enemy.cpp
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp > CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o: src/stage/factory/acteur_factory/acteur_type/Player.cpp
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Player.cpp
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Player.cpp > CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Player.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o: src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp > CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o: src/stage/factory/item_factory/item_type/Food.cpp
+CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/item_factory/item_type/Food.cpp
+
+CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/item_factory/item_type/Food.cpp > CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/item_factory/item_type/Food.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.s
 
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o: src/stage/factory/map_factory/Map_Factory.cpp
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/Map_Factory.cpp
 
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.i: cmake_force
@@ -215,7 +355,7 @@ CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.s: cmake_forc
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o: src/stage/factory/map_factory/map_types/Cage_Map.cpp
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/map_types/Cage_Map.cpp
 
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.i: cmake_force
@@ -229,7 +369,7 @@ CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.s: cma
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o: src/stage/factory/map_factory/map_types/Garden_Map.cpp
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/map_types/Garden_Map.cpp
 
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.i: cmake_force
@@ -243,7 +383,7 @@ CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.s: c
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o: src/stage/factory/map_factory/map_types/Maze_Map.cpp
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/map_types/Maze_Map.cpp
 
 CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.i: cmake_force
@@ -254,10 +394,38 @@ CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.s: cma
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/factory/map_factory/map_types/Maze_Map.cpp -o CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.s
 
+CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o: src/stage/handler/controller_handler/Controller.cpp
+CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/controller_handler/Controller.cpp
+
+CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/controller_handler/Controller.cpp > CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/controller_handler/Controller.cpp -o CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.s
+
+CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o: src/stage/handler/file_handler/FileHandler.cpp
+CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/file_handler/FileHandler.cpp
+
+CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/file_handler/FileHandler.cpp > CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/file_handler/FileHandler.cpp -o CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.s
+
 CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o: src/stage/handler/input_handler/input_handler.cpp
 CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/input_handler/input_handler.cpp
 
 CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.i: cmake_force
@@ -268,24 +436,10 @@ CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.s: cmake_
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/handler/input_handler/input_handler.cpp -o CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o: src/stage/manager/acteur_manager/Acteur.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur.cpp > CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.s
-
 CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o: src/stage/manager/acteur_manager/Acteur_Manager.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur_Manager.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.i: cmake_force
@@ -296,66 +450,10 @@ CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.s: cmak
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Acteur_Manager.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o: src/stage/manager/acteur_manager/Enemy.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Enemy.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Enemy.cpp > CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Enemy.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.s
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o: src/stage/manager/acteur_manager/Player.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Player.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Player.cpp > CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Player.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.s
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o: src/stage/manager/acteur_manager/Player_Computer.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Player_Computer.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Player_Computer.cpp > CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/acteur_manager/Player_Computer.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.s
-
-CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o: src/stage/manager/clock_manager/Clock.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/Clock.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/Clock.cpp > CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/Clock.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.s
-
 CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o: src/stage/manager/clock_manager/Clock_Manager.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/Clock_Manager.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.i: cmake_force
@@ -366,24 +464,10 @@ CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.s: cmake_
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/clock_manager/Clock_Manager.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o: src/stage/manager/door_manager/Door.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/door_manager/Door.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/door_manager/Door.cpp > CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/door_manager/Door.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.s
-
 CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o: src/stage/manager/door_manager/Door_Manager.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/door_manager/Door_Manager.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.i: cmake_force
@@ -394,38 +478,10 @@ CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.s: cmake_fo
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/door_manager/Door_Manager.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o: src/stage/manager/game_manager/Game.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/Game.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/Game.cpp > CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/game_manager/Game.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.s
-
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o: src/stage/manager/item_manager/Food.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Food.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Food.cpp > CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Food.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.s
-
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o: src/stage/manager/item_manager/Inventory.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Inventory.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.i: cmake_force
@@ -436,24 +492,10 @@ CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Inventory.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o: src/stage/manager/item_manager/Item.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Item.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Item.cpp > CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/Item.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.s
-
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o: src/stage/manager/item_manager/ItemManager.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/ItemManager.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.i: cmake_force
@@ -464,10 +506,24 @@ CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/item_manager/ItemManager.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.s
 
+CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/flags.make
+CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o: src/stage/manager/map_manager/Level_Structure.cpp
+CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/map_manager/Level_Structure.cpp
+
+CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/map_manager/Level_Structure.cpp > CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.i
+
+CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/map_manager/Level_Structure.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.s
+
 CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o: src/stage/manager/map_manager/Topography.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/map_manager/Topography.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.i: cmake_force
@@ -481,7 +537,7 @@ CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o: src/stage/manager/seed_manager/seed_manager.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/seed_manager/seed_manager.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.i: cmake_force
@@ -492,24 +548,10 @@ CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.s: cmake_fo
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/seed_manager/seed_manager.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.s
 
-CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o: CMakeFiles/3Rats.dir/flags.make
-CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o: src/stage/manager/tile_manager/Tile.cpp
-CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/Tile.cpp
-
-CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/Tile.cpp > CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.i
-
-CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/Tile.cpp -o CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.s
-
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o: src/stage/manager/tile_manager/Tile_Manager.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/Tile_Manager.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.i: cmake_force
@@ -523,7 +565,7 @@ CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.s: cmake_fo
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o: src/stage/manager/tile_manager/Tile_Type.cpp
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o -MF CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o.d -o CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/stage/manager/tile_manager/Tile_Type.cpp
 
 CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.i: cmake_force
@@ -537,7 +579,7 @@ CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.o: src/ui/Button.cpp
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Button.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Button.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Button.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Button.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Button.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Button.cpp.i: cmake_force
@@ -551,7 +593,7 @@ CMakeFiles/3Rats.dir/src/ui/Button.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o: src/ui/Fade.cpp
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Fade.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Fade.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Fade.cpp.i: cmake_force
@@ -565,7 +607,7 @@ CMakeFiles/3Rats.dir/src/ui/Fade.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: src/ui/Overlay.cpp
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Overlay.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.i: cmake_force
@@ -579,7 +621,7 @@ CMakeFiles/3Rats.dir/src/ui/Overlay.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: src/ui/Panel.cpp
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Panel.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Panel.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Panel.cpp.i: cmake_force
@@ -593,7 +635,7 @@ CMakeFiles/3Rats.dir/src/ui/Panel.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: src/ui/Pause.cpp
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Pause.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Pause.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Pause.cpp.i: cmake_force
@@ -607,7 +649,7 @@ CMakeFiles/3Rats.dir/src/ui/Pause.cpp.s: cmake_force
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.o: CMakeFiles/3Rats.dir/flags.make
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.o: src/ui/Text.cpp
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.o: CMakeFiles/3Rats.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Text.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/3Rats.dir/src/ui/Text.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3Rats.dir/src/ui/Text.cpp.o -MF CMakeFiles/3Rats.dir/src/ui/Text.cpp.o.d -o CMakeFiles/3Rats.dir/src/ui/Text.cpp.o -c /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/src/ui/Text.cpp
 
 CMakeFiles/3Rats.dir/src/ui/Text.cpp.i: cmake_force
@@ -622,35 +664,38 @@ CMakeFiles/3Rats.dir/src/ui/Text.cpp.s: cmake_force
 3Rats_OBJECTS = \
 "CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o" \
 "CMakeFiles/3Rats.dir/src/core/Body.cpp.o" \
+"CMakeFiles/3Rats.dir/src/core/Logger.cpp.o" \
 "CMakeFiles/3Rats.dir/src/core/Random.cpp.o" \
 "CMakeFiles/3Rats.dir/src/core/Time.cpp.o" \
-"CMakeFiles/3Rats.dir/src/init.cpp.o" \
-"CMakeFiles/3Rats.dir/src/input/Controller.cpp.o" \
+"CMakeFiles/3Rats.dir/src/core/init.cpp.o" \
+"CMakeFiles/3Rats.dir/src/core/utils.cpp.o" \
 "CMakeFiles/3Rats.dir/src/main.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Door.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Game.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Item.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o" \
+"CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o" \
-"CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o" \
 "CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o" \
 "CMakeFiles/3Rats.dir/src/ui/Button.cpp.o" \
@@ -665,35 +710,38 @@ CMakeFiles/3Rats.dir/src/ui/Text.cpp.s: cmake_force
 
 bin/3Rats: CMakeFiles/3Rats.dir/src/audio/Sound.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/core/Body.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/core/Logger.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/core/Random.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/core/Time.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/init.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/input/Controller.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/core/init.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/core/utils.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/main.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Level_Structure.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Acteur.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Clock.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Door.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Game.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Item.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/Tile.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Enemy.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/acteur_factory/acteur_type/Player_Computer.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/item_factory/item_type/Food.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/map_factory/Map_Factory.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Cage_Map.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Garden_Map.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/factory/map_factory/map_types/Maze_Map.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/handler/controller_handler/Controller.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/handler/file_handler/FileHandler.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/handler/input_handler/input_handler.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Acteur_Manager.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Enemy.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/acteur_manager/Player_Computer.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/clock_manager/Clock_Manager.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/door_manager/Door_Manager.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/game_manager/Game.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Food.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Inventory.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/item_manager/Item.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/item_manager/ItemManager.cpp.o
+bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Level_Structure.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/map_manager/Topography.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/seed_manager/seed_manager.cpp.o
-bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Manager.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/stage/manager/tile_manager/Tile_Type.cpp.o
 bin/3Rats: CMakeFiles/3Rats.dir/src/ui/Button.cpp.o
@@ -709,7 +757,7 @@ bin/3Rats: /usr/local/Cellar/sdl2_mixer/2.8.0/lib/libSDL2_mixer.dylib
 bin/3Rats: /usr/local/Cellar/sdl2_ttf/2.22.0/lib/libSDL2_ttf.dylib
 bin/3Rats: /usr/local/Cellar/sdl2_image/2.8.3/lib/libSDL2_image.dylib
 bin/3Rats: CMakeFiles/3Rats.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Linking CXX executable bin/3Rats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Linking CXX executable bin/3Rats"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/3Rats.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

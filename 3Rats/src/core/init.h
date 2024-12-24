@@ -1,37 +1,36 @@
 #pragma once
-//#include <SDL.h>
+#include <SDL.h>
 #include <SDL2/SDL.h>
+#include <SDL_log.h>
 
+#include <fstream>
 #include <memory>
 
-#include "stage/handler/input_handler/input_handler.h"  
+#include "../stage/handler/input_handler/input_handler.h"  
 
-#include "stage/manager/clock_manager/Clock.h"
-#include "stage/manager/clock_manager/Clock_Manager.h"
+#include "../stage/manager/clock_manager/Clock_Manager.h"
+#include "../stage/manager/acteur_manager/Acteur_Manager.h"
+#include "../stage/manager/seed_manager/seed_manager.h"
+#include "../stage/manager/map_manager/Topography.h"
 
-#include "stage/manager/item_manager/Item.h"
+#include "../stage/factory/acteur_factory/acteur_type/Player.h"
+#include "../stage/factory/map_factory/Map_Factory.h"
 
-#include "stage/manager/tile_manager/Tile.h"
+#include "../stage/Clock.h"
+#include "../stage/Item.h"
+#include "../stage/Tile.h"
+#include "../stage/Game.h"
+#include "../stage/Acteur.h"
 
-#include "stage/manager/game_manager/Game.h"
+#include "Body.h"
+#include "Random.h"
+#include "Constants.h"
+#include "Logger.h"
+#include "utils.h"  
 
-#include "stage/manager/acteur_manager/Acteur.h"
-#include "stage/manager/acteur_manager/Acteur_Manager.h"
-#include "stage/manager/acteur_manager/Player.h"
-
-#include "stage/manager/seed_manager/seed_manager.h"
-
-#include "stage/manager/map_manager/Topography.h"
-
-#include "stage/factory/map_factory/Map_Factory.h"
-
-#include "core/Body.h"
-#include "core/Random.h"
-#include "core/Constants.h"
-
-#include "ui/Fade.h"
-#include "ui/Overlay.h"
-#include "ui/Pause.h"
+#include "../ui/Fade.h"
+#include "../ui/Overlay.h"
+#include "../ui/Pause.h"
 
 
 class Init {

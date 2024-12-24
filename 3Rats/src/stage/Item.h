@@ -3,8 +3,11 @@
 #include <iostream>
 #include <string>
 
-#include "../../../core/Body.h"
-#include "../../../core/Constants.h"
+#include <SDL_log.h>
+
+
+#include "../core/Body.h"
+#include "../core/Constants.h"
 
 class Item : public Body
 {
@@ -39,6 +42,4 @@ public:
 
 	bool get_pick_up();
 	void set_pick_up(bool value);
-
-
 };

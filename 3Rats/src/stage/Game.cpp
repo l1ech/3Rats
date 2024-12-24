@@ -11,7 +11,8 @@ Game::Game(SDL_Renderer *renderer, SDL_Texture *tex, Topography &topo, ActeurMan
     }
 void Game::update(float delta, const Uint8 *keyState, int mode)
 {
-    std::cout << "[Game]: Update called ..." << std::endl;
+    //SDL_Log("[Game]: Update called ...");
+
     fade.update(std::to_string(clock.get_day()));
     pause.update("Pause.");
     clock.update(delta);
@@ -19,7 +20,8 @@ void Game::update(float delta, const Uint8 *keyState, int mode)
 }
 
 void Game::render() {
-    std::cout << "[Game]: draw called ..." << std::endl;
+    //SDL_Log("[Game]: Draw called ...");
+
     SDL_QueryTexture(texture, NULL, NULL, &levelWidth, &levelHeight);
     SDL_RenderClear(renderTarget);
     SDL_RenderCopy(renderTarget, texture, NULL, NULL);
@@ -35,5 +37,5 @@ void Game::render() {
         tile_array[i].draw(renderTarget);
     }
 
-    acteur_manager->draw_all (renderTarget);
+    acteur_manager->draw_all(renderTarget);
 }

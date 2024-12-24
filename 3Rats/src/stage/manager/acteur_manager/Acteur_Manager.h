@@ -1,9 +1,9 @@
 #pragma once
 
 #include <vector>
-#include "Acteur.h"
-#include "Player.h"
-#include "../../../init.h"
+#include "../../Acteur.h"
+#include "../../factory/acteur_factory/acteur_type/Player.h"
+#include "../../../core/init.h"
 
 class Init;  // Forward declaration of Init
 

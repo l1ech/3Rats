@@ -42,7 +42,7 @@ public:
 	void draw(SDL_Renderer* render_target) const;
 
 	void set_surface(SDL_Renderer* render_target);
-	void set_texture(const std::string& filePath);
+	void set_texture_path(const std::string& filePath);
 	void set_cords(int x, int y);
 	void set_hight(int value);
 	//void set_width(int value);

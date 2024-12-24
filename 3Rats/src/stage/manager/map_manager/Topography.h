@@ -1,7 +1,19 @@
 #pragma once
 
-#include "../../factory/map_factory/Map.h"
-#include "../../factory/map_factory/Level_Structure.h"
+#include <fstream>        // For std::ofstream and std::ifstream
+#include <sstream>        // For std::istringstream
+#include <stdexcept>      // For std::runtime_error
+#include <string>         // For std::string
+#include <vector>         // If using vectors
+#include <utility>        // For std::pair
+
+
+#include "../../Map.h"
+#include "Level_Structure.h"
+
+#include "../../handler/file_handler/FileHandler.h"
+
+#include "../../../core/Constants.h"
 
 class Topography : public Level_Structure
 {
@@ -9,16 +21,6 @@ private:
 	SDL_Renderer* renderTarget;
 
 	int current_map_id;
-
-	const std::string EMPTY = ".";
-	const std::string WALL = "#";
-	const std::string FINISH = "F";
-	const std::string START = "S";
-
-	const std::string NORTH = "N";
-	const std::string EAST = "E";
-	const std::string SOUTH = "S";
-	const std::string WEST = "W";	
 	
 	int height, width;
 
@@ -32,8 +34,7 @@ private:
 	int number_items_on_map;
 	int* ptr;
 
-	std::vector<std::vector <std::pair<std::string, int>>> data;//(height + 2, std::vector<int>(width + 2));
-	std::vector<std::vector <std::pair<std::string, int>>> map_data;//(std::pair<int, int>(height), std::vector<int>(width));
+	//void save_map_to_file(const std::string& filename, std::vector<std::vector <std::pair<std::string, int>>> map_data);
 
 public:
 	Topography();
@@ -55,8 +56,7 @@ public:
 	void print_vector(std::vector<std::vector <std::pair<std::string, int>>>& arg, int size_x, int size_y);
 	void print_vector_hidden(std::vector<std::vector <std::pair<std::string, int>>>& arg, int size_x, int size_y);
 
-	std::string get_layout(int num);
-
+	//std::string get_layout(int num);
 
 	void set_renderer(SDL_Renderer* renderTarget);
 

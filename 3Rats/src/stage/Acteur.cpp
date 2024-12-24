@@ -2,7 +2,7 @@
 
 std::vector<std::vector<bool>> Acteur::get_blocked_array(Tile* tile_array, int length)
 {
-    std::cout << "[Acteur<" << index << ">]: get_blocked_array called" << std::endl;
+    //SDL_Log("[Acteur<%d>]: get_blocked_array called", index);
 
     std::vector<std::vector<bool>> blocked_i(length, std::vector<bool>(4));
 
@@ -57,7 +57,7 @@ std::vector<std::vector<bool>> Acteur::get_blocked_array(Tile* tile_array, int l
 
 void Acteur::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_rat_y, block_direction direction, float delta, Acteur& front_rat)
 {
-    std::cout << "[Acteur<" << index << ">]: follow_front_rat called" << std::endl;
+    //SDL_Log("[Acteur<%d>]: follow_front_rat called", index);
 
     if (rat_y > front_rat_y && !direction.up)
     {
@@ -96,7 +96,7 @@ void Acteur::follow_front_rat(int rat_x, int rat_y, int front_rat_x, int front_r
 
 void Acteur::hold_item_in_mouth(Item& item)
 {
-    std::cout << "[Acteur<" << index << ">]: hold_item_in_mouth called" << std::endl;
+    //SDL_Log("[Acteur<%d>]: hold_item_in_mouth called", index);
 
     int offset = 14;
 
@@ -120,7 +120,7 @@ void Acteur::hold_item_in_mouth(Item& item)
 
 Acteur::Acteur()
 {
-    std::cout << "[Acteur<" << index << ">]: Constructor called" << std::endl;
+    //SDL_Log("[Acteur<%d>]: Constructor called", index);
 
     dead = false;
     item_type = 0;
@@ -149,7 +149,7 @@ Acteur::Acteur()
 
 void Acteur::set_cords_frames(int x, int y, int framesX, int framesY)
 {
-    std::cout << "[Acteur<" << index << ">]: set_cords_frames called with x: " << x << ", y: " << y << std::endl;
+    //SDL_Log("[Acteur<%d>]: set_cords_frames called with x: %d, y: %d", index, x, y);
 
     position_rect.x = x;
     position_rect.y = y;
@@ -170,138 +170,16 @@ void Acteur::set_cords_frames(int x, int y, int framesX, int framesY)
 
 void Acteur::draw(SDL_Renderer *renderTarget) const
 {
-	std::cout << std::endl;
-    std::cout << "[Acteur<" << index << ">]: draw called" << std::endl;
+    //SDL_Log("[Acteur<%d>]: draw called", index);
     Body::draw(renderTarget);
 }
-
-/*
-
-void Acteur::Update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat)
-{
-    std::cout << "[Acteur<" << index << ">]: Update called with delta: " << delta << std::endl;
-
-    map_array = topography->get_map_array();
-    map_array_size = topography->get_map_size();
-
-    tile_array = topography->get_tile_array();
-    tile_array_size = topography->get_tile_size();
-
-    item_array = topography->get_item_array();
-    item_array_size = topography->get_item_size();
-
-    if (is_item_available_on_map())
-    {
-        make_goal();
-    }
-    else
-    {
-        mode = 0;
-    }
-
-    int rat_x = this->get_origin_x();
-    int rat_y = this->get_origin_y();
-
-    int frontRatX = front_rat.get_origin_x();
-    int frontRatY = front_rat.get_origin_y();
-
-    std::pair <int, int> offests = direction_to_offset(front_rat.GetDirection());
-
-    rat_x += offests.first;
-    rat_y += offests.second;
-
-    std::vector<std::vector<bool>> collision_map;
-
-    init_colision_map(collision_map);
-    block_direction_counter collision_counter = { 0, 0, 0, 0 };
-    block_direction direction = { 0, 0, 0, 0 };
-
-    check_door(topography, map_array, map_array_size, tile_array, tile_array_size);
-
-    collision_map = get_blocked_array(tile_array, tile_array_size);
-
-    calculate_blocked_side(collision_counter, collision_map, tile_array_size);
-
-    get_direction_blocked(collision_counter, direction, tile_array_size);
-
-    controller_move move = {
-        static_cast<bool>(keyState[keys[0]]),
-        static_cast<bool>(keyState[keys[1]]),
-        static_cast<bool>(keyState[keys[2]]),
-        static_cast<bool>(keyState[keys[3]])
-    };
-
-    if (controller_number == 0)
-    {
-        make_acteur_move(move, direction, delta);
-    }
-    else
-    {
-        if (!wait)
-        {
-            if (mode == 1 && !holds_item)
-            {
-                follow_goal(rat_x, rat_y, goalX, goalY, direction, delta, item_array[item_search_id]);
-            }
-            else if (mode == 1 && holds_item)
-            {
-                follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
-            }
-            else if (mode == 0)
-            {
-                follow_front_rat(rat_x, rat_y, frontRatX, frontRatY, direction, delta, front_rat);
-            }
-        }
-    }
-
-    if (holds_item)
-    {
-        hold_item_in_mouth(item_array[item_hold_id]);
-    }
-
-    if (is_moving)
-    {
-        frameCounter += delta;
-        searchCounter += delta;
-        if (wait) waitCounter += delta;
-
-        if (frameCounter >= 0.25f)
-        {
-            frameCounter = 0;
-            crop_rect.x += frame_width;
-            if (crop_rect.x >= texture_width)
-                crop_rect.x = 0;
-        }
-
-        if (searchCounter >= 2.0f)
-        {
-            searchCounter = 0;
-            wait = true;
-        }
-
-        if (waitCounter >= 0.5f)
-        {
-            waitCounter = 0;
-            wait = false;
-        }
-
-    }
-    else
-    {
-        frameCounter = 0;
-        crop_rect.x = frame_width;
-    }
-}
-
-*/
-
 void Acteur::use_item()
 {
-    std::cout << "[Acteur<" << index << ">]: use_item called" << std::endl;
+    //SDL_Log("[Acteur<%d>]: use_item called", index);
 
     if (item_type == 0)
     {
-
+        // Handle item_type 0 if necessary
     }
     else if (item_type == 1)
     {
@@ -311,7 +189,8 @@ void Acteur::use_item()
         item_array[item_hold_id].set_cords(-100, -100);
         item_array[item_hold_id].set_on_map(false);
 
-        std::cout << "[Acteur<" << index << ">]: yumm!" << std::endl;
+        //SDL_Log("[Acteur<%d>]: yumm!", index);
         item_type = 0;
     }
 }
+

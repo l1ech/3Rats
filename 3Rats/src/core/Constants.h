@@ -41,7 +41,7 @@ namespace Init_Constants {
     const int ENTITY_FRAME_COLUMNS = 4;
 }
 
-namespace Map_Constans 
+namespace Map_Constants 
 {
     const int MAX_RECURSION_DEPTH = 10000000;
     const int TILE_SIZE = 64; // Tile size constant    
@@ -64,6 +64,12 @@ namespace Map_Constans
     const int UP_VERTICAL_PATH = 5;
     const int DOWN_VERTICAL_PATH = 6;
     const int UNKNOWN_VALUE = 9;
+
+    const int MAP_HEIGHT = 6;
+    const int MAP_WIDTH = 9;
+
+    enum class Map_Type { Cage, Maze, Garden };
+
 }
 
 namespace Texture_Constants {
@@ -95,9 +101,38 @@ namespace Main_Constants {
 
     const int ITEM_AMOUNT = 3;
     const int TILE_AMOUNT = 54;
-    const int MAP_AMOUNT = 10;
+    const int MAP_AMOUNT = 1;
     const int PLAYER_AMOUNT = 3;
     const int ENTITY_AMOUNT = 1;
 
     const int TELEPORT_WAIT_TIME = 12; // Adjust wait time
+
+    const std::string MAP_FILE_PATH = "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/data/maps/";
+
+    const std::string TOPO_FILE = "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/data/";
+
+    const std::string DEBUG_PATH = "/Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/data/debug/sdl_debug_log.txt";
+}
+
+namespace Topography_Constants {
+    const std::string EMPTY = ".";
+	const std::string WALL = "#";
+	const std::string FINISH = "F";
+	const std::string START = "S";
+
+	const std::string NORTH = "N";
+	const std::string EAST = "E";
+	const std::string SOUTH = "S";
+	const std::string WEST = "W";	
+
+    const int number_items_on_map = 0;
+	const int width = 5;
+	const int height = 5;
+	const int current_map_id = 0;
+}
+
+namespace Tile_Constants {
+    const int WALL = 9;
+    const int SPACE = 1;
+
 }

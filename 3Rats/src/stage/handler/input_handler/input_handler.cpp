@@ -1,8 +1,12 @@
 // input_handler.cpp
 #include "input_handler.h"
 #include <iostream>  // For debug output if needed
+#include "../../../core/Constants.h"
 
-void handle_key_event(SDL_Event& ev, Acteur* player_array, int player_amount, Acteur* entity_array, int& mode, Fade& fade, Pause& pause) {
+bool handle_key_event(SDL_Event& ev, Acteur* player_array, Acteur* entity_array, int& mode, Fade& fade, Pause& pause) {
+
+    bool isRunning = true;
+
     switch (ev.key.keysym.sym) {
         case SDLK_SPACE:
             mode++;
@@ -12,13 +16,13 @@ void handle_key_event(SDL_Event& ev, Acteur* player_array, int player_amount, Ac
             //texture = LoadTexture(collage.get_path(8), renderTarget);
             break;
         case SDLK_u:
-            for (int i = 0; i < player_amount; i++) {
+            for (int i = 0; i < Main_Constants::PLAYER_AMOUNT; i++) {
                 player_array[i].use_item();
                 player_array[i].set_enter(false);
             }
             break;
         case SDLK_r:
-            for (int i = 0; i < player_amount; i++) {
+            for (int i = 0; i < Main_Constants::PLAYER_AMOUNT; i++) {
                 player_array[i].teleport_to_entrence();
                 player_array[i].set_enter(false);
             }
@@ -32,7 +36,7 @@ void handle_key_event(SDL_Event& ev, Acteur* player_array, int player_amount, Ac
             player_array[0].set_enter(false);
             break;
         case SDLK_n:
-            for (int i = 0; i < player_amount; i++) {
+            for (int i = 0; i < Main_Constants::PLAYER_AMOUNT; i++) {
                 player_array[i].set_has_goal(false);
                 player_array[i].set_enter(false);
             }
@@ -54,5 +58,13 @@ void handle_key_event(SDL_Event& ev, Acteur* player_array, int player_amount, Ac
             break;
         case SDLK_0:
             break;
+        case SDLK_q:
+            std::cout << "[input_handler]: Quitting game..." << std::endl;
+            isRunning = false;
+            break;
+        default:
+            isRunning = true;
+            break;
     }
+    return isRunning;
 }

@@ -3,9 +3,8 @@
 
 #include <vector>
 
-//#include "../stage/manager/acteur_manager/Acteur.h"
-#include "../stage/manager/map_manager/Topography.h"
-#include "../core/Random.h"
+#include "../../manager/map_manager/Topography.h"
+#include "../../../core/Random.h"
 
 class Controller : public Body
 {

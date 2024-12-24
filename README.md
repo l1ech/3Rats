@@ -31,6 +31,10 @@
 
 ### 1.3 
 - add optional debug for every file
+- remove Level_Structur and replace with Game object
+- add a seed class
+- implement itemfactory
+- add gameManager
 
 ---
 

@@ -1,13 +1,14 @@
 #include "Map.h"
 #include <iostream> // Include for debugging messages
-#include "../../../core/Constants.h"
+#include "../core/Constants.h"
 
-Map::Map()
+Map::Map() : width(Map_Constants::MAP_WIDTH), height(Map_Constants::MAP_HEIGHT)
 {
-    std::cout << "[Map]: Constructor called" << std::endl;
+    index = current_index++;
+    name = "map";
+    SDL_Log("[Map_%d](%s): Constructor called", index, name.c_str());
+
     rec_iter = 0;
-    width = 9;
-    height = 6;
     //item_id = 0;
     map_generation_try = 0;
     tile_manager.set_width(width);
@@ -26,6 +27,7 @@ void Map::set_map_id(int numer) { map_id = numer; }
 
 void Map::set_layout(std::string layout)
 {
+    SDL_Log("[Map]: Setting layout to %s", layout.c_str());
     if (layout == "N")
     {
         entry_direction = 3;
@@ -48,19 +50,19 @@ void Map::set_layout(std::string layout)
     }
     else
     {
-        std::cout << "[Map]: error! the value is: " << layout << std::endl;
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Map]: error! the value is: %s", layout.c_str());
     }
 }
 
 void Map::set_entity_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& entity_data, int height, int width, int probability)
 {
-    std::cout << "[Map]: set_entity_to_map called" << std::endl;
+    SDL_Log("[Map]: set_entity_to_map called");
     // Logic to set entities to map
 }
 
 void Map::set_items_to_map(std::vector<std::vector<int>>& map_data, std::vector<std::vector<int>>& item_data, int height, int width, int probability)
 {
-    std::cout << "[Map]: set_items_to_map called" << std::endl;
+    SDL_Log("[Map]: set_items_to_map called");    
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -87,59 +89,62 @@ Door Map::get_door(int index)
 
 void Map::set_random_ptr(Random* random_ptr)
 {
+    this->random_ptr = random_ptr;
     door_manager.set_random_ptr(random_ptr);
 }
-
-int Map::rec_pos(int x, int y, std::vector<std::vector<int>>& arg, int& prev_direction)
+int Map::rec_pos(int x, int y, std::vector<std::vector<int>> &arg, int &prev_direction)
 {
-    std::cout << "[Map]: rec_pos called with x=" << x << ", y=" << y << std::endl;
+    SDL_Log("[Map]: rec_pos called with position (%d, %d)", x, y);
     rec_iter++;
-    if (rec_iter > Map_Constans::MAX_RECURSION_DEPTH) {
-        std::cerr << "[Map]: Maximum recursion depth reached. Backtracking." << std::endl;
+    if (rec_iter > Map_Constants::MAX_RECURSION_DEPTH) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Maximum recursion depth reached. Backtracking.");
         return -1;
     }
 
-    std::cerr << "[Map]: Starting rec_pos: iteration=" << rec_iter 
-              << ", x=" << x << ", y=" << y << ", prev_direction=" << prev_direction << std::endl;
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Starting rec_pos: iteration=%d, x=%d, y=%d, prev_direction=%d",
+                rec_iter, x, y, prev_direction);
 
     // Shuffle directions to ensure varied attempts
-    std::vector<int> directions = {Map_Constans::RIGHT, Map_Constans::LEFT, Map_Constans::UP, Map_Constans::DOWN};
-    std::shuffle(directions.begin(), directions.end(), std::default_random_engine(random_ptr->roll_custom_dice(4)));
+    std::vector<int> directions = {
+        Map_Constants::RIGHT, 
+        Map_Constants::LEFT, 
+        Map_Constants::UP, 
+        Map_Constants::DOWN
+        };
+    std::shuffle(
+        directions.begin(), directions.end(), 
+        std::default_random_engine(random_ptr->roll_custom_dice(4))
+    );
 
     for (int dir : directions) {
         int new_x = x, new_y = y;
 
         // Update coordinates based on direction
         switch (dir) {
-        case Map_Constans::RIGHT: new_x++; break;
-        case Map_Constans::LEFT:  new_x--; break;
-        case Map_Constans::UP:    new_y--; break;
-        case Map_Constans::DOWN:  new_y++; break;
+        case Map_Constants::RIGHT: new_x++; break;
+        case Map_Constants::LEFT:  new_x--; break;
+        case Map_Constants::UP:    new_y--; break;
+        case Map_Constants::DOWN:  new_y++; break;
         default:
-            std::cerr << "[Map]: Invalid direction chosen. Skipping." << std::endl;
+            SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Invalid direction chosen: %d. Skipping.", dir);
             continue;
         }
 
         // Check bounds
         if (new_y < 0 || new_y >= arg.size() || new_x < 0 || new_x >= arg[0].size()) {
-            std::cerr << "[Map]: Out of bounds: x=" << new_x << ", y=" << new_y << ". Skipping." << std::endl;
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Out of bounds: x=%d, y=%d. Skipping.", new_x, new_y);
             continue;
         }
 
         // Fetch the value at the new position
         int point_value = arg[new_y][new_x];
-        if (point_value == 9) 
-        {
-            std::cerr << "[Map]: Border detected at x=" << new_x << ", y=" << new_y << ". Skipping." << std::endl;
+        if (point_value == 9) {
+            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Border detected at x=%d, y=%d. Skipping.", new_x, new_y);
             continue;
-        } 
-        else if (point_value == 0) 
-        {
-            std::cerr << "[Map]: Path/finish found at x=" << new_x << ", y=" << new_y << std::endl;
+        } else if (point_value == 0) {
+            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Path/finish found at x=%d, y=%d", new_x, new_y);
             return 0;
-        } 
-        else if (point_value == 1) 
-        {
+        } else if (point_value == 1) {
             // Mark as visited
             arg[new_y][new_x] = dir;
             int result = rec_pos(new_x, new_y, arg, dir);
@@ -149,15 +154,14 @@ int Map::rec_pos(int x, int y, std::vector<std::vector<int>>& arg, int& prev_dir
             // Backtrack
             arg[new_y][new_x] = 1;
         } else if (point_value >= 3 && point_value <= 6) {
-            std::cerr << "[Map]: Direction value detected at x=" << new_x << ", y=" << new_y << ". Continuing." << std::endl;
+            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Special direction value detected at x=%d, y=%d. Continuing.", new_x, new_y);
             continue;
         } else {
-            std::cerr << "[Map]: Unexpected point_value=" << point_value 
-                      << " at x=" << new_x << ", y=" << new_y << ". Skipping." << std::endl;
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Unexpected point_value=%d at x=%d, y=%d. Skipping.", point_value, new_x, new_y);
         }
     }
 
-    std::cerr << "[Map]: Ending rec_pos at x=" << x << ", y=" << y << ", returning -1" << std::endl;
+    SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "[Map]: Ending rec_pos at x=%d, y=%d, returning -1", x, y);
     return -1;
 }
 
@@ -174,7 +178,7 @@ void Map::print_vector(const std::vector<std::vector<int>>& arg, const int& size
 
 void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::vector<std::vector<int>>& item_data)
 {
-    std::cout << "[Map]: save_data called" << std::endl;
+    SDL_Log("[Map]: save_data called");
     int i = 0;
     for (auto& row : data) {
         int j = 0;
@@ -188,6 +192,5 @@ void Map::save_data(const std::vector<std::vector<int>>& map_data, const std::ve
 }
 
 void Map::generate(bool item_generation, bool entity_generation) {
-    std::cout << "[Map]: generate called with item_generation=" << item_generation << ", entity_generation=" << entity_generation << std::endl;
-    // Map generation logic
+    // Pure virtual function
 }

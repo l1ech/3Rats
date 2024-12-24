@@ -1,51 +1,48 @@
-#include "init.h"
+#include "core/init.h"
 
-
-//union SDL_Event;
-
+std::ofstream sdlLogFile;
 
 int Body::current_index = 0; 
-    
-std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> LoadTexture(std::string filePath, SDL_Renderer* renderTarget)
-{
-    std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> texture(nullptr, SDL_DestroyTexture);
-    SDL_Surface* surface = IMG_Load(filePath.c_str());
-    if (surface == NULL) {
-        std::cout << "[Main]: Error loading surface: " << IMG_GetError() << std::endl;
+int Map::current_index = 0;
+
+void initializeSDL() {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Init]: SDL could not initialize! SDL_Error: %s", SDL_GetError());
+        throw std::runtime_error("SDL initialization failed");
     } else {
-        texture.reset(SDL_CreateTextureFromSurface(renderTarget, surface));
-        if (texture == NULL) {
-            std::cout << "[Main]: Error creating texture from surface: " << SDL_GetError() << std::endl;
-        } else {
-            std::cout << "[Main]: Texture loaded successfully from: " << filePath << std::endl;
-        }
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Init]: SDL initialized successfully.");
     }
+}
 
-    SDL_FreeSurface(surface);
+void initializeTTF() {
+    if (TTF_Init() < 0) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Init]: SDL_ttf could not initialize! SDL_ttf Error: %s", TTF_GetError());
+        throw std::runtime_error("SDL_ttf initialization failed");
+    } else {
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Init]: SDL_ttf initialized successfully.");
+    }
+}
 
-    return texture;
+void initializeImage() {
+    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Init]: SDL_image could not initialize! SDL_image Error: %s", IMG_GetError());
+        throw std::runtime_error("SDL_image initialization failed");
+    } else {
+        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Init]: SDL_image initialized successfully.");
+    }
 }
 
 int main(int argc, char* argv[])
 {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "[Init]: SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
-    } else {
-        std::cout << "[Init]: SDL initialized successfully." << std::endl;
-    }
+    Logger logger;
 
-    if (TTF_Init() < 0) {
-        std::cerr << "[Init]: SDL_ttf could not initialize! SDL_ttf Error: " << TTF_GetError() << std::endl;
-    } else {
-        std::cout << "[Init]: SDL_ttf initialized successfully." << std::endl;
-    }
+    //logger.logToFile()
 
-    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG; // Adjust for supported image formats
-    if (!(IMG_Init(imgFlags) & imgFlags)) {
-        std::cerr << "[Init]: SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << std::endl;
-    } else {
-        std::cout << "[Init]: SDL_image initialized successfully." << std::endl;
-    }
+    initializeSDL();
+    initializeTTF();
+    initializeImage();
+
     std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> window
     (
         SDL_CreateWindow(
@@ -57,7 +54,7 @@ int main(int argc, char* argv[])
         );
 
     if (window == nullptr) {
-        std::cerr << "[Main]: Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Main]: Window could not be created! SDL_Error: %s", SDL_GetError());
         return -1;
     }
 
@@ -67,7 +64,7 @@ int main(int argc, char* argv[])
     );
     
     if (renderTarget == nullptr) {
-        std::cerr << "[Main]: Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Main]: Renderer could not be created! SDL_Error: %s", SDL_GetError());
         return -1;
     }
 
@@ -75,7 +72,7 @@ int main(int argc, char* argv[])
     int levelWidth = 0, levelHeight = 0;
     SDL_GetRendererOutputSize(renderTarget.get(), &levelWidth, &levelHeight);
     
-    std::cout << "[Main]: Renderer output size: " << levelWidth << "x" << levelHeight << std::endl;
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[Main]: Renderer output size: %dx%d", levelWidth, levelHeight);
 
     // Initialize game objects using Init class
     Seed_manager seed_manager;
@@ -94,14 +91,8 @@ int main(int argc, char* argv[])
     Fade fade;
     init.init_fade(&fade);
 
-    int a;
-    std::cin >> a;
-
     Pause pause;
     init.init_pause(&pause);
-
-    a;
-    std::cin >> a;
 
     Clock_Manager clock_manager;
     Time world_time;
@@ -109,30 +100,14 @@ int main(int argc, char* argv[])
     Overlay overlay;
     clock_manager.init(init, &clock, &fade, &overlay, &world_time);
 
-    a;
-    std::cin >> a;
-
     init.init_overlay(&fade, clock_manager.get_clocks(), &overlay);
 
-    a;
-    std::cin >> a;
-
     // Initialize game entities and maps
-    Item item_array[Main_Constants::ITEM_AMOUNT];
-    init.init_item_array(
-        item_array
-        );
+    Item item_array[Main_Constants::ITEM_AMOUNT - 1];
+    init.init_item_array(item_array);
 
-    a;
-    std::cin >> a;
-
-    Tile tile_array[Main_Constants::TILE_AMOUNT];
-    init.init_tile_array(
-        tile_array
-    );
-
-    a;
-    std::cin >> a;
+    Tile tile_array[Main_Constants::TILE_AMOUNT - 1];
+    init.init_tile_array(tile_array);
 
     std::unique_ptr<Map> map_array[Main_Constants::MAP_AMOUNT];
     init.init_map_array(
@@ -141,37 +116,28 @@ int main(int argc, char* argv[])
         map_array
     );
 
-    a;
-    std::cin >> a;
-
     Topography topography;
     init.init_topography(map_array, &topography);
-
-    a;
-    std::cin >> a;
 
     ActeurManager acteurManager;
     Player player_array[Main_Constants::PLAYER_AMOUNT];
     Player entity_array[Main_Constants::ENTITY_AMOUNT];
     acteurManager.init(init, &topography, player_array, entity_array);
 
-    a;
-    std::cin >> a;
-
     init.init_entity(acteurManager.get_entities(), topography);
-
-    a;
-    std::cin >> a;
 
     // Collage and texture loading
     //Texture_Manager texture_manager;
+
     auto texture = LoadTexture(
         Texture_Constants::BACKGROUND,
         renderTarget.get()
     );
 
+    
+
     if (!texture) {
-        std::cout << "[Main]: Failed to load texture." << std::endl;
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Main]: Failed to load texture.");
         SDL_Quit();
         return 1;
     }
@@ -196,7 +162,7 @@ int main(int argc, char* argv[])
     const Uint8* keyState;
     int mode = 0;
 
-    std::cout << "[Main]: Entering game loop..." << std::endl;
+    SDL_Log("[Main]: Entering game loop...");
 
     while (isRunning)
     {
@@ -210,13 +176,8 @@ int main(int argc, char* argv[])
             if (ev.type == SDL_QUIT)
                 isRunning = false;
             else if (ev.type == SDL_KEYDOWN) {
-                handle_key_event(
-                    ev, 
-                    acteurManager.get_players(), Main_Constants::PLAYER_AMOUNT,
-                    acteurManager.get_entities(),
-                    mode,
-                    fade, 
-                    pause
+                isRunning = handle_key_event(
+                    ev, acteurManager.get_players(), acteurManager.get_entities(), mode, fade, pause
                 );
             }
         }
@@ -228,16 +189,14 @@ int main(int argc, char* argv[])
         game.render();
 
         SDL_RenderPresent(renderTarget.get());
-
-        //int a;
-        //std::cin >> a;
     }
 
-    // Freeing the memory
-    std::cout << "[Main]: Cleaning up resources..." << std::endl;
+    SDL_Log("[Main]: Cleaning up resources...");
 
     IMG_Quit();
-    SDL_Quit();
 
-    return 0;
+    //logger.logToFile();  // Redirect SDL logs to file
+    logger.resetLog();  // Reset SDL log output to default
+
+    SDL_Quit();
 }

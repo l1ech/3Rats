@@ -2,10 +2,6 @@
 
 Topography::Topography()
 {
-	number_items_on_map = 0;
-	width = 5;
-	height = 5;
-	current_map_id = 0;
 }
 
 void Topography::set_map_array(std::unique_ptr<Map>* map, int map_size)
@@ -54,27 +50,31 @@ int Topography::get_map_size()
 
 void Topography::make_maze()
 {
-	std::cout << "[Topography]: generating ..."<<std::endl;
+    SDL_Log("[Topography]: generating ...");
+
+	std::vector<std::vector <std::pair<std::string, int>>> data;//(Topography_Constants::width + 2, std::vector<int>(Topography_Constants::width + 2));
+	std::vector<std::vector <std::pair<std::string, int>>> map_data;//(std::pair<int, int>(Topography_Constants::width), std::vector<int>(Topography_Constants::width));
+
 
 	int start_x = 1;
 	int start_y = 1;
 
-	int end_x = width;
-	int end_y = height;
+	int end_x = Topography_Constants::width;
+	int end_y = Topography_Constants::height;
 
 	make_points(start_x, start_y, end_x, end_y);
 	
-	data.resize(height + 2);
+	data.resize(Topography_Constants::width + 2);
 	for (int i = 0; i < data.size(); i++) {
-		data[i].resize(width + 2);
+		data[i].resize(Topography_Constants::width + 2);
 		for (int j = 0; j < data[i].size(); j++) {
 			data[i][j] = std::make_pair(0, 0);
 		}
 	}
 
-	map_data.resize(height);
+	map_data.resize(Topography_Constants::width);
 	for (int i = 0; i < map_data.size(); i++) {
-		map_data[i].resize(width);
+		map_data[i].resize(Topography_Constants::width);
 		for (int j = 0; j < map_data[i].size(); j++) {
 			map_data[i][j] = std::make_pair(0, 0);
 		}
@@ -86,11 +86,11 @@ void Topography::make_maze()
 	// return 1 else 0
 
 	std::string end_char = "1";
-	while (end_char != FINISH)
+	while (end_char != Topography_Constants::FINISH)
 	{
 		end_char = find_empty_space(connections[0].first.first, connections[0].first.second, data, data[start_x][start_y].first, 0);
 	}
-
+	/*
 	std::cout << "[Topography]: data.first" << std::endl;
 	print_vector(data, data[0].size(), data.size());
 	std::cout << std::endl;
@@ -108,7 +108,13 @@ void Topography::make_maze()
 	std::cout << "[Topography]: data.second" << std::endl;
 	print_vector_hidden(map_data, map_data[0].size(), map_data.size());
 	std::cout << std::endl;
+	*/
 	
+	FileHandler file_handler;
+
+	file_handler.saveTopoToFile(map_data);
+	
+	//save_map_to_file(, map_data);
 }
 
 void Topography::make_points(int a_x, int a_y, int b_x, int b_y)
@@ -121,21 +127,21 @@ void Topography::make_points(int a_x, int a_y, int b_x, int b_y)
 
 void Topography::build_frame(std::vector<std::vector<std::pair<std::string, int>>>& data, std::pair<int, int> entrance, std::pair<int, int> exit)
 {
-	for (int h = 0; h < height + 2; h++)
+	for (int h = 0; h < Topography_Constants::width + 2; h++)
 	{
-		for (int w = 0; w < width + 2; w++)
+		for (int w = 0; w < Topography_Constants::width + 2; w++)
 		{
-			if (w == 0 || w == width + 1 || h == 0 || h == height + 1) 
-				data[h][w].first = WALL;
+			if (w == 0 || w == Topography_Constants::width + 1 || h == 0 || h == Topography_Constants::width + 1) 
+				data[h][w].first = Topography_Constants::WALL;
 			else 
-				data[h][w].first = EMPTY;
+				data[h][w].first = Topography_Constants::EMPTY;
 
 			data[h][w].second = 0;
 		}
 	}
 
-	data[entrance.second][entrance.first].first = START;
-	data[exit.second][exit.first].first = FINISH;
+	data[entrance.second][entrance.first].first = Topography_Constants::START;
+	data[exit.second][exit.first].first = Topography_Constants::FINISH;
 }
 
 std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<std::pair<std::string, int>>>& map, std::string& prev_direction, int iterator)
@@ -151,22 +157,22 @@ std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<s
 	switch (random_ptr->roll_custom_dice(4))
 	{
 	case 1:
-		direction = EAST;
+		direction = Topography_Constants::EAST;
 		x++;
 		break;
 
 	case 2:
-		direction = WEST;
+		direction = Topography_Constants::WEST;
 		x--;
 		break;
 
 	case 3:
-		direction = NORTH;
+		direction = Topography_Constants::NORTH;
 		y++;
 		break;
 
 	case 4:
-		direction = SOUTH;
+		direction = Topography_Constants::SOUTH;
 		y--;
 		break;
 
@@ -182,25 +188,25 @@ std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<s
 	std::cout << "[x: " << x << ", y: " << y << "] = "<< point_value << std::endl;
 	*/
 	
-	if (point_value == EMPTY) {  // Empty field
+	if (point_value == Topography_Constants::EMPTY) {  // Empty field
 		map[y][x].first = direction;
 		map[y][x].second = iterator;
 		counter_maps = iterator;
 
 		std::string vall = find_empty_space(x, y, map, direction, iterator);
 
-		if (vall == EMPTY) {
+		if (vall == Topography_Constants::EMPTY) {
 			map[y][x].first = direction;
 			map[y][x].second = iterator;
 			counter_maps = iterator;
 		}
-		else if (vall == FINISH)
+		else if (vall == Topography_Constants::FINISH)
 		{
 			return vall;
 		}
 		else
 		{
-			map[y][x].first = EMPTY;
+			map[y][x].first = Topography_Constants::EMPTY;
 			map[y][x].second = 0;
 			return vall;
 		}
@@ -211,12 +217,11 @@ std::string Topography::find_empty_space(int x, int y, std::vector<std::vector<s
 	return NULL;
 }
 
-
 void Topography::trim_boarder(std::vector<std::vector<std::pair<std::string, int>>>& data, std::vector<std::vector<std::pair<std::string, int>>>& map_data)
 {
-	for (int h = 0; h < height; h++)
+	for (int h = 0; h < Topography_Constants::width; h++)
 	{
-		for (int w = 0; w < width; w++)
+		for (int w = 0; w < Topography_Constants::width; w++)
 		{
 			map_data[h][w].first = data[h + 1][w + 1].first;
 			map_data[h][w].second = data[h + 1][w + 1].second;
@@ -254,18 +259,3 @@ void Topography::print_vector_hidden(std::vector<std::vector<std::pair<std::stri
 	}
 }
 
-std::string Topography::get_layout(int num)
-{
-	for (int h = 0; h < height; h++)
-	{
-		for (int w = 0; w < height; w++)
-		{
-			int temp = map_data[h][w].second;
-			if ( temp == num)
-			{
-				return map_data[h][w].first;
-			}
-		}
-	}
-	return "N";
-}

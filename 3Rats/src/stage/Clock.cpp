@@ -1,27 +1,26 @@
 #include "Clock.h"
 #include <iostream>
-
 Clock::Clock() {
-    std::cout << "[Clock]: Constructor called" << std::endl;
+    SDL_Log("[Clock]: Constructor called");
 }
 
 void Clock::update(double delta) {
     time->update(delta);  // Delegate time update to the Time object
-    std::cout << "[Clock]: Current time is " << time->get_time_display() << std::endl;
+    //SDL_Log("[Clock]: Current time is %s", time->get_time_display().c_str());
 
     Panel::update();
 
     if (time->day_time() && time->get_day() == 0 && time->get_time_display() == "22:00") {
-        std::cout << "[Clock]: Day " << time->get_day() << " passed. It's time to sleep now!" << std::endl;
+        SDL_Log("[Clock]: Day %d passed. It's time to sleep now!", time->get_day());
         time->set_time(16, 30);
     } else if (!time->day_time() && time->get_time_display() == "22:01") {
-        std::cout << "[Clock]: New day started, time set to 16:30" << std::endl;
+        SDL_Log("[Clock]: New day started, time set to 16:30");
         time->set_time(16, 30);
     }
 }
 
 void Clock::draw(SDL_Renderer* renderTarget) {
-    std::cout << "[Clock]: Drawing clock" << std::endl;
+    //SDL_Log("[Clock]: Drawing clock");
     Panel::draw(renderTarget);
 }
 

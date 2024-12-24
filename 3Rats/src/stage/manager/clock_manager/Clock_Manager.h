@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Clock.h"
+#include "../../Clock.h"
 #include <vector>
 #include <SDL2/SDL.h>
 
 #include "../../../ui/Fade.h"
 #include "../../../ui/Overlay.h"   
 
-#include "../../../init.h"
+#include "../../../core/init.h"
 
 class Init; // or struct Init;
 

@@ -1,30 +1,31 @@
 #include "Time.h"
-#include <iostream>
+#include <SDL.h>
+#include <SDL_log.h>
 
 Time::Time()
     : day_counter(0), is_day(true), spacetime(0), min(0), hour(0) {
-    std::cout << "[Time]: Constructor called" << std::endl;
+    SDL_Log("[Time]: Constructor called");
 }
 
 void Time::update(double delta) {
     spacetime += delta;
-    std::cout << "[Time]: spacetime updated to " << spacetime << std::endl;
+    //SDL_Log("[Time]: spacetime updated to %f", spacetime);
 
     if (spacetime >= 5) {
         spacetime = 0;
         min++;
-        std::cout << "[Time]: Minute incremented to " << min << std::endl;
+        //SDL_Log("[Time]: Minute incremented to %d", min);
     }
 
     if (min >= 60) {
         min = 0;
         hour++;
-        std::cout << "[Time]: Hour incremented to " << hour << std::endl;
+        //SDL_Log("[Time]: Hour incremented to %d", hour);
     }
 
     if (hour >= 24) {
         hour = 0;
-        std::cout << "[Time]: Day reset, hour set to " << hour << std::endl;
+        //SDL_Log("[Time]: Day reset, hour set to %d", hour);
     }
 
     str_time_min = format_time(min);
@@ -35,16 +36,16 @@ void Time::set_time(int hour, int min) {
     spacetime = 0;
     this->min = min;
     this->hour = hour;
-    std::cout << "[Time]: Time set to " << hour << ":" << min << std::endl;
+    //SDL_Log("[Time]: Time set to %d:%d", hour, min);
 }
 
 int Time::get_day() {
-    std::cout << "[Time]: Returning day counter " << day_counter << std::endl;
+    //SDL_Log("[Time]: Returning day counter %d", day_counter);
     return day_counter;
 }
 
 bool Time::day_time() {
-    std::cout << "[Time]: Returning is_day value " << is_day << std::endl;
+    //SDL_Log("[Time]: Returning is_day value %d", is_day);
     return is_day;
 }
 

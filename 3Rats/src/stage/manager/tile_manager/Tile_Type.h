@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Tile.h"
+#include "../../Tile.h"
 #include "SDL.h"
 
 class TileType {

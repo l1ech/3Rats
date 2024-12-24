@@ -1,19 +1,16 @@
-//  this code wasent made by me. 
-//  i copied it from here:
-//  https://stackoverflow.com/a/13445752/18288994
 
 #include "Random.h"
 
 Random::Random(uint32_t seed_val_parameter)
 {
     seed_val = seed_val_parameter;
-    rng.seed(seed_val);
+    rng.seed(seed_val);         // Seed the RNG with the provided value
 }
 
-Random::Random()
+Random::Random() 
 {
-    seed_val = 1;
-    rng.seed(seed_val);
+    seed_val = 1;               // Default seed value
+    rng.seed(seed_val);         // Seed the RNG with the default value
 }
 
 bool Random::flip_coin()

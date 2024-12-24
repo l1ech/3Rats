@@ -3,17 +3,18 @@
 #include <iostream>
 #include <string>
 
-#include "../../../core/Constants.h"
+#include "handler/controller_handler/Controller.h"
 
-#include "../../../core/Body.h"
-#include "../../../input/Controller.h"
+#include "../core/Constants.h"
 
-#include "../../factory/map_factory/Map.h"
+#include "../core/Body.h"
+
+#include "Map.h"
 
 
-#include "../item_manager/Item.h"
-#include "../tile_manager/Tile.h"
-#include "../door_manager/Door.h"
+#include "Item.h"
+#include "Tile.h"
+#include "Door.h"
 
 class Acteur : public Controller
 {

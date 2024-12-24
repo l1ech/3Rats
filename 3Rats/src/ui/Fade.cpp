@@ -11,6 +11,7 @@ Fade::~Fade()
 void Fade::update(std::string update_text)
 {
 	display_text = "[Fade]: Day " + update_text;
+    //SDL_Log("[Fade]: Update called with text: %s", update_text.c_str());
 	Panel::update();
 }
 
@@ -18,7 +19,8 @@ void Fade::draw(SDL_Renderer* renderTarget)
 {
 	bool isFading = false;
 	int alpha = 255;
-    std::cout << "[Fade]: draw called" << std::endl;
+
+    //SDL_Log("[Fade]: Draw called");
 
     if (isFading)
     {

@@ -4,20 +4,33 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <fstream>  // Required for std::ofstream
+#include <iostream>
+#include <sstream>  // Add this header
 
-#include "Level_Structure.h"
-#include "../../../core/Body.h"
+
+#include "../core/Body.h"
 //#include "../../../../core/Texture_Manager.h"
 
-#include "../../manager/item_manager/Item.h"
-#include "../../manager/tile_manager/Tile.h"
-#include "../../manager/tile_manager/Tile_Manager.h"
-#include "../../manager/door_manager/Door.h"
-#include "../../manager/door_manager/Door_Manager.h"
+#include "Door.h"
+#include "Tile.h"
+#include "Item.h"
+
+
+#include "manager/door_manager/Door_Manager.h"
+#include "manager/tile_manager/Tile_Manager.h"
+//#include "manager/item_manager/Item_Manager.h"
+
+#include "manager/map_manager/Level_Structure.h"
+
+
+#include "handler/file_handler/FileHandler.h"
 
 class Map : public Level_Structure
 {
 private:
+
+    Random* random_ptr;
     // Constants for recursion and directions
     
     // Member variables
@@ -38,16 +51,9 @@ public:
     Tile_Manager tile_manager;
     Door_Manager door_manager;
 
-    // Define constants for magic numbers
-    const int EXIT = 0;
-    const int WALL = 1;
-    const int ENTRY = 2;
-    const int EXIT_ALT = 13;
-    const int RIGHT_HORIZONTAL_PATH = 3;
-    const int LEFT_HORIZONTAL_PATH = 4;
-    const int UP_VERTICAL_PATH = 5;
-    const int DOWN_VERTICAL_PATH = 6;
-    const int UNKNOWN_VALUE = 9;
+    int index;
+	static int current_index;	
+	std::string name;
 
     // Member variables
     int width;
@@ -87,5 +93,4 @@ public:
     //int get_width();
     Door get_door(int index);
     void set_random_ptr(Random* random_ptr);
-
 };

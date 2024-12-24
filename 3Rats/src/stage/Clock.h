@@ -2,9 +2,9 @@
 
 #include <string>
 #include <iostream>
-#include "../../../ui/Panel.h"
+#include "../ui/Panel.h"
 
-#include "../../../core/Time.h"  // Include the Time header
+#include "../core/Time.h"  // Include the Time header
 
 class Clock : public Panel
 {

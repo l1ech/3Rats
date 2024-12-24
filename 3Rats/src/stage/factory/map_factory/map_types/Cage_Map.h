@@ -1,9 +1,10 @@
 #pragma once
-#include "../Map.h"  // Include the base class
+#include "../../../Map.h"  // Include the base class
 #include "../../../manager/door_manager/Door_Manager.h"
 
 class Cage_Map : public Map {
 public:
     Cage_Map();  // Declare the constructor
     void generate(bool item_generation, bool entity_generation) override;
+
 };

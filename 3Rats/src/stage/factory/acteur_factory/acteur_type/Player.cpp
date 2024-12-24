@@ -2,18 +2,20 @@
 
 Player::Player()
 {
+    SDL_Log("[Player]: Constructor called");
 }
 
 Player::~Player()
 {
-    std::cout << "[Player<" << index << ">]: Destructor called" << std::endl;
+    SDL_Log("[Player<%d>]: Destructor called", index);
     SDL_DestroyTexture(texture);
 }
 
+
 inline void Player::Update(float delta, const Uint8 *keyState, int mode, Acteur &front_rat)
 {
-    std::cout << "[Player<" << index << ">]: Update called with delta: " << delta << std::endl;
-
+    //SDL_Log("[Player<%d>]: Update called with delta: %.2f", index, delta);
+    
     map_array = topography->get_map_array();
     map_array_size = topography->get_map_size();
 

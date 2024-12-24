@@ -36,7 +36,7 @@ void Garden_Map::generate(bool item_generation, bool entity_generation)
 
     std::cout << "[Garden_Map]: Initializing map data" << std::endl;
 
-    tile_manager.build_frame(data, 9, 1);
+    tile_manager.build_frame(data);
 
     door_manager.place_doors(data);
 
@@ -54,5 +54,9 @@ void Garden_Map::generate(bool item_generation, bool entity_generation)
     std::cout << "[Garden_Map]: Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
     std::cout << "[Garden_Map]: saving data..." << std::endl;
 
-    save_data(map_data, item_data);
+    FileHandler file_handler;
+    file_handler.saveMapToFile(map_data);
+    
+    
+    //print_vector(map_data, width, height);
 }

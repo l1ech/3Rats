@@ -1,0 +1,793 @@
+[INFO]: [Init]: SDL initialized successfully.
+[INFO]: [Init]: SDL_ttf initialized successfully.
+[INFO]: [Init]: SDL_image initialized successfully.
+[INFO]: [Main]: Renderer output size: 600x420
+[INFO]: [Seed_Manager]: User chose random seed.
+[INFO]: [Seed_Manager]: Generating random seed using std::random_device.
+[INFO]: [Seed_Manager]: Generated random seed: 3902783011
+[INFO]: [Seed_Manager]: Generated seed: 3902783011
+[ERROR]: [Seed_Manager]: Invalid seed generation type!
+[INFO]: [Init]: Renderer initialized successfully.
+[INFO]: [Init]: Initialization of Init class completed.
+[INFO]: [Body_0](NULL): CONSTRUCTOR BODY
+[INFO]: [Body_0](NULL): set name to: Panel
+[INFO]: [Body_0](Panel): set name to: fade
+[INFO]: [Body_0](fade): fade set_surface called
+[INFO]: [Body_0](fade): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/fade.png
+[INFO]: [Body_0](fade): Texture created successfully from surface
+[INFO]: [Body_0](fade): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/fade.png
+[INFO]: [Body_0](fade): fade set_cords called with x: 100, y: 100
+[INFO]: [Body_0](fade): set_cords to x: 100, y: 100
+[INFO]: [Init]: Fade initialized with texture and coordinates.
+[INFO]: [Body_1](NULL): CONSTRUCTOR BODY
+[INFO]: [Body_1](NULL): set name to: Panel
+[INFO]: [Body_1](Panel): set name to: pause
+[INFO]: [Body_1](pause): pause set_surface called
+[INFO]: [Body_1](pause): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/fade.png
+[INFO]: [Body_1](pause): Texture created successfully from surface
+[INFO]: [Body_1](pause): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/fade.png
+[INFO]: [Body_1](pause): pause set_cords called with x: 999, y: 999
+[INFO]: [Body_1](pause): set_cords to x: 999, y: 999
+[INFO]: [Init]: Pause initialized with texture and coordinates.
+[INFO]: [Clock_Manager]: Manager created
+[INFO]: [Time]: Constructor called
+[INFO]: [Body_2](NULL): CONSTRUCTOR BODY
+[INFO]: [Body_2](NULL): set name to: Panel
+[INFO]: [Clock]: Constructor called
+[INFO]: [Body_2](Panel): set name to: Clock
+[INFO]: [Body_2](Clock): Clock set_surface called
+[INFO]: [Body_2](Clock): set name to: clock
+[INFO]: [Body_2](clock): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/clock_frame.png
+[INFO]: [Body_2](clock): Texture created successfully from surface
+[INFO]: [Body_2](clock): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/ui_textures/clock_frame.png
+[INFO]: [Body_2](clock): clock set_cords called with x: 400, y: 320
+[INFO]: [Body_2](clock): set_cords to x: 400, y: 320
+[INFO]: [init]: Clock initialized with texture and coordinates.
+[INFO]: [init]: Overlay initialized with fade and clock.
+[INFO]: [Body_3](NULL): CONSTRUCTOR BODY
+[INFO]: [item]: Item constructor: Created item with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_4](NULL): CONSTRUCTOR BODY
+[INFO]: [item]: Item constructor: Created item with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_5](NULL): CONSTRUCTOR BODY
+[INFO]: [item]: Item constructor: Created item with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_5](NULL): set name to: item<0>
+[INFO]: [Body_5](item<0>): item<0> set_surface called
+[INFO]: [Body_5](item<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_5](item<0>): Texture created successfully from surface
+[INFO]: [Body_5](item<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_5](item<0>): item<0> set_cords called with x: 0, y: 0
+[INFO]: [Body_5](item<0>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized item 0 with texture and coordinates.
+[INFO]: [item]: Item destructor
+[INFO]: [Body_5](item<0>): DESTRUCTOR BODY
+[INFO]: [Body_6](NULL): CONSTRUCTOR BODY
+[INFO]: [item]: Item constructor: Created item with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_6](NULL): set name to: item<1>
+[INFO]: [Body_6](item<1>): item<1> set_surface called
+[INFO]: [Body_6](item<1>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_6](item<1>): Texture created successfully from surface
+[INFO]: [Body_6](item<1>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_6](item<1>): item<1> set_cords called with x: 10, y: 10
+[INFO]: [Body_6](item<1>): set_cords to x: 10, y: 10
+[INFO]: [init]: Initialized item 1 with texture and coordinates.
+[INFO]: [item]: Item destructor
+[INFO]: [Body_6](item<1>): DESTRUCTOR BODY
+[INFO]: [Body_7](NULL): CONSTRUCTOR BODY
+[INFO]: [item]: Item constructor: Created item with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_7](NULL): set name to: item<2>
+[INFO]: [Body_7](item<2>): item<2> set_surface called
+[INFO]: [Body_7](item<2>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_7](item<2>): Texture created successfully from surface
+[INFO]: [Body_7](item<2>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_7](item<2>): item<2> set_cords called with x: 20, y: 20
+[INFO]: [Body_7](item<2>): set_cords to x: 20, y: 20
+[INFO]: [init]: Initialized item 2 with texture and coordinates.
+[INFO]: [item]: Item destructor
+[INFO]: [Body_7](item<2>): DESTRUCTOR BODY
+[INFO]: [init]: Item array initialized with 3 items.
+[INFO]: [Body_8](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_9](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_10](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_11](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_12](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_13](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_14](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_15](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_16](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_17](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_18](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_19](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_20](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_21](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_22](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_23](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_24](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_25](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_26](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_27](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_28](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_29](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_30](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_31](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_32](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_33](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_34](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_35](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_36](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_37](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_38](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_39](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_40](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_41](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_42](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_43](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_44](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_45](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_46](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_47](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_48](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_49](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_50](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_51](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_52](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_53](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_54](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_55](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_56](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_57](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_58](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_59](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_60](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_61](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_61](NULL): set name to: tile<0>
+[INFO]: [Body_61](tile<0>): tile<0> set_surface called
+[INFO]: [Body_61](tile<0>): tile<0> set_cords called with x: 0, y: 0
+[INFO]: [Body_61](tile<0>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <0> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_61](tile<0>): DESTRUCTOR BODY
+[INFO]: [Body_62](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_62](NULL): set name to: tile<1>
+[INFO]: [Body_62](tile<1>): tile<1> set_surface called
+[INFO]: [Body_62](tile<1>): tile<1> set_cords called with x: 0, y: 0
+[INFO]: [Body_62](tile<1>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <1> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_62](tile<1>): DESTRUCTOR BODY
+[INFO]: [Body_63](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_63](NULL): set name to: tile<2>
+[INFO]: [Body_63](tile<2>): tile<2> set_surface called
+[INFO]: [Body_63](tile<2>): tile<2> set_cords called with x: 0, y: 0
+[INFO]: [Body_63](tile<2>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <2> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_63](tile<2>): DESTRUCTOR BODY
+[INFO]: [Body_64](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_64](NULL): set name to: tile<3>
+[INFO]: [Body_64](tile<3>): tile<3> set_surface called
+[INFO]: [Body_64](tile<3>): tile<3> set_cords called with x: 0, y: 0
+[INFO]: [Body_64](tile<3>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <3> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_64](tile<3>): DESTRUCTOR BODY
+[INFO]: [Body_65](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_65](NULL): set name to: tile<4>
+[INFO]: [Body_65](tile<4>): tile<4> set_surface called
+[INFO]: [Body_65](tile<4>): tile<4> set_cords called with x: 0, y: 0
+[INFO]: [Body_65](tile<4>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <4> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_65](tile<4>): DESTRUCTOR BODY
+[INFO]: [Body_66](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_66](NULL): set name to: tile<5>
+[INFO]: [Body_66](tile<5>): tile<5> set_surface called
+[INFO]: [Body_66](tile<5>): tile<5> set_cords called with x: 0, y: 0
+[INFO]: [Body_66](tile<5>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <5> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_66](tile<5>): DESTRUCTOR BODY
+[INFO]: [Body_67](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_67](NULL): set name to: tile<6>
+[INFO]: [Body_67](tile<6>): tile<6> set_surface called
+[INFO]: [Body_67](tile<6>): tile<6> set_cords called with x: 0, y: 0
+[INFO]: [Body_67](tile<6>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <6> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_67](tile<6>): DESTRUCTOR BODY
+[INFO]: [Body_68](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_68](NULL): set name to: tile<7>
+[INFO]: [Body_68](tile<7>): tile<7> set_surface called
+[INFO]: [Body_68](tile<7>): tile<7> set_cords called with x: 0, y: 0
+[INFO]: [Body_68](tile<7>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <7> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_68](tile<7>): DESTRUCTOR BODY
+[INFO]: [Body_69](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_69](NULL): set name to: tile<8>
+[INFO]: [Body_69](tile<8>): tile<8> set_surface called
+[INFO]: [Body_69](tile<8>): tile<8> set_cords called with x: 0, y: 0
+[INFO]: [Body_69](tile<8>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <8> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_69](tile<8>): DESTRUCTOR BODY
+[INFO]: [Body_70](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_70](NULL): set name to: tile<9>
+[INFO]: [Body_70](tile<9>): tile<9> set_surface called
+[INFO]: [Body_70](tile<9>): tile<9> set_cords called with x: 0, y: 0
+[INFO]: [Body_70](tile<9>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <9> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_70](tile<9>): DESTRUCTOR BODY
+[INFO]: [Body_71](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_71](NULL): set name to: tile<10>
+[INFO]: [Body_71](tile<10>): tile<10> set_surface called
+[INFO]: [Body_71](tile<10>): tile<10> set_cords called with x: 0, y: 0
+[INFO]: [Body_71](tile<10>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <10> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_71](tile<10>): DESTRUCTOR BODY
+[INFO]: [Body_72](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_72](NULL): set name to: tile<11>
+[INFO]: [Body_72](tile<11>): tile<11> set_surface called
+[INFO]: [Body_72](tile<11>): tile<11> set_cords called with x: 0, y: 0
+[INFO]: [Body_72](tile<11>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <11> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_72](tile<11>): DESTRUCTOR BODY
+[INFO]: [Body_73](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_73](NULL): set name to: tile<12>
+[INFO]: [Body_73](tile<12>): tile<12> set_surface called
+[INFO]: [Body_73](tile<12>): tile<12> set_cords called with x: 0, y: 0
+[INFO]: [Body_73](tile<12>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <12> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_73](tile<12>): DESTRUCTOR BODY
+[INFO]: [Body_74](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_74](NULL): set name to: tile<13>
+[INFO]: [Body_74](tile<13>): tile<13> set_surface called
+[INFO]: [Body_74](tile<13>): tile<13> set_cords called with x: 0, y: 0
+[INFO]: [Body_74](tile<13>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <13> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_74](tile<13>): DESTRUCTOR BODY
+[INFO]: [Body_75](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_75](NULL): set name to: tile<14>
+[INFO]: [Body_75](tile<14>): tile<14> set_surface called
+[INFO]: [Body_75](tile<14>): tile<14> set_cords called with x: 0, y: 0
+[INFO]: [Body_75](tile<14>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <14> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_75](tile<14>): DESTRUCTOR BODY
+[INFO]: [Body_76](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_76](NULL): set name to: tile<15>
+[INFO]: [Body_76](tile<15>): tile<15> set_surface called
+[INFO]: [Body_76](tile<15>): tile<15> set_cords called with x: 0, y: 0
+[INFO]: [Body_76](tile<15>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <15> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_76](tile<15>): DESTRUCTOR BODY
+[INFO]: [Body_77](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_77](NULL): set name to: tile<16>
+[INFO]: [Body_77](tile<16>): tile<16> set_surface called
+[INFO]: [Body_77](tile<16>): tile<16> set_cords called with x: 0, y: 0
+[INFO]: [Body_77](tile<16>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <16> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_77](tile<16>): DESTRUCTOR BODY
+[INFO]: [Body_78](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_78](NULL): set name to: tile<17>
+[INFO]: [Body_78](tile<17>): tile<17> set_surface called
+[INFO]: [Body_78](tile<17>): tile<17> set_cords called with x: 0, y: 0
+[INFO]: [Body_78](tile<17>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <17> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_78](tile<17>): DESTRUCTOR BODY
+[INFO]: [Body_79](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_79](NULL): set name to: tile<18>
+[INFO]: [Body_79](tile<18>): tile<18> set_surface called
+[INFO]: [Body_79](tile<18>): tile<18> set_cords called with x: 0, y: 0
+[INFO]: [Body_79](tile<18>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <18> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_79](tile<18>): DESTRUCTOR BODY
+[INFO]: [Body_80](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_80](NULL): set name to: tile<19>
+[INFO]: [Body_80](tile<19>): tile<19> set_surface called
+[INFO]: [Body_80](tile<19>): tile<19> set_cords called with x: 0, y: 0
+[INFO]: [Body_80](tile<19>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <19> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_80](tile<19>): DESTRUCTOR BODY
+[INFO]: [Body_81](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_81](NULL): set name to: tile<20>
+[INFO]: [Body_81](tile<20>): tile<20> set_surface called
+[INFO]: [Body_81](tile<20>): tile<20> set_cords called with x: 0, y: 0
+[INFO]: [Body_81](tile<20>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <20> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_81](tile<20>): DESTRUCTOR BODY
+[INFO]: [Body_82](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_82](NULL): set name to: tile<21>
+[INFO]: [Body_82](tile<21>): tile<21> set_surface called
+[INFO]: [Body_82](tile<21>): tile<21> set_cords called with x: 0, y: 0
+[INFO]: [Body_82](tile<21>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <21> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_82](tile<21>): DESTRUCTOR BODY
+[INFO]: [Body_83](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_83](NULL): set name to: tile<22>
+[INFO]: [Body_83](tile<22>): tile<22> set_surface called
+[INFO]: [Body_83](tile<22>): tile<22> set_cords called with x: 0, y: 0
+[INFO]: [Body_83](tile<22>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <22> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_83](tile<22>): DESTRUCTOR BODY
+[INFO]: [Body_84](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_84](NULL): set name to: tile<23>
+[INFO]: [Body_84](tile<23>): tile<23> set_surface called
+[INFO]: [Body_84](tile<23>): tile<23> set_cords called with x: 0, y: 0
+[INFO]: [Body_84](tile<23>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <23> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_84](tile<23>): DESTRUCTOR BODY
+[INFO]: [Body_85](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_85](NULL): set name to: tile<24>
+[INFO]: [Body_85](tile<24>): tile<24> set_surface called
+[INFO]: [Body_85](tile<24>): tile<24> set_cords called with x: 0, y: 0
+[INFO]: [Body_85](tile<24>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <24> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_85](tile<24>): DESTRUCTOR BODY
+[INFO]: [Body_86](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_86](NULL): set name to: tile<25>
+[INFO]: [Body_86](tile<25>): tile<25> set_surface called
+[INFO]: [Body_86](tile<25>): tile<25> set_cords called with x: 0, y: 0
+[INFO]: [Body_86](tile<25>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <25> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_86](tile<25>): DESTRUCTOR BODY
+[INFO]: [Body_87](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_87](NULL): set name to: tile<26>
+[INFO]: [Body_87](tile<26>): tile<26> set_surface called
+[INFO]: [Body_87](tile<26>): tile<26> set_cords called with x: 0, y: 0
+[INFO]: [Body_87](tile<26>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <26> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_87](tile<26>): DESTRUCTOR BODY
+[INFO]: [Body_88](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_88](NULL): set name to: tile<27>
+[INFO]: [Body_88](tile<27>): tile<27> set_surface called
+[INFO]: [Body_88](tile<27>): tile<27> set_cords called with x: 0, y: 0
+[INFO]: [Body_88](tile<27>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <27> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_88](tile<27>): DESTRUCTOR BODY
+[INFO]: [Body_89](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_89](NULL): set name to: tile<28>
+[INFO]: [Body_89](tile<28>): tile<28> set_surface called
+[INFO]: [Body_89](tile<28>): tile<28> set_cords called with x: 0, y: 0
+[INFO]: [Body_89](tile<28>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <28> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_89](tile<28>): DESTRUCTOR BODY
+[INFO]: [Body_90](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_90](NULL): set name to: tile<29>
+[INFO]: [Body_90](tile<29>): tile<29> set_surface called
+[INFO]: [Body_90](tile<29>): tile<29> set_cords called with x: 0, y: 0
+[INFO]: [Body_90](tile<29>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <29> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_90](tile<29>): DESTRUCTOR BODY
+[INFO]: [Body_91](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_91](NULL): set name to: tile<30>
+[INFO]: [Body_91](tile<30>): tile<30> set_surface called
+[INFO]: [Body_91](tile<30>): tile<30> set_cords called with x: 0, y: 0
+[INFO]: [Body_91](tile<30>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <30> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_91](tile<30>): DESTRUCTOR BODY
+[INFO]: [Body_92](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_92](NULL): set name to: tile<31>
+[INFO]: [Body_92](tile<31>): tile<31> set_surface called
+[INFO]: [Body_92](tile<31>): tile<31> set_cords called with x: 0, y: 0
+[INFO]: [Body_92](tile<31>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <31> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_92](tile<31>): DESTRUCTOR BODY
+[INFO]: [Body_93](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_93](NULL): set name to: tile<32>
+[INFO]: [Body_93](tile<32>): tile<32> set_surface called
+[INFO]: [Body_93](tile<32>): tile<32> set_cords called with x: 0, y: 0
+[INFO]: [Body_93](tile<32>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <32> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_93](tile<32>): DESTRUCTOR BODY
+[INFO]: [Body_94](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_94](NULL): set name to: tile<33>
+[INFO]: [Body_94](tile<33>): tile<33> set_surface called
+[INFO]: [Body_94](tile<33>): tile<33> set_cords called with x: 0, y: 0
+[INFO]: [Body_94](tile<33>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <33> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_94](tile<33>): DESTRUCTOR BODY
+[INFO]: [Body_95](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_95](NULL): set name to: tile<34>
+[INFO]: [Body_95](tile<34>): tile<34> set_surface called
+[INFO]: [Body_95](tile<34>): tile<34> set_cords called with x: 0, y: 0
+[INFO]: [Body_95](tile<34>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <34> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_95](tile<34>): DESTRUCTOR BODY
+[INFO]: [Body_96](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_96](NULL): set name to: tile<35>
+[INFO]: [Body_96](tile<35>): tile<35> set_surface called
+[INFO]: [Body_96](tile<35>): tile<35> set_cords called with x: 0, y: 0
+[INFO]: [Body_96](tile<35>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <35> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_96](tile<35>): DESTRUCTOR BODY
+[INFO]: [Body_97](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_97](NULL): set name to: tile<36>
+[INFO]: [Body_97](tile<36>): tile<36> set_surface called
+[INFO]: [Body_97](tile<36>): tile<36> set_cords called with x: 0, y: 0
+[INFO]: [Body_97](tile<36>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <36> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_97](tile<36>): DESTRUCTOR BODY
+[INFO]: [Body_98](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_98](NULL): set name to: tile<37>
+[INFO]: [Body_98](tile<37>): tile<37> set_surface called
+[INFO]: [Body_98](tile<37>): tile<37> set_cords called with x: 0, y: 0
+[INFO]: [Body_98](tile<37>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <37> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_98](tile<37>): DESTRUCTOR BODY
+[INFO]: [Body_99](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_99](NULL): set name to: tile<38>
+[INFO]: [Body_99](tile<38>): tile<38> set_surface called
+[INFO]: [Body_99](tile<38>): tile<38> set_cords called with x: 0, y: 0
+[INFO]: [Body_99](tile<38>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <38> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_99](tile<38>): DESTRUCTOR BODY
+[INFO]: [Body_100](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_100](NULL): set name to: tile<39>
+[INFO]: [Body_100](tile<39>): tile<39> set_surface called
+[INFO]: [Body_100](tile<39>): tile<39> set_cords called with x: 0, y: 0
+[INFO]: [Body_100](tile<39>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <39> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_100](tile<39>): DESTRUCTOR BODY
+[INFO]: [Body_101](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_101](NULL): set name to: tile<40>
+[INFO]: [Body_101](tile<40>): tile<40> set_surface called
+[INFO]: [Body_101](tile<40>): tile<40> set_cords called with x: 0, y: 0
+[INFO]: [Body_101](tile<40>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <40> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_101](tile<40>): DESTRUCTOR BODY
+[INFO]: [Body_102](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_102](NULL): set name to: tile<41>
+[INFO]: [Body_102](tile<41>): tile<41> set_surface called
+[INFO]: [Body_102](tile<41>): tile<41> set_cords called with x: 0, y: 0
+[INFO]: [Body_102](tile<41>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <41> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_102](tile<41>): DESTRUCTOR BODY
+[INFO]: [Body_103](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_103](NULL): set name to: tile<42>
+[INFO]: [Body_103](tile<42>): tile<42> set_surface called
+[INFO]: [Body_103](tile<42>): tile<42> set_cords called with x: 0, y: 0
+[INFO]: [Body_103](tile<42>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <42> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_103](tile<42>): DESTRUCTOR BODY
+[INFO]: [Body_104](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_104](NULL): set name to: tile<43>
+[INFO]: [Body_104](tile<43>): tile<43> set_surface called
+[INFO]: [Body_104](tile<43>): tile<43> set_cords called with x: 0, y: 0
+[INFO]: [Body_104](tile<43>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <43> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_104](tile<43>): DESTRUCTOR BODY
+[INFO]: [Body_105](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_105](NULL): set name to: tile<44>
+[INFO]: [Body_105](tile<44>): tile<44> set_surface called
+[INFO]: [Body_105](tile<44>): tile<44> set_cords called with x: 0, y: 0
+[INFO]: [Body_105](tile<44>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <44> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_105](tile<44>): DESTRUCTOR BODY
+[INFO]: [Body_106](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_106](NULL): set name to: tile<45>
+[INFO]: [Body_106](tile<45>): tile<45> set_surface called
+[INFO]: [Body_106](tile<45>): tile<45> set_cords called with x: 0, y: 0
+[INFO]: [Body_106](tile<45>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <45> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_106](tile<45>): DESTRUCTOR BODY
+[INFO]: [Body_107](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_107](NULL): set name to: tile<46>
+[INFO]: [Body_107](tile<46>): tile<46> set_surface called
+[INFO]: [Body_107](tile<46>): tile<46> set_cords called with x: 0, y: 0
+[INFO]: [Body_107](tile<46>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <46> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_107](tile<46>): DESTRUCTOR BODY
+[INFO]: [Body_108](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_108](NULL): set name to: tile<47>
+[INFO]: [Body_108](tile<47>): tile<47> set_surface called
+[INFO]: [Body_108](tile<47>): tile<47> set_cords called with x: 0, y: 0
+[INFO]: [Body_108](tile<47>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <47> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_108](tile<47>): DESTRUCTOR BODY
+[INFO]: [Body_109](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_109](NULL): set name to: tile<48>
+[INFO]: [Body_109](tile<48>): tile<48> set_surface called
+[INFO]: [Body_109](tile<48>): tile<48> set_cords called with x: 0, y: 0
+[INFO]: [Body_109](tile<48>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <48> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_109](tile<48>): DESTRUCTOR BODY
+[INFO]: [Body_110](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_110](NULL): set name to: tile<49>
+[INFO]: [Body_110](tile<49>): tile<49> set_surface called
+[INFO]: [Body_110](tile<49>): tile<49> set_cords called with x: 0, y: 0
+[INFO]: [Body_110](tile<49>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <49> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_110](tile<49>): DESTRUCTOR BODY
+[INFO]: [Body_111](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_111](NULL): set name to: tile<50>
+[INFO]: [Body_111](tile<50>): tile<50> set_surface called
+[INFO]: [Body_111](tile<50>): tile<50> set_cords called with x: 0, y: 0
+[INFO]: [Body_111](tile<50>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <50> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_111](tile<50>): DESTRUCTOR BODY
+[INFO]: [Body_112](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_112](NULL): set name to: tile<51>
+[INFO]: [Body_112](tile<51>): tile<51> set_surface called
+[INFO]: [Body_112](tile<51>): tile<51> set_cords called with x: 0, y: 0
+[INFO]: [Body_112](tile<51>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <51> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_112](tile<51>): DESTRUCTOR BODY
+[INFO]: [Body_113](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_113](NULL): set name to: tile<52>
+[INFO]: [Body_113](tile<52>): tile<52> set_surface called
+[INFO]: [Body_113](tile<52>): tile<52> set_cords called with x: 0, y: 0
+[INFO]: [Body_113](tile<52>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <52> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_113](tile<52>): DESTRUCTOR BODY
+[INFO]: [Body_114](NULL): CONSTRUCTOR BODY
+[INFO]: [Tile]: Tile constructor: Created tile with path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_114](NULL): set name to: tile<53>
+[INFO]: [Body_114](tile<53>): tile<53> set_surface called
+[INFO]: [Body_114](tile<53>): tile<53> set_cords called with x: 0, y: 0
+[INFO]: [Body_114](tile<53>): set_cords to x: 0, y: 0
+[INFO]: [init]: Initialized tile <53> with texture and coordinates.
+[INFO]: [Tile]: Tile destructor: Destroying tile with file_path: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_114](tile<53>): DESTRUCTOR BODY
+[INFO]: [init]: Tile array initialized with 54 tiles.
+[INFO]: [Map_Factory]: Creating map of type: 0
+[INFO]: [Map_Factory]: Creating Cage_Map
+[INFO]: [Tile_Manager]: Constructor called
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/maze_door.png, Exit: 1, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/walk_way_shadow_horizontal.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/maze_wall.png, Exit: 0, Hole: 0, Entrance: 0, Height: 1
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/ground.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/walk_way_shadow_vertical.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/maze_hole.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/maze_textures/wooden_floor.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/item_textures/mushroom.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: TileType constructor: Created TileType with texture: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/interactable/test.png, Exit: 0, Hole: 0, Entrance: 0, Height: 0
+[INFO]: [Door_Manager]: Initialized with default settings
+[INFO]: [Map_0](map): Constructor called
+[INFO]: [Door_Manager]: Set width to: 9
+[INFO]: [Door_Manager]: Set height to: 6
+[INFO]: [Door_Manager]: Random pointer set
+[INFO]: [Cage_Map]: Generating cage with width: 9 and height: 6
+[INFO]: [Cage_Map]: Door_Manager created successfully.
+[INFO]: [Cage_Map]: Generating doors with entry direction: -16777216 and exit direction: -16777216
+[ERROR]: [Door_Manager]: Invalid direction -16777216 for door generation
+[ERROR]: [Door_Manager]: Invalid direction -16777216 for door generation
+[INFO]: [Door_Manager]: Generated door at index 2 with type 3 at (6, 1)
+[INFO]: [Door_Manager]: Generated doors for CAGE_TYPE
+[INFO]: [Map]: Entry [0; 0]
+[INFO]: [Map]: Exit [0; 0]
+[INFO]: [Map]: Hole [6; 1]
+[INFO]: [Cage_Map]: Initializing map data
+[INFO]: [Tile_Manager]: build_frame called
+[INFO]: [Door_Manager]: Placed hole door at (6, 1)
+[INFO]: [Tile_Manager]: trim_boarder called
+[INFO]: [Cage_Map]: Tries to generate Map #-16777216 : 0
+[INFO]: [Cage_Map]: saving data...
+[INFO]: [Map]: save_data called
+[INFO]: [init]: Map array initialized with 1 maps.
+[INFO]: [Topography]: generating ...
+[INFO]: [init]: Topography initialized and maze generated.
+[INFO]: [Body_115](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_116](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_117](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_118](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_119](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_119](NULL): set name to: player<0>
+[INFO]: [Body_119](player<0>): player<0> set_surface called
+[INFO]: [Body_119](player<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_119](player<0>): Texture created successfully from surface
+[INFO]: [Body_119](player<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Player<119>]: Destructor called
+[INFO]: [Body_119](player<0>): DESTRUCTOR BODY
+[INFO]: [Body_120](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_120](NULL): set name to: player<1>
+[INFO]: [Body_120](player<1>): player<1> set_surface called
+[INFO]: [Body_120](player<1>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_120](player<1>): Texture created successfully from surface
+[INFO]: [Body_120](player<1>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Player<120>]: Destructor called
+[INFO]: [Body_120](player<1>): DESTRUCTOR BODY
+[INFO]: [Body_121](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_121](NULL): set name to: player<2>
+[INFO]: [Body_121](player<2>): player<2> set_surface called
+[INFO]: [Body_121](player<2>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_121](player<2>): Texture created successfully from surface
+[INFO]: [Body_121](player<2>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Player<121>]: Destructor called
+[INFO]: [Body_121](player<2>): DESTRUCTOR BODY
+[INFO]: [Body_119](player<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/mango.png
+[INFO]: [Body_119](player<0>): Texture created successfully from surface
+[INFO]: [Body_119](player<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/mango.png
+[INFO]: [Body_120](player<1>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/fridolin.png
+[INFO]: [Body_120](player<1>): Texture created successfully from surface
+[INFO]: [Body_120](player<1>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/fridolin.png
+[INFO]: [Body_121](player<2>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/remy.png
+[INFO]: [Body_121](player<2>): Texture created successfully from surface
+[INFO]: [Body_121](player<2>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/rat_textures/remy.png
+[INFO]: [init]: Player array initialized with size: 3
+[INFO]: [Body_122](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_122](NULL): set name to: entity<0>
+[INFO]: [Body_122](entity<0>): entity<0> set_surface called
+[INFO]: [Body_122](entity<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_122](entity<0>): Texture created successfully from surface
+[INFO]: [Body_122](entity<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Player<122>]: Destructor called
+[INFO]: [Body_122](entity<0>): DESTRUCTOR BODY
+[INFO]: [Body_122](entity<0>): entity<0> set_surface called
+[INFO]: [Body_122](entity<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/npc_textures/entity.png
+[INFO]: [Body_122](entity<0>): Texture created successfully from surface
+[INFO]: [Body_122](entity<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/npc_textures/entity.png
+[INFO]: [init]: Entity array initialized with 1 entities.
+[INFO]: [Body_123](NULL): CONSTRUCTOR BODY
+[INFO]: [Player]: Constructor called
+[INFO]: [Body_123](NULL): set name to: entity<0>
+[INFO]: [Body_123](entity<0>): entity<0> set_surface called
+[INFO]: [Body_123](entity<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Body_123](entity<0>): Texture created successfully from surface
+[INFO]: [Body_123](entity<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/meta_textures/place_holder.png
+[INFO]: [Player<123>]: Destructor called
+[INFO]: [Body_123](entity<0>): DESTRUCTOR BODY
+[INFO]: [Body_123](entity<0>): entity<0> set_surface called
+[INFO]: [Body_123](entity<0>): LoadTexture called for file: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/npc_textures/entity.png
+[INFO]: [Body_123](entity<0>): Texture created successfully from surface
+[INFO]: [Body_123](entity<0>): Texture loaded successfully from /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/textures/npc_textures/entity.png
+[INFO]: [init]: Entity array initialized with 1 entities.
+[INFO]: [Main]: Texture loaded successfully from: /Users/c0d3_cru5h/Projekte/Code/3Rats/3Rats/assets/images/backgound.png
+[INFO]: [Main]: Entering game loop...
+[INFO]: [Main]: Cleaning up resources...

@@ -29,11 +29,17 @@ void Maze_Map::generate(bool item_generation, bool entity_generation)
 
         std::cout << "[Maze_Map]: Initializing map data" << std::endl;
 
-        tile_manager.build_frame(data, UNKNOWN_VALUE, 1);
+        tile_manager.build_frame(data);
 
         door_manager.place_doors(data);
 
-        while (rec_pos(door_manager.get_doors()[0].get_x(), door_manager.get_doors()[0].get_y(), data, data[start_x][start_y]) != EXIT)
+        while (
+            rec_pos(
+                door_manager.get_doors()[0].get_x(), 
+                door_manager.get_doors()[0].get_y(), 
+                data, data[start_x][start_y]
+            ) != Map_Constants::EXIT
+        )
         {
             map_generation_try++;
             std::cout << "[Maze_Map]: Retrying to generate map #" << map_id << " : " << map_generation_try << std::endl;
@@ -48,9 +54,12 @@ void Maze_Map::generate(bool item_generation, bool entity_generation)
         std::cout << "[Maze_Map]: Tries to generate Map #" << map_id << " : " << map_generation_try << std::endl;
         std::cout << "[Maze_Map]: saving data..." << std::endl;
 
-        save_data(map_data, item_data);
+        FileHandler file_handler;
+        file_handler.saveMapToFile(map_data);
 
         // Print the generated map
+
+        std::cout << "[Maze_Map]: Printing map data" << std::endl;
         print_vector(map_data, width, height);
 
     } catch (const std::exception& e) {

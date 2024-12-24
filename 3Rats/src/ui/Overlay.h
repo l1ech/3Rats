@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Fade.h"
-#include "../stage/manager/clock_manager/Clock.h"
+#include "../stage/Clock.h"
 
 class Overlay
 {

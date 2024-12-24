@@ -1,17 +1,18 @@
 #pragma once
 
-#include "../../../core/Body.h"
+#include "../core/Body.h"
 
-#include "../acteur_manager/Acteur.h"
-#include "../acteur_manager/Acteur_Manager.h"
-#include "../tile_manager/Tile.h"
-#include "../item_manager/Item.h"
-#include "../clock_manager/Clock.h"
+#include "manager/acteur_manager/Acteur_Manager.h"
+
+#include "Acteur.h"
+#include "Tile.h"
+#include "Item.h"
+#include "Clock.h"
 
 
-#include "../../../ui/Pause.h"
-#include "../../../ui/Fade.h"
-#include "../../../ui/Overlay.h"
+#include "../ui/Pause.h"
+#include "../ui/Fade.h"
+#include "../ui/Overlay.h"
 
 
 #include "SDL2/SDL.h"

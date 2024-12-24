@@ -27,21 +27,15 @@ void Text::update(std::string text)
 
 void Text::draw(SDL_Renderer* renderTarget)
 {
-	std::cout << "[Text]: Drawing at x: " << Message_rect.x 
-				<< ", y: " << Message_rect.y 
-				<< ", width: " << Message_rect.w 
-				<< ", height: " << Message_rect.h 
-				<< ", message: " << message_string
-				<< std::endl;
+	//SDL_Log("[Text]: Drawing at x: %d, y: %d, width: %d, height: %d, message: %s", Message_rect.x, Message_rect.y, Message_rect.w, Message_rect.h, message_string.c_str());
 
 	if (Message && renderer) {
 		if (SDL_RenderCopy(renderer, Message, NULL, &Message_rect) != 0) {
-			std::cerr << "[Text]: Error rendering texture: " << SDL_GetError() << std::endl;
+			//SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Text]: Error rendering texture: %s", SDL_GetError());
 		}
 	} else {
-		std::cerr << "[Text]: Cannot draw. Renderer or Message is null." << std::endl;
+		//SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Text]: Cannot draw. Renderer or Message is null.");
 	}
-	//std::cout << "draw!!!!!!" << std::endl;
 
 	// Now since it's a texture, you have to put RenderCopy
 	// in your game loop area, the area where the whole code executes
@@ -70,7 +64,7 @@ void Text::init_text(std::string font_path, int font_size, SDL_Color colour, int
 	
 	if (font == NULL)
 	{
-		std::cout << "[Text]Error Font" << std::endl;
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[Text] Error loading font.");
 	}
 
 	surfaceMessage = TTF_RenderText_Solid(font, "99:99", colour);

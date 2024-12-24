@@ -2,20 +2,15 @@
 
 Item::Item()
 {
-    //Texture_Manager texture_manager;
-
-    //file_path = texture_manager.get_path(2);
+    SDL_LogSetAllPriority(SDL_LOG_PRIORITY_INFO);
 
     file_path = Texture_Constants::META_TEXTURE;
-
-    std::cout << "[item]: Item constructor: Created item with path: " << file_path << std::endl;
-}
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[item]: Item constructor: Created item with path: %s", file_path.c_str());}
 
 Item::~Item()
 {
-    std::cout << "[item]: Item destructor " << std::endl;
+    SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[item]: Item destructor");
 }
-	
 //void Item::Update(float delta) { }
 
 void Item::Draw(SDL_Renderer* renderTarget) const
